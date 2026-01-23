@@ -1,38 +1,338 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh;
+  background-color: #f7fafc;
+  transition: background-color 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+html.dark .App {
+  background-color: #0f172a;
 }
 
-@keyframes App-logo-spin {
+header {
+  animation: slideDown 0.6s ease-out;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+html.dark header {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+footer {
+  animation: slideUp 0.6s ease-out;
+  margin-top: auto;
+}
+
+main {
+  flex: 1;
+  overflow: visible;
+}
+
+/* Enhanced Card animations */
+.card {
+  animation: scaleIn 0.5s ease-out;
+}
+
+/* Link animations */
+a {
+  position: relative;
+  text-decoration: none;
+}
+
+/* Enhanced Smooth hover effects */
+button, [role="button"], a[href] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover, [role="button"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+}
+
+html.dark button:hover, html.dark [role="button"]:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Input focus animations */
+input:focus, textarea:focus, select:focus {
+  animation: none;
+  transition: all 0.3s ease;
+}
+
+/* Keyframe animations */
+@keyframes slideDown {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(-20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Dark mode transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Prevent transition on theme toggle button */
+.no-transition {
+  transition: none !important;
+}
+
+/* Industry buttons - prevent fade on click */
+button {
+  position: relative;
+  outline: none;
+  opacity: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active {
+  outline: none;
+  opacity: 1;
+}
+
+/* Ensure buttons don't fade after interaction */
+button[class*="industry-card"] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  opacity: 1 !important;
+  background-color: var(--btn-bg, transparent);
+  color: var(--btn-text, inherit);
+}
+
+button[class*="industry-card"]:focus,
+button[class*="industry-card"]:focus-visible,
+button[class*="industry-card"]:active {
+  opacity: 1 !important;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Scroll Animations for Industries Section */
+.industry-card-scroll {
+  animation: slideInFromBottom 0.6s ease-out;
+}
+
+.industry-card-scroll:hover {
+  animation: bounceIn 0.3s ease-out;
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll animation for service cards */
+.service-card-scroll {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.service-card-scroll:hover {
+  transform: translateY(-8px);
+  animation: none;
+}
+
+/* Image reveal animations */
+.image-reveal-scroll {
+  animation: imageReveal 0.8s ease-out;
+}
+
+@keyframes imageReveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Enhanced UI Styles */
+/* Glow text effect */
+.glow-text {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5),
+               0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+html.dark .glow-text {
+  text-shadow: 0 0 20px rgba(34, 197, 222, 0.6),
+               0 0 30px rgba(34, 197, 222, 0.3);
+}
+
+/* Glow box effect */
+.glow-box {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-box:hover {
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.25);
+}
+
+html.dark .glow-box {
+  box-shadow: 0 0 20px rgba(34, 197, 222, 0.1);
+}
+
+html.dark .glow-box:hover {
+  box-shadow: 0 0 30px rgba(34, 197, 222, 0.2);
+}
+
+/* Progress bar styling */
+.progress-bar {
+  height: 3px;
+  background: linear-gradient(to right, #06b6d4, #0ea5e9, #3b82f6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 0.1s ease;
+  z-index: 100;
+}
+
+/* Enhanced gradient backgrounds */
+.bg-gradient-premium {
+  background: linear-gradient(135deg, #0284c7 0%, #06b6d4 50%, #3b82f6 100%);
+}
+
+html.dark .bg-gradient-premium {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e3a8a 100%);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced focus states */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #06b6d4;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Loading animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(6, 182, 212, 0);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Container enhancements */
+.container {
+  max-width: 1280px;
+}
+
+/* Mobile Responsive Improvements */
+@media (max-width: 768px) {
+  .App {
+    font-size: 14px;
+  }
+  
+  header {
+    padding: 0.5rem 0;
+  }
+  
+  main {
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .App {
+    font-size: 13px;
+  }
+  
+  /* Ensure elements don't overflow on mobile */
+  * {
+    max-width: 100vw;
+    word-wrap: break-word;
   }
 }

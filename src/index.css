@@ -1,13 +1,183 @@
+/* stylelint-disable */
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind base;
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind components;
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind utilities;
+/* stylelint-enable */
+
+:root {
+  --primary: #071A31;
+  --secondary: #207C6A;
+  --accent: #6CA0B8;
+  --bg-light: #f7fafc;
+  --text-dark: #1a202c;
+  --text-light: #f7fafc;
+}
+
+html.dark {
+  --primary: #0a1428;
+  --secondary: #164e63;
+  --accent: #4b9bbe;
+  --bg-light: #0f172a;
+  --text-dark: #e2e8f0;
+  --text-light: #0f172a;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Progress Bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(to right, #6CA0B8, #207C6A, #6CA0B8);
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.1s ease;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-light);
+  color: #333;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input, textarea, select {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animated Background Pattern */
+.pattern-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(107, 160, 184, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(32, 124, 106, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(7, 26, 49, 0.03) 0%, transparent 50%);
+  animation: floatPattern 25s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+html.dark .pattern-bg {
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(75, 158, 190, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(22, 78, 99, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(10, 20, 40, 0.05) 0%, transparent 50%);
+}
+
+@keyframes floatPattern {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(30px, -30px);
+  }
+  50% {
+    transform: translate(-20px, 20px);
+  }
+  75% {
+    transform: translate(20px, 30px);
+  }
+}
+
+/* Simplified Glow Text Effect */
+.glow-text {
+  text-shadow: 0 0 8px rgba(107, 160, 184, 0.3);
+}
+
+html.dark .glow-text {
+  text-shadow: 0 0 12px rgba(75, 158, 190, 0.4);
+}
+
+/* Simplified Glow Box Effect */
+.glow-box {
+  box-shadow: 0 0 15px rgba(107, 160, 184, 0.15),
+             inset 0 0 15px rgba(107, 160, 184, 0.03);
+}
+
+html.dark .glow-box {
+  box-shadow: 0 0 20px rgba(75, 158, 190, 0.2),
+             inset 0 0 15px rgba(75, 158, 190, 0.05);
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide up animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.container {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+main {
+  min-height: calc(100vh - 140px);
+  animation: fadeIn 0.8s ease-in-out;
 }
