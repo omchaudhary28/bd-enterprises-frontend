@@ -2,6 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import { ThemeContext } from '../App';
 import AOS from 'aos';
 
+// Backend API Configuration
+const API_URL = 'https://bdenterprises-backend-t4p.vercel.app';
+
 const Contact = () => {
   const { isDark } = useContext(ThemeContext);
   const [formData, setFormData] = useState({
@@ -29,9 +32,9 @@ const Contact = () => {
   const fetchContactData = async () => {
     try {
       const [infoRes, socialRes, locRes] = await Promise.all([
-        fetch('http://localhost:5000/api/company-info'),
-        fetch('http://localhost:5000/api/social-media'),
-        fetch('http://localhost:5000/api/locations/main')
+        fetch(`${API_URL}/api/company-info`),
+        fetch(`${API_URL}/api/social-media`),
+        fetch(`${API_URL}/api/locations/main`)
       ]);
 
       if (infoRes.ok) {
@@ -67,7 +70,7 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('http://localhost:5000/api/contacts', {
+      const response = await fetch(`${API_URL}/api/contacts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
