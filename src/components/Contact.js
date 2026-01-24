@@ -3,7 +3,7 @@ import { ThemeContext } from '../App';
 import AOS from 'aos';
 
 // Backend API Configuration
-const API_URL = 'https://bdenterprises-backend-t4p.vercel.app';
+const API_URL = "https://bdenterprises.in/api";
 
 const Contact = () => {
   const { isDark } = useContext(ThemeContext);
