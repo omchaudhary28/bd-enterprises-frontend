@@ -53,8 +53,8 @@ const CustomSoftwareDevelopment = () => {
         </div>
 
         <div className="text-center mt-10">
-          <Link to="/contact" className="bg-vibrant-blue text-white px-8 py-4 rounded-full text-xl font-semibold hover:bg-opacity-90 transition-colors duration-300 shadow-lg">
-            Discuss Your Project
+          <Link to="/contact" className="bg-vibrant-blue text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-opacity-90 transition-colors duration-300 shadow-lg">
+            Contact Us
           </Link>
         </div>
       </div>

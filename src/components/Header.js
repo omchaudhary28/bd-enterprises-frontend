@@ -171,13 +171,13 @@ const Header = () => {
           <div className="lg:hidden flex items-center gap-2">
             <Link
               to="/services"
-              className="px-4 py-2 bg-gradient-to-r from-secondary to-accent rounded-lg text-white font-semibold hover:scale-105 transition-transform duration-300 active:scale-95 text-sm"
+              className="px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm bg-gradient-to-r from-secondary to-accent rounded-lg text-white font-semibold hover:scale-105 transition-transform duration-300 active:scale-95"
             >
               Services
             </Link>
             <Link
               to="/contact"
-              className="px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg text-white font-semibold hover:scale-105 transition-transform duration-300 active:scale-95 text-sm"
+              className="px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg text-white font-semibold hover:scale-105 transition-transform duration-300 active:scale-95"
             >
               Book Consulting
             </Link>

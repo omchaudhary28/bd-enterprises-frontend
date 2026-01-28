@@ -53,8 +53,8 @@ const ITConsulting = () => {
         </div>
 
         <div className="text-center mt-10" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
-          <Link to="/contact" className="inline-block bg-vibrant-red text-white px-8 py-4 rounded-full text-xl font-semibold hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-            Get IT Expert Advice
+          <Link to="/contact" className="inline-block bg-vibrant-red text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+            Contact Us
           </Link>
         </div>
       </div>

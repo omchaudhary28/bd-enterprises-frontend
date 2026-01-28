@@ -61,7 +61,7 @@ const EmergencyLighting = () => {
 
         <div className="text-center mt-10">
           <Link to="/contact" className="bg-secondary dark:bg-blue-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-lg sm:text-xl font-semibold hover:bg-opacity-90 dark:hover:bg-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl glow-box">
-            Plan Your Lighting Upgrade
+            Contact Us
           </Link>
         </div>
       </div>

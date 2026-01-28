@@ -20,7 +20,7 @@ const MainContent = () => {
           <div data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
             <Link
               to="/contact"
-              className="inline-block bg-accent dark:bg-blue-500 text-primary dark:text-white px-6 md:px-8 py-3 md:py-4 rounded-lg md:rounded-full text-base md:text-lg font-semibold hover:bg-white hover:text-primary dark:hover:bg-blue-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 glow-box active:scale-95"
+              className="inline-block bg-accent dark:bg-blue-500 text-primary dark:text-white px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base rounded-lg md:rounded-full font-semibold hover:bg-white hover:text-primary dark:hover:bg-blue-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 glow-box active:scale-95"
             >
               Request Safety Consultation
             </Link>
