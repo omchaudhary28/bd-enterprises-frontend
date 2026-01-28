@@ -167,13 +167,19 @@ const Header = () => {
             </ul>
           </nav>
 
-          {/* Tablet/Mobile Services Button */}
-          <div className="lg:hidden">
+          {/* Tablet/Mobile Buttons */}
+          <div className="lg:hidden flex items-center gap-2">
             <Link
               to="/services"
-              className="px-4 py-2 bg-gradient-to-r from-secondary to-accent rounded-lg text-white font-semibold hover:scale-105 transition-transform duration-300 active:scale-95 text-sm md:text-base"
+              className="px-4 py-2 bg-gradient-to-r from-secondary to-accent rounded-lg text-white font-semibold hover:scale-105 transition-transform duration-300 active:scale-95 text-sm"
             >
               Services
+            </Link>
+            <Link
+              to="/contact"
+              className="px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg text-white font-semibold hover:scale-105 transition-transform duration-300 active:scale-95 text-sm"
+            >
+              Book Consulting
             </Link>
           </div>
 

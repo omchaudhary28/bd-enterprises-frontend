@@ -172,12 +172,12 @@ const Contact = () => {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Form */}
           <div data-aos="fadeInLeft">
-            <div className={`rounded-2xl p-8 md:p-10 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-xl`}>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-primary dark:text-white">Send us a Message</h2>
+            <div className={`rounded-2xl p-6 md:p-8 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-xl`}>
+              <h2 className="text-xl md:text-2xl font-bold mb-6 text-primary dark:text-white">Send us a Message</h2>
 
               {submitStatus && (
                 <div className={`p-4 rounded-lg mb-6 ${submitStatus.type === 'success' ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-100' : 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-100'}`}>
@@ -185,7 +185,7 @@ const Contact = () => {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
                 {/* Name Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
@@ -198,7 +198,7 @@ const Contact = () => {
                       value={formData.firstName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
                       placeholder="John"
                     />
                   </div>
@@ -212,7 +212,7 @@ const Contact = () => {
                       value={formData.lastName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
                       placeholder="Doe"
                     />
                   </div>
@@ -230,7 +230,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -243,7 +243,7 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
                       placeholder="7499953708"
                     />
                   </div>
@@ -260,7 +260,7 @@ const Contact = () => {
                       name="companyName"
                       value={formData.companyName}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
                       placeholder="Your Company"
                     />
                   </div>
@@ -272,7 +272,7 @@ const Contact = () => {
                       name="serviceType"
                       value={formData.serviceType}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
                     >
                       <option value="">Select a service</option>
                       {services.map((service, idx) => (
@@ -293,7 +293,7 @@ const Contact = () => {
                     onChange={handleInputChange}
                     required
                     rows="5"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300 resize-none"
+                    className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300 resize-none"
                     placeholder="Tell us about your fire safety needs..."
                   ></textarea>
                 </div>
@@ -324,7 +324,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-secondary to-accent text-white font-bold rounded-lg hover:scale-105 transition-transform duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-2 bg-gradient-to-r from-secondary to-accent text-white font-bold rounded-lg hover:scale-105 transition-transform duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
