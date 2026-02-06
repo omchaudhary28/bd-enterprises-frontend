@@ -174,9 +174,9 @@ const Contact = () => {
   ];
 
   return (
-    <div className={`min-h-screen pt-20 ${isDark ? 'bg-slate-900' : 'bg-gradient-to-br from-slate-50 to-blue-50'}`}>
+    <div className={`contact-page min-h-screen pt-20 ${isDark ? 'bg-slate-900' : 'bg-gradient-to-br from-slate-50 to-blue-50'}`}>
       {/* Hero Section */}
-      <section className="relative py-12 md:py-20 px-4 md:px-6 bg-gradient-to-r from-primary via-primary to-secondary dark:from-slate-900 dark:to-slate-800 text-white overflow-hidden">
+      <section className="contact-hero relative py-12 md:py-20 px-4 md:px-6 bg-gradient-to-r from-primary via-primary to-secondary dark:from-slate-900 dark:to-slate-800 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 right-20 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
           <div className="absolute -bottom-8 left-20 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
@@ -192,7 +192,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 py-8 md:py-16">
+      <div className="contact-content max-w-7xl mx-auto px-4 py-8 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Form */}
           <div data-aos="fadeInLeft">
@@ -364,7 +364,7 @@ const Contact = () => {
 
                 {/* Phone */}
                 <div className="w-full sm:w-1/2 p-2">
-                  <div className={`rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}
+                  <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}
                     onClick={() => handleContactMethodClick('phone')}>
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
@@ -388,7 +388,7 @@ const Contact = () => {
 
                 {/* Email */}
                 <div className="w-full sm:w-1/2 p-2">
-                <div className={`rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}
+                <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}
                   onClick={() => handleContactMethodClick('email')}>
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
@@ -412,7 +412,7 @@ const Contact = () => {
 
                 {/* WhatsApp */}
                 <div className="w-full sm:w-1/2 p-2">
-                <div className={`rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}
+                <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}
                   onClick={() => handleContactMethodClick('whatsapp')}>
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
@@ -437,7 +437,7 @@ const Contact = () => {
 
                 {/* Address */}
                 <div className="w-full sm:w-1/2 p-2">
-                  <div className={`rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg h-full flex flex-col`}>
+                  <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg h-full flex flex-col`}>
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center flex-shrink-0">
                         <span className="text-xl">📍</span>
@@ -491,7 +491,7 @@ const Contact = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-primary dark:text-white">
               Our Location
             </h2>
-            <div className={`rounded-2xl overflow-hidden shadow-2xl ${isDark ? 'border border-slate-700' : ''}`} style={{ height: '500px' }}>
+            <div className={`h-[320px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl ${isDark ? 'border border-slate-700' : ''}`}>
               <iframe
                 title="BD Enterprises Location Map"
                 width="100%"

@@ -103,12 +103,12 @@ const SprinklerSystems = () => {
   ];
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-gray-900 dark:to-black min-h-screen py-12 md:py-16">
+    <div className="service-page relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-gray-900 dark:to-black min-h-screen py-12 md:py-16">
       <div className="absolute top-0 left-0 w-40 md:w-72 h-40 md:h-72 bg-accent opacity-10 dark:opacity-20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent opacity-5 dark:opacity-15 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-      <div className="bg-gradient-to-br from-teal-100 to-blue-100 dark:from-slate-900 dark:to-slate-800 p-8 rounded-lg shadow-lg glow-box" data-aos="fade-up" data-aos-duration="300">
+      <div className="service-page-card bg-gradient-to-br from-teal-100 to-blue-100 dark:from-slate-900 dark:to-slate-800 p-8 rounded-lg shadow-lg glow-box" data-aos="fade-up" data-aos-duration="300">
         <h1 className="text-4xl font-bold text-primary dark:text-white mb-6 text-center glow-text" data-aos="fade-down" data-aos-duration="300">Sprinkler & Suppression Systems</h1>
         
         <div className="flex flex-col md:flex-row items-center justify-between mb-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
@@ -186,7 +186,7 @@ const SprinklerSystems = () => {
           </div>
         </div>
 
-        <div className="mb-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-black p-8 rounded-lg border border-blue-200 dark:border-slate-700">
+        <div className="service-section-card mb-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-black p-8 rounded-lg border border-blue-200 dark:border-slate-700">
           <h2 className="text-3xl font-bold text-primary dark:text-white mb-4 text-center" data-aos="fade-down" data-aos-duration="300">Our Service Includes</h2>
           
           {/* Service subsections with images */}
