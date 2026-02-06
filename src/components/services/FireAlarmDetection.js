@@ -8,6 +8,67 @@ const FireAlarmDetection = () => {
     { icon: '\u2713', title: 'System Integration', description: 'Seamless integration with building automation and security systems.' },
     { icon: '\u2713', title: 'Mobile Alerts', description: 'Instant notifications to key personnel on their mobile devices.' },
   ];
+  const deviceGroups = [
+    {
+      title: 'System Core & Panels',
+      items: [
+        {
+          name: 'Fire Alarm System',
+          description: 'Complete, code-compliant system design, installation, and commissioning with clear zoning and documentation.'
+        },
+        {
+          name: 'Addressable Panel',
+          description: 'Pinpoints the exact device location for faster response, troubleshooting, and maintenance.'
+        },
+        {
+          name: 'Conventional Panel',
+          description: 'Zone-based control panels ideal for smaller facilities with straightforward layouts.'
+        },
+        {
+          name: 'Network System (Peer-to-Peer)',
+          description: 'Links multiple panels across large sites for centralized monitoring and coordinated response.'
+        }
+      ]
+    },
+    {
+      title: 'Detection Devices',
+      items: [
+        {
+          name: 'Smoke Detector',
+          description: 'Early warning for smoldering fires; installed with proper spacing and airflow considerations.'
+        },
+        {
+          name: 'Heat Detector',
+          description: 'Reliable in dusty or humid areas; configured for fixed temperature or rate-of-rise triggers.'
+        },
+        {
+          name: 'Beam Detector',
+          description: 'Long-range detection for warehouses and high ceilings with precise alignment and testing.'
+        },
+        {
+          name: 'Flame Detector',
+          description: 'Rapid optical detection for high-risk areas such as fuel storage or industrial processes.'
+        },
+        {
+          name: 'Multi Detector',
+          description: 'Combines smoke and heat sensing for accurate detection and reduced false alarms.'
+        }
+      ]
+    },
+    {
+      title: 'Initiation & Notification',
+      items: [
+        {
+          name: 'Manual Call Point (MCP)',
+          description: 'Wall-mounted break-glass stations for manual activation near exits and corridors.'
+        },
+        {
+          name: 'Hooter',
+          description: 'High-output audible alarm devices installed for clear evacuation signaling.'
+        }
+      ]
+    }
+  ];
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-gray-900 dark:to-black min-h-screen py-12 md:py-16">
@@ -45,6 +106,26 @@ const FireAlarmDetection = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="mb-10">
+          <h2 className="text-3xl font-bold text-secondary dark:text-blue-400 mb-5 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="300">Fire Alarm System Devices</h2>
+          <p className="text-neutral-700 dark:text-gray-300 text-center max-w-3xl mx-auto mb-6">
+            We supply, install, and test every major fire alarm component to ensure reliable detection, fast notification, and code-compliant system performance.
+          </p>
+          {deviceGroups.map((group, groupIndex) => (
+            <div key={group.title} className="mt-6">
+              <h3 className="text-xl md:text-2xl font-bold text-primary dark:text-white mb-4">{group.title}</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {group.items.map((item, index) => (
+                  <div key={item.name} className="bg-blue-50 dark:bg-gray-900 p-4 rounded-lg border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-delay={100 + (groupIndex * 100) + (index * 50)} data-aos-duration="300" style={{ animationDelay: `${index * 80}ms` }}>
+                    <h4 className="text-lg font-semibold text-primary dark:text-white mb-2">{item.name}</h4>
+                    <p className="text-sm md:text-base text-neutral-700 dark:text-gray-300">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="mb-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-black p-8 rounded-lg border border-blue-200 dark:border-slate-700">

@@ -8,6 +8,98 @@ const SprinklerSystems = () => {
     { icon: '\u2713', title: 'Minimal Damage', description: 'Advanced systems discharge only where fire is detected, reducing water damage.' },
     { icon: '\u2713', title: 'Regulatory Compliance', description: 'Full NFPA 13 certification and code compliance inspections.' },
   ];
+  const sprinklerDevices = [
+    {
+      name: 'Sprinkler Pendant',
+      description: 'Ceiling-mounted heads designed for most indoor areas with uniform spray coverage.'
+    },
+    {
+      name: 'Sprinkler Upright',
+      description: 'Installed above pipework for open ceilings and industrial areas with exposed piping.'
+    },
+    {
+      name: 'Alarm Valve',
+      description: 'Core control valve that triggers waterflow alarms and monitors system activation.'
+    },
+    {
+      name: 'Curtain Nozzle',
+      description: 'Creates a water curtain to protect openings, conveyors, or separating zones.'
+    },
+    {
+      name: 'Deluge Valve',
+      description: 'Used in deluge systems for high-hazard areas; releases water through open heads.'
+    }
+  ];
+  const hydrantDevices = [
+    {
+      name: 'Hydrant Valve',
+      description: 'Main outlet valve for drawing water during firefighting operations.'
+    },
+    {
+      name: 'Hose Box',
+      description: 'Wall-mounted cabinet housing hose reels and hydrant accessories for quick access.'
+    },
+    {
+      name: 'Hose Reel Drum',
+      description: 'Provides controlled hose deployment for first-aid firefighting.'
+    },
+    {
+      name: 'Shut-Off Nozzle',
+      description: 'Controls water flow at the hose end with adjustable spray patterns.'
+    },
+    {
+      name: 'Hose Pipe',
+      description: 'Durable, high-pressure hose used for hydrant and hose reel systems.'
+    },
+    {
+      name: 'Pressure Gauge',
+      description: 'Displays line pressure to verify system readiness and pump performance.'
+    },
+    {
+      name: 'Pressure Switch',
+      description: 'Automatically starts pumps when pressure drops below set thresholds.'
+    },
+    {
+      name: 'Butterfly Valve',
+      description: 'Quarter-turn isolation valve for quick system control and maintenance.'
+    },
+    {
+      name: 'Sluice Valve',
+      description: 'Gate valve for line isolation, commonly used in underground piping.'
+    },
+    {
+      name: 'NRV (Non-Return Valve)',
+      description: 'Prevents reverse flow and protects pumps and pipework.'
+    },
+    {
+      name: 'Pressure Relief Valve',
+      description: 'Releases excess pressure to protect equipment and system integrity.'
+    },
+    {
+      name: 'Foot Valve',
+      description: 'One-way valve at pump suction to maintain prime and prevent backflow.'
+    },
+    {
+      name: 'Bellows (Expansion Joint)',
+      description: 'Absorbs vibration and thermal expansion in piping runs.'
+    },
+    {
+      name: 'Electrical Main Pump',
+      description: 'Primary water supply pump sized for full hydrant demand.'
+    },
+    {
+      name: 'Electrical Jockey Pump',
+      description: 'Maintains system pressure and prevents unnecessary main pump starts.'
+    },
+    {
+      name: 'Diesel Engine Pump',
+      description: 'Backup pump for reliable operation during power failures.'
+    },
+    {
+      name: 'Modular Tank',
+      description: 'On-site water storage with scalable capacity for fire protection demand.'
+    }
+  ];
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-gray-900 dark:to-black min-h-screen py-12 md:py-16">
@@ -42,6 +134,36 @@ const SprinklerSystems = () => {
                   <h3 className="text-xl font-semibold text-primary dark:text-white">{feature.title}</h3>
                   <p className="text-neutral-700 dark:text-gray-300">{feature.description}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-10">
+          <h2 className="text-3xl font-bold text-secondary dark:text-blue-400 mb-5 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="300">Sprinkler System Components</h2>
+          <p className="text-neutral-700 dark:text-gray-300 text-center max-w-3xl mx-auto mb-6">
+            We supply and install certified sprinkler components with proper spacing, hydraulic calculations, and commissioning tests.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {sprinklerDevices.map((device, index) => (
+              <div key={device.name} className="bg-blue-50 dark:bg-gray-900 p-4 rounded-lg border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-delay={100 + index * 50} data-aos-duration="300" style={{ animationDelay: `${index * 80}ms` }}>
+                <h3 className="text-lg font-semibold text-primary dark:text-white mb-2">{device.name}</h3>
+                <p className="text-sm md:text-base text-neutral-700 dark:text-gray-300">{device.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-10">
+          <h2 className="text-3xl font-bold text-secondary dark:text-blue-400 mb-5 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="300">Hydrant System Components</h2>
+          <p className="text-neutral-700 dark:text-gray-300 text-center max-w-3xl mx-auto mb-6">
+            Our hydrant installations include pumps, valves, and accessories designed for reliable water delivery and easy emergency access.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {hydrantDevices.map((device, index) => (
+              <div key={device.name} className="bg-blue-50 dark:bg-gray-900 p-4 rounded-lg border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-delay={100 + index * 40} data-aos-duration="300" style={{ animationDelay: `${index * 70}ms` }}>
+                <h3 className="text-lg font-semibold text-primary dark:text-white mb-2">{device.name}</h3>
+                <p className="text-sm md:text-base text-neutral-700 dark:text-gray-300">{device.description}</p>
               </div>
             ))}
           </div>

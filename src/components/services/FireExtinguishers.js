@@ -86,6 +86,18 @@ const FireExtinguishers = () => {
                   <img src="/images/fire extinguisher/co2-flooding-system-1000x1000.jpg" alt="CO2 Flooding System" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                 </div>
               </div>
+
+              <div className="flex flex-col md:flex-row-reverse items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="300" data-aos-duration="300">
+                <div className="md:w-1/2">
+                  <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">CO2 Tubing Systems</h3>
+                  <p className="text-neutral-700 dark:text-gray-300 mb-3 leading-relaxed">
+                    CO2 tubing systems connect storage cylinders to discharge nozzles with precision-engineered pipework and fittings. We design routing, install brackets and supports, pressure test the network, and label zones for safe operation and fast maintenance. Properly installed tubing ensures reliable agent delivery and consistent suppression performance across protected areas.
+                  </p>
+                </div>
+                <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
+                  <img src="https://images.unsplash.com/photo-1581092162562-40038f56c6fe?w=600&h=400&fit=crop" alt="CO2 Tubing System" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                </div>
+              </div>
             </div>
           </div>
 
