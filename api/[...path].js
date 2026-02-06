@@ -68,5 +68,24 @@ module.exports = (req, res) => {
     res.end();
   });
 
+  const method = (req.method || 'GET').toUpperCase();
+  const shouldSendBody = method !== 'GET' && method !== 'HEAD';
+
+  if (!shouldSendBody) {
+    upstreamReq.end();
+    return;
+  }
+
+  if (typeof req.body !== 'undefined' && req.body !== null) {
+    const bodyBuffer = Buffer.isBuffer(req.body)
+      ? req.body
+      : Buffer.from(typeof req.body === 'string' ? req.body : JSON.stringify(req.body));
+
+    upstreamReq.setHeader('content-length', String(bodyBuffer.length));
+    upstreamReq.write(bodyBuffer);
+    upstreamReq.end();
+    return;
+  }
+
   req.pipe(upstreamReq);
 };
