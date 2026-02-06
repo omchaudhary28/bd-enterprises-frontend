@@ -215,7 +215,7 @@ const About = () => {
                 onClick={() => setSelectedIndustry(industry)}
                 className={`p-3 md:p-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform active:scale-95 md:hover:scale-105 text-xs md:text-sm industry-card-scroll ${
                   selectedIndustry === industry
-                    ? 'bg-gradient-to-r from-secondary to-accent text-white shadow-lg ring-2 ring-accent scale-105'
+                    ? 'bg-gradient-to-r from-secondary to-accent text-white shadow-lg ring-2 ring-accent md:scale-105'
                     : 'bg-gradient-to-br from-teal-100 to-blue-100 dark:bg-slate-700 border-2 border-secondary dark:border-blue-500 text-primary dark:text-white hover:from-teal-200 hover:to-blue-200 dark:hover:bg-slate-600'
                 }`}
                 data-aos="zoom-in"

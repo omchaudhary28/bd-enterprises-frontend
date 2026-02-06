@@ -48,13 +48,16 @@ button, [role="button"], a[href] {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button:hover, [role="button"]:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
+/* Mobile taps can "stick" :hover; keep hover transforms desktop-only */
+@media (hover: hover) and (pointer: fine) {
+  button:hover, [role="button"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
 
-html.dark button:hover, html.dark [role="button"]:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  html.dark button:hover, html.dark [role="button"]:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
 }
 
 /* Input focus animations */
@@ -141,8 +144,10 @@ button[class*="industry-card"]:active {
   animation: slideInFromBottom 0.6s ease-out;
 }
 
-.industry-card-scroll:hover {
-  animation: bounceIn 0.3s ease-out;
+@media (hover: hover) and (pointer: fine) {
+  .industry-card-scroll:hover {
+    animation: bounceIn 0.3s ease-out;
+  }
 }
 
 @keyframes slideInFromBottom {
@@ -206,9 +211,11 @@ button[class*="industry-card"]:active {
   animation: fadeInUp 0.8s ease-out;
 }
 
-.service-card-scroll:hover {
-  transform: translateY(-8px);
-  animation: none;
+@media (hover: hover) and (pointer: fine) {
+  .service-card-scroll:hover {
+    transform: translateY(-8px);
+    animation: none;
+  }
 }
 
 /* Image reveal animations */
@@ -245,16 +252,20 @@ html.dark .glow-text {
   transition: box-shadow 0.3s ease;
 }
 
-.glow-box:hover {
-  box-shadow: 0 0 30px rgba(6, 182, 212, 0.25);
+@media (hover: hover) and (pointer: fine) {
+  .glow-box:hover {
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.25);
+  }
 }
 
 html.dark .glow-box {
   box-shadow: 0 0 20px rgba(34, 197, 222, 0.1);
 }
 
-html.dark .glow-box:hover {
-  box-shadow: 0 0 30px rgba(34, 197, 222, 0.2);
+@media (hover: hover) and (pointer: fine) {
+  html.dark .glow-box:hover {
+    box-shadow: 0 0 30px rgba(34, 197, 222, 0.2);
+  }
 }
 
 /* Progress bar styling */
