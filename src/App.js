@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
@@ -12,8 +12,7 @@ import SprinklerSystems from './components/services/SprinklerSystems';
 import EmergencyLighting from './components/services/EmergencyLighting';
 import FireSafetyTraining from './components/services/FireSafetyTraining';
 import ComplianceInspection from './components/services/ComplianceInspection';
-
-export const ThemeContext = React.createContext();
+import { ThemeProvider } from './components/ThemeContext';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -26,35 +25,10 @@ const ScrollToTop = () => {
 };
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    // Check localStorage for theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      setIsDark(false);
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    if (!isDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
-
   return (
     <Router>
       <ScrollToTop />
-      <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+      <ThemeProvider>
         <div className="App flex flex-col min-h-screen bg-gray-50 dark:bg-slate-900 transition-colors duration-300">
           <div className="pattern-bg"></div>
           <Header />
@@ -74,7 +48,7 @@ function App() {
           </main>
           <Footer />
         </div>
-      </ThemeContext.Provider>
+      </ThemeProvider>
     </Router>
   );
 }

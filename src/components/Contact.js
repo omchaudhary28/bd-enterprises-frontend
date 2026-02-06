@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { ThemeContext } from '../App';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
+import { ThemeContext } from './ThemeContext';
 import { API_URL } from '../config/api';
 import AOS from 'aos';
 
@@ -22,12 +22,22 @@ const Contact = () => {
   const [socialMedia, setSocialMedia] = useState([]);
   const [mainLocation, setMainLocation] = useState(null);
 
-  useEffect(() => {
-    AOS.init({ duration: 900, once: false });
-    fetchContactData();
+  const parseJsonResponse = useCallback(async (response) => {
+    const contentType = response.headers.get('content-type') || '';
+    const responseText = await response.text();
+
+    if (!contentType.includes('application/json')) {
+      throw new Error(`Expected JSON but received ${contentType || 'unknown content type'}`);
+    }
+
+    try {
+      return JSON.parse(responseText);
+    } catch (error) {
+      throw new Error('Invalid JSON response from API');
+    }
   }, []);
 
-  const fetchContactData = async () => {
+  const fetchContactData = useCallback(async () => {
     try {
       const [infoRes, socialRes, locRes] = await Promise.all([
         fetch(`${API_URL}/company-info`, {
@@ -42,23 +52,28 @@ const Contact = () => {
       ]);
 
       if (infoRes.ok) {
-        const infoData = await infoRes.json();
+        const infoData = await parseJsonResponse(infoRes);
         setCompanyInfo(infoData.data || []);
       }
 
       if (socialRes.ok) {
-        const socialData = await socialRes.json();
+        const socialData = await parseJsonResponse(socialRes);
         setSocialMedia(socialData.data || []);
       }
 
       if (locRes.ok) {
-        const locData = await locRes.json();
+        const locData = await parseJsonResponse(locRes);
         setMainLocation(locData.data);
       }
     } catch (error) {
       console.error('Error fetching contact data:', error);
     }
-  };
+  }, [parseJsonResponse]);
+
+  useEffect(() => {
+    AOS.init({ duration: 900, once: false });
+    fetchContactData();
+  }, [fetchContactData]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -83,9 +98,9 @@ const Contact = () => {
         body: JSON.stringify(formData)
       });
 
-      const data = await response.json();
+      const data = await parseJsonResponse(response);
 
-      if (data.success) {
+      if (response.ok && data.success) {
         setSubmitStatus({ type: 'success', message: 'Thank you! Your message has been sent successfully. We\'ll get back to you soon!' });
         setFormData({
           firstName: '',
@@ -102,7 +117,7 @@ const Contact = () => {
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      setSubmitStatus({ type: 'error', message: 'Error submitting form. Please try again later.' });
+      setSubmitStatus({ type: 'error', message: 'Contact service is currently unavailable. Please try again later or use phone/email below.' });
     } finally {
       setIsSubmitting(false);
     }
