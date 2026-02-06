@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Fire Extinguisher Systems</title>
+  <desc id="desc">Illustration of a fire extinguisher for fire protection services.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b172a"/>
+      <stop offset="100%" stop-color="#12325f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="980" cy="140" r="180" fill="#ffffff" opacity="0.06"/>
+  <circle cx="180" cy="690" r="220" fill="#ffffff" opacity="0.05"/>
+
+  <g transform="translate(380 170)">
+    <rect x="120" y="110" width="200" height="340" rx="26" fill="url(#accent)"/>
+    <rect x="165" y="70" width="110" height="70" rx="10" fill="#111827"/>
+    <rect x="185" y="40" width="70" height="35" rx="8" fill="#9ca3af"/>
+    <path d="M255 55 C355 40, 390 95, 395 170" fill="none" stroke="#d1d5db" stroke-width="12" stroke-linecap="round"/>
+    <rect x="386" y="163" width="62" height="16" rx="8" fill="#d1d5db"/>
+    <rect x="195" y="190" width="50" height="145" rx="10" fill="#fee2e2" opacity="0.8"/>
+  </g>
+
+  <text x="600" y="640" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" fill="#f8fafc">Fire Extinguisher Systems</text>
+  <text x="600" y="690" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#cbd5e1">Installation, inspection, and emergency replacement</text>
+</svg>

@@ -28,7 +28,7 @@ const EmergencyLighting = () => {
             </p>
           </div>
           <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="400">
-            <img src="https://images.unsplash.com/photo-1581092162562-40038f56c6fe?w=600&h=400&fit=crop" alt="Emergency Lighting & Exit Signage" className="rounded-lg w-full h-auto dark:shadow-2xl transition-transform duration-500 hover:scale-105" />
+            <img src="/images/services/emergency-lighting-exits.svg" alt="Emergency Lighting & Exit Signage" className="rounded-lg w-full h-auto dark:shadow-2xl transition-transform duration-500 hover:scale-105" />
           </div>
         </div>
 

@@ -28,7 +28,7 @@ const FireSafetyTraining = () => {
             </p>
           </div>
           <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="400">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="Fire Safety Training" className="rounded-lg w-full h-auto dark:shadow-2xl transition-transform duration-500 hover:scale-105" />
+            <img src="/images/services/fire-safety-training.svg" alt="Fire Safety Training" className="rounded-lg w-full h-auto dark:shadow-2xl transition-transform duration-500 hover:scale-105" />
           </div>
         </div>
 

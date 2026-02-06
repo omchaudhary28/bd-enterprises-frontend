@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Emergency Lighting and Exits</title>
+  <desc id="desc">Illustration of emergency exit sign and directional lights.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="1030" cy="120" r="170" fill="#ffffff" opacity="0.05"/>
+
+  <g transform="translate(320 220)">
+    <rect x="90" y="120" width="520" height="240" rx="22" fill="#16a34a"/>
+    <text x="350" y="205" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="700" fill="#ecfeff">EXIT</text>
+    <path d="M240 280 L390 280" stroke="#ecfeff" stroke-width="20" stroke-linecap="round"/>
+    <path d="M240 280 L285 245" stroke="#ecfeff" stroke-width="20" stroke-linecap="round"/>
+    <path d="M240 280 L285 315" stroke="#ecfeff" stroke-width="20" stroke-linecap="round"/>
+  </g>
+
+  <text x="600" y="640" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" fill="#f8fafc">Emergency Lighting &amp; Exits</text>
+  <text x="600" y="690" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#cbd5e1">Reliable evacuation guidance during power loss</text>
+</svg>

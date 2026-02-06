@@ -89,7 +89,7 @@ const FireAlarmDetection = () => {
             </p>
           </div>
           <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="400">
-            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=400&fit=crop" alt="Fire Alarm & Detection Systems" className="rounded-lg w-full h-auto dark:shadow-2xl transition-transform duration-500 hover:scale-105" />
+            <img src="/images/services/fire-alarm-detection.svg" alt="Fire Alarm & Detection Systems" className="rounded-lg w-full h-auto dark:shadow-2xl transition-transform duration-500 hover:scale-105" />
           </div>
         </div>
 
@@ -145,7 +145,7 @@ const FireAlarmDetection = () => {
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="https://images.unsplash.com/photo-1581092162562-40038f56c6fe?w=500&h=400&fit=crop" alt="System Design" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                <img src="/images/services/fire-alarm-detection.svg" alt="System Design" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
               </div>
             </div>
 
@@ -161,7 +161,7 @@ const FireAlarmDetection = () => {
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=400&fit=crop" alt="Professional Monitoring" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                <img src="/images/services/fire-alarm-detection.svg" alt="Professional Monitoring" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
               </div>
             </div>
 
@@ -177,7 +177,7 @@ const FireAlarmDetection = () => {
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&h=400&fit=crop" alt="Mobile Alerts" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                <img src="/images/services/fire-alarm-detection.svg" alt="Mobile Alerts" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
               </div>
             </div>
 
@@ -193,7 +193,7 @@ const FireAlarmDetection = () => {
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="https://images.unsplash.com/photo-1554224311-beee415c15cb?w=500&h=400&fit=crop" alt="Inspections" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                <img src="/images/services/compliance-inspection.svg" alt="Inspections" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
               </div>
             </div>
           </div>

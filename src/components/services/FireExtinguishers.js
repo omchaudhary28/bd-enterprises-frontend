@@ -29,7 +29,7 @@ const FireExtinguishers = () => {
               </p>
             </div>
             <div className="md:w-1/2" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="400">
-              <img src="https://images.unsplash.com/photo-1578479318637-f3e97bb6ce5e?w=800&h=600&fit=crop" alt="Fire Extinguisher Inspection" className="rounded-lg shadow-md w-full dark:shadow-2xl transition-transform duration-500 hover:scale-105" />
+              <img src="/images/services/fire-extinguisher-systems.svg" alt="Fire Extinguisher Inspection" className="rounded-lg shadow-md w-full dark:shadow-2xl transition-transform duration-500 hover:scale-105" />
             </div>
           </div>
 
@@ -95,7 +95,7 @@ const FireExtinguishers = () => {
                   </p>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="https://images.unsplash.com/photo-1581092162562-40038f56c6fe?w=600&h=400&fit=crop" alt="CO2 Tubing System" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                  <img src="/images/services/fire-extinguisher-systems.svg" alt="CO2 Tubing System" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                 </div>
               </div>
             </div>
@@ -118,7 +118,7 @@ const FireExtinguishers = () => {
                   </ul>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="https://images.unsplash.com/photo-1581092162562-40038f56c6fe?w=500&h=400&fit=crop" alt="Professional Installation" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                  <img src="/images/services/fire-extinguisher-systems.svg" alt="Professional Installation" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                 </div>
               </div>
 
@@ -134,7 +134,7 @@ const FireExtinguishers = () => {
                   </ul>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=400&fit=crop" alt="NFPA Compliance" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                  <img src="/images/services/compliance-inspection.svg" alt="NFPA Compliance" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                 </div>
               </div>
 
@@ -150,7 +150,7 @@ const FireExtinguishers = () => {
                   </ul>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="https://images.unsplash.com/photo-1581092916550-e323be2ae537?w=500&h=400&fit=crop" alt="Hydrostatic Testing" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                  <img src="/images/services/fire-extinguisher-systems.svg" alt="Hydrostatic Testing" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                 </div>
               </div>
 
@@ -166,7 +166,7 @@ const FireExtinguishers = () => {
                   </ul>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="https://images.unsplash.com/photo-1578479318637-f3e97bb6ce5e?w=500&h=400&fit=crop" alt="Emergency Service" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                  <img src="/images/services/fire-extinguisher-systems.svg" alt="Emergency Service" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                 </div>
               </div>
 
@@ -182,7 +182,7 @@ const FireExtinguishers = () => {
                   </ul>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=400&fit=crop" alt="Staff Training" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                  <img src="/images/services/fire-safety-training.svg" alt="Staff Training" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                 </div>
               </div>
             </div>

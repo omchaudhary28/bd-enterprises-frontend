@@ -5,37 +5,37 @@ const servicesData = [
   {
     title: 'Fire Extinguisher Systems',
     description: 'Certified, compliant fire extinguishers for all facility types. Regular inspections, maintenance, and emergency replacement services available 24/7.',
-    imageUrl: 'https://images.unsplash.com/photo-1581092916550-e323be2ae537?w=800&h=600&fit=crop',
+    imageUrl: '/images/services/fire-extinguisher-systems.svg',
     path: '/services/fire-extinguishers',
   },
   {
     title: 'Fire Alarm & Detection',
     description: 'State-of-the-art fire detection and alarm systems with smart monitoring. Automatic alerts, professional monitoring, and code compliance guaranteed.',
-    imageUrl: 'https://images.unsplash.com/photo-1588196749875-d8a0d7c9b0b5?w=800&h=600&fit=crop',
+    imageUrl: '/images/services/fire-alarm-detection.svg',
     path: '/services/fire-alarm-detection',
   },
   {
     title: 'Sprinkler Systems',
     description: 'High-performance sprinkler and suppression systems engineered for maximum protection. Installation, maintenance, and annual inspections included.',
-    imageUrl: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&h=600&fit=crop',
+    imageUrl: '/images/services/sprinkler-systems.svg',
     path: '/services/sprinkler-systems',
   },
   {
     title: 'Emergency Lighting & Exits',
     description: 'Code-compliant emergency lighting, exit signs, and wayfinding systems. Battery backup and LED solutions for cost savings and reliability.',
-    imageUrl: 'https://images.unsplash.com/photo-1581092162562-40038f56c6fe?w=800&h=600&fit=crop',
+    imageUrl: '/images/services/emergency-lighting-exits.svg',
     path: '/services/emergency-lighting',
   },
   {
     title: 'Fire Safety Training',
     description: 'NFPA-certified fire safety training and employee evacuation drills. Customized programs for your facility to ensure workplace readiness.',
-    imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
+    imageUrl: '/images/services/fire-safety-training.svg',
     path: '/services/fire-safety-training',
   },
   {
     title: 'Compliance & Inspection',
     description: 'Full NFPA and code compliance audits. Annual inspections, documentation, and certification to keep your facility up-to-date with all regulations.',
-    imageUrl: 'https://images.unsplash.com/photo-1554224311-beee415c15cb?w=800&h=600&fit=crop',
+    imageUrl: '/images/services/compliance-inspection.svg',
     path: '/services/compliance-inspection',
   },
 ];
@@ -53,7 +53,7 @@ const Services = () => {
           {servicesData.map((service, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-teal-100 to-blue-100 dark:bg-gray-800 rounded-lg md:rounded-xl shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 transform active:scale-95 md:hover:scale-105 cursor-pointer glow-box flex flex-col service-card-scroll"
+              className="bg-gradient-to-br from-teal-100 to-blue-100 dark:from-slate-900 dark:to-slate-800 rounded-lg md:rounded-xl shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 transform active:scale-95 md:hover:scale-105 cursor-pointer glow-box flex flex-col service-card-scroll"
               data-aos="fade-up"
               data-aos-delay={index * 100}
               data-aos-duration="300"
