@@ -26,7 +26,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div data-aos="fade-up" data-aos-duration="250">
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-3xl">ðŸ›¡ï¸</span>
+              <span className="text-3xl">&#128737;&#65039;</span>
               <h3 className="text-lg md:text-xl font-bold glow-text">BD Enterprises</h3>
             </div>
             <p className="text-sm md:text-base text-gray-200 dark:text-gray-300 leading-relaxed mb-4">
@@ -37,7 +37,7 @@ const Footer = () => {
                 f
               </button>
               <button className="w-10 h-10 rounded-full bg-accent hover:bg-secondary text-primary flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95" aria-label="Twitter">
-                ð•
+                X
               </button>
               <button className="w-10 h-10 rounded-full bg-accent hover:bg-secondary text-primary flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95" aria-label="LinkedIn">
                 in
@@ -47,7 +47,7 @@ const Footer = () => {
 
           {/* Services Section */}
           <div data-aos="fade-up" data-aos-duration="250" data-aos-delay="100">
-            <h4 className="text-base md:text-lg font-bold mb-4 text-accent">ðŸ”¥ Services</h4>
+            <h4 className="text-base md:text-lg font-bold mb-4 text-accent">&#128293; Services</h4>
             <ul className="space-y-2">
               {services.map((service, idx) => (
                 <li key={idx}>
@@ -55,7 +55,7 @@ const Footer = () => {
                     to={service.path}
                     className="text-sm md:text-base text-gray-200 dark:text-gray-300 hover:text-accent dark:hover:text-blue-400 transition-all duration-300 block py-1 hover:translate-x-1"
                   >
-                    â†’ {service.name}
+                    &#8594; {service.name}
                   </Link>
                 </li>
               ))}
@@ -64,7 +64,7 @@ const Footer = () => {
 
           {/* Company Section */}
           <div data-aos="fade-up" data-aos-duration="250" data-aos-delay="200">
-            <h4 className="text-base md:text-lg font-bold mb-4 text-accent">ðŸ¢ Company</h4>
+            <h4 className="text-base md:text-lg font-bold mb-4 text-accent">&#127970; Company</h4>
             <ul className="space-y-2">
               {company.map((item, idx) => (
                 <li key={idx}>
@@ -72,7 +72,7 @@ const Footer = () => {
                     to={item.path}
                     className="text-sm md:text-base text-gray-200 dark:text-gray-300 hover:text-accent dark:hover:text-blue-400 transition-all duration-300 block py-1 hover:translate-x-1"
                   >
-                    â†’ {item.name}
+                    &#8594; {item.name}
                   </Link>
                 </li>
               ))}
@@ -81,7 +81,7 @@ const Footer = () => {
 
           {/* Contact Section */}
           <div data-aos="fade-up" data-aos-duration="250" data-aos-delay="300">
-            <h4 className="text-base md:text-lg font-bold mb-4 text-accent">ðŸ“ž Contact</h4>
+            <h4 className="text-base md:text-lg font-bold mb-4 text-accent">&#128222; Contact</h4>
             <div className="space-y-3">
               <div>
                 <p className="text-xs md:text-sm font-semibold text-accent mb-1">Email</p>

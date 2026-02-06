@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const EmergencyLighting = () => {
   const features = [
-    { icon: 'âœ“', title: 'Reliable LED Solutions', description: 'Energy-efficient LED systems with long battery life and low maintenance.' },
-    { icon: 'âœ“', title: 'Full Facility Coverage', description: 'Complete exit signage, pathway lighting, and evacuation route illumination.' },
-    { icon: 'âœ“', title: 'Instant Activation', description: 'Automatic activation upon power loss ensures safe evacuation every time.' },
-    { icon: 'âœ“', title: 'Code Compliant', description: 'NFPA 101 and IBC compliant with all required certifications.' },
+    { icon: '\u2713', title: 'Reliable LED Solutions', description: 'Energy-efficient LED systems with long battery life and low maintenance.' },
+    { icon: '\u2713', title: 'Full Facility Coverage', description: 'Complete exit signage, pathway lighting, and evacuation route illumination.' },
+    { icon: '\u2713', title: 'Instant Activation', description: 'Automatic activation upon power loss ensures safe evacuation every time.' },
+    { icon: '\u2713', title: 'Code Compliant', description: 'NFPA 101 and IBC compliant with all required certifications.' },
   ];
 
   return (
@@ -50,12 +50,12 @@ const EmergencyLighting = () => {
         <div className="mb-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-black p-8 rounded-lg border border-blue-200 dark:border-slate-700">
           <h2 className="text-3xl font-bold text-primary dark:text-white mb-4 text-center" data-aos="fade-down" data-aos-duration="300">Our Service Includes</h2>
           <ul className="space-y-3 text-neutral-700 dark:text-gray-300" data-aos="fade-up" data-aos-delay="100" data-aos-duration="300">
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Exit sign design and placement assessment</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> LED conversion and energy-efficient retrofitting</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Battery backup system installation and testing</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Emergency pathway and stairwell lighting</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Annual inspections and battery replacement</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Wayfinding signage and evacuation route marking</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Exit sign design and placement assessment</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> LED conversion and energy-efficient retrofitting</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Battery backup system installation and testing</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Emergency pathway and stairwell lighting</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Annual inspections and battery replacement</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Wayfinding signage and evacuation route marking</li>
           </ul>
         </div>
 

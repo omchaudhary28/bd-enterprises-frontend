@@ -20,7 +20,7 @@ const About = () => {
 
   const industryServices = {
     'Healthcare Facilities': {
-      icon: 'ðŸ¥',
+      icon: '\u{1F3E5}',
       description: 'Comprehensive fire safety solutions for hospitals, clinics, and medical centers.',
       services: [
         'Fire alarm systems with automatic alerts to nursing stations',
@@ -32,7 +32,7 @@ const About = () => {
       ]
     },
     'Manufacturing Plants': {
-      icon: 'ðŸ­',
+      icon: '\u{1F3ED}',
       description: 'Heavy-duty fire protection for industrial operations and production facilities.',
       services: [
         'Multi-type fire extinguisher systems for industrial hazards',
@@ -44,7 +44,7 @@ const About = () => {
       ]
     },
     'Commercial Buildings': {
-      icon: 'ðŸ¢',
+      icon: '\u{1F3E2}',
       description: 'Professional fire safety for office buildings, retail, and mixed-use spaces.',
       services: [
         'Advanced fire alarm systems with monitored detection',
@@ -56,7 +56,7 @@ const About = () => {
       ]
     },
     'Residential Properties': {
-      icon: 'ðŸ ',
+      icon: '\u{1F3E0}',
       description: 'Home and apartment safety solutions for residential communities.',
       services: [
         'Residential fire alarm systems with mobile alerts',
@@ -68,7 +68,7 @@ const About = () => {
       ]
     },
     'Government Facilities': {
-      icon: 'ðŸ›ï¸',
+      icon: '\u{1F3DB}\u{FE0F}',
       description: 'Critical fire protection for government buildings and public spaces.',
       services: [
         'State-of-the-art fire detection and suppression systems',
@@ -80,7 +80,7 @@ const About = () => {
       ]
     },
     'Educational Institutions': {
-      icon: 'ðŸŽ“',
+      icon: '\u{1F393}',
       description: 'Comprehensive safety for schools, universities, and training centers.',
       services: [
         'Fire safety systems designed for high-occupancy buildings',
@@ -92,7 +92,7 @@ const About = () => {
       ]
     },
     'Hospitality': {
-      icon: 'ðŸ¨',
+      icon: '\u{1F3E8}',
       description: 'Guest-safe fire protection for hotels, restaurants, and entertainment venues.',
       services: [
         'Guest room and corridor fire alarm systems',
@@ -104,7 +104,7 @@ const About = () => {
       ]
     },
     'Data Centers': {
-      icon: 'ðŸ’¾',
+      icon: '\u{1F4BE}',
       description: 'Specialized fire protection for critical IT infrastructure.',
       services: [
         'Non-water suppression systems (FM-200, Novec, etc.)',
@@ -167,7 +167,7 @@ const About = () => {
               To be the most trusted and innovative fire safety partner in North America, setting industry standards for protection, compliance, and customer service.
             </p>
             <p className="text-sm md:text-lg text-neutral-700 dark:text-gray-300 leading-relaxed">
-              We envision a future where every facility has access to cutting-edge fire safety technology, expert training, and proactive maintenanceâ€”keeping people and assets safe every single day.
+              We envision a future where every facility has access to cutting-edge fire safety technology, expert training, and proactive maintenance&mdash;keeping people and assets safe every single day.
             </p>
           </div>
         </div>
@@ -255,7 +255,7 @@ const About = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                 {industryServices[selectedIndustry]?.services.map((service, index) => (
                   <div key={index} className="flex items-start bg-gradient-to-br from-teal-100 to-blue-100 dark:bg-gray-800 p-3 md:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-blue-100 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-delay={index * 100} style={{ animationDelay: `${index * 50}ms` }}>
-                    <span className="text-accent text-lg md:text-2xl mr-2 md:mr-3 flex-shrink-0">âœ“</span>
+                    <span className="text-accent text-lg md:text-2xl mr-2 md:mr-3 flex-shrink-0">&#10003;</span>
                     <p className="text-xs md:text-sm text-neutral-700 dark:text-gray-200">{service}</p>
                   </div>
                 ))}
@@ -263,8 +263,7 @@ const About = () => {
             </div>
 
             <div className="mt-5 md:mt-6 p-3 md:p-4 bg-gradient-to-br from-teal-100 to-blue-100 dark:bg-gray-800 rounded-lg border-l-4 border-accent dark:border-slate-700">
-              <p className="text-xs md:text-sm text-neutral-700 dark:text-gray-200 font-semibold">
-                ðŸ’¡ Ready to protect your {selectedIndustry.toLowerCase()}? Contact us for a customized fire safety solution designed specifically for your industry.
+              <p className="text-xs md:text-sm text-neutral-700 dark:text-gray-200 font-semibold">&#128161; Ready to protect your {selectedIndustry.toLowerCase()}? Contact us for a customized fire safety solution designed specifically for your industry.
               </p>
             </div>
           </div>
@@ -275,15 +274,15 @@ const About = () => {
           <h3 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 glow-text">Our Core Values</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="px-2">
-              <h4 className="text-lg md:text-xl font-bold mb-2 text-accent">ðŸ›¡ï¸ Safety First</h4>
+              <h4 className="text-lg md:text-xl font-bold mb-2 text-accent">&#128737;&#65039; Safety First</h4>
               <p className="text-sm md:text-base text-gray-100">Every decision is driven by our commitment to protecting lives and assets</p>
             </div>
             <div className="px-2">
-              <h4 className="text-lg md:text-xl font-bold mb-2 text-accent">âœ“ Excellence</h4>
+              <h4 className="text-lg md:text-xl font-bold mb-2 text-accent">&#10003; Excellence</h4>
               <p className="text-sm md:text-base text-gray-100">We maintain the highest standards in certification, training, and service delivery</p>
             </div>
             <div className="px-2">
-              <h4 className="text-lg md:text-xl font-bold mb-2 text-accent">ðŸ¤ Partnership</h4>
+              <h4 className="text-lg md:text-xl font-bold mb-2 text-accent">&#129309; Partnership</h4>
               <p className="text-sm md:text-base text-gray-100">We work collaboratively with clients to understand and exceed their expectations</p>
             </div>
           </div>

@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const FireSafetyTraining = () => {
   const features = [
-    { icon: 'âœ“', title: 'NFPA Certified Trainers', description: 'All instructors are nationally certified and regularly updated on latest standards.' },
-    { icon: 'âœ“', title: 'Customized Programs', description: 'Programs tailored to your industry, facility type, and specific hazards.' },
-    { icon: 'âœ“', title: 'Evacuation Drills', description: 'Coordinated evacuation drills with timing analysis and improvement feedback.' },
-    { icon: 'âœ“', title: 'Certification & Records', description: 'Documented training with certificates and compliance records for audits.' },
+    { icon: '\u2713', title: 'NFPA Certified Trainers', description: 'All instructors are nationally certified and regularly updated on latest standards.' },
+    { icon: '\u2713', title: 'Customized Programs', description: 'Programs tailored to your industry, facility type, and specific hazards.' },
+    { icon: '\u2713', title: 'Evacuation Drills', description: 'Coordinated evacuation drills with timing analysis and improvement feedback.' },
+    { icon: '\u2713', title: 'Certification & Records', description: 'Documented training with certificates and compliance records for audits.' },
   ];
 
   return (
@@ -50,12 +50,12 @@ const FireSafetyTraining = () => {
         <div className="mb-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-black p-8 rounded-lg border border-blue-200 dark:border-slate-700">
           <h2 className="text-3xl font-bold text-primary dark:text-white mb-4 text-center" data-aos="fade-down" data-aos-duration="300">Training Programs We Offer</h2>
           <ul className="space-y-3 text-neutral-700 dark:text-gray-300" data-aos="fade-up" data-aos-delay="100" data-aos-duration="300">
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Fire Extinguisher Operation & Hands-On Drills</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Emergency Evacuation Planning & Execution</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Fire Prevention & Hazard Recognition</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> First Aid & CPR Certification</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Warden & Leadership Training for Emergency Response</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Industry-Specific Safety Programs (Healthcare, Manufacturing, etc.)</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Fire Extinguisher Operation & Hands-On Drills</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Emergency Evacuation Planning & Execution</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Fire Prevention & Hazard Recognition</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> First Aid & CPR Certification</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Warden & Leadership Training for Emergency Response</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Industry-Specific Safety Programs (Healthcare, Manufacturing, etc.)</li>
           </ul>
         </div>
 

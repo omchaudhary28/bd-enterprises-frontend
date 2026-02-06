@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const SprinklerSystems = () => {
   const features = [
-    { icon: 'âœ“', title: 'High-Performance Design', description: 'Wet, dry, and pre-action systems engineered for rapid response.' },
-    { icon: 'âœ“', title: 'Full Coverage', description: 'Complete coverage assessment ensures every area of your facility is protected.' },
-    { icon: 'âœ“', title: 'Minimal Damage', description: 'Advanced systems discharge only where fire is detected, reducing water damage.' },
-    { icon: 'âœ“', title: 'Regulatory Compliance', description: 'Full NFPA 13 certification and code compliance inspections.' },
+    { icon: '\u2713', title: 'High-Performance Design', description: 'Wet, dry, and pre-action systems engineered for rapid response.' },
+    { icon: '\u2713', title: 'Full Coverage', description: 'Complete coverage assessment ensures every area of your facility is protected.' },
+    { icon: '\u2713', title: 'Minimal Damage', description: 'Advanced systems discharge only where fire is detected, reducing water damage.' },
+    { icon: '\u2713', title: 'Regulatory Compliance', description: 'Full NFPA 13 certification and code compliance inspections.' },
   ];
 
   return (
@@ -24,7 +24,7 @@ const SprinklerSystems = () => {
               Sprinkler systems are the gold standard in fire suppression. Our high-performance systems automatically detect and suppress fires before they spread, protecting lives, property, and business continuity.
             </p>
             <p className="text-lg text-neutral-700 dark:text-gray-300 leading-relaxed">
-              We design, install, and maintain systems for every building typeâ€”from warehouses and factories to office parks and retail centers. Our systems minimize collateral water damage while maximizing fire suppression effectiveness.
+              We design, install, and maintain systems for every building type&mdash;from warehouses and factories to office parks and retail centers. Our systems minimize collateral water damage while maximizing fire suppression effectiveness.
             </p>
           </div>
           <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="400">
@@ -58,9 +58,9 @@ const SprinklerSystems = () => {
                 <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">System Design & Engineering</h3>
                 <p className="text-neutral-700 dark:text-gray-300 mb-3">Our engineers conduct complete hydraulic analysis and fire load assessment to design systems providing optimal coverage and rapid response for your specific facility.</p>
                 <ul className="space-y-2 text-neutral-700 dark:text-gray-300">
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Complete hydraulic and fire load analysis</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> System design for optimal coverage</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Engineering documentation and plans</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Complete hydraulic and fire load analysis</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> System design for optimal coverage</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Engineering documentation and plans</li>
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
@@ -74,9 +74,9 @@ const SprinklerSystems = () => {
                 <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Professional Installation</h3>
                 <p className="text-neutral-700 dark:text-gray-300 mb-3">Licensed installers execute all work with minimal operational disruption. We handle all connections, supports, and system testing to ensure peak performance.</p>
                 <ul className="space-y-2 text-neutral-700 dark:text-gray-300">
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Licensed professional installation</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Minimal facility disruption</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Complete system testing and commissioning</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Licensed professional installation</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Minimal facility disruption</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Complete system testing and commissioning</li>
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
@@ -90,9 +90,9 @@ const SprinklerSystems = () => {
                 <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Annual Inspections & Testing</h3>
                 <p className="text-neutral-700 dark:text-gray-300 mb-3">We perform comprehensive NFPA 13 inspections and pressure testing to ensure systems are fully functional and code-compliant every year.</p>
                 <ul className="space-y-2 text-neutral-700 dark:text-gray-300">
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> NFPA 13 annual inspections</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Pressure and flow testing</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Detailed compliance reporting</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> NFPA 13 annual inspections</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Pressure and flow testing</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Detailed compliance reporting</li>
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
@@ -106,9 +106,9 @@ const SprinklerSystems = () => {
                 <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Support, Hangers & Freeze Protection</h3>
                 <p className="text-neutral-700 dark:text-gray-300 mb-3">We provide all necessary support brackets, hangers, and freeze protection systems to ensure year-round reliability in all climate conditions.</p>
                 <ul className="space-y-2 text-neutral-700 dark:text-gray-300">
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Professional hangers and support brackets</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Freeze protection systems for cold climates</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> System upgrades and retrofitting services</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Professional hangers and support brackets</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Freeze protection systems for cold climates</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> System upgrades and retrofitting services</li>
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">

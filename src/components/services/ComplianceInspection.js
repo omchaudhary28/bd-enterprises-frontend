@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const ComplianceInspection = () => {
   const features = [
-    { icon: 'âœ“', title: 'Comprehensive Audits', description: 'Full facility assessment against NFPA, IBC, and local fire codes.' },
-    { icon: 'âœ“', title: 'Detailed Reports', description: 'Clear documentation of findings with actionable remediation recommendations.' },
-    { icon: 'âœ“', title: 'Code Expert Review', description: 'Analysis by certified fire protection engineers ensures accuracy and compliance.' },
-    { icon: 'âœ“', title: 'Audit Trail Documentation', description: 'Complete documentation package ready for insurance and regulatory inspections.' },
+    { icon: '\u2713', title: 'Comprehensive Audits', description: 'Full facility assessment against NFPA, IBC, and local fire codes.' },
+    { icon: '\u2713', title: 'Detailed Reports', description: 'Clear documentation of findings with actionable remediation recommendations.' },
+    { icon: '\u2713', title: 'Code Expert Review', description: 'Analysis by certified fire protection engineers ensures accuracy and compliance.' },
+    { icon: '\u2713', title: 'Audit Trail Documentation', description: 'Complete documentation package ready for insurance and regulatory inspections.' },
   ];
 
   return (
@@ -50,13 +50,13 @@ const ComplianceInspection = () => {
         <div className="mb-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-gray-950 p-8 rounded-lg border border-blue-200 dark:border-slate-700">
           <h2 className="text-3xl font-bold text-primary dark:text-white mb-4 text-center" data-aos="fade-down" data-aos-duration="300">Inspection & Compliance Services</h2>
           <ul className="space-y-3 text-neutral-700 dark:text-gray-300" data-aos="fade-up" data-aos-delay="100" data-aos-duration="300">
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Annual NFPA comprehensive facility audits</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Fire extinguisher certification and inspection</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Fire alarm system testing and certification</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Sprinkler system inspections and certifications</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Emergency lighting and exit signage verification</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Fire compartmentalization and seal integrity checks</li>
-            <li className="flex items-center"><span className="text-accent text-xl mr-3">â†’</span> Code remediation planning and project management</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Annual NFPA comprehensive facility audits</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Fire extinguisher certification and inspection</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Fire alarm system testing and certification</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Sprinkler system inspections and certifications</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Emergency lighting and exit signage verification</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Fire compartmentalization and seal integrity checks</li>
+            <li className="flex items-center"><span className="text-accent text-xl mr-3">&#8594;</span> Code remediation planning and project management</li>
           </ul>
         </div>
 

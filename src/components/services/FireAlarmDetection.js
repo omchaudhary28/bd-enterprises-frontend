@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const FireAlarmDetection = () => {
   const features = [
-    { icon: 'âœ“', title: 'Smart Detection', description: 'Advanced smoke and heat detection with AI-powered false alarm reduction.' },
-    { icon: 'âœ“', title: 'Professional Monitoring', description: '24/7 monitoring center alerts and emergency dispatch coordination.' },
-    { icon: 'âœ“', title: 'System Integration', description: 'Seamless integration with building automation and security systems.' },
-    { icon: 'âœ“', title: 'Mobile Alerts', description: 'Instant notifications to key personnel on their mobile devices.' },
+    { icon: '\u2713', title: 'Smart Detection', description: 'Advanced smoke and heat detection with AI-powered false alarm reduction.' },
+    { icon: '\u2713', title: 'Professional Monitoring', description: '24/7 monitoring center alerts and emergency dispatch coordination.' },
+    { icon: '\u2713', title: 'System Integration', description: 'Seamless integration with building automation and security systems.' },
+    { icon: '\u2713', title: 'Mobile Alerts', description: 'Instant notifications to key personnel on their mobile devices.' },
   ];
 
   return (
@@ -58,9 +58,9 @@ const FireAlarmDetection = () => {
                 <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Complete System Design & Assessment</h3>
                 <p className="text-neutral-700 dark:text-gray-300 mb-3">We conduct thorough fire load analysis and facility assessment to design systems that provide comprehensive coverage while meeting all code requirements.</p>
                 <ul className="space-y-2 text-neutral-700 dark:text-gray-300">
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Complete site assessment and risk evaluation</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Code compliance planning and design</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Optimal detector placement analysis</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Complete site assessment and risk evaluation</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Code compliance planning and design</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Optimal detector placement analysis</li>
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
@@ -74,9 +74,9 @@ const FireAlarmDetection = () => {
                 <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">24/7 Professional Monitoring</h3>
                 <p className="text-neutral-700 dark:text-gray-300 mb-3">Our certified monitoring center provides round-the-clock surveillance and instant emergency dispatch coordination to ensure rapid response to any fire alarm.</p>
                 <ul className="space-y-2 text-neutral-700 dark:text-gray-300">
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> 24/7 professional monitoring center</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Automatic emergency dispatch coordination</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> False alarm reduction protocols</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> 24/7 professional monitoring center</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Automatic emergency dispatch coordination</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> False alarm reduction protocols</li>
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
@@ -90,9 +90,9 @@ const FireAlarmDetection = () => {
                 <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Mobile App & Instant Notifications</h3>
                 <p className="text-neutral-700 dark:text-gray-300 mb-3">Key personnel receive instant mobile alerts and real-time system notifications, enabling quick decision-making and response coordination from anywhere.</p>
                 <ul className="space-y-2 text-neutral-700 dark:text-gray-300">
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Real-time mobile notifications</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Custom alert configuration per user</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> System status and history tracking</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Real-time mobile notifications</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Custom alert configuration per user</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> System status and history tracking</li>
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
@@ -106,9 +106,9 @@ const FireAlarmDetection = () => {
                 <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Annual Inspections & Compliance</h3>
                 <p className="text-neutral-700 dark:text-gray-300 mb-3">Regular inspections ensure all components are functional and systems remain code-compliant. We provide detailed documentation for regulatory agencies and insurance companies.</p>
                 <ul className="space-y-2 text-neutral-700 dark:text-gray-300">
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Annual NFPA 72 compliance inspections</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Battery testing and replacement</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Certification documentation provided</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Annual NFPA 72 compliance inspections</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Battery testing and replacement</li>
+                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Certification documentation provided</li>
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">

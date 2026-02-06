@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const FireExtinguishers = () => {
   const features = [
-    { icon: 'âœ“', title: 'Multi-Type Coverage', description: 'ABC, ABCD, Halon, and specialty extinguishers for all fire classes.' },
-    { icon: 'âœ“', title: 'Annual Compliance', description: 'Full NFPA 10 compliance with certified inspections and documentation.' },
-    { icon: 'âœ“', title: '24/7 Replacement', description: 'Emergency replacement service ensures continuous protection.' },
-    { icon: 'âœ“', title: 'Training Included', description: 'Free staff training on proper operation and emergency procedures.' },
+    { icon: '\u2713', title: 'Multi-Type Coverage', description: 'ABC, ABCD, Halon, and specialty extinguishers for all fire classes.' },
+    { icon: '\u2713', title: 'Annual Compliance', description: 'Full NFPA 10 compliance with certified inspections and documentation.' },
+    { icon: '\u2713', title: '24/7 Replacement', description: 'Emergency replacement service ensures continuous protection.' },
+    { icon: '\u2713', title: 'Training Included', description: 'Free staff training on proper operation and emergency procedures.' },
   ];
 
   return (
@@ -100,9 +100,9 @@ const FireExtinguishers = () => {
                   <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Professional Installation & Placement</h3>
                   <p className="text-neutral-700 dark:text-gray-300 mb-3">Our certified technicians assess your facility to determine optimal placement and coverage. We ensure accessibility, visibility, and compliance with all regulations.</p>
                   <ul className="space-y-2 text-neutral-700 dark:text-gray-300">
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Site assessment and planning</li>
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Professional installation by NFPA certified technicians</li>
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Code-compliant placement and accessibility</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Site assessment and planning</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Professional installation by NFPA certified technicians</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Code-compliant placement and accessibility</li>
                   </ul>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
@@ -116,9 +116,9 @@ const FireExtinguishers = () => {
                   <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">NFPA 10 Annual Inspections</h3>
                   <p className="text-neutral-700 dark:text-gray-300 mb-3">Annual compliance inspections ensure your extinguishers meet NFPA 10 standards. We provide certified documentation and handle any needed repairs or recharging.</p>
                   <ul className="space-y-2 text-neutral-700 dark:text-gray-300">
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Annual NFPA 10 certified inspections</li>
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Pressure testing and gauging</li>
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Tagged and documented for compliance</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Annual NFPA 10 certified inspections</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Pressure testing and gauging</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Tagged and documented for compliance</li>
                   </ul>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
@@ -132,9 +132,9 @@ const FireExtinguishers = () => {
                   <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Hydrostatic Testing & Recharging</h3>
                   <p className="text-neutral-700 dark:text-gray-300 mb-3">We perform industry-standard hydrostatic testing to verify cylinder integrity and recharge agents to manufacturer specifications, ensuring peak performance when needed.</p>
                   <ul className="space-y-2 text-neutral-700 dark:text-gray-300">
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Hydrostatic pressure testing (every 5-12 years)</li>
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Agent recharging to OEM specifications</li>
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Quick turnaround and same-day service available</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Hydrostatic pressure testing (every 5-12 years)</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Agent recharging to OEM specifications</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Quick turnaround and same-day service available</li>
                   </ul>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
@@ -146,11 +146,11 @@ const FireExtinguishers = () => {
               <div className="flex flex-col md:flex-row-reverse items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="300" data-aos-duration="300">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">24/7 Emergency Replacement</h3>
-                  <p className="text-neutral-700 dark:text-gray-300 mb-3">If an extinguisher is used or expires during an emergency, our rapid response team ensures you get replacements when you need themâ€”anytime, day or night.</p>
+                  <p className="text-neutral-700 dark:text-gray-300 mb-3">If an extinguisher is used or expires during an emergency, our rapid response team ensures you get replacements when you need them&mdash;anytime, day or night.</p>
                   <ul className="space-y-2 text-neutral-700 dark:text-gray-300">
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> 24/7 emergency replacement availability</li>
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Rapid response team on standby</li>
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Guaranteed replacement within hours</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> 24/7 emergency replacement availability</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Rapid response team on standby</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Guaranteed replacement within hours</li>
                   </ul>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
@@ -164,9 +164,9 @@ const FireExtinguishers = () => {
                   <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Staff Training & Education</h3>
                   <p className="text-neutral-700 dark:text-gray-300 mb-3">Comprehensive training programs teach employees proper extinguisher operation, safety protocols, and emergency procedures. Certification available upon completion.</p>
                   <ul className="space-y-2 text-neutral-700 dark:text-gray-300">
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Hands-on training for all staff</li>
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> PASS technique (Pull, Aim, Squeeze, Sweep)</li>
-                    <li className="flex items-center"><span className="text-accent text-xl mr-2">âœ“</span> Certification and documentation provided</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Hands-on training for all staff</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> PASS technique (Pull, Aim, Squeeze, Sweep)</li>
+                    <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Certification and documentation provided</li>
                   </ul>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
