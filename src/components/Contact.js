@@ -196,7 +196,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Form */}
           <div data-aos="fadeInLeft">
-            <div className={`rounded-2xl p-6 md:p-8 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-xl`}>
+            <div className={`contact-form-card rounded-2xl p-6 md:p-8 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-xl`}>
               <h2 className="text-xl md:text-2xl font-bold mb-6 text-primary dark:text-white">Send us a Message</h2>
 
               {submitStatus && (
@@ -218,7 +218,7 @@ const Contact = () => {
                       value={formData.firstName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
                       placeholder="John"
                     />
                   </div>
@@ -232,7 +232,7 @@ const Contact = () => {
                       value={formData.lastName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
                       placeholder="Doe"
                     />
                   </div>
@@ -250,7 +250,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -263,7 +263,7 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
                       placeholder="7499953708"
                     />
                   </div>
@@ -280,7 +280,7 @@ const Contact = () => {
                       name="companyName"
                       value={formData.companyName}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
                       placeholder="Your Company"
                     />
                   </div>
@@ -292,7 +292,7 @@ const Contact = () => {
                       name="serviceType"
                       value={formData.serviceType}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
                     >
                       <option value="">Select a service</option>
                       {services.map((service, idx) => (
@@ -313,7 +313,7 @@ const Contact = () => {
                     onChange={handleInputChange}
                     required
                     rows="5"
-                    className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300 resize-none"
+                    className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300 resize-none"
                     placeholder="Tell us about your fire safety needs..."
                   ></textarea>
                 </div>
@@ -332,7 +332,7 @@ const Contact = () => {
                           value={method}
                           checked={formData.preferredMethod === method}
                           onChange={handleInputChange}
-                          className="w-4 h-4 accent-accent"
+                          className="w-4 h-4 accent-accent form-control-radio"
                         />
                         <span className="text-gray-700 dark:text-gray-300 capitalize">{method}</span>
                       </label>
