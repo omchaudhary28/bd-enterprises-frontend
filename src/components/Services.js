@@ -48,7 +48,7 @@ const Services = () => {
       <div className="absolute bottom-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent opacity-5 dark:opacity-15 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-white glow-text" data-aos="fade-down" data-aos-duration="800">Our Services</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-white glow-text" data-aos="fade-down" data-aos-duration="400">Our Services</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {servicesData.map((service, index) => (
             <div
@@ -56,7 +56,7 @@ const Services = () => {
               className="bg-gradient-to-br from-teal-100 to-blue-100 dark:bg-gray-800 rounded-lg md:rounded-xl shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 transform active:scale-95 md:hover:scale-105 cursor-pointer glow-box flex flex-col service-card-scroll"
               data-aos="fade-up"
               data-aos-delay={index * 100}
-              data-aos-duration="800"
+              data-aos-duration="400"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="overflow-hidden h-40 md:h-48 image-reveal-scroll">

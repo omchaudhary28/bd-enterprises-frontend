@@ -135,15 +135,15 @@ const About = () => {
       <div className="absolute bottom-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent opacity-5 dark:opacity-15 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 w-full overflow-hidden">
-        <div className="bg-gradient-to-br from-teal-100 via-blue-100 to-emerald-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-6 md:p-8 rounded-lg md:rounded-xl shadow-md glow-box overflow-hidden" data-aos="fade-up" data-aos-duration="800">
-          <h2 className="text-2xl md:text-4xl font-bold mb-4 text-primary dark:text-white text-center glow-text" data-aos="fade-down" data-aos-duration="800">About BD Enterprises</h2>
-          <p className="text-base md:text-xl text-neutral-700 dark:text-gray-300 leading-relaxed text-center mb-8 md:mb-12" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+        <div className="bg-gradient-to-br from-teal-100 via-blue-100 to-emerald-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-6 md:p-8 rounded-lg md:rounded-xl shadow-md glow-box overflow-hidden" data-aos="fade-up" data-aos-duration="400">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 text-primary dark:text-white text-center glow-text" data-aos="fade-down" data-aos-duration="400">About BD Enterprises</h2>
+          <p className="text-base md:text-xl text-neutral-700 dark:text-gray-300 leading-relaxed text-center mb-8 md:mb-12" data-aos="fade-up" data-aos-delay="100" data-aos-duration="400">
           For over 25 years, BD Enterprises has been the trusted fire safety partner for thousands of facilities across North America, delivering certified, compliant protection solutions that save lives and protect assets.
         </p>
 
         {/* Mission & Vision */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center mb-10 md:mb-12">
-          <div data-aos="fade-right" data-aos-delay="200" data-aos-duration="800">
+          <div data-aos="fade-right" data-aos-delay="200" data-aos-duration="400">
             <h3 className="text-2xl md:text-3xl font-bold text-secondary dark:text-blue-400 mb-3 md:mb-4">Our Mission</h3>
             <p className="text-sm md:text-lg text-neutral-700 dark:text-gray-300 leading-relaxed mb-3 md:mb-4">
               To protect lives, assets, and communities through comprehensive fire safety solutions delivered with unmatched expertise and unwavering commitment to excellence.
@@ -152,16 +152,16 @@ const About = () => {
               We partner with facility managers, business owners, and safety directors to implement best-in-class fire protection systems that exceed code requirements and provide true peace of mind.
             </p>
           </div>
-          <div data-aos="zoom-in" data-aos-delay="300" data-aos-duration="900" className="overflow-hidden rounded-lg md:rounded-xl shadow-md glow-box image-reveal-scroll">
+          <div data-aos="zoom-in" data-aos-delay="300" data-aos-duration="500" className="overflow-hidden rounded-lg md:rounded-xl shadow-md glow-box image-reveal-scroll">
             <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="Our Mission" className="rounded-lg md:rounded-xl w-full h-auto transition-transform duration-500 hover:scale-110" />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center mb-10 md:mb-12">
-          <div data-aos="zoom-in" data-aos-delay="300" data-aos-duration="900" className="order-2 md:order-1 overflow-hidden rounded-lg md:rounded-xl shadow-md glow-box image-reveal-scroll">
+          <div data-aos="zoom-in" data-aos-delay="300" data-aos-duration="500" className="order-2 md:order-1 overflow-hidden rounded-lg md:rounded-xl shadow-md glow-box image-reveal-scroll">
             <img src="https://images.unsplash.com/photo-1581092162562-40038f56c6fe?w=600&h=400&fit=crop" alt="Our Vision" className="rounded-lg md:rounded-xl w-full h-auto transition-transform duration-500 hover:scale-110" />
           </div>
-          <div data-aos="fade-left" data-aos-delay="200" data-aos-duration="800" className="order-1 md:order-2">
+          <div data-aos="fade-left" data-aos-delay="200" data-aos-duration="400" className="order-1 md:order-2">
             <h3 className="text-2xl md:text-3xl font-bold text-secondary dark:text-blue-400 mb-3 md:mb-4">Our Vision</h3>
             <p className="text-sm md:text-lg text-neutral-700 dark:text-gray-300 leading-relaxed mb-3 md:mb-4">
               To be the most trusted and innovative fire safety partner in North America, setting industry standards for protection, compliance, and customer service.
@@ -173,7 +173,7 @@ const About = () => {
         </div>
 
         {/* Key Metrics */}
-        <div className="mt-10 md:mt-16 mb-10 md:mb-12 px-2 md:px-0" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+        <div className="mt-10 md:mt-16 mb-10 md:mb-12 px-2 md:px-0" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
           <h3 className="text-2xl md:text-3xl font-bold text-center text-primary dark:text-white mb-6 md:mb-8 glow-text">Why Choose BD Enterprises?</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {metrics.map((metric, index) => (
@@ -229,7 +229,7 @@ const About = () => {
           </div>
 
           {/* Selected Industry Details */}
-          <div className="bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-gray-950 p-5 md:p-8 rounded-lg md:rounded-xl glow-box border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-duration="600">
+          <div className="bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-gray-950 p-5 md:p-8 rounded-lg md:rounded-xl glow-box border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-duration="300">
             <div className="mb-5 md:mb-6 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
               <div className="flex-shrink-0">
                 <div className="text-5xl md:text-6xl">{industryServices[selectedIndustry]?.icon}</div>
@@ -271,7 +271,7 @@ const About = () => {
         </div>
 
         {/* Company Values */}
-        <div className="mt-10 md:mt-16 text-center p-6 md:p-8 bg-gradient-to-r from-primary to-secondary dark:from-gray-900 dark:to-gray-950 text-white rounded-lg md:rounded-xl glow-box overflow-hidden border border-blue-300 dark:border-slate-700" data-aos="fade-up" data-aos-delay="400" data-aos-duration="900">
+        <div className="mt-10 md:mt-16 text-center p-6 md:p-8 bg-gradient-to-r from-primary to-secondary dark:from-gray-900 dark:to-gray-950 text-white rounded-lg md:rounded-xl glow-box overflow-hidden border border-blue-300 dark:border-slate-700" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">
           <h3 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 glow-text">Our Core Values</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="px-2">

@@ -16,10 +16,10 @@ const FireExtinguishers = () => {
       <div className="absolute bottom-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent opacity-5 dark:opacity-15 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="bg-gradient-to-br from-teal-100 to-blue-100 dark:bg-gray-900 p-6 md:p-8 rounded-lg md:rounded-xl shadow-lg glow-box" data-aos="fade-up" data-aos-duration="800">
-          <h1 className="text-3xl md:text-4xl font-bold text-primary dark:text-white mb-6 text-center glow-text" data-aos="fade-down" data-aos-duration="800">Fire Extinguisher Systems</h1>
+        <div className="bg-gradient-to-br from-teal-100 to-blue-100 dark:bg-gray-900 p-6 md:p-8 rounded-lg md:rounded-xl shadow-lg glow-box" data-aos="fade-up" data-aos-duration="400">
+          <h1 className="text-3xl md:text-4xl font-bold text-primary dark:text-white mb-6 text-center glow-text" data-aos="fade-down" data-aos-duration="400">Fire Extinguisher Systems</h1>
           
-          <div className="flex flex-col md:flex-row items-center justify-between mb-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+          <div className="flex flex-col md:flex-row items-center justify-between mb-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
             <div className="md:w-1/2 md:pr-8 mb-6 md:mb-0">
               <p className="text-base md:text-lg text-neutral-700 dark:text-gray-300 leading-relaxed mb-4">
                 Fire extinguishers are the first line of defense in fire emergencies. Our comprehensive fire extinguisher systems provide multi-class coverage for any facility type, ensuring rapid response capabilities and regulatory compliance.
@@ -28,16 +28,16 @@ const FireExtinguishers = () => {
                 From manufacturing plants to office buildings, we install, inspect, and maintain systems tailored to your specific fire risks and operational needs.
               </p>
             </div>
-            <div className="md:w-1/2" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="900">
+            <div className="md:w-1/2" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="500">
               <img src="https://images.unsplash.com/photo-1578479318637-f3e97bb6ce5e?w=800&h=600&fit=crop" alt="Fire Extinguisher Inspection" className="rounded-lg shadow-md w-full dark:shadow-2xl transition-transform duration-500 hover:scale-105" />
             </div>
           </div>
 
           <div className="mb-10">
-            <h2 className="text-3xl font-bold text-secondary dark:text-blue-400 mb-5 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="800">Key Features & Benefits</h2>
+            <h2 className="text-3xl font-bold text-secondary dark:text-blue-400 mb-5 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="400">Key Features & Benefits</h2>
             <div className="grid md:grid-cols-2 gap-8">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-start bg-blue-50 dark:bg-gray-900 p-4 rounded-lg border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-right" data-aos-delay={100 + index * 50} data-aos-duration="800" style={{ animationDelay: `${index * 100}ms` }}>
+                <div key={index} className="flex items-start bg-blue-50 dark:bg-gray-900 p-4 rounded-lg border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-right" data-aos-delay={100 + index * 50} data-aos-duration="400" style={{ animationDelay: `${index * 100}ms` }}>
                   <div className="text-3xl text-accent mr-4">{feature.icon}</div>
                   <div>
                     <h3 className="text-xl font-semibold text-primary dark:text-white">{feature.title}</h3>
@@ -49,9 +49,9 @@ const FireExtinguishers = () => {
           </div>
 
           <div className="mb-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-black p-8 rounded-lg border border-blue-200 dark:border-slate-700">
-            <h2 className="text-3xl font-bold text-primary dark:text-white mb-4 text-center" data-aos="fade-down" data-aos-duration="800">Our Advanced Fire Suppression Systems</h2>
+            <h2 className="text-3xl font-bold text-primary dark:text-white mb-4 text-center" data-aos="fade-down" data-aos-duration="400">Our Advanced Fire Suppression Systems</h2>
             <div className="space-y-8 mt-6">
-              <div className="flex flex-col md:flex-row items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="0" data-aos-duration="800">
+              <div className="flex flex-col md:flex-row items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="0" data-aos-duration="400">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Automated Fire Suppression Systems</h3>
                   <p className="text-neutral-700 dark:text-gray-300 mb-3 leading-relaxed">
@@ -63,7 +63,7 @@ const FireExtinguishers = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row-reverse items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+              <div className="flex flex-col md:flex-row-reverse items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="100" data-aos-duration="400">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">CO2 Fire Suppression Systems</h3>
                   <p className="text-neutral-700 dark:text-gray-300 mb-3 leading-relaxed">
@@ -75,7 +75,7 @@ const FireExtinguishers = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+              <div className="flex flex-col md:flex-row items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">CO2 Flooding Systems</h3>
                   <p className="text-neutral-700 dark:text-gray-300 mb-3 leading-relaxed">
@@ -90,12 +90,12 @@ const FireExtinguishers = () => {
           </div>
 
           <div className="mb-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-black p-8 rounded-lg border border-blue-200 dark:border-slate-700">
-            <h2 className="text-3xl font-bold text-primary dark:text-white mb-4 text-center" data-aos="fade-down" data-aos-duration="800">Our Service Includes</h2>
+            <h2 className="text-3xl font-bold text-primary dark:text-white mb-4 text-center" data-aos="fade-down" data-aos-duration="400">Our Service Includes</h2>
             
             {/* Service subsections with images */}
             <div className="space-y-8 mt-6">
               {/* Installation & Placement */}
-              <div className="flex flex-col md:flex-row items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="0" data-aos-duration="800">
+              <div className="flex flex-col md:flex-row items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="0" data-aos-duration="400">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Professional Installation & Placement</h3>
                   <p className="text-neutral-700 dark:text-gray-300 mb-3">Our certified technicians assess your facility to determine optimal placement and coverage. We ensure accessibility, visibility, and compliance with all regulations.</p>
@@ -111,7 +111,7 @@ const FireExtinguishers = () => {
               </div>
 
               {/* NFPA 10 Compliance */}
-              <div className="flex flex-col md:flex-row-reverse items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+              <div className="flex flex-col md:flex-row-reverse items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="100" data-aos-duration="400">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">NFPA 10 Annual Inspections</h3>
                   <p className="text-neutral-700 dark:text-gray-300 mb-3">Annual compliance inspections ensure your extinguishers meet NFPA 10 standards. We provide certified documentation and handle any needed repairs or recharging.</p>
@@ -127,7 +127,7 @@ const FireExtinguishers = () => {
               </div>
 
               {/* Hydrostatic Testing */}
-              <div className="flex flex-col md:flex-row items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+              <div className="flex flex-col md:flex-row items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Hydrostatic Testing & Recharging</h3>
                   <p className="text-neutral-700 dark:text-gray-300 mb-3">We perform industry-standard hydrostatic testing to verify cylinder integrity and recharge agents to manufacturer specifications, ensuring peak performance when needed.</p>
@@ -143,7 +143,7 @@ const FireExtinguishers = () => {
               </div>
 
               {/* 24/7 Emergency Service */}
-              <div className="flex flex-col md:flex-row-reverse items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+              <div className="flex flex-col md:flex-row-reverse items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="300" data-aos-duration="400">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">24/7 Emergency Replacement</h3>
                   <p className="text-neutral-700 dark:text-gray-300 mb-3">If an extinguisher is used or expires during an emergency, our rapid response team ensures you get replacements when you need them—anytime, day or night.</p>
@@ -159,7 +159,7 @@ const FireExtinguishers = () => {
               </div>
 
               {/* Staff Training */}
-              <div className="flex flex-col md:flex-row items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
+              <div className="flex flex-col md:flex-row items-center gap-6 service-card-scroll" data-aos="fade-up" data-aos-delay="400" data-aos-duration="400">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Staff Training & Education</h3>
                   <p className="text-neutral-700 dark:text-gray-300 mb-3">Comprehensive training programs teach employees proper extinguisher operation, safety protocols, and emergency procedures. Certification available upon completion.</p>

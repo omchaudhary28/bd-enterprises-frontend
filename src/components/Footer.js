@@ -24,7 +24,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mb-8 md:mb-12">
           
           {/* Brand Section */}
-          <div data-aos="fade-up" data-aos-duration="600">
+          <div data-aos="fade-up" data-aos-duration="300">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-3xl">🛡️</span>
               <h3 className="text-lg md:text-xl font-bold glow-text">BD Enterprises</h3>
@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
 
           {/* Services Section */}
-          <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+          <div data-aos="fade-up" data-aos-duration="300" data-aos-delay="100">
             <h4 className="text-base md:text-lg font-bold mb-4 text-accent">🔥 Services</h4>
             <ul className="space-y-2">
               {services.map((service, idx) => (
@@ -63,7 +63,7 @@ const Footer = () => {
           </div>
 
           {/* Company Section */}
-          <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+          <div data-aos="fade-up" data-aos-duration="300" data-aos-delay="200">
             <h4 className="text-base md:text-lg font-bold mb-4 text-accent">🏢 Company</h4>
             <ul className="space-y-2">
               {company.map((item, idx) => (
@@ -80,7 +80,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Section */}
-          <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+          <div data-aos="fade-up" data-aos-duration="300" data-aos-delay="300">
             <h4 className="text-base md:text-lg font-bold mb-4 text-accent">📞 Contact</h4>
             <div className="space-y-3">
               <div>

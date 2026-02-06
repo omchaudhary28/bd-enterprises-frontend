@@ -4,45 +4,45 @@ import { Link } from 'react-router-dom'; // Assuming react-router-dom is used fo
 const CustomSoftwareDevelopment = () => {
   return (
     <div className="container mx-auto p-4 py-16">
-      <div className="bg-gradient-to-br from-teal-100 to-blue-100 p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-duration="800">
-        <h1 className="text-4xl font-bold text-primary mb-6 text-center" data-aos="fade-down" data-aos-duration="800">Custom Software Development</h1>
+      <div className="bg-gradient-to-br from-teal-100 to-blue-100 p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-duration="400">
+        <h1 className="text-4xl font-bold text-primary mb-6 text-center" data-aos="fade-down" data-aos-duration="400">Custom Software Development</h1>
         
-        <div className="flex flex-col md:flex-row items-center justify-between mb-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
           <div className="md:w-1/2 md:pr-8 mb-6 md:mb-0">
             <p className="text-lg text-neutral-700 leading-relaxed">
               In today's competitive landscape, off-the-shelf software often falls short of meeting the unique demands of your business. We specialize in creating bespoke software solutions that are tailored to your specific operational needs, helping you to streamline processes, boost productivity, and drive growth.
             </p>
           </div>
-          <div className="md:w-1/2" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="900">
+          <div className="md:w-1/2" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="500">
             <img src="https://picsum.photos/seed/customsoftwareintro/600/400" alt="Custom Software Development" className="rounded-lg shadow-md w-full transition-transform duration-500 hover:scale-105" />
           </div>
         </div>
 
         <div className="mb-10">
-          <h2 className="text-3xl font-bold text-vibrant-blue mb-5 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="800">Our Approach</h2>
+          <h2 className="text-3xl font-bold text-vibrant-blue mb-5 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="400">Our Approach</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="flex items-start" data-aos="fade-right" data-aos-delay="100" data-aos-duration="800">
+            <div className="flex items-start" data-aos="fade-right" data-aos-delay="100" data-aos-duration="400">
               <i className="fa-solid fa-lightbulb text-4xl text-vibrant-blue mr-4"></i>
               <div>
                 <h3 className="text-xl font-semibold text-neutral-800">Discovery & Planning</h3>
                 <p className="text-neutral-700">We start by understanding your vision, challenges, and objectives to lay a solid foundation.</p>
               </div>
             </div>
-            <div className="flex items-start" data-aos="fade-left" data-aos-delay="100" data-aos-duration="800">
+            <div className="flex items-start" data-aos="fade-left" data-aos-delay="100" data-aos-duration="400">
               <i className="fa-solid fa-object-ungroup text-4xl text-vibrant-blue mr-4"></i>
               <div>
                 <h3 className="text-xl font-semibold text-neutral-800">Design & Prototyping</h3>
                 <p className="text-neutral-700">Crafting intuitive user interfaces and experiences, followed by interactive prototypes.</p>
               </div>
             </div>
-            <div className="flex items-start" data-aos="fade-right" data-aos-delay="200" data-aos-duration="800">
+            <div className="flex items-start" data-aos="fade-right" data-aos-delay="200" data-aos-duration="400">
               <i className="fa-solid fa-code text-4xl text-vibrant-blue mr-4"></i>
               <div>
                 <h3 className="text-xl font-semibold text-neutral-800">Development & Testing</h3>
                 <p className="text-neutral-700">Writing clean, efficient code and rigorously testing to ensure quality and performance.</p>
               </div>
             </div>
-            <div className="flex items-start" data-aos="fade-left" data-aos-delay="200" data-aos-duration="800">
+            <div className="flex items-start" data-aos="fade-left" data-aos-delay="200" data-aos-duration="400">
               <i className="fa-solid fa-cloud-arrow-up text-4xl text-vibrant-blue mr-4"></i>
               <div>
                 <h3 className="text-xl font-semibold text-neutral-800">Deployment & Support</h3>

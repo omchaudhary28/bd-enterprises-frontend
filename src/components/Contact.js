@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { ThemeContext } from '../App';
+import { API_URL } from '../config/api';
 import AOS from 'aos';
-
-// Backend API Configuration
-const API_URL = "https://bdenterprises.in/api";
 
 const Contact = () => {
   const { isDark } = useContext(ThemeContext);
@@ -32,9 +30,15 @@ const Contact = () => {
   const fetchContactData = async () => {
     try {
       const [infoRes, socialRes, locRes] = await Promise.all([
-        fetch(`${API_URL}/api/company-info`),
-        fetch(`${API_URL}/api/social-media`),
-        fetch(`${API_URL}/api/locations/main`)
+        fetch(`${API_URL}/company-info`, {
+          headers: { Accept: 'application/json' }
+        }),
+        fetch(`${API_URL}/social-media`, {
+          headers: { Accept: 'application/json' }
+        }),
+        fetch(`${API_URL}/locations/main`, {
+          headers: { Accept: 'application/json' }
+        })
       ]);
 
       if (infoRes.ok) {
@@ -70,10 +74,11 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch(`${API_URL}/api/contacts`, {
+      const response = await fetch(`${API_URL}/contacts`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
         },
         body: JSON.stringify(formData)
       });
