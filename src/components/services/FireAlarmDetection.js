@@ -145,7 +145,7 @@ const FireAlarmDetection = () => {
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="/images/services/fire-alarm-detection.svg" alt="System Design" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                <img src="/images/services/fire-alarm-system-design.svg" alt="System Design" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
               </div>
             </div>
 
@@ -161,7 +161,7 @@ const FireAlarmDetection = () => {
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="/images/services/fire-alarm-detection.svg" alt="Professional Monitoring" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                <img src="/images/services/fire-alarm-monitoring.svg" alt="Professional Monitoring" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
               </div>
             </div>
 
@@ -177,7 +177,7 @@ const FireAlarmDetection = () => {
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="/images/services/fire-alarm-detection.svg" alt="Mobile Alerts" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                <img src="/images/services/fire-alarm-mobile-alerts.svg" alt="Mobile Alerts" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
               </div>
             </div>
 

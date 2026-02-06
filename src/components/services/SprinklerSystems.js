@@ -186,7 +186,7 @@ const SprinklerSystems = () => {
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="/images/services/sprinkler-systems.svg" alt="System Design" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                <img src="/images/services/sprinkler-design-engineering.svg" alt="System Design" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
               </div>
             </div>
 
@@ -202,7 +202,7 @@ const SprinklerSystems = () => {
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="/images/services/sprinkler-systems.svg" alt="Installation" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                <img src="/images/services/sprinkler-installation.svg" alt="Installation" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
               </div>
             </div>
 
@@ -218,7 +218,7 @@ const SprinklerSystems = () => {
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="/images/services/compliance-inspection.svg" alt="Inspections" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                <img src="/images/services/sprinkler-inspection.svg" alt="Inspections" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
               </div>
             </div>
 
@@ -234,7 +234,7 @@ const SprinklerSystems = () => {
                 </ul>
               </div>
               <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="/images/services/sprinkler-systems.svg" alt="Support Systems" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                <img src="/images/services/sprinkler-support-maintenance.svg" alt="Support Systems" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
               </div>
             </div>
           </div>

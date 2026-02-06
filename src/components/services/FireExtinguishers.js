@@ -95,7 +95,7 @@ const FireExtinguishers = () => {
                   </p>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="/images/services/fire-extinguisher-systems.svg" alt="CO2 Tubing System" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                  <img src="/images/services/fire-extinguisher-tubing.svg" alt="CO2 Tubing System" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                 </div>
               </div>
             </div>
@@ -118,7 +118,7 @@ const FireExtinguishers = () => {
                   </ul>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="/images/services/fire-extinguisher-systems.svg" alt="Professional Installation" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                  <img src="/images/services/fire-extinguisher-installation.svg" alt="Professional Installation" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                 </div>
               </div>
 
@@ -150,7 +150,7 @@ const FireExtinguishers = () => {
                   </ul>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="/images/services/fire-extinguisher-systems.svg" alt="Hydrostatic Testing" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                  <img src="/images/services/hydrostatic-testing.svg" alt="Hydrostatic Testing" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                 </div>
               </div>
 
@@ -166,7 +166,7 @@ const FireExtinguishers = () => {
                   </ul>
                 </div>
                 <div className="md:w-1/2 overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="/images/services/fire-extinguisher-systems.svg" alt="Emergency Service" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                  <img src="/images/services/emergency-replacement.svg" alt="Emergency Service" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                 </div>
               </div>
 
