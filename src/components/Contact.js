@@ -23,7 +23,7 @@ const Contact = () => {
   const [mainLocation, setMainLocation] = useState(null);
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: false });
+    AOS.init({ duration: 900, once: false });
     fetchContactData();
   }, []);
 

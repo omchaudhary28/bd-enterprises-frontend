@@ -24,9 +24,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mb-8 md:mb-12">
           
           {/* Brand Section */}
-          <div data-aos="fade-up" data-aos-duration="300">
+          <div data-aos="fade-up" data-aos-duration="250">
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-3xl">🛡️</span>
+              <span className="text-3xl">ðŸ›¡ï¸</span>
               <h3 className="text-lg md:text-xl font-bold glow-text">BD Enterprises</h3>
             </div>
             <p className="text-sm md:text-base text-gray-200 dark:text-gray-300 leading-relaxed mb-4">
@@ -37,7 +37,7 @@ const Footer = () => {
                 f
               </button>
               <button className="w-10 h-10 rounded-full bg-accent hover:bg-secondary text-primary flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95" aria-label="Twitter">
-                𝕏
+                ð•
               </button>
               <button className="w-10 h-10 rounded-full bg-accent hover:bg-secondary text-primary flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95" aria-label="LinkedIn">
                 in
@@ -46,8 +46,8 @@ const Footer = () => {
           </div>
 
           {/* Services Section */}
-          <div data-aos="fade-up" data-aos-duration="300" data-aos-delay="100">
-            <h4 className="text-base md:text-lg font-bold mb-4 text-accent">🔥 Services</h4>
+          <div data-aos="fade-up" data-aos-duration="250" data-aos-delay="100">
+            <h4 className="text-base md:text-lg font-bold mb-4 text-accent">ðŸ”¥ Services</h4>
             <ul className="space-y-2">
               {services.map((service, idx) => (
                 <li key={idx}>
@@ -55,7 +55,7 @@ const Footer = () => {
                     to={service.path}
                     className="text-sm md:text-base text-gray-200 dark:text-gray-300 hover:text-accent dark:hover:text-blue-400 transition-all duration-300 block py-1 hover:translate-x-1"
                   >
-                    → {service.name}
+                    â†’ {service.name}
                   </Link>
                 </li>
               ))}
@@ -63,8 +63,8 @@ const Footer = () => {
           </div>
 
           {/* Company Section */}
-          <div data-aos="fade-up" data-aos-duration="300" data-aos-delay="200">
-            <h4 className="text-base md:text-lg font-bold mb-4 text-accent">🏢 Company</h4>
+          <div data-aos="fade-up" data-aos-duration="250" data-aos-delay="200">
+            <h4 className="text-base md:text-lg font-bold mb-4 text-accent">ðŸ¢ Company</h4>
             <ul className="space-y-2">
               {company.map((item, idx) => (
                 <li key={idx}>
@@ -72,7 +72,7 @@ const Footer = () => {
                     to={item.path}
                     className="text-sm md:text-base text-gray-200 dark:text-gray-300 hover:text-accent dark:hover:text-blue-400 transition-all duration-300 block py-1 hover:translate-x-1"
                   >
-                    → {item.name}
+                    â†’ {item.name}
                   </Link>
                 </li>
               ))}
@@ -80,8 +80,8 @@ const Footer = () => {
           </div>
 
           {/* Contact Section */}
-          <div data-aos="fade-up" data-aos-duration="300" data-aos-delay="300">
-            <h4 className="text-base md:text-lg font-bold mb-4 text-accent">📞 Contact</h4>
+          <div data-aos="fade-up" data-aos-duration="250" data-aos-delay="300">
+            <h4 className="text-base md:text-lg font-bold mb-4 text-accent">ðŸ“ž Contact</h4>
             <div className="space-y-3">
               <div>
                 <p className="text-xs md:text-sm font-semibold text-accent mb-1">Email</p>
