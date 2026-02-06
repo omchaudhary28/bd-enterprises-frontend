@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getDeviceIconSrc } from './deviceIcon';
 
 const SprinklerSystems = () => {
   const features = [
@@ -147,7 +148,15 @@ const SprinklerSystems = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {sprinklerDevices.map((device, index) => (
               <div key={device.name} className="bg-blue-50 dark:bg-gray-900 p-4 rounded-lg border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-delay={100 + index * 50} data-aos-duration="300" style={{ animationDelay: `${index * 80}ms` }}>
-                <h3 className="text-lg font-semibold text-primary dark:text-white mb-2">{device.name}</h3>
+                <div className="flex items-center gap-3 mb-2">
+                  <img
+                    src={getDeviceIconSrc(device.name)}
+                    alt=""
+                    aria-hidden="true"
+                    className="w-8 h-8 md:w-9 md:h-9 rounded-lg shadow-sm"
+                  />
+                  <h3 className="text-lg font-semibold text-primary dark:text-white">{device.name}</h3>
+                </div>
                 <p className="text-sm md:text-base text-neutral-700 dark:text-gray-300">{device.description}</p>
               </div>
             ))}
@@ -162,7 +171,15 @@ const SprinklerSystems = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {hydrantDevices.map((device, index) => (
               <div key={device.name} className="bg-blue-50 dark:bg-gray-900 p-4 rounded-lg border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-delay={100 + index * 40} data-aos-duration="300" style={{ animationDelay: `${index * 70}ms` }}>
-                <h3 className="text-lg font-semibold text-primary dark:text-white mb-2">{device.name}</h3>
+                <div className="flex items-center gap-3 mb-2">
+                  <img
+                    src={getDeviceIconSrc(device.name)}
+                    alt=""
+                    aria-hidden="true"
+                    className="w-8 h-8 md:w-9 md:h-9 rounded-lg shadow-sm"
+                  />
+                  <h3 className="text-lg font-semibold text-primary dark:text-white">{device.name}</h3>
+                </div>
                 <p className="text-sm md:text-base text-neutral-700 dark:text-gray-300">{device.description}</p>
               </div>
             ))}

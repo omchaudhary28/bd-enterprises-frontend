@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getDeviceIconSrc } from './deviceIcon';
 
 const FireAlarmDetection = () => {
   const features = [
@@ -119,7 +120,15 @@ const FireAlarmDetection = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 {group.items.map((item, index) => (
                   <div key={item.name} className="bg-blue-50 dark:bg-gray-900 p-4 rounded-lg border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-delay={100 + (groupIndex * 100) + (index * 50)} data-aos-duration="300" style={{ animationDelay: `${index * 80}ms` }}>
-                    <h4 className="text-lg font-semibold text-primary dark:text-white mb-2">{item.name}</h4>
+                    <div className="flex items-center gap-3 mb-2">
+                      <img
+                        src={getDeviceIconSrc(item.name)}
+                        alt=""
+                        aria-hidden="true"
+                        className="w-8 h-8 md:w-9 md:h-9 rounded-lg shadow-sm"
+                      />
+                      <h4 className="text-lg font-semibold text-primary dark:text-white">{item.name}</h4>
+                    </div>
                     <p className="text-sm md:text-base text-neutral-700 dark:text-gray-300">{item.description}</p>
                   </div>
                 ))}
