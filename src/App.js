@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
@@ -14,6 +14,16 @@ import FireSafetyTraining from './components/services/FireSafetyTraining';
 import ComplianceInspection from './components/services/ComplianceInspection';
 
 export const ThemeContext = React.createContext();
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -43,6 +53,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <ThemeContext.Provider value={{ isDark, toggleTheme }}>
         <div className="App flex flex-col min-h-screen bg-gray-50 dark:bg-slate-900 transition-colors duration-300">
           <div className="pattern-bg"></div>
