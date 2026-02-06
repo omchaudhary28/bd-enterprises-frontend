@@ -216,7 +216,7 @@ const About = () => {
                 className={`p-3 md:p-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform active:scale-95 md:hover:scale-105 text-xs md:text-sm industry-card-scroll ${
                   selectedIndustry === industry
                     ? 'bg-gradient-to-r from-secondary to-accent text-white shadow-lg ring-2 ring-accent md:scale-105'
-                    : 'bg-gradient-to-br from-teal-100 to-blue-100 dark:bg-slate-700 border-2 border-secondary dark:border-blue-500 text-primary dark:text-white hover:from-teal-200 hover:to-blue-200 dark:hover:bg-slate-600'
+                    : 'bg-gradient-to-br from-teal-100 to-blue-100 dark:from-slate-800 dark:to-slate-900 border-2 border-secondary dark:border-blue-500 text-primary dark:text-white hover:from-teal-200 hover:to-blue-200'
                 }`}
                 data-aos="zoom-in"
                 data-aos-delay={index * 30}
@@ -254,7 +254,7 @@ const About = () => {
               <h5 className="text-lg md:text-xl font-bold text-secondary dark:text-blue-300 mb-4">What We Provide:</h5>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                 {industryServices[selectedIndustry]?.services.map((service, index) => (
-                  <div key={index} className="flex items-start bg-gradient-to-br from-teal-100 to-blue-100 dark:bg-gray-800 p-3 md:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-blue-100 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-delay={index * 100} style={{ animationDelay: `${index * 50}ms` }}>
+                  <div key={index} className="flex items-start bg-gradient-to-br from-teal-100 to-blue-100 dark:from-slate-800 dark:to-slate-900 p-3 md:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-blue-100 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-delay={index * 100} style={{ animationDelay: `${index * 50}ms` }}>
                     <span className="text-accent text-lg md:text-2xl mr-2 md:mr-3 flex-shrink-0">&#10003;</span>
                     <p className="text-xs md:text-sm text-neutral-700 dark:text-gray-200">{service}</p>
                   </div>
@@ -262,7 +262,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="mt-5 md:mt-6 p-3 md:p-4 bg-gradient-to-br from-teal-100 to-blue-100 dark:bg-gray-800 rounded-lg border-l-4 border-accent dark:border-slate-700">
+            <div className="mt-5 md:mt-6 p-3 md:p-4 bg-gradient-to-br from-teal-100 to-blue-100 dark:from-slate-800 dark:to-slate-900 rounded-lg border-l-4 border-accent dark:border-slate-700">
               <p className="text-xs md:text-sm text-neutral-700 dark:text-gray-200 font-semibold">&#128161; Ready to protect your {selectedIndustry.toLowerCase()}? Contact us for a customized fire safety solution designed specifically for your industry.
               </p>
             </div>
