@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 const About = () => {
-  const [growthData, setGrowthData] = useState([0, 0, 0, 0, 0]);
   const [selectedIndustry, setSelectedIndustry] = useState('Healthcare');
 
   useEffect(() => {
     // Animate growth metrics
     setTimeout(() => {
-      setGrowthData([250, 500, 1200, 2800, 4500]);
     }, 500);
   }, []);
 

@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
-import { ThemeContext } from './ThemeContext';
+import React, { useState, useEffect, useCallback } from 'react';
 import { API_URL } from '../config/api';
 import AOS from 'aos';
 
 const Contact = () => {
-  const { isDark } = useContext(ThemeContext);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -19,8 +17,6 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [companyInfo, setCompanyInfo] = useState(null);
-  const [socialMedia, setSocialMedia] = useState([]);
-  const [mainLocation, setMainLocation] = useState(null);
 
   const parseJsonResponse = useCallback(async (response) => {
     const contentType = response.headers.get('content-type') || '';
@@ -39,32 +35,14 @@ const Contact = () => {
 
   const fetchContactData = useCallback(async () => {
     try {
-      const [infoRes, socialRes, locRes] = await Promise.all([
-        fetch(`${API_URL}/company-info`, {
-          headers: { Accept: 'application/json' }
-        }),
-        fetch(`${API_URL}/social-media`, {
-          headers: { Accept: 'application/json' }
-        }),
-        fetch(`${API_URL}/locations/main`, {
-          headers: { Accept: 'application/json' }
-        })
-      ]);
+      const infoRes = await fetch(`${API_URL}/company-info`, {
+        headers: { Accept: 'application/json' }
+      });
 
       if (infoRes.ok) {
         const infoData = await parseJsonResponse(infoRes);
         // API may return { data: [...] } or an object directly — normalize both
         setCompanyInfo(infoData.data ?? infoData ?? null);
-      }
-
-      if (socialRes.ok) {
-        const socialData = await parseJsonResponse(socialRes);
-        setSocialMedia(socialData.data ?? socialData ?? []);
-      }
-
-      if (locRes.ok) {
-        const locData = await parseJsonResponse(locRes);
-        setMainLocation(locData.data ?? locData ?? null);
       }
     } catch (error) {
       console.error('Error fetching contact data:', error);
@@ -165,11 +143,6 @@ const Contact = () => {
   const getWhatsApp = () => {
     const whatsapp = findInCompanyInfo('whatsapp');
     return (typeof whatsapp === 'string' && whatsapp.trim()) ? whatsapp : getPhoneNumber();
-  };
-
-  const getAddress = () => {
-    const address = findInCompanyInfo('address') || findInCompanyInfo('location');
-    return (typeof address === 'string' && address.trim()) ? address : '123 Safety Avenue, Fire District, FD 12345';
   };
 
   // Automated message templates based on contact method
