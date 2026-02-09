@@ -51,16 +51,46 @@ const slugify = (str) =>
     .replace(/(^-|-$)/g, '');
 
 // Image candidate generator (tries a few extensions & paths)
+// Tries multiple slug variations (handles '&' / 'and' differences and common naming variants)
 const imageCandidatesFor = (title) => {
-  const slug = slugify(title);
-  const exts = ['avif', 'webp', 'jpg', 'jpeg', 'png'];
+  const baseSlug = slugify(title);
+  const variants = new Set();
+
+  // primary slug
+  variants.add(baseSlug);
+
+  // remove common conjunction 'and' (e.g., 'fire-alarm-and-detection' -> 'fire-alarm-detection')
+  variants.add(baseSlug.replace(/-and-/g, '-'));
+
+  // remove the token entirely (join words)
+  variants.add(baseSlug.replace(/-and-/g, ''));
+
+  // try slug built from original title with ampersand removed before slugify
+  variants.add(slugify(title.replace(/&/g, '')));
+
+  // try removing articles
+  variants.add(baseSlug.replace(/-(the|a|an)-/g, '-'));
+
+  // try a compact form without hyphens (fallback)
+  variants.add(baseSlug.replace(/-/g, ''));
+
+  const exts = ['svg', 'avif', 'webp', 'jpg', 'jpeg', 'png'];
   const candidates = [];
-  for (const ext of exts) {
-    candidates.push(`/images/services/${slug}.${ext}`);
-    candidates.push(`/images/${slug}.${ext}`);
+
+  for (const v of variants) {
+    if (!v) continue;
+    for (const ext of exts) {
+      candidates.push(`/images/services/${v}.${ext}`);
+      candidates.push(`/images/${v}.${ext}`);
+    }
   }
-  // final safe local fallback (should exist in repo)
+
+  // last resort: try a few commonly present service images in repo
+  candidates.push('/images/services/sprinkler-systems.svg');
+  candidates.push('/images/services/fire-extinguisher-systems.svg');
+  candidates.push('/images/services/emergency-lighting-exits.svg');
   candidates.push('/images/istockphoto-2190518272-1024x1024.jpg');
+
   return candidates;
 };
 
