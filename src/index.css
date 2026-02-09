@@ -69,6 +69,15 @@ button, a, input, textarea, select {
   transition: all 0.3s ease-in-out;
 }
 
+/* Animation delay utilities */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
 p {
   max-width: 74ch;
 }

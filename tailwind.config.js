@@ -39,6 +39,8 @@ module.exports = {
         slideUp: 'slideUp 0.6s ease-out',
         fadeIn: 'fadeIn 0.8s ease-in-out',
         scaleIn: 'scaleIn 0.5s ease-out',
+        bounce: 'bounce 3s infinite',
+        pulse: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         slideDown: {
@@ -62,4 +64,5 @@ module.exports = {
   },
   plugins: [],
 }
+
 
