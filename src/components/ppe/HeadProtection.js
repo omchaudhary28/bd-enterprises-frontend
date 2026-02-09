@@ -5,6 +5,7 @@ const HeadProtection = () => {
   const products = [
     {
       name: 'Industrial Hard Hats',
+      image: '/images/ppes/Head-Protection.webp',
       summary: 'ANSI Z89.1 certified hard hats for maximum impact protection.',
       useCases: ['Construction sites', 'Manufacturing', 'Mining operations', 'Warehousing'],
       protection: 'Protects against impact from falling objects, low-hanging fixtures, and head collisions.',
@@ -13,6 +14,7 @@ const HeadProtection = () => {
     },
     {
       name: 'Safety Helmets',
+      image: '/images/ppes/Head-Protection.webp',
       summary: 'Lightweight, comfortable helmets for work requiring extended wear.',
       useCases: ['Electrical work', 'Confined space work', 'Welding', 'High-altitude work'],
       protection: 'Guards against impacts, electrical hazards, and penetration from sharp objects.',
@@ -21,6 +23,7 @@ const HeadProtection = () => {
     },
     {
       name: 'Bump Caps',
+      image: '/images/ppes/Head-Protection.webp',
       summary: 'Lightweight protection for low-risk overhead hazards.',
       useCases: ['Warehouse operations', 'Food processing', 'Assembly lines', 'Cold storage'],
       protection: 'Reduces impact severity from minor bumps and light falling objects.',
@@ -70,8 +73,12 @@ const HeadProtection = () => {
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
-              <div className="h-40 sm:h-48 md:h-56 bg-gradient-to-br from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 flex items-center justify-center">
-                <div className="text-5xl">🛡️</div>
+              <div className="h-40 sm:h-48 md:h-56 bg-gradient-to-br from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 flex items-center justify-center overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary dark:text-white mb-2">

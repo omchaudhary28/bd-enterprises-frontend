@@ -5,6 +5,7 @@ const HearingProtection = () => {
   const products = [
     {
       name: 'Foam Earplugs',
+      image: '/images/ppes/Hearing-Protection-1536x922.webp',
       summary: 'Affordable, disposable ear protection for noise levels up to 105 dB.',
       useCases: ['Manufacturing floors', 'Construction sites', 'Airport operations', 'Large machinery'],
       protection: 'Reduces noise exposure to safe levels; prevents noise-induced hearing loss.',
@@ -13,6 +14,7 @@ const HearingProtection = () => {
     },
     {
       name: 'Earmuffs',
+      image: '/images/ppes/Hearing-Protection-1536x922.webp',
       summary: 'Reusable, durable hearing protection with comfortable headband.',
       useCases: ['Loud industrial environments', 'Shooting ranges', 'Loud events', 'Continuous noise'],
       protection: 'Provides 20-33 dB noise reduction rating; more comfortable for extended wear.',
@@ -21,6 +23,7 @@ const HearingProtection = () => {
     },
     {
       name: 'Custom Molded Plugs',
+      image: '/images/ppes/Hearing-Protection-1536x922.webp',
       summary: 'Personalized hearing protection molded to individual ear canals.',
       useCases: ['Professional musicians', 'Audio engineers', 'Long-term industrial work', 'Government work'],
       protection: 'Perfect fit ensures maximum sealing and protection; very comfortable for all-day wear.',
@@ -58,8 +61,12 @@ const HearingProtection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 md:mb-16">
           {products.map((product, index) => (
             <div key={index} className="bg-white dark:bg-slate-800 rounded-lg md:rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 transform active:scale-95 md:hover:scale-105 flex flex-col" data-aos="fade-up" data-aos-delay={index * 100}>
-              <div className="h-40 sm:h-48 md:h-56 bg-gradient-to-br from-green-100 to-teal-100 dark:from-green-900/30 dark:to-teal-900/30 flex items-center justify-center">
-                <div className="text-5xl">🎧</div>
+              <div className="h-40 sm:h-48 md:h-56 bg-gradient-to-br from-green-100 to-teal-100 dark:from-green-900/30 dark:to-teal-900/30 flex items-center justify-center overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary dark:text-white mb-2">{product.name}</h3>

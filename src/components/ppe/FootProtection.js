@@ -5,6 +5,7 @@ const FootProtection = () => {
   const products = [
     {
       name: 'Steel-Toed Safety Boots',
+      image: '/images/ppes/Foot-Protection-1536x922.webp',
       summary: 'Heavy-duty boots with reinforced steel toe caps for impact and compression protection.',
       useCases: ['Construction sites', 'Manufacturing', 'Warehouses', 'Heavy equipment operation'],
       protection: 'Protects feet from falling objects, crushing hazards, and impacts up to 6,000 PSI.',
@@ -13,6 +14,7 @@ const FootProtection = () => {
     },
     {
       name: 'Metatarsal Guard Boots',
+      image: '/images/ppes/Foot-Protection-1536x922.webp',
       summary: 'Extended protection over the top of foot against impact and rolling hazards.',
       useCases: ['Logging operations', 'Mining', 'Heavy industrial', 'Molten material handling'],
       protection: 'Covers arch and top of foot; protection against rolling and falling objects.',
@@ -21,6 +23,7 @@ const FootProtection = () => {
     },
     {
       name: 'Puncture-Resistant Sole Boots',
+      image: '/images/ppes/Foot-Protection-1536x922.webp',
       summary: 'Boots with reinforced midsoles to prevent puncture from sharp objects.',
       useCases: ['Roofing work', 'Landscaping', 'Concrete work', 'Recycling facilities'],
       protection: 'Prevents nails, screws, and sharp debris from penetrating sole.',
@@ -58,8 +61,12 @@ const FootProtection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 md:mb-16">
           {products.map((product, index) => (
             <div key={index} className="bg-white dark:bg-slate-800 rounded-lg md:rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 transform active:scale-95 md:hover:scale-105 flex flex-col" data-aos="fade-up" data-aos-delay={index * 100}>
-              <div className="h-40 sm:h-48 md:h-56 bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 flex items-center justify-center">
-                <div className="text-5xl">👢</div>
+              <div className="h-40 sm:h-48 md:h-56 bg-gradient-to-br from-yellow-100 to-amber-100 dark:from-yellow-900/30 dark:to-amber-900/30 flex items-center justify-center overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary dark:text-white mb-2">{product.name}</h3>

@@ -5,6 +5,7 @@ const BodyProtection = () => {
   const products = [
     {
       name: 'Chemical Resistant Coveralls',
+      image: '/images/ppes/Skin-and-Body-Protection_2022.avif',
       summary: 'Full-body barrier against chemical splashes and spills.',
       useCases: ['Chemical labs', 'Pesticide application', 'Hazmat cleanup', 'Industrial processing'],
       protection: 'Prevents skin contact with hazardous chemicals and biological agents.',
@@ -13,6 +14,7 @@ const BodyProtection = () => {
     },
     {
       name: 'Flame-Resistant Clothing',
+      image: '/images/ppes/Skin-and-Body-Protection_2022.avif',
       summary: 'Self-extinguishing fabric for thermal and flame protection.',
       useCases: ['Welding operations', 'Fire proximity work', 'Oil & gas industry', 'Foundry work'],
       protection: 'Prevents burns from open flame; resists ignition and melting.',
@@ -21,6 +23,7 @@ const BodyProtection = () => {
     },
     {
       name: 'High-Visibility Vests',
+      image: '/images/ppes/Skin-and-Body-Protection_2022.avif',
       summary: 'Bright colored vests for worker visibility in traffic and low-light conditions.',
       useCases: ['Road construction', 'Parking lot operations', 'Nighttime work', 'Warehouse operations'],
       protection: 'Increases visibility to vehicles and equipment operators.',
@@ -58,8 +61,12 @@ const BodyProtection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 md:mb-16">
           {products.map((product, index) => (
             <div key={index} className="bg-white dark:bg-slate-800 rounded-lg md:rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 transform active:scale-95 md:hover:scale-105 flex flex-col" data-aos="fade-up" data-aos-delay={index * 100}>
-              <div className="h-40 sm:h-48 md:h-56 bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 flex items-center justify-center">
-                <div className="text-5xl">🧥</div>
+              <div className="h-40 sm:h-48 md:h-56 bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-900/30 dark:to-violet-900/30 flex items-center justify-center overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary dark:text-white mb-2">{product.name}</h3>

@@ -5,6 +5,7 @@ const RespiratoryProtection = () => {
   const products = [
     {
       name: 'N95 Respirators',
+      image: '/images/ppes/Respiratory-Protection.webp',
       summary: 'Disposable filtering facepiece for dust, pollen, and non-oil particulates.',
       useCases: ['Woodworking', 'Sanding/grinding', 'Construction', 'General dusty environments'],
       protection: 'Filters 95% of airborne particles; NIOSH-certified for protection.',
@@ -13,6 +14,7 @@ const RespiratoryProtection = () => {
     },
     {
       name: 'Reusable Respirators',
+      image: '/images/ppes/Respiratory-Protection.webp',
       summary: 'Durableelastomer facepieces with replaceable cartridges for chemical protection.',
       useCases: ['Chemical handling', 'Spray painting', 'Welding fumes', 'Hazmat work'],
       protection: 'Protects from gases, vapors, and particles; cartridges are replaceable.',
@@ -21,6 +23,7 @@ const RespiratoryProtection = () => {
     },
     {
       name: 'PAPR Systems',
+      image: '/images/ppes/Respiratory-Protection.webp',
       summary: 'Powered Air-Purifying Respirators with battery-powered blower.',
       useCases: ['High-hazard chemical work', 'Asbestos abatement', 'Lead remediation', 'Confined spaces'],
       protection: 'Provides highest level of respiratory protection; more comfortable than standard masks.',
@@ -58,8 +61,12 @@ const RespiratoryProtection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 md:mb-16">
           {products.map((product, index) => (
             <div key={index} className="bg-white dark:bg-slate-800 rounded-lg md:rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 transform active:scale-95 md:hover:scale-105 flex flex-col" data-aos="fade-up" data-aos-delay={index * 100}>
-              <div className="h-40 sm:h-48 md:h-56 bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30 flex items-center justify-center">
-                <div className="text-5xl">😷</div>
+              <div className="h-40 sm:h-48 md:h-56 bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 flex items-center justify-center overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary dark:text-white mb-2">{product.name}</h3>

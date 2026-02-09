@@ -5,6 +5,7 @@ const EyeFaceProtection = () => {
   const products = [
     {
       name: 'Safety Glasses',
+      image: '/images/ppes/Face-and-Eye-Protection_2022.avif',
       summary: 'Lightweight, comfortable glasses for general eye hazard protection.',
       useCases: ['Manufacturing floors', 'Assembly lines', 'General construction', 'Maintenance work'],
       protection: 'Guards against flying debris, dust particles, and chemical splashes.',
@@ -13,6 +14,7 @@ const EyeFaceProtection = () => {
     },
     {
       name: 'Welding Shields',
+      image: '/images/ppes/Face-and-Eye-Protection_2022.avif',
       summary: 'Heavy-duty protection for welding sparks and ultraviolet radiation.',
       useCases: ['Welding operations', 'Cutting/grinding', 'Metal fabrication', 'Arc work'],
       protection: 'Shields eyes and face from sparks, heat, and damaging UV/IR radiation.',
@@ -21,6 +23,7 @@ const EyeFaceProtection = () => {
     },
     {
       name: 'Chemical Safety Goggles',
+      image: '/images/ppes/Face-and-Eye-Protection_2022.avif',
       summary: 'Sealed design for maximum protection from liquid splashes.',
       useCases: ['Chemical labs', 'Cleaning operations', 'Industrial handling', 'Food processing'],
       protection: 'Prevents chemical liquid from reaching eyes; provides comfort in extended wear.',
@@ -62,8 +65,12 @@ const EyeFaceProtection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 md:mb-16">
           {products.map((product, index) => (
             <div key={index} className="bg-white dark:bg-slate-800 rounded-lg md:rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 transform active:scale-95 md:hover:scale-105 flex flex-col" data-aos="fade-up" data-aos-delay={index * 100}>
-              <div className="h-40 sm:h-48 md:h-56 bg-gradient-to-br from-yellow-100 to-orange-100 dark:from-yellow-900/30 dark:to-orange-900/30 flex items-center justify-center">
-                <div className="text-5xl">👓</div>
+              <div className="h-40 sm:h-48 md:h-56 bg-gradient-to-br from-yellow-100 to-orange-100 dark:from-yellow-900/30 dark:to-orange-900/30 flex items-center justify-center overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary dark:text-white mb-2">{product.name}</h3>
