@@ -18,7 +18,7 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
-  const [companyInfo, setCompanyInfo] = useState([]);
+  const [companyInfo, setCompanyInfo] = useState(null);
   const [socialMedia, setSocialMedia] = useState([]);
   const [mainLocation, setMainLocation] = useState(null);
 
@@ -53,17 +53,18 @@ const Contact = () => {
 
       if (infoRes.ok) {
         const infoData = await parseJsonResponse(infoRes);
-        setCompanyInfo(infoData.data || []);
+        // API may return { data: [...] } or an object directly — normalize both
+        setCompanyInfo(infoData.data ?? infoData ?? null);
       }
 
       if (socialRes.ok) {
         const socialData = await parseJsonResponse(socialRes);
-        setSocialMedia(socialData.data || []);
+        setSocialMedia(socialData.data ?? socialData ?? []);
       }
 
       if (locRes.ok) {
         const locData = await parseJsonResponse(locRes);
-        setMainLocation(locData.data);
+        setMainLocation(locData.data ?? locData ?? null);
       }
     } catch (error) {
       console.error('Error fetching contact data:', error);
@@ -127,20 +128,48 @@ const Contact = () => {
     }
   };
 
+  const findInCompanyInfo = (type) => {
+    if (!companyInfo) return null;
+    // If API returns an array of { contact_type, value }
+    if (Array.isArray(companyInfo)) {
+      const item = companyInfo.find(i => i && (i.contact_type === type || (i.type && i.type === type)));
+      return item?.value ?? item?.val ?? null;
+    }
+
+    // If API returns an object with named keys or a single record
+    if (typeof companyInfo === 'object') {
+      // direct fields like { phone: '...', email: '...' }
+      if (companyInfo[type]) return companyInfo[type];
+
+      // or nested fields
+      const phoneKey = Object.keys(companyInfo || []).find(k => k.toLowerCase().includes(type));
+      if (phoneKey) return companyInfo[phoneKey];
+
+      // or single record format { contact_type: 'phone', value: '...' }
+      if (companyInfo.contact_type && companyInfo.contact_type === type) return companyInfo.value || null;
+    }
+
+    return null;
+  };
+
   const getPhoneNumber = () => {
-    return companyInfo.find(info => info.contact_type === 'phone')?.value || '7499953708';
+    const phone = findInCompanyInfo('phone') || findInCompanyInfo('tel');
+    return (typeof phone === 'string' && phone.trim()) ? phone : '9898046269';
   };
 
   const getEmail = () => {
-    return companyInfo.find(info => info.contact_type === 'email')?.value || 'omchaudhary2111@gmail.com';
+    const email = findInCompanyInfo('email');
+    return (typeof email === 'string' && email.trim()) ? email : 'bdenterprises99@yahoo.co.in';
   };
 
   const getWhatsApp = () => {
-    return companyInfo.find(info => info.contact_type === 'whatsapp')?.value || '7499953708';
+    const whatsapp = findInCompanyInfo('whatsapp');
+    return (typeof whatsapp === 'string' && whatsapp.trim()) ? whatsapp : getPhoneNumber();
   };
 
   const getAddress = () => {
-    return companyInfo.find(info => info.contact_type === 'address')?.value || '123 Safety Avenue, Fire District, FD 12345';
+    const address = findInCompanyInfo('address') || findInCompanyInfo('location');
+    return (typeof address === 'string' && address.trim()) ? address : '123 Safety Avenue, Fire District, FD 12345';
   };
 
   // Automated message templates based on contact method
@@ -259,7 +288,7 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
-                      placeholder="7499953708"
+                      placeholder="9898046269"
                     />
                   </div>
                 </div>

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
+import VisionValues from './components/VisionValues';
 import Footer from './components/Footer';
 import About from './components/About';
 import Services from './components/Services';
@@ -42,7 +43,12 @@ function App() {
           <Header />
           <main className="flex-grow relative z-10">
             <Routes>
-              <Route path="/" element={<MainContent />} />
+              <Route path="/" element={
+                <>
+                  <MainContent />
+                  <VisionValues />
+                </>
+              } />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/services/fire-extinguishers" element={<FireExtinguishers />} />
@@ -51,6 +57,15 @@ function App() {
               <Route path="/services/emergency-lighting" element={<EmergencyLighting />} />
               <Route path="/services/fire-safety-training" element={<FireSafetyTraining />} />
               <Route path="/services/compliance-inspection" element={<ComplianceInspection />} />
+              {/* PPE Routes - Now under Services */}
+              <Route path="/services/ppe/head-protection" element={<HeadProtection />} />
+              <Route path="/services/ppe/eye-face-protection" element={<EyeFaceProtection />} />
+              <Route path="/services/ppe/hearing-protection" element={<HearingProtection />} />
+              <Route path="/services/ppe/respiratory-protection" element={<RespiratoryProtection />} />
+              <Route path="/services/ppe/hand-protection" element={<HandProtection />} />
+              <Route path="/services/ppe/body-protection" element={<BodyProtection />} />
+              <Route path="/services/ppe/foot-protection" element={<FootProtection />} />
+              {/* Legacy PPE routes for backward compatibility */}
               <Route path="/ppe" element={<PPEs />} />
               <Route path="/ppe/head-protection" element={<HeadProtection />} />
               <Route path="/ppe/eye-face-protection" element={<EyeFaceProtection />} />

@@ -50,13 +50,26 @@ const Header = () => {
       items: [
         { label: 'Compliance & Inspection', path: '/services/compliance-inspection', emoji: '📋' },
       ]
+    },
+    {
+      section: 'Personal Protective Equipment',
+      icon: '🛡️',
+      color: 'from-purple-500 to-pink-500',
+      items: [
+        { label: 'Head Protection', path: '/services/ppe/head-protection', emoji: '👷' },
+        { label: 'Eye & Face Protection', path: '/services/ppe/eye-face-protection', emoji: '👓' },
+        { label: 'Respiratory Protection', path: '/services/ppe/respiratory-protection', emoji: '😷' },
+        { label: 'Hand Protection', path: '/services/ppe/hand-protection', emoji: '🧤' },
+        { label: 'Foot Protection', path: '/services/ppe/foot-protection', emoji: '👢' },
+        { label: 'Body Protection', path: '/services/ppe/body-protection', emoji: '🧥' },
+        { label: 'Hearing Protection', path: '/services/ppe/hearing-protection', emoji: '🎧' },
+      ]
     }
   ];
 
   const navLinks = [
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
-    { label: 'PPE', path: '/ppe' },
     { label: 'Contact', path: '/contact' },
   ];
 

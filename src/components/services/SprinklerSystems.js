@@ -1,266 +1,182 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getDeviceIconSrc } from './deviceIcon';
 
 const SprinklerSystems = () => {
-  const features = [
-    { icon: '\u2713', title: 'High-Performance Design', description: 'Wet, dry, and pre-action systems engineered for rapid response.' },
-    { icon: '\u2713', title: 'Full Coverage', description: 'Complete coverage assessment ensures every area of your facility is protected.' },
-    { icon: '\u2713', title: 'Minimal Damage', description: 'Advanced systems discharge only where fire is detected, reducing water damage.' },
-    { icon: '\u2713', title: 'Regulatory Compliance', description: 'Full NFPA 13 certification and code compliance inspections.' },
-  ];
-  const sprinklerDevices = [
+  const products = [
     {
-      name: 'Sprinkler Pendant',
-      description: 'Ceiling-mounted heads designed for most indoor areas with uniform spray coverage.'
+      image: '/images/services/sprinkler-systems.svg',
+      name: 'Wet Sprinkler Systems',
+      summary: 'Continuous water-filled pipes with pendant and upright heads for immediate response and maximum suppression effectiveness.',
+      useCases: [
+        'Heated buildings and indoor facilities',
+        'Office buildings and commercial spaces',
+        'Retail centers and warehouses',
+        'Manufacturing and industrial facilities'
+      ],
+      protection: 'Water immediately discharges when any head detects heat, providing the fastest possible response to active fires.',
+      guidelines: 'Annual flow testing required; Quarterly visual inspections; Antifreeze inspection in cold storage areas',
+      bdValue: 'Proven highest suppression effectiveness, simplest system design, best insurance rates, and lowest maintenance requirements.'
     },
     {
-      name: 'Sprinkler Upright',
-      description: 'Installed above pipework for open ceilings and industrial areas with exposed piping.'
+      image: '/images/services/dry-pipe-systems.svg',
+      name: 'Dry Pipe & Deluge Systems',
+      summary: 'Pressurized air-filled systems for cold environments and open-head deluge systems for high-hazard applications.',
+      useCases: [
+        'Unheated buildings and freezer areas',
+        'Cold storage facilities and outdoor covered areas',
+        'High-hazard industrial processes',
+        'Flammable material storage rooms'
+      ],
+      protection: 'Dry systems prevent water from freezing; Deluge systems flood entire areas with water simultaneously for extreme fire scenarios.',
+      guidelines: 'Monthly pressure monitoring; Quarterly dry pipe valve testing; Semi-annual commissioning inspections',
+      bdValue: 'Freeze-protection for cold climates, comprehensive flooding for high-risk areas, and specialized valve engineering.'
     },
     {
-      name: 'Alarm Valve',
-      description: 'Core control valve that triggers waterflow alarms and monitors system activation.'
-    },
-    {
-      name: 'Curtain Nozzle',
-      description: 'Creates a water curtain to protect openings, conveyors, or separating zones.'
-    },
-    {
-      name: 'Deluge Valve',
-      description: 'Used in deluge systems for high-hazard areas; releases water through open heads.'
+      image: '/images/services/hydrant-systems.svg',
+      name: 'Fire Pump & Hydrant Systems',
+      summary: 'Complete water supply systems with electric and diesel backup pumps, pressure maintenance, and reliable hydrant access points.',
+      useCases: [
+        'Large facilities with high water demand',
+        'Areas with inadequate municipal water supply',
+        'Multi-building campuses requiring distributed access',
+        'High-rise buildings with pressure boosting needs'
+      ],
+      protection: 'Maintains consistent system pressure 24/7 and provides immediate water access for firefighting operations via hydrants.',
+      guidelines: 'Pump testing quarterly; Jockey pump maintenance biannually; Hydrant flow testing every 3 years',
+      bdValue: 'Redundant electric and diesel pumps with automatic switchover, pressure-sensitive activation, and comprehensive system monitoring.'
     }
   ];
-  const hydrantDevices = [
-    {
-      name: 'Hydrant Valve',
-      description: 'Main outlet valve for drawing water during firefighting operations.'
-    },
-    {
-      name: 'Hose Box',
-      description: 'Wall-mounted cabinet housing hose reels and hydrant accessories for quick access.'
-    },
-    {
-      name: 'Hose Reel Drum',
-      description: 'Provides controlled hose deployment for first-aid firefighting.'
-    },
-    {
-      name: 'Shut-Off Nozzle',
-      description: 'Controls water flow at the hose end with adjustable spray patterns.'
-    },
-    {
-      name: 'Hose Pipe',
-      description: 'Durable, high-pressure hose used for hydrant and hose reel systems.'
-    },
-    {
-      name: 'Pressure Gauge',
-      description: 'Displays line pressure to verify system readiness and pump performance.'
-    },
-    {
-      name: 'Pressure Switch',
-      description: 'Automatically starts pumps when pressure drops below set thresholds.'
-    },
-    {
-      name: 'Butterfly Valve',
-      description: 'Quarter-turn isolation valve for quick system control and maintenance.'
-    },
-    {
-      name: 'Sluice Valve',
-      description: 'Gate valve for line isolation, commonly used in underground piping.'
-    },
-    {
-      name: 'NRV (Non-Return Valve)',
-      description: 'Prevents reverse flow and protects pumps and pipework.'
-    },
-    {
-      name: 'Pressure Relief Valve',
-      description: 'Releases excess pressure to protect equipment and system integrity.'
-    },
-    {
-      name: 'Foot Valve',
-      description: 'One-way valve at pump suction to maintain prime and prevent backflow.'
-    },
-    {
-      name: 'Bellows (Expansion Joint)',
-      description: 'Absorbs vibration and thermal expansion in piping runs.'
-    },
-    {
-      name: 'Electrical Main Pump',
-      description: 'Primary water supply pump sized for full hydrant demand.'
-    },
-    {
-      name: 'Electrical Jockey Pump',
-      description: 'Maintains system pressure and prevents unnecessary main pump starts.'
-    },
-    {
-      name: 'Diesel Engine Pump',
-      description: 'Backup pump for reliable operation during power failures.'
-    },
-    {
-      name: 'Modular Tank',
-      description: 'On-site water storage with scalable capacity for fire protection demand.'
-    }
+
+  const standards = [
+    { title: 'NFPA 13', description: 'Installation of sprinkler systems with proper spacing, support, and commissioning requirements' },
+    { title: 'NFPA 20', description: 'Fire pump installation, testing, and maintenance standards for reliability' },
+    { title: 'FM Approval', description: 'Factory Mutual approval for enhanced insurance rating and loss prevention' }
+  ];
+
+  const whyChooseUs = [
+    'NFPA 13/20-certified engineers with hydraulic design expertise',
+    'Wet, dry, and deluge systems for all facility types',
+    'Expert fire pump selection and installation with redundancy',
+    'Complete hydrant system design and placement',
+    'Annual flow testing and certification documentation',
+    '24/7 emergency service and rapid response support'
   ];
 
   return (
-    <div className="service-page relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-gray-900 dark:to-black min-h-screen py-12 md:py-16">
+    <div className="ppe-detail-page relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-gray-900 dark:to-black min-h-screen py-12 md:py-16">
+      {/* Glowing orbs */}
       <div className="absolute top-0 left-0 w-40 md:w-72 h-40 md:h-72 bg-accent opacity-10 dark:opacity-20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent opacity-5 dark:opacity-15 rounded-full blur-3xl"></div>
-      
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="service-page-card bg-gradient-to-br from-teal-100 to-blue-100 dark:from-slate-900 dark:to-slate-800 p-4 sm:p-6 md:p-8 rounded-lg shadow-lg glow-box" data-aos="fade-up" data-aos-duration="300">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary dark:text-white mb-6 text-center glow-text" data-aos="fade-down" data-aos-duration="300">Sprinkler & Suppression Systems</h1>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mb-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
-          <div>
-            <p className="text-base sm:text-lg md:text-lg text-neutral-700 dark:text-gray-300 leading-relaxed mb-4">
-              Sprinkler systems are the gold standard in fire suppression. Our high-performance systems automatically detect and suppress fires before they spread, protecting lives, property, and business continuity.
-            </p>
-            <p className="text-base sm:text-lg md:text-lg text-neutral-700 dark:text-gray-300 leading-relaxed">
-              We design, install, and maintain systems for every building type&mdash;from warehouses and factories to office parks and retail centers. Our systems minimize collateral water damage while maximizing fire suppression effectiveness.
-            </p>
-          </div>
-          <div className="overflow-hidden rounded-lg shadow-md image-reveal-scroll" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="400">
-            <img src="/images/services/sprinkler-systems.svg" alt="Sprinkler & Suppression Systems" className="rounded-lg w-full h-auto dark:shadow-2xl transition-transform duration-500 hover:scale-105" />
+        {/* Back Link */}
+        <Link to="/services" className="inline-flex items-center text-white hover:text-accent transition-colors mb-6 font-semibold text-sm md:text-base" data-aos="fade-right">
+          ← Back to Services
+        </Link>
+
+        {/* Hero Section */}
+        <div className="text-center mb-10 md:mb-16" data-aos="fade-up">
+          <div className="text-6xl sm:text-7xl md:text-8xl mb-4 inline-block">💦</div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 sm:mb-6 glow-text">Sprinkler & Suppression Systems</h1>
+          <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed mb-3 sm:mb-4">
+            Sprinkler systems are the gold standard in fire suppression. Our high-performance systems automatically detect and suppress fires before they spread, protecting lives, property, and business continuity.
+          </p>
+          <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            We design, install, and maintain systems for every building type—from warehouses and factories to office parks and retail centers. Our systems minimize collateral water damage while maximizing fire suppression effectiveness.
+          </p>
+        </div>
+
+        {/* Products Grid */}
+        <div className="mb-16 md:mb-20">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-8 md:mb-12" data-aos="fade-down">
+            Our Services
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            {products.map((product, index) => (
+              <div key={index} className="bg-white dark:bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay={index * 100}>
+                {/* Product Image */}
+                <div className="relative h-40 sm:h-48 md:h-56 overflow-hidden bg-gradient-to-br from-blue-100 to-teal-100 dark:from-slate-700 dark:to-slate-600">
+                  <img src={product.image} alt={product.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+
+                {/* Product Content */}
+                <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
+                  {/* Name & Summary */}
+                  <h3 className="text-lg sm:text-xl font-bold text-primary dark:text-white mb-2">{product.name}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">{product.summary}</p>
+
+                  {/* Use Cases */}
+                  <div className="mb-3">
+                    <h4 className="text-xs sm:text-sm font-semibold text-primary dark:text-blue-400 mb-2 uppercase tracking-wide">Use Cases</h4>
+                    <ul className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 space-y-1">
+                      {product.useCases.slice(0, 3).map((useCase, i) => (
+                        <li key={i} className="flex items-start">
+                          <span className="text-accent mr-2 flex-shrink-0">•</span>
+                          <span>{useCase}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Protection */}
+                  <div className="mb-3">
+                    <h4 className="text-xs sm:text-sm font-semibold text-primary dark:text-blue-400 mb-2 uppercase tracking-wide">How It Protects</h4>
+                    <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300">{product.protection}</p>
+                  </div>
+
+                  {/* Guidelines */}
+                  <div className="mb-3">
+                    <h4 className="text-xs sm:text-sm font-semibold text-primary dark:text-blue-400 mb-2 uppercase tracking-wide">Maintenance Guidelines</h4>
+                    <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300">{product.guidelines}</p>
+                  </div>
+
+                  {/* BD Value */}
+                  <div className="bg-gradient-to-r from-blue-50 to-teal-50 dark:from-slate-700 dark:to-slate-600 p-3 sm:p-4 rounded-lg border-l-4 border-accent mt-auto">
+                    <h4 className="text-xs sm:text-sm font-bold text-primary dark:text-blue-400 mb-1">BD Enterprises Value</h4>
+                    <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300">{product.bdValue}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="mb-10">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-secondary dark:text-blue-400 mb-5 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="300">Key Features & Benefits</h2>
+        {/* Compliance & Standards */}
+        <div className="mb-16 md:mb-20">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-8 md:mb-12" data-aos="fade-down">
+            Compliance & Standards
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            {standards.map((standard, index) => (
+              <div key={index} className="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay={index * 100}>
+                <h3 className="text-lg sm:text-xl font-bold text-primary dark:text-white mb-2">{standard.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{standard.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Why Choose BD Enterprises */}
+        <div className="mb-16 md:mb-20 bg-gradient-to-br from-blue-50 to-teal-50 dark:from-slate-800 dark:to-slate-700 p-6 sm:p-8 md:p-10 rounded-lg shadow-lg">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary dark:text-white text-center mb-8 md:mb-12" data-aos="fade-down">
+            Why Choose BD Enterprises
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="flex flex-col bg-blue-50 dark:bg-gray-900 p-4 sm:p-5 md:p-6 rounded-lg border border-blue-200 dark:border-slate-700 service-card-scroll hover:shadow-lg transition-shadow" data-aos="fade-right" data-aos-delay={100 + index * 50} data-aos-duration="300" style={{ animationDelay: `${index * 100}ms` }}>
-                <div className="text-3xl text-accent mb-3">{feature.icon}</div>
-                <h3 className="text-base sm:text-lg font-semibold text-primary dark:text-white mb-2">{feature.title}</h3>
-                <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300">{feature.description}</p>
+            {whyChooseUs.map((item, index) => (
+              <div key={index} className="flex items-start" data-aos="fade-up" data-aos-delay={index * 50}>
+                <span className="text-2xl text-accent mr-3 flex-shrink-0 mt-1">✓</span>
+                <span className="text-sm sm:text-base text-gray-700 dark:text-gray-300">{item}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mb-10">
-          <h2 className="text-3xl font-bold text-secondary dark:text-blue-400 mb-5 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="300">Sprinkler System Components</h2>
-          <p className="text-neutral-700 dark:text-gray-300 text-center max-w-3xl mx-auto mb-6">
-            We supply and install certified sprinkler components with proper spacing, hydraulic calculations, and commissioning tests.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sprinklerDevices.map((device, index) => (
-              <div key={device.name} className="bg-blue-50 dark:bg-gray-900 p-4 rounded-lg border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-delay={100 + index * 50} data-aos-duration="300" style={{ animationDelay: `${index * 80}ms` }}>
-                <div className="flex items-center gap-3 mb-2">
-                  <img
-                    src={getDeviceIconSrc(device.name)}
-                    alt=""
-                    aria-hidden="true"
-                    className="w-8 h-8 md:w-9 md:h-9 rounded-lg shadow-sm"
-                  />
-                  <h3 className="text-lg font-semibold text-primary dark:text-white">{device.name}</h3>
-                </div>
-                <p className="text-sm md:text-base text-neutral-700 dark:text-gray-300">{device.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mb-10">
-          <h2 className="text-3xl font-bold text-secondary dark:text-blue-400 mb-5 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="300">Hydrant System Components</h2>
-          <p className="text-neutral-700 dark:text-gray-300 text-center max-w-3xl mx-auto mb-6">
-            Our hydrant installations include pumps, valves, and accessories designed for reliable water delivery and easy emergency access.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {hydrantDevices.map((device, index) => (
-              <div key={device.name} className="bg-blue-50 dark:bg-gray-900 p-4 rounded-lg border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-delay={100 + index * 40} data-aos-duration="300" style={{ animationDelay: `${index * 70}ms` }}>
-                <div className="flex items-center gap-3 mb-2">
-                  <img
-                    src={getDeviceIconSrc(device.name)}
-                    alt=""
-                    aria-hidden="true"
-                    className="w-8 h-8 md:w-9 md:h-9 rounded-lg shadow-sm"
-                  />
-                  <h3 className="text-lg font-semibold text-primary dark:text-white">{device.name}</h3>
-                </div>
-                <p className="text-sm md:text-base text-neutral-700 dark:text-gray-300">{device.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="service-section-card mb-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-black p-4 sm:p-6 md:p-8 rounded-lg border border-blue-200 dark:border-slate-700">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary dark:text-white mb-4 text-center" data-aos="fade-down" data-aos-duration="300">Our Service Includes</h2>
-          
-          {/* Service subsections with images */}
-          <div className="space-y-8 mt-6">
-            {/* System Design & Engineering */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch service-card-scroll" data-aos="fade-up" data-aos-delay="0" data-aos-duration="300">
-              <div>
-                <h3 className="text-xl sm:text-2xl md:text-2xl font-bold text-secondary dark:text-blue-400 mb-3">System Design & Engineering</h3>
-                <p className="text-base sm:text-base text-neutral-700 dark:text-gray-300 mb-3">Our engineers conduct complete hydraulic analysis and fire load assessment to design systems providing optimal coverage and rapid response for your specific facility.</p>
-                <ul className="space-y-2 text-base sm:text-base text-neutral-700 dark:text-gray-300">
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Complete hydraulic and fire load analysis</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> System design for optimal coverage</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Engineering documentation and plans</li>
-                </ul>
-              </div>
-              <div className="order-first md:order-last overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="/images/services/sprinkler-design-engineering.svg" alt="System Design" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
-              </div>
-            </div>
-
-            {/* Professional Installation */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch service-card-scroll" data-aos="fade-up" data-aos-delay="100" data-aos-duration="300">
-              <div className="order-last md:order-first">
-                <h3 className="text-xl sm:text-2xl md:text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Professional Installation</h3>
-                <p className="text-base sm:text-base text-neutral-700 dark:text-gray-300 mb-3">Licensed installers execute all work with minimal operational disruption. We handle all connections, supports, and system testing to ensure peak performance.</p>
-                <ul className="space-y-2 text-base sm:text-base text-neutral-700 dark:text-gray-300">
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Licensed professional installation</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Minimal facility disruption</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Complete system testing and commissioning</li>
-                </ul>
-              </div>
-              <div className="overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="/images/services/sprinkler-installation.svg" alt="Installation" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
-              </div>
-            </div>
-
-            {/* Annual Inspections & Testing */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch service-card-scroll" data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
-              <div>
-                <h3 className="text-xl sm:text-2xl md:text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Annual Inspections & Testing</h3>
-                <p className="text-base sm:text-base text-neutral-700 dark:text-gray-300 mb-3">We perform comprehensive NFPA 13 inspections and pressure testing to ensure systems are fully functional and code-compliant every year.</p>
-                <ul className="space-y-2 text-base sm:text-base text-neutral-700 dark:text-gray-300">
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> NFPA 13 annual inspections</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Pressure and flow testing</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Detailed compliance reporting</li>
-                </ul>
-              </div>
-              <div className="order-first md:order-last overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="/images/services/sprinkler-inspection.svg" alt="Inspections" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
-              </div>
-            </div>
-
-            {/* System Support & Maintenance */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch service-card-scroll" data-aos="fade-up" data-aos-delay="300" data-aos-duration="300">
-              <div className="order-last md:order-first">
-                <h3 className="text-xl sm:text-2xl md:text-2xl font-bold text-secondary dark:text-blue-400 mb-3">Support, Hangers & Freeze Protection</h3>
-                <p className="text-base sm:text-base text-neutral-700 dark:text-gray-300 mb-3">We provide all necessary support brackets, hangers, and freeze protection systems to ensure year-round reliability in all climate conditions.</p>
-                <ul className="space-y-2 text-base sm:text-base text-neutral-700 dark:text-gray-300">
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Professional hangers and support brackets</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> Freeze protection systems for cold climates</li>
-                  <li className="flex items-center"><span className="text-accent text-xl mr-2">&#10003;</span> System upgrades and retrofitting services</li>
-                </ul>
-              </div>
-              <div className="overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                <img src="/images/services/sprinkler-support-maintenance.svg" alt="Support Systems" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="text-center mt-10">
-          <Link to="/contact" className="inline-flex min-h-[44px] items-center justify-center bg-secondary dark:bg-blue-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-lg sm:text-xl font-semibold hover:bg-opacity-90 dark:hover:bg-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl glow-box">
-            Contact Us
+        {/* CTA Button */}
+        <div className="text-center mt-12 md:mt-16" data-aos="fade-up">
+          <Link to="/contact" className="inline-block bg-accent dark:bg-blue-500 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-opacity-90 dark:hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl glow-box min-h-[44px] flex items-center justify-center">
+            Discuss Sprinkler Systems
           </Link>
         </div>
-      </div>
       </div>
     </div>
   );

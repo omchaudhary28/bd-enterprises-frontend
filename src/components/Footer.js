@@ -85,14 +85,14 @@ const Footer = () => {
             <div className="space-y-3">
               <div>
                 <p className="text-xs md:text-sm font-semibold text-accent mb-1">Email</p>
-                <a href="mailto:omchaudhary2111@gmail.com" className="text-sm md:text-base text-gray-200 dark:text-gray-300 hover:text-accent transition-colors duration-300 break-all">
-                  omchaudhary2111@gmail.com
+                <a href="mailto:bdenterprises99@yahoo.co.in" className="text-sm md:text-base text-gray-200 dark:text-gray-300 hover:text-accent transition-colors duration-300 break-all">
+                  bdenterprises99@yahoo.co.in
                 </a>
               </div>
               <div>
                 <p className="text-xs md:text-sm font-semibold text-accent mb-1">Phone</p>
-                <a href="tel:7499953708" className="text-sm md:text-base text-gray-200 dark:text-gray-300 hover:text-accent transition-colors duration-300">
-                  7499953708
+                <a href="tel:9898046269" className="text-sm md:text-base text-gray-200 dark:text-gray-300 hover:text-accent transition-colors duration-300">
+                  9898046269
                 </a>
               </div>
               <div>

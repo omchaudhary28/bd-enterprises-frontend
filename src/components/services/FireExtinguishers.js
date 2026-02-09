@@ -2,194 +2,196 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const FireExtinguishers = () => {
-  const features = [
-    { icon: '\u2713', title: 'Multi-Type Coverage', description: 'ABC, ABCD, Halon, and specialty extinguishers for all fire classes.' },
-    { icon: '\u2713', title: 'Annual Compliance', description: 'Full NFPA 10 compliance with certified inspections and documentation.' },
-    { icon: '\u2713', title: '24/7 Replacement', description: 'Emergency replacement service ensures continuous protection.' },
-    { icon: '\u2713', title: 'Training Included', description: 'Free staff training on proper operation and emergency procedures.' },
+  const products = [
+    {
+      image: '/images/fire extinguisher/automated-Fire-extinguisher.webp',
+      name: 'Automated Fire Suppression Systems',
+      summary: 'State-of-the-art automated systems for immediate, 24/7 fire detection and suppression before significant damage occurs.',
+      useCases: [
+        'Data centers and server rooms',
+        'High-value equipment protection',
+        'Manufacturing facilities',
+        'Storage areas with sensitive materials'
+      ],
+      protection: 'Detects fires in their earliest stages and automatically activates suppression agents, reducing response time and minimizing property damage.',
+      guidelines: 'Requires professional inspection annually; Regular testing of detection sensors; Proper agent refills after discharge',
+      bdValue: 'Expert system design tailored to your facility\'s unique risks, 24/7 monitoring support, and rapid emergency response.'
+    },
+    {
+      image: '/images/fire extinguisher/CO2-Fire-suppression-system.jpg',
+      name: 'CO2 Fire Suppression Systems',
+      summary: 'Precision-engineered CO2 systems for protecting unoccupied industrial and commercial spaces with sensitive equipment.',
+      useCases: [
+        'Data centers and server facilities',
+        'Power generation equipment',
+        'Flammable liquid storage',
+        'High-value machinery areas',
+        'Electrical equipment rooms'
+      ],
+      protection: 'CO2 suppresses fires by displacing oxygen and cooling the protected area, leaving no residue and requiring no cleanup.',
+      guidelines: 'Requires NFPA 12 compliance certification; Monthly system checks; Professional discharge testing every 5 years',
+      bdValue: 'Clean agent technology with zero residue, comprehensive NFPA 12 compliance, and specialized technician training.'
+    },
+    {
+      image: '/images/fire extinguisher/co2-flooding-system-1000x1000.jpg',
+      name: 'CO2 Flooding Systems',
+      summary: 'Total room protection with rapid CO2 flooding for swift, automated suppression of fires in complex industrial environments.',
+      useCases: [
+        'Large unoccupied hazardous areas',
+        'Multi-hazard industrial zones',
+        'Research laboratories',
+        'Specialized equipment rooms',
+        'High-risk manufacturing zones'
+      ],
+      protection: 'System fills entire room with CO2 concentration sufficient to extinguish fires within seconds, preventing catastrophic loss.',
+      guidelines: 'Requires site-specific engineering; Pre-discharge alarm verification; Annual pressure testing; Proper safety signage',
+      bdValue: 'Custom engineered solutions for complex fire risks, comprehensive safety protocols, and continuous system monitoring.'
+    },
+    {
+      image: '/images/services/fire-extinguisher-tubing.svg',
+      name: 'CO2 Tubing Systems',
+      summary: 'Precision-engineered piping networks connecting storage cylinders to discharge nozzles with reliable agent delivery.',
+      useCases: [
+        'System interconnections',
+        'Multi-zone coverage',
+        'Extended reach applications',
+        'Building-wide protection networks'
+      ],
+      protection: 'Properly routed and installed tubing ensures reliable agent delivery and consistent suppression performance across all protected areas.',
+      guidelines: 'Professional installation required; Pressure testing of all connections; Proper labeling and zone identification; Annual inspections',
+      bdValue: 'Certified installation by NFPA-trained technicians, pressure-tested connections, and clear zone identification for safety.'
+    }
+  ];
+
+  const standards = [
+    { title: 'NFPA 10', description: 'National Fire Protection Association standard for portable fire extinguishers and systems' },
+    { title: 'NFPA 12', description: 'Standards for CO2 extinguishing systems including safe discharge and operational procedures' },
+    { title: 'OSHA Compliance', description: 'Workplace fire safety regulations and annual inspection documentation requirements' }
+  ];
+
+  const whyChooseUs = [
+    'NFPA-certified technicians with specialized fire suppression expertise',
+    'Multi-class extinguisher coverage for all fire types (A, B, C, D)',
+    'Annual compliance inspections with full documentation',
+    '24/7 emergency replacement and rapid response availability',
+    'Comprehensive staff training and certification programs included',
+    'Custom system design tailored to your facility\'s specific fire risks'
   ];
 
   return (
-    <div className="service-page relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-gray-900 dark:to-black min-h-screen py-12 md:py-16">
+    <div className="ppe-detail-page relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-gray-900 dark:to-black min-h-screen py-12 md:py-16">
       {/* Glowing orbs */}
       <div className="absolute top-0 left-0 w-40 md:w-72 h-40 md:h-72 bg-accent opacity-10 dark:opacity-20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent opacity-5 dark:opacity-15 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="service-page-card bg-gradient-to-br from-teal-100 to-blue-100 dark:from-slate-900 dark:to-slate-800 p-4 sm:p-6 md:p-8 rounded-lg md:rounded-xl shadow-lg glow-box" data-aos="fade-up" data-aos-duration="300">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary dark:text-white mb-4 sm:mb-6 text-center glow-text" data-aos="fade-down" data-aos-duration="300">Fire Extinguisher Systems</h1>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
-            <div className="flex flex-col justify-center">
-              <p className="text-sm sm:text-base md:text-lg text-neutral-700 dark:text-gray-300 leading-relaxed mb-3 sm:mb-4">
-                Fire extinguishers are the first line of defense in fire emergencies. Our comprehensive fire extinguisher systems provide multi-class coverage for any facility type, ensuring rapid response capabilities and regulatory compliance.
-              </p>
-              <p className="text-sm sm:text-base md:text-lg text-neutral-700 dark:text-gray-300 leading-relaxed">
-                From manufacturing plants to office buildings, we install, inspect, and maintain systems tailored to your specific fire risks and operational needs.
-              </p>
-            </div>
-            <div className="flex items-center" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="400">
-              <img src="/images/services/fire-extinguisher-systems.svg" alt="Fire Extinguisher Inspection" className="rounded-lg shadow-md w-full dark:shadow-2xl transition-transform duration-500 hover:scale-105" />
-            </div>
+        {/* Back Link */}
+        <Link to="/services" className="inline-flex items-center text-white hover:text-accent transition-colors mb-6 font-semibold text-sm md:text-base" data-aos="fade-right">
+          ← Back to Services
+        </Link>
+
+        {/* Hero Section */}
+        <div className="text-center mb-10 md:mb-16" data-aos="fade-up">
+          <div className="text-6xl sm:text-7xl md:text-8xl mb-4 inline-block">🧯</div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 sm:mb-6 glow-text">Fire Extinguisher Systems</h1>
+          <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed mb-3 sm:mb-4">
+            Fire extinguishers are the first line of defense in fire emergencies. Our comprehensive fire extinguisher systems provide multi-class coverage for any facility type, ensuring rapid response capabilities and regulatory compliance.
+          </p>
+          <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            From manufacturing plants to office buildings, we install, inspect, and maintain systems tailored to your specific fire risks and operational needs.
+          </p>
+        </div>
+
+        {/* Products Grid */}
+        <div className="mb-16 md:mb-20">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-8 md:mb-12" data-aos="fade-down">
+            Our Services
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            {products.map((product, index) => (
+              <div key={index} className="bg-white dark:bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay={index * 100}>
+                {/* Product Image */}
+                <div className="relative h-40 sm:h-48 md:h-56 overflow-hidden bg-gradient-to-br from-blue-100 to-teal-100 dark:from-slate-700 dark:to-slate-600">
+                  <img src={product.image} alt={product.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+
+                {/* Product Content */}
+                <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
+                  {/* Name & Summary */}
+                  <h3 className="text-lg sm:text-xl font-bold text-primary dark:text-white mb-2">{product.name}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">{product.summary}</p>
+
+                  {/* Use Cases */}
+                  <div className="mb-3">
+                    <h4 className="text-xs sm:text-sm font-semibold text-primary dark:text-blue-400 mb-2 uppercase tracking-wide">Use Cases</h4>
+                    <ul className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 space-y-1">
+                      {product.useCases.slice(0, 3).map((useCase, i) => (
+                        <li key={i} className="flex items-start">
+                          <span className="text-accent mr-2 flex-shrink-0">•</span>
+                          <span>{useCase}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Protection */}
+                  <div className="mb-3">
+                    <h4 className="text-xs sm:text-sm font-semibold text-primary dark:text-blue-400 mb-2 uppercase tracking-wide">How It Protects</h4>
+                    <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300">{product.protection}</p>
+                  </div>
+
+                  {/* Guidelines */}
+                  <div className="mb-3">
+                    <h4 className="text-xs sm:text-sm font-semibold text-primary dark:text-blue-400 mb-2 uppercase tracking-wide">Maintenance Guidelines</h4>
+                    <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300">{product.guidelines}</p>
+                  </div>
+
+                  {/* BD Value */}
+                  <div className="bg-gradient-to-r from-blue-50 to-teal-50 dark:from-slate-700 dark:to-slate-600 p-3 sm:p-4 rounded-lg border-l-4 border-accent mt-auto">
+                    <h4 className="text-xs sm:text-sm font-bold text-primary dark:text-blue-400 mb-1">BD Enterprises Value</h4>
+                    <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300">{product.bdValue}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
+        </div>
 
-          <div className="mb-10">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-secondary dark:text-blue-400 mb-5 text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="300">Key Features & Benefits</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-              {features.map((feature, index) => (
-                <div key={index} className="flex flex-col bg-blue-50 dark:bg-gray-900 p-4 sm:p-5 md:p-6 rounded-lg border border-blue-200 dark:border-slate-700 service-card-scroll hover:shadow-lg transition-shadow" data-aos="fade-right" data-aos-delay={100 + index * 50} data-aos-duration="300" style={{ animationDelay: `${index * 100}ms` }}>
-                  <div className="text-3xl text-accent mb-3">{feature.icon}</div>
-                  <h3 className="text-base sm:text-lg font-semibold text-primary dark:text-white mb-2">{feature.title}</h3>
-                  <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300">{feature.description}</p>
-                </div>
-              ))}
-            </div>
+        {/* Compliance & Standards */}
+        <div className="mb-16 md:mb-20">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-8 md:mb-12" data-aos="fade-down">
+            Compliance & Standards
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            {standards.map((standard, index) => (
+              <div key={index} className="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay={index * 100}>
+                <h3 className="text-lg sm:text-xl font-bold text-primary dark:text-white mb-2">{standard.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{standard.description}</p>
+              </div>
+            ))}
           </div>
+        </div>
 
-          <div className="service-section-card mb-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-black p-6 sm:p-8 rounded-lg border border-blue-200 dark:border-slate-700">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary dark:text-white mb-4 text-center" data-aos="fade-down" data-aos-duration="300">Our Advanced Fire Suppression Systems</h2>
-            <div className="space-y-8 sm:space-y-10 md:space-y-12 mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 service-card-scroll" data-aos="fade-up" data-aos-delay="0" data-aos-duration="300">
-                <div className="flex flex-col justify-center">
-                  <h3 className="text-xl sm:text-2xl font-bold text-secondary dark:text-blue-400 mb-3 sm:mb-4">Automated Fire Suppression Systems</h3>
-                  <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-3 sm:mb-4 leading-relaxed">
-                    At BD Enterprises, we provide state-of-the-art automated fire suppression systems designed for immediate, 24/7 protection of your most critical assets. These systems offer unparalleled peace of mind by detecting and extinguishing fires in their earliest stages, often before significant damage can occur. Our expert team designs and installs custom solutions that minimize business interruption and enhance employee safety. By choosing our automated systems, you are investing in a cost-effective, long-term safety strategy that reduces the risk of catastrophic loss and may even lower your insurance premiums.
-                  </p>
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md image-reveal-scroll order-first md:order-last">
-                  <img src="/images/fire extinguisher/automated-Fire-extinguisher.webp" alt="Automated Fire Extinguisher System" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
-                </div>
+        {/* Why Choose BD Enterprises */}
+        <div className="mb-16 md:mb-20 bg-gradient-to-br from-blue-50 to-teal-50 dark:from-slate-800 dark:to-slate-700 p-6 sm:p-8 md:p-10 rounded-lg shadow-lg">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary dark:text-white text-center mb-8 md:mb-12" data-aos="fade-down">
+            Why Choose BD Enterprises
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+            {whyChooseUs.map((item, index) => (
+              <div key={index} className="flex items-start" data-aos="fade-up" data-aos-delay={index * 50}>
+                <span className="text-2xl text-accent mr-3 flex-shrink-0 mt-1">✓</span>
+                <span className="text-sm sm:text-base text-gray-700 dark:text-gray-300">{item}</span>
               </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 service-card-scroll" data-aos="fade-up" data-aos-delay="100" data-aos-duration="300">
-                <div className="flex flex-col justify-center">
-                  <h3 className="text-xl sm:text-2xl font-bold text-secondary dark:text-blue-400 mb-3 sm:mb-4">CO2 Fire Suppression Systems</h3>
-                  <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-3 sm:mb-4 leading-relaxed">
-                    BD Enterprises specializes in the design, installation, and maintenance of CO2 fire suppression systems for unoccupied industrial and commercial spaces. These systems are the ideal choice for protecting sensitive, high-value equipment such as data centers, power generation facilities, and flammable liquid storage areas. The CO2 agent suppresses fires by displacing oxygen and cooling the area, leaving behind no residue and eliminating the need for costly cleanup. We ensure that every CO2 system we install complies with all NFPA 12 standards, incorporating critical safety features like pre-discharge alarms and lockout/tagout procedures to protect your personnel and property.
-                  </p>
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="/images/fire extinguisher/CO2-Fire-suppression-system.jpg" alt="CO2 Fire Suppression System" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 service-card-scroll" data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
-                <div className="flex flex-col justify-center">
-                  <h3 className="text-xl sm:text-2xl font-bold text-secondary dark:text-blue-400 mb-3 sm:mb-4">CO2 Flooding Systems</h3>
-                  <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-3 sm:mb-4 leading-relaxed">
-                    For total room protection, BD Enterprises offers CO2 flooding systems that provide rapid, automated fire suppression for unoccupied hazardous areas. These systems are engineered to completely fill a room with a concentration of CO2 gas that is sufficient to extinguish a fire within seconds. This method is exceptionally effective for controlling fires in complex industrial environments with multiple hazards. Our comprehensive services for CO2 flooding systems include site assessment, system design, installation, and ongoing maintenance to ensure your facility is protected against the most challenging fire risks. With a focus on safety and compliance, we deliver solutions that safeguard your assets and ensure business continuity.
-                  </p>
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md image-reveal-scroll order-first md:order-last">
-                  <img src="/images/fire extinguisher/co2-flooding-system-1000x1000.jpg" alt="CO2 Flooding System" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 service-card-scroll" data-aos="fade-up" data-aos-delay="300" data-aos-duration="300">
-                <div className="flex flex-col justify-center">
-                  <h3 className="text-xl sm:text-2xl font-bold text-secondary dark:text-blue-400 mb-3 sm:mb-4">CO2 Tubing Systems</h3>
-                  <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-3 sm:mb-4 leading-relaxed">
-                    CO2 tubing systems connect storage cylinders to discharge nozzles with precision-engineered pipework and fittings. We design routing, install brackets and supports, pressure test the network, and label zones for safe operation and fast maintenance. Properly installed tubing ensures reliable agent delivery and consistent suppression performance across protected areas.
-                  </p>
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="/images/services/fire-extinguisher-tubing.svg" alt="CO2 Tubing System" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
+        </div>
 
-          <div className="service-section-card mb-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-black p-6 sm:p-8 rounded-lg border border-blue-200 dark:border-slate-700">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary dark:text-white mb-4 text-center" data-aos="fade-down" data-aos-duration="300">Our Service Includes</h2>
-            
-            {/* Service subsections with images */}
-            <div className="space-y-8 sm:space-y-10 md:space-y-12 mt-6">
-              {/* Installation & Placement */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 service-card-scroll" data-aos="fade-up" data-aos-delay="0" data-aos-duration="300">
-                <div className="flex flex-col justify-center">
-                  <h3 className="text-xl sm:text-2xl font-bold text-secondary dark:text-blue-400 mb-3 sm:mb-4">Professional Installation & Placement</h3>
-                  <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-3 sm:mb-4">Our certified technicians assess your facility to determine optimal placement and coverage. We ensure accessibility, visibility, and compliance with all regulations.</p>
-                  <ul className="space-y-2 text-sm sm:text-base text-neutral-700 dark:text-gray-300">
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> Site assessment and planning</li>
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> Professional installation by NFPA certified technicians</li>
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> Code-compliant placement and accessibility</li>
-                  </ul>
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md image-reveal-scroll order-first md:order-last">
-                  <img src="/images/services/fire-extinguisher-installation.svg" alt="Professional Installation" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
-                </div>
-              </div>
-
-              {/* NFPA 10 Compliance */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 service-card-scroll" data-aos="fade-up" data-aos-delay="100" data-aos-duration="300">
-                <div className="flex flex-col justify-center">
-                  <h3 className="text-xl sm:text-2xl font-bold text-secondary dark:text-blue-400 mb-3 sm:mb-4">NFPA 10 Annual Inspections</h3>
-                  <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-3 sm:mb-4">Annual compliance inspections ensure your extinguishers meet NFPA 10 standards. We provide certified documentation and handle any needed repairs or recharging.</p>
-                  <ul className="space-y-2 text-sm sm:text-base text-neutral-700 dark:text-gray-300">
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> Annual NFPA 10 certified inspections</li>
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> Pressure testing and gauging</li>
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> Tagged and documented for compliance</li>
-                  </ul>
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="/images/services/compliance-inspection.svg" alt="NFPA Compliance" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
-                </div>
-              </div>
-
-              {/* Hydrostatic Testing */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 service-card-scroll" data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
-                <div className="flex flex-col justify-center">
-                  <h3 className="text-xl sm:text-2xl font-bold text-secondary dark:text-blue-400 mb-3 sm:mb-4">Hydrostatic Testing & Recharging</h3>
-                  <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-3 sm:mb-4">We perform industry-standard hydrostatic testing to verify cylinder integrity and recharge agents to manufacturer specifications, ensuring peak performance when needed.</p>
-                  <ul className="space-y-2 text-sm sm:text-base text-neutral-700 dark:text-gray-300">
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> Hydrostatic pressure testing (every 5-12 years)</li>
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> Agent recharging to OEM specifications</li>
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> Quick turnaround and same-day service available</li>
-                  </ul>
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md image-reveal-scroll order-first md:order-last">
-                  <img src="/images/services/hydrostatic-testing.svg" alt="Hydrostatic Testing" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
-                </div>
-              </div>
-
-              {/* 24/7 Emergency Service */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 service-card-scroll" data-aos="fade-up" data-aos-delay="300" data-aos-duration="300">
-                <div className="flex flex-col justify-center">
-                  <h3 className="text-xl sm:text-2xl font-bold text-secondary dark:text-blue-400 mb-3 sm:mb-4">24/7 Emergency Replacement</h3>
-                  <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-3 sm:mb-4">If an extinguisher is used or expires during an emergency, our rapid response team ensures you get replacements when you need them&mdash;anytime, day or night.</p>
-                  <ul className="space-y-2 text-sm sm:text-base text-neutral-700 dark:text-gray-300">
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> 24/7 emergency replacement availability</li>
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> Rapid response team on standby</li>
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> Guaranteed replacement within hours</li>
-                  </ul>
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md image-reveal-scroll">
-                  <img src="/images/services/emergency-replacement.svg" alt="Emergency Service" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
-                </div>
-              </div>
-
-              {/* Staff Training */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 service-card-scroll" data-aos="fade-up" data-aos-delay="400" data-aos-duration="300">
-                <div className="flex flex-col justify-center">
-                  <h3 className="text-xl sm:text-2xl font-bold text-secondary dark:text-blue-400 mb-3 sm:mb-4">Staff Training & Education</h3>
-                  <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-3 sm:mb-4">Comprehensive training programs teach employees proper extinguisher operation, safety protocols, and emergency procedures. Certification available upon completion.</p>
-                  <ul className="space-y-2 text-sm sm:text-base text-neutral-700 dark:text-gray-300">
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> Hands-on training for all staff</li>
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> PASS technique (Pull, Aim, Squeeze, Sweep)</li>
-                    <li className="flex items-center"><span className="text-accent text-lg sm:text-xl mr-2">&#10003;</span> Certification and documentation provided</li>
-                  </ul>
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md image-reveal-scroll order-first md:order-last">
-                  <img src="/images/services/fire-safety-training.svg" alt="Staff Training" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mt-10">
-                      <Link to="/contact" className="inline-block bg-secondary dark:bg-blue-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-opacity-90 dark:hover:bg-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl glow-box min-h-[44px] flex items-center justify-center">
-                        Contact Us
-                      </Link>          </div>
+        {/* CTA Button */}
+        <div className="text-center mt-12 md:mt-16" data-aos="fade-up">
+          <Link to="/contact" className="inline-block bg-accent dark:bg-blue-500 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-opacity-90 dark:hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl glow-box min-h-[44px] flex items-center justify-center">
+            Discuss Fire Extinguisher Systems
+          </Link>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ const ppeCategories = [
     subtitle: 'Helmets & Hard Hats',
     description: 'Shields from impact, falling objects, and overhead hazards. Essential for construction, manufacturing, and industrial workplaces.',
     imageUrl: 'https://images.unsplash.com/photo-1516169104891-35b1dd1ca893?w=600&h=400&fit=crop',
-    path: '/ppe/head-protection',
+    path: '/services/ppe/head-protection',
     emoji: '🛡️',
     color: 'from-orange-400 to-red-500',
   },
@@ -16,7 +16,7 @@ const ppeCategories = [
     subtitle: 'Goggles & Shields',
     description: 'Guard against chemical splashes, welding sparks, and flying debris. Critical for labs, welding, and chemical handling.',
     imageUrl: 'https://images.unsplash.com/photo-1576091160550-112173d7f6f0?w=600&h=400&fit=crop',
-    path: '/ppe/eye-face-protection',
+    path: '/services/ppe/eye-face-protection',
     emoji: '👓',
     color: 'from-yellow-400 to-orange-500',
   },
@@ -25,7 +25,7 @@ const ppeCategories = [
     subtitle: 'Earplugs & Earmuffs',
     description: 'Prevents noise-induced hearing loss in loud industrial environments. ANSI/OSHA compliant protection.',
     imageUrl: 'https://images.unsplash.com/photo-1484632341272-339079fa3142?w=600&h=400&fit=crop',
-    path: '/ppe/hearing-protection',
+    path: '/services/ppe/hearing-protection',
     emoji: '🎧',
     color: 'from-green-400 to-teal-500',
   },
@@ -34,7 +34,7 @@ const ppeCategories = [
     subtitle: 'Masks & Respirators',
     description: 'Protects from dust, fumes, gases, and hazardous particles. NIOSH-certified for maximum safety.',
     imageUrl: 'https://images.unsplash.com/photo-1584308666744-24d5f00206dd?w=600&h=400&fit=crop',
-    path: '/ppe/respiratory-protection',
+    path: '/services/ppe/respiratory-protection',
     emoji: '😷',
     color: 'from-blue-400 to-cyan-500',
   },
@@ -43,7 +43,7 @@ const ppeCategories = [
     subtitle: 'Gloves',
     description: 'Specialized gloves for chemical handling, thermal protection, and mechanical safety. Customized for different hazards.',
     imageUrl: 'https://images.unsplash.com/photo-1576158547314-71207b676bfc?w=600&h=400&fit=crop',
-    path: '/ppe/hand-protection',
+    path: '/services/ppe/hand-protection',
     emoji: '🧤',
     color: 'from-purple-400 to-pink-500',
   },
@@ -52,7 +52,7 @@ const ppeCategories = [
     subtitle: 'Coveralls & Vests',
     description: 'Full-body coverage from chemical exposure, thermal hazards, and contamination. Durable and compliant.',
     imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop',
-    path: '/ppe/body-protection',
+    path: '/services/ppe/body-protection',
     emoji: '🧥',
     color: 'from-indigo-400 to-purple-500',
   },
@@ -61,7 +61,7 @@ const ppeCategories = [
     subtitle: 'Safety Shoes & Boots',
     description: 'Steel-toed and protective footwear for impact and puncture resistance. ASTM certified for workplace safety.',
     imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=400&fit=crop',
-    path: '/ppe/foot-protection',
+    path: '/services/ppe/foot-protection',
     emoji: '👢',
     color: 'from-amber-400 to-orange-500',
   },
@@ -69,161 +69,150 @@ const ppeCategories = [
 
 const PPEs = () => {
   return (
-    <div className="ppe-page relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-slate-900 dark:to-slate-800 min-h-screen py-12 md:py-16">
-      {/* Glowing orbs */}
-      <div className="absolute top-0 left-0 w-40 md:w-72 h-40 md:h-72 bg-accent opacity-10 dark:opacity-20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent opacity-5 dark:opacity-15 rounded-full blur-3xl"></div>
+    <div className="ppe-page relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen">
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-20 -left-20 w-96 h-96 bg-accent opacity-10 dark:opacity-5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500 opacity-8 dark:opacity-3 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+      </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-20">
         {/* Hero Section */}
-        <div className="text-center mb-10 md:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white glow-text mb-3 md:mb-4">
-            Personal Protection Equipment (PPEs)
+        <div className="text-center mb-12 md:mb-20" data-aos="fade-down">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 mb-6">
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+            <span className="text-xs sm:text-sm font-semibold text-white/90">Complete PPE Solutions</span>
+          </div>
+          
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 text-white glow-text">
+            Personal Protective Equipment
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
-            Comprehensive PPE solutions for every workplace hazard. Your employees' safety is our priority.
+          
+          <p className="text-lg md:text-2xl font-bold text-blue-200 dark:text-blue-300 max-w-2xl mx-auto mb-4">
+            Comprehensive PPE for Every Workplace Hazard
           </p>
-          <p className="text-sm sm:text-base text-white/80 mt-3 max-w-2xl mx-auto">
-            From head to toe, we provide certified protection equipment and expert guidance on proper usage and maintenance.
+          
+          <p className="text-base md:text-lg text-white/80 dark:text-gray-300 max-w-3xl mx-auto">
+            From head to toe protection, we provide certified, durable PPE solutions with expert guidance on proper usage, maintenance, and compliance.
           </p>
         </div>
 
-        {/* PPE Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-3 sm:gap-4 mb-12">
+        {/* Quick Category Images Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 sm:gap-4 mb-16 md:mb-20">
           {ppeCategories.map((category, index) => (
             <Link
               key={index}
               to={category.path}
-              className="group relative overflow-hidden rounded-lg md:rounded-xl transition-all duration-300 transform active:scale-95 md:hover:scale-105 flex "
-              data-aos="fade-up"
+              className="group relative overflow-hidden rounded-xl transition-all duration-300 active:scale-95 md:hover:scale-110 flex h-40 sm:h-48"
+              data-aos="zoom-in"
               data-aos-delay={index * 50}
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-black/50 to-black/30 z-10"></div>
               <img
                 src={category.imageUrl}
                 alt={category.title}
-                className="w-full h-40 sm:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 z-20"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20"></div>
               <div className="absolute inset-0 flex flex-col items-center justify-center z-30 text-white text-center px-3 py-4">
-                <div className="text-4xl md:text-5xl mb-2">{category.emoji}</div>
-                <h3 className="text-sm md:text-base font-bold leading-tight line-clamp-2">{category.title}</h3>
-                <p className="text-xs md:text-sm font-medium text-white/80 line-clamp-1">{category.subtitle}</p>
+                <div className="text-3xl md:text-4xl mb-2 group-hover:scale-125 transition-transform duration-300">{category.emoji}</div>
+                <h3 className="text-xs sm:text-sm md:text-base font-bold leading-tight line-clamp-2">{category.title}</h3>
               </div>
             </Link>
           ))}
         </div>
 
-        {/* Main Categories Card Grid */}
-        <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-8 glow-text">Explore PPE Categories</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 md:gap-6 lg:gap-8">
+        {/* Main PPE Cards Section */}
+        <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text">Featured PPE Categories</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-24">
           {ppeCategories.map((category, index) => (
             <Link
-              key={index}
               to={category.path}
-              className="group bg-gradient-to-br from-white to-gray-100 dark:from-slate-800 dark:to-slate-900 rounded-lg md:rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 transform active:scale-95 md:hover:scale-105 flex flex-col"
-              data-aos="fade-up"
+              key={index}
+              className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 cursor-pointer flex flex-col h-full"
+              data-aos="zoom-in"
               data-aos-delay={index * 100}
             >
-              {/* Image */}
-              <div className="overflow-hidden h-40 sm:h-48 md:h-56 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-slate-700 dark:to-slate-800">
-                <img
-                  src={category.imageUrl}
-                  alt={category.title}
+              {/* Image Container */}
+              <div className="relative h-56 sm:h-64 overflow-hidden bg-gradient-to-br from-blue-500/20 to-accent/20">
+                <img 
+                  src={category.imageUrl} 
+                  alt={category.title} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
-              {/* Content */}
-              <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
-                <div className="text-3xl sm:text-4xl mb-2">{category.emoji}</div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary dark:text-white mb-1">
+              {/* Content Container */}
+              <div className="p-5 md:p-6 flex flex-col flex-grow">
+                {/* Emoji & Icon */}
+                <div className="text-4xl md:text-5xl mb-3">{category.emoji}</div>
+
+                {/* Title & Subtitle */}
+                <h3 className="text-xl md:text-2xl font-black text-white mb-1 group-hover:text-accent transition-colors duration-300 line-clamp-2">
                   {category.title}
                 </h3>
-                <p className="text-xs sm:text-sm md:text-base text-accent dark:text-blue-400 font-semibold mb-2">
+                <p className="text-xs md:text-sm font-bold text-accent/90 mb-3 uppercase tracking-wider">
                   {category.subtitle}
                 </p>
-                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-gray-300 mb-4 flex-grow leading-snug">
+
+                {/* Description */}
+                <p className="text-sm md:text-base text-white/75 dark:text-gray-300 mb-4 flex-grow leading-relaxed">
                   {category.description}
                 </p>
-                <button className="inline-flex items-center justify-center bg-gradient-to-r from-secondary to-accent text-white px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3 rounded-lg md:rounded-full text-xs sm:text-sm md:text-base font-bold transition-all duration-300 hover:shadow-md hover:translate-y-[-2px] active:scale-95 w-full min-h-[44px]">
+
+                {/* CTA Button */}
+                <button className="w-full py-3 px-4 rounded-full font-bold text-sm md:text-base bg-gradient-to-r from-accent to-orange-500 text-white hover:shadow-lg transition-all duration-300 group-hover:scale-105 active:scale-95 uppercase tracking-wider">
                   View Details
                 </button>
               </div>
+
+              {/* Hover Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
             </Link>
           ))}
         </div>
 
-        {/* BD Enterprises PPE Services */}
-        <div className="mt-12 md:mt-16 p-6 sm:p-8 md:p-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-slate-900 dark:to-slate-800 rounded-lg md:rounded-xl border-2 border-accent glow-box" data-aos="fade-up">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary dark:text-white mb-4 md:mb-6">
-            How BD Enterprises Enhances Your PPE Program
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        {/* Why Choose PPE Section */}
+        <div className="text-center mb-16 md:mb-20" data-aos="fade-up">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 glow-text">Why BD Enterprises PPE?</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {[
-              {
-                title: 'Expert Selection',
-                description: 'We help you choose the right PPE for your specific workplace hazards and compliance requirements.',
-                icon: '✓',
-              },
-              {
-                title: 'Proper Fitting',
-                description: 'Get expert fitting and sizing guidance to ensure maximum comfort and protection for all employees.',
-                icon: '👔',
-              },
-              {
-                title: 'Training & Guidance',
-                description: 'Comprehensive training on proper usage, care, maintenance, and replacement schedules.',
-                icon: '📚',
-              },
-              {
-                title: 'Compliance & Audits',
-                description: 'We ensure your PPE program meets all OSHA, ANSI, and industry-specific standards.',
-                icon: '📋',
-              },
-              {
-                title: 'Maintenance & Replacement',
-                description: 'Scheduled replacements and maintenance services to keep all PPE in optimal condition.',
-                icon: '🔧',
-              },
-              {
-                title: '24/7 Support',
-                description: 'Emergency replacement and support available around the clock for your peace of mind.',
-                icon: '☎️',
-              },
-            ].map((service, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-slate-800 p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
-                data-aos="zoom-in"
-                data-aos-delay={index * 50}
+              { icon: '✓', title: 'Certified', desc: 'ANSI/OSHA approved' },
+              { icon: '🛡️', title: 'Durable', desc: 'Premium quality materials' },
+              { icon: '📋', title: 'Compliant', desc: 'Full safety standards' },
+              { icon: '🚀', title: 'Expert Support', desc: '25+ years experience' }
+            ].map((benefit, idx) => (
+              <div 
+                key={idx}
+                className="p-6 md:p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 hover:border-accent/50 transition-all duration-300 hover:shadow-lg"
+                data-aos="fade-up"
+                data-aos-delay={idx * 100}
               >
-                <div className="text-3xl mb-3">{service.icon}</div>
-                <h4 className="text-base md:text-lg font-bold text-primary dark:text-white mb-2">
-                  {service.title}
-                </h4>
-                <p className="text-xs md:text-sm text-neutral-700 dark:text-gray-300 leading-snug">
-                  {service.description}
-                </p>
+                <div className="text-4xl md:text-5xl mb-3">{benefit.icon}</div>
+                <h4 className="text-lg md:text-xl font-bold text-white mb-2">{benefit.title}</h4>
+                <p className="text-sm md:text-base text-white/70">{benefit.desc}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="mt-10 md:mt-12 text-center" data-aos="fade-up">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Ready to Enhance Your Workplace Safety?
-          </h2>
-          <p className="text-base md:text-lg text-white/90 mb-6 max-w-2xl mx-auto">
-            Contact us today for a comprehensive PPE assessment and customized safety solution for your organization.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center justify-center min-h-[48px] bg-accent dark:bg-blue-500 text-primary dark:text-white px-8 py-3 sm:px-10 sm:py-4 text-sm sm:text-base font-black rounded-xl sm:rounded-full shadow-2xl ring-2 ring-white/30 dark:ring-white/20 hover:shadow-3xl hover:scale-105 active:scale-95 transition-all duration-200 uppercase tracking-wider"
-          >
-            Schedule PPE Consultation
-          </Link>
+        {/* Bottom CTA Section */}
+        <div className="text-center" data-aos="fade-up">
+          <div className="bg-gradient-to-r from-accent/20 to-secondary/20 backdrop-blur-sm border border-white/20 rounded-2xl p-8 md:p-12">
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Ready to Protect Your Team?</h2>
+            <p className="text-lg text-white/80 mb-6 max-w-2xl mx-auto">
+              Get expert guidance on selecting the right PPE for your workplace.
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center min-h-[48px] px-8 md:px-12 py-3 md:py-4 bg-gradient-to-r from-accent to-orange-500 text-white font-bold rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 uppercase tracking-wider"
+            >
+              Contact Us Today
+            </Link>
+          </div>
         </div>
       </div>
     </div>
