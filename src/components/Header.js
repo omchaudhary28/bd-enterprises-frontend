@@ -102,25 +102,27 @@ const Header = () => {
                 return (
                   <li 
                     key={index} 
-                    className="relative" 
+                    className="relative"
                     onMouseEnter={() => setHoverIndex(index)} 
                     onMouseLeave={() => setHoverIndex(-1)}
+                    onTouchStart={() => setHoverIndex(index)}
+                    onFocus={() => setHoverIndex(index)}
+                    onBlur={() => setHoverIndex(-1)}
                   >
                     <Link 
                       to={link.path} 
                       className="relative z-20 inline-block px-4 py-2 text-lg text-white font-medium transition-colors duration-300"
                     >
                       <span className="relative z-30">{link.label}</span>
-                      {/* Animated pill-style background: blue/teal, fade animation, no layout shift */}
+                      {/* Animated pill-style background: blue/teal tint, fade animation, no layout shift */}
                       <motion.span
                         aria-hidden="true"
-                        layoutId={`nav-pill-${index}`}
+                        layoutId={`nav-pill`}
                         initial={false}
                         animate={{ 
-                          opacity: isActive ? 0.20 : (isHover ? 0.12 : 0),
-                          // Ensure no layout shift - use position absolute
+                          opacity: isActive ? 0.18 : (isHover ? 0.12 : 0),
                         }}
-                        transition={prefersReduced ? { duration: 0 } : { ease: 'easeInOut', duration: 0.24 }}
+                        transition={prefersReduced ? { duration: 0 } : { ease: 'easeInOut', duration: 0.22 }}
                         className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 z-10 pointer-events-none will-change-opacity"
                         style={{ mixBlendMode: 'screen' }}
                       />

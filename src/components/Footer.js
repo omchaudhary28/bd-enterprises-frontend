@@ -2,69 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 
-// Collapsible Footer Section Component
-const FooterSection = ({ title, items, sectionId, expandedSection, setExpandedSection, delay, prefersReduced }) => {
-  const isExpanded = expandedSection === sectionId;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: prefersReduced ? 0 : 0.5, ease: 'easeOut', delay }}
-      viewport={{ once: true }}
-    >
-      {/* Desktop: Always Expanded | Mobile: Collapsible */}
-      <motion.button
-        onClick={() => setExpandedSection(isExpanded ? null : sectionId)}
-        className="w-full md:w-auto text-base md:text-lg font-bold mb-4 text-accent flex items-center justify-between md:justify-start gap-2 md:cursor-default"
-        whileHover={prefersReduced ? {} : { x: 5 }}
-      >
-        <span>{title}</span>
-        <svg 
-          className="w-4 h-4 md:hidden transition-transform duration-300"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </motion.button>
-
-      {/* Desktop: Always Show | Mobile: Conditional */}
-      <motion.div
-        initial={false}
-        animate={{ 
-          height: isExpanded ? 'auto' : 0,
-          opacity: isExpanded ? 1 : 0
-        }}
-        transition={{ duration: prefersReduced ? 0 : 0.3, ease: 'easeInOut' }}
-        className="overflow-hidden md:overflow-visible md:opacity-100"
-      >
-        <ul className="space-y-2">
-          {items.map((item, idx) => (
-            <motion.li 
-              key={idx}
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: prefersReduced ? 0 : 0.3, delay: prefersReduced ? 0 : idx * 0.05 }}
-              viewport={{ once: true }}
-            >
-              <Link
-                to={item.path}
-                className="text-sm md:text-base text-gray-200 dark:text-gray-300 hover:text-accent dark:hover:text-blue-400 transition-all duration-300 flex items-center gap-2 py-1 group"
-              >
-                <span className="text-accent group-hover:translate-x-1 transition-transform duration-200">→</span>
-                {item.name}
-              </Link>
-            </motion.li>
-          ))}
-        </ul>
-      </motion.div>
-    </motion.div>
-  );
-};
-
 const Footer = () => {
   const prefersReduced = useReducedMotion();
   const [expandedSection, setExpandedSection] = useState(null);
@@ -75,8 +12,6 @@ const Footer = () => {
     { name: 'Fire Alarms', path: '/services/fire-alarm-detection' },
     { name: 'Sprinkler Systems', path: '/services/sprinkler-systems' },
     { name: 'Emergency Lighting', path: '/services/emergency-lighting' },
-    { name: 'Fire Safety Training', path: '/services/fire-safety-training' },
-    { name: 'Compliance & Inspection', path: '/services/compliance-inspection' },
   ];
 
   const company = [
@@ -95,7 +30,8 @@ const Footer = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ 
-            duration: 0.6
+            duration: 0.6,
+            staggerChildren: prefersReduced ? 0 : 0.08
           }}
           viewport={{ once: true, amount: 0.2 }}
         >
@@ -134,6 +70,30 @@ const Footer = () => {
                 </motion.button>
               ))}
             </motion.div>
+            {/* Optional compact Google Map (uses same iframe string env var when provided) */}
+            {process.env.REACT_APP_GOOGLE_MAP_IFRAME && (
+              <div className="mt-4 hidden md:block">
+                <div className="w-48 h-20 overflow-hidden rounded-lg shadow-md">
+                  <div
+                    className="w-full h-full"
+                    dangerouslySetInnerHTML={{ __html: (function () {
+                      try {
+                        const raw = process.env.REACT_APP_GOOGLE_MAP_IFRAME;
+                        return raw.replace(/<iframe(.*?)>/i, (match, attrs) => {
+                          let s = attrs;
+                          if (!/loading=/i.test(s)) s += ' loading="lazy"';
+                          if (!/style=/i.test(s)) s += ' style="width:100%;height:100%;border:0;border-radius:8px;"';
+                          else s = s.replace(/style=(['"])(.*?)\1/i, (m, q, inner) => `style=${q}${inner};width:100%;height:100%;border:0;border-radius:8px;${q}`);
+                          return `<iframe${s}>`;
+                        });
+                      } catch (err) {
+                        return process.env.REACT_APP_GOOGLE_MAP_IFRAME;
+                      }
+                    })() }}
+                  />
+                </div>
+              </div>
+            )}
           </motion.div>
 
           {/* Services Section - Collapsible on Mobile */}
@@ -146,131 +106,32 @@ const Footer = () => {
             delay={0.08}
             prefersReduced={prefersReduced}
           />
-
-          {/* Company Section - Collapsible on Mobile */}
-          <FooterSection 
-            title="🏢 Company" 
-            items={company}
-            sectionId="company"
-            expandedSection={expandedSection}
-            setExpandedSection={setExpandedSection}
-            delay={0.16}
-            prefersReduced={prefersReduced}
-          />
-
-          {/* Contact Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: prefersReduced ? 0 : 0.5, ease: 'easeOut', delay: 0.24 }}
-            viewport={{ once: true }}
-            className="md:col-span-1"
-          >
-            <h4 className="text-base md:text-lg font-bold mb-4 text-accent">📞 Contact</h4>
-            <div className="space-y-3">
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.4 }}
-                viewport={{ once: true }}
-              >
-                <p className="text-xs md:text-sm font-semibold text-accent mb-1">Email</p>
-                <a href="mailto:bdenterprises99@yahoo.co.in" className="text-sm md:text-base text-gray-200 dark:text-gray-300 hover:text-accent dark:hover:text-blue-400 transition-colors duration-300 break-all block">
-                  bdenterprises99@yahoo.co.in
-                </a>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.35, duration: 0.4 }}
-                viewport={{ once: true }}
-              >
-                <p className="text-xs md:text-sm font-semibold text-accent mb-1">Phone</p>
-                <a href="tel:9898046269" className="text-sm md:text-base text-gray-200 dark:text-gray-300 hover:text-accent dark:hover:text-blue-400 transition-colors duration-300">
-                  📱 9898046269
-                </a>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.4 }}
-                viewport={{ once: true }}
-              >
-                <p className="text-xs md:text-sm font-semibold text-accent mb-1">Hours</p>
-                <p className="text-sm md:text-base text-gray-200 dark:text-gray-300">
-                  ⏰ 24/7 Available
+                  24/7 Available
                 </p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Bottom Section - Trust Indicators & Legal */}
-        <motion.div 
-          className="border-t border-accent border-opacity-20 pt-8 md:pt-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: prefersReduced ? 0 : 0.5, ease: 'easeOut' }}
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          {/* Trust Indicators */}
-          <div className="mb-6 flex flex-wrap gap-4 justify-center md:justify-start">
-            <motion.div 
-              className="flex items-center gap-2 text-sm text-accent font-semibold"
-              whileHover={prefersReduced ? {} : { scale: 1.05 }}
-            >
-              <span className="text-lg">✓</span> ANSI/OSHA Certified
-            </motion.div>
-            <motion.div 
-              className="flex items-center gap-2 text-sm text-accent font-semibold"
-              whileHover={prefersReduced ? {} : { scale: 1.05 }}
-            >
-              <span className="text-lg">🛡️</span> Enterprise Grade
-            </motion.div>
-            <motion.div 
-              className="flex items-center gap-2 text-sm text-accent font-semibold"
-              whileHover={prefersReduced ? {} : { scale: 1.05 }}
-            >
-              <span className="text-lg">⏰</span> 25+ Years
-            </motion.div>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs md:text-sm text-gray-300 dark:text-gray-400 text-center md:text-left">
-              © {currentYear} BD Enterprises. All rights reserved. | <span className="text-accent font-semibold">Fire Safety Excellence Since 2001</span>
-            </p>
-            <motion.div 
-              className="flex gap-4 flex-wrap justify-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              {[
-                { label: 'Privacy Policy', path: '#' },
-                { label: 'Terms & Conditions', path: '#' },
-                { label: 'Sitemap', path: '/sitemap.xml' }
-              ].map((link) => (
-                <Link
-                  key={link.label}
-                  to={link.path}
-                  className="text-xs md:text-sm text-gray-300 dark:text-gray-400 hover:text-accent dark:hover:text-blue-400 transition-colors duration-300 font-medium"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </motion.div>
-
-          {/* Optional compact map - renders only if REACT_APP_GOOGLE_MAP_IFRAME is set */}
-          {process.env.REACT_APP_GOOGLE_MAP_IFRAME && (
-            <div className="mt-6 w-full max-w-sm mx-auto md:mx-0">
-              <div className="rounded-lg overflow-hidden shadow-inner">
-                <div className="w-full" dangerouslySetInnerHTML={{ __html: process.env.REACT_APP_GOOGLE_MAP_IFRAME }} />
               </div>
             </div>
-          )}
           </div>
-        </motion.div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="border-t border-accent border-opacity-20 pt-8 md:pt-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-xs md:text-sm text-gray-300 dark:text-gray-400 text-center md:text-left">
+              &copy; {currentYear} BD Enterprises. All rights reserved. | Fire Safety Excellence Since 2001
+            </p>
+            <div className="flex gap-4 flex-wrap justify-center">
+              <button className="text-xs md:text-sm text-gray-300 dark:text-gray-400 hover:text-accent transition-colors duration-300 cursor-pointer">
+                Privacy Policy
+              </button>
+              <button className="text-xs md:text-sm text-gray-300 dark:text-gray-400 hover:text-accent transition-colors duration-300 cursor-pointer">
+                Terms & Conditions
+              </button>
+              <button className="text-xs md:text-sm text-gray-300 dark:text-gray-400 hover:text-accent transition-colors duration-300 cursor-pointer">
+                Sitemap
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );

@@ -163,9 +163,9 @@ export default function HeroCarousel() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Dots Indicators (mobile-friendly, no arrows) */}
+      {/* Dots Indicators (mobile-only, no arrows on desktop) */}
       <div 
-        className="absolute z-40 bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 md:gap-3"
+        className="absolute z-40 bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 md:gap-3 md:hidden"
         role="tablist"
         aria-label="Carousel slides"
       >

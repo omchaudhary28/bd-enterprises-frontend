@@ -7,7 +7,7 @@ const ppeCategories = [
     title: 'Head Protection',
     subtitle: 'Helmets & Hard Hats',
     description: 'Shields from impact, falling objects, and overhead hazards. Essential for construction, manufacturing, and industrial workplaces.',
-    imageUrl: '/images/ppes/Head-Protection.webp',
+    imageUrl: '/images/ppe/head-protection.jpg',
     path: '/services/ppe/head-protection',
     icon: 'helmet',
     color: 'from-orange-400 to-red-500',
@@ -16,7 +16,7 @@ const ppeCategories = [
     title: 'Eye & Face Protection',
     subtitle: 'Goggles & Shields',
     description: 'Guard against chemical splashes, welding sparks, and flying debris. Critical for labs, welding, and chemical handling.',
-    imageUrl: '/images/ppes/Face-and-Eye-Protection_2022.avif',
+    imageUrl: '/images/ppe/eye-face-protection.jpg',
     path: '/services/ppe/eye-face-protection',
     icon: 'goggles',
     color: 'from-yellow-400 to-orange-500',
@@ -25,7 +25,7 @@ const ppeCategories = [
     title: 'Hearing Protection',
     subtitle: 'Earplugs & Earmuffs',
     description: 'Prevents noise-induced hearing loss in loud industrial environments. ANSI/OSHA compliant protection.',
-    imageUrl: '/images/ppes/Hearing-Protection-1536x922.webp',
+    imageUrl: '/images/ppe/hearing-protection.jpg',
     path: '/services/ppe/hearing-protection',
     icon: 'ear',
     color: 'from-green-400 to-teal-500',
@@ -34,7 +34,7 @@ const ppeCategories = [
     title: 'Respiratory Protection',
     subtitle: 'Masks & Respirators',
     description: 'Protects from dust, fumes, gases, and hazardous particles. NIOSH-certified for maximum safety.',
-    imageUrl: '/images/ppes/Respiratory-Protection.webp',
+    imageUrl: '/images/ppe/respiratory-protection.jpg',
     path: '/services/ppe/respiratory-protection',
     icon: 'mask',
     color: 'from-blue-400 to-cyan-500',
@@ -43,7 +43,7 @@ const ppeCategories = [
     title: 'Hand Protection',
     subtitle: 'Gloves',
     description: 'Specialized gloves for chemical handling, thermal protection, and mechanical safety. Customized for different hazards.',
-    imageUrl: '/images/ppes/Hand-Protection-1536x922.webp',
+    imageUrl: '/images/ppe/hand-protection.jpg',
     path: '/services/ppe/hand-protection',
     icon: 'glove',
     color: 'from-purple-400 to-pink-500',
@@ -52,7 +52,7 @@ const ppeCategories = [
     title: 'Body Protection',
     subtitle: 'Coveralls & Vests',
     description: 'Full-body coverage from chemical exposure, thermal hazards, and contamination. Durable and compliant.',
-    imageUrl: '/images/ppes/Skin-and-Body-Protection_2022.avif',
+    imageUrl: '/images/ppe/body-protection.jpg',
     path: '/services/ppe/body-protection',
     icon: 'vest',
     color: 'from-indigo-400 to-purple-500',
@@ -61,7 +61,7 @@ const ppeCategories = [
     title: 'Foot Protection',
     subtitle: 'Safety Shoes & Boots',
     description: 'Steel-toed and protective footwear for impact and puncture resistance. ASTM certified for workplace safety.',
-    imageUrl: '/images/ppes/Foot-Protection-1536x922.webp',
+    imageUrl: '/images/ppe/foot-protection.jpg',
     path: '/services/ppe/foot-protection',
     icon: 'boot',
     color: 'from-amber-400 to-orange-500',
@@ -70,7 +70,7 @@ const ppeCategories = [
     title: 'BASCA Cylinders',
     subtitle: 'Fire Suppressant Cylinders',
     description: 'Advanced fire suppression technology for specialized environments. Clean agent systems for sensitive equipment protection.',
-    imageUrl: '/images/ppes/PN-521-Chrome-Orange.jpg',
+    imageUrl: '/images/ppe/basca-cylinders.jpg',
     path: '/services/ppe/basca-cylinders',
     icon: 'cylinder',
     color: 'from-red-400 to-red-600',
@@ -225,7 +225,6 @@ const PPEs = () => {
                   alt={category.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
-                  onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/fallbacks/ppe-fallback.svg'; }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20"></div>
                 <div className="absolute inset-0 flex flex-col items-center justify-center z-30 text-white text-center px-3 py-4">
@@ -299,7 +298,6 @@ const PPEs = () => {
                       alt={category.title} 
                       className="w-full h-full object-cover"
                       loading="lazy"
-                      onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/fallbacks/ppe-fallback.svg'; }}
                       variants={imageVariants}
                       transition={{ duration: 0.5, ease: 'easeOut' }}
                     />

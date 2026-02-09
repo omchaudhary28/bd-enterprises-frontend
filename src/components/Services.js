@@ -136,6 +136,7 @@ const Services = () => {
                   alt={service.title} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
+                  onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/services/compliance-inspection.svg'; }}
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

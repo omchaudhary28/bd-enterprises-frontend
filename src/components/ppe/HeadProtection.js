@@ -55,7 +55,7 @@ const HeadProtection = () => {
     },
     {
       name: 'Safety Helmets',
-      image: '/images/ppes/Head-Protection.webp',
+      image: '/images/ppes/istockphoto-1388965773-1024x1024.jpg',
       summary: 'Lightweight, comfortable helmets for work requiring extended wear.',
       useCases: ['Electrical work', 'Confined space work', 'Welding', 'High-altitude work'],
       protection: 'Guards against impacts, electrical hazards, and penetration from sharp objects.',
@@ -64,7 +64,7 @@ const HeadProtection = () => {
     },
     {
       name: 'Bump Caps',
-      image: '/images/ppes/Head-Protection.webp',
+      image: '/images/ppes/istockphoto-1411572653-1024x1024.jpg',
       summary: 'Lightweight protection for low-risk overhead hazards.',
       useCases: ['Warehouse operations', 'Food processing', 'Assembly lines', 'Cold storage'],
       protection: 'Reduces impact severity from minor bumps and light falling objects.',
@@ -165,6 +165,8 @@ const HeadProtection = () => {
                     className="w-full h-full object-cover"
                     variants={imageVariants}
                     transition={{ duration: 0.5, ease: 'easeOut' }}
+                    loading="lazy"
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/services/compliance-inspection.svg'; }}
                   />
                 </div>
               <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
