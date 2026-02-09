@@ -75,6 +75,8 @@ const Header = () => {
   ];
 
   const prefersReduced = useReducedMotion();
+  const location = useLocation();
+  const [hoverIndex, setHoverIndex] = useState(-1);
 
   return (
     <header className="bg-gradient-to-r from-primary via-primary to-secondary dark:bg-gradient-to-r dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 text-white shadow-lg sticky top-0 z-50 border-b-2 border-accent dark:border-opacity-50 backdrop-blur-sm bg-opacity-95 dark:bg-opacity-95">
@@ -92,17 +94,18 @@ const Header = () => {
           <nav className="hidden lg:block">
             <ul className="flex space-x-2 md:space-x-4 items-center justify-center">
               {navLinks.map((link, index) => {
-                const isActive = (useLocation().pathname === link.path);
+                const isActive = (location.pathname === link.path);
+                const isHover = hoverIndex === index;
                 return (
-                  <li key={index} className="relative">
+                  <li key={index} className="relative" onMouseEnter={() => setHoverIndex(index)} onMouseLeave={() => setHoverIndex(-1)}>
                     <Link to={link.path} className="relative z-20 inline-block px-4 py-2 text-lg text-white font-medium">
                       <span className="relative z-30">{link.label}</span>
                       <motion.span
                         aria-hidden
-                        layoutId={`nav-pill`}
+                        layoutId={`nav-pill-${index}`}
                         initial={false}
-                        animate={{ opacity: isActive ? 0.18 : 0 }}
-                        transition={prefersReduced ? { duration: 0 } : { ease: 'easeInOut', duration: 0.28 }}
+                        animate={{ opacity: isActive ? 0.18 : (isHover ? 0.12 : 0) }}
+                        transition={prefersReduced ? { duration: 0 } : { ease: 'easeInOut', duration: 0.24 }}
                         className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 z-10 pointer-events-none"
                         style={{ mixBlendMode: 'screen' }}
                       />
