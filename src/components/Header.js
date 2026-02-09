@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
@@ -73,6 +74,8 @@ const Header = () => {
     { label: 'Contact', path: '/contact' },
   ];
 
+  const prefersReduced = useReducedMotion();
+
   return (
     <header className="bg-gradient-to-r from-primary via-primary to-secondary dark:bg-gradient-to-r dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 text-white shadow-lg sticky top-0 z-50 border-b-2 border-accent dark:border-opacity-50 backdrop-blur-sm bg-opacity-95 dark:bg-opacity-95">
       <div className="progress-bar" style={{ width: `${scrollProgress}%` }}></div>
@@ -88,22 +91,31 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:block">
             <ul className="flex space-x-2 md:space-x-4 items-center justify-center">
-              {navLinks.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    to={link.path}
-                    className="relative text-lg w-fit block px-4 py-2 after:block after:content-[''] after:absolute after:h-[2px] after:bg-accent after:w-full after:scale-x-0 hover:after:scale-x-100 after:transition after:duration-300 after:origin-center transition-colors duration-300 hover:text-accent"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {navLinks.map((link, index) => {
+                const isActive = (useLocation().pathname === link.path);
+                return (
+                  <li key={index} className="relative">
+                    <Link to={link.path} className="relative z-20 inline-block px-4 py-2 text-lg text-white font-medium">
+                      <span className="relative z-30">{link.label}</span>
+                      <motion.span
+                        aria-hidden
+                        layoutId={`nav-pill`}
+                        initial={false}
+                        animate={{ opacity: isActive ? 0.18 : 0 }}
+                        transition={prefersReduced ? { duration: 0 } : { ease: 'easeInOut', duration: 0.28 }}
+                        className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 z-10 pointer-events-none"
+                        style={{ mixBlendMode: 'screen' }}
+                      />
+                    </Link>
+                  </li>
+                );
+              })}
               {/* Services Dropdown */}
               <li className="relative group">
                 <button
                   onMouseEnter={() => setIsServicesDropdownOpen(true)}
                   onMouseLeave={() => setIsServicesDropdownOpen(false)}
-                  className="relative text-lg w-fit px-4 py-2 transition-colors duration-300 hover:text-accent inline-flex items-center gap-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-accent after:w-full after:scale-x-0 group-hover:after:scale-x-100 after:transition after:duration-300 after:origin-center"
+                  className="relative text-lg w-fit px-4 py-2 transition-colors duration-300 hover:text-accent inline-flex items-center gap-1"
                 >
                   Services
                   <svg className={`w-4 h-4 transition-transform duration-300 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">

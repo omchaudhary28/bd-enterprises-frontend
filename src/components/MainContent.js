@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedSection from './AnimatedSection';
+import HeroCarousel from './HeroCarousel';
 
 const MainContent = () => {
   const services = [
@@ -91,23 +92,13 @@ const MainContent = () => {
               </div>
             </AnimatedSection>
 
-            {/* Right Column - Image & Animation */}
+            {/* Right Column - Hero Carousel */}
             <AnimatedSection animation="zoom-in" delay={200} className="order-1 lg:order-2">
               <div className="relative">
-                {/* Image Container */}
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-square md:aspect-auto md:h-[500px] bg-gradient-to-br from-blue-400 to-secondary">
-                  <img
-                    src="https://images.unsplash.com/photo-1581092162562-40038f56c6fe?w=600&h=600&fit=crop"
-                    alt="Fire Safety Professional"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent"></div>
-                </div>
+                <HeroCarousel />
 
-                {/* Floating badge */}
-                <div className="absolute -bottom-6 -right-6 bg-accent text-primary font-bold px-6 py-4 rounded-2xl shadow-2xl text-center border-4 border-white dark:border-slate-800 animate-bounce" style={{ animation: 'bounce 3s infinite' }}>
+                {/* Floating badge (kept for emphasis) */}
+                <div className="absolute -bottom-6 -right-6 bg-accent text-primary font-bold px-6 py-4 rounded-2xl shadow-2xl text-center border-4 border-white dark:border-slate-800" style={{ opacity: 0.95 }}>
                   <div className="text-2xl md:text-3xl">✓</div>
                   <div className="text-xs md:text-sm font-bold">100% Safe</div>
                 </div>
