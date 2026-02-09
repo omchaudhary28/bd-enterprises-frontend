@@ -19,6 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "watch:build-commit": "node ./scripts/watch-and-commit.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

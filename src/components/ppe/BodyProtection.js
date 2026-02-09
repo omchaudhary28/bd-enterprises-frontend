@@ -14,7 +14,7 @@ const BodyProtection = () => {
     },
     {
       name: 'Flame-Resistant Clothing',
-      image: '/images/ppes/Skin-and-Body-Protection_2022.avif',
+      image: '/images/ppes/istockphoto-1658925458-1024x1024.jpg',
       summary: 'Self-extinguishing fabric for thermal and flame protection.',
       useCases: ['Welding operations', 'Fire proximity work', 'Oil & gas industry', 'Foundry work'],
       protection: 'Prevents burns from open flame; resists ignition and melting.',
@@ -23,7 +23,7 @@ const BodyProtection = () => {
     },
     {
       name: 'High-Visibility Vests',
-      image: '/images/ppes/Skin-and-Body-Protection_2022.avif',
+      image: '/images/ppes/PN-521-Chrome-Orange.jpg',
       summary: 'Bright colored vests for worker visibility in traffic and low-light conditions.',
       useCases: ['Road construction', 'Parking lot operations', 'Nighttime work', 'Warehouse operations'],
       protection: 'Increases visibility to vehicles and equipment operators.',
@@ -62,9 +62,14 @@ const BodyProtection = () => {
           {products.map((product, index) => (
             <div key={index} className="bg-white dark:bg-slate-800 rounded-lg md:rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 transform active:scale-95 md:hover:scale-105 flex flex-col" data-aos="fade-up" data-aos-delay={index * 100}>
               <div className="h-40 sm:h-48 md:h-56 bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-900/30 dark:to-violet-900/30 flex items-center justify-center overflow-hidden">
-                <img 
-                  src={product.image} 
+                <img
+                  src={product.image}
                   alt={product.name}
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = '/images/ppes/Types-of-Personal-Protective-Equipment-PPE_2022.avif';
+                  }}
                   className="w-full h-full object-cover"
                 />
               </div>
