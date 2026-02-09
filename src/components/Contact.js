@@ -201,6 +201,21 @@ const Contact = () => {
           </div>
         </section>
 
+        {/* Google Maps Embed (uses REACT_APP_GOOGLE_MAP_IFRAME env var) */}
+        <section className="mb-12 md:mb-16" data-aos="fade-up">
+          <div className="max-w-4xl mx-auto px-4">
+            {process.env.REACT_APP_GOOGLE_MAP_IFRAME ? (
+              <div className="w-full rounded-xl overflow-hidden shadow-lg">
+                <div className="w-full" dangerouslySetInnerHTML={{ __html: process.env.REACT_APP_GOOGLE_MAP_IFRAME }} />
+              </div>
+            ) : (
+              <div className="w-full rounded-xl overflow-hidden shadow-lg bg-white/5 p-6 text-center">
+                <p className="text-sm text-white/70">Map embed not configured. To enable, set <code className="bg-slate-800 px-1 rounded">REACT_APP_GOOGLE_MAP_IFRAME</code> in your .env with the iframe HTML provided by Google Maps.</p>
+              </div>
+            )}
+          </div>
+        </section>
+
         {/* Main Content */}
         <div className="container mx-auto px-4 md:px-6 py-8 md:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">

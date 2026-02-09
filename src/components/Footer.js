@@ -260,6 +260,15 @@ const Footer = () => {
                 </Link>
               ))}
             </motion.div>
+
+          {/* Optional compact map - renders only if REACT_APP_GOOGLE_MAP_IFRAME is set */}
+          {process.env.REACT_APP_GOOGLE_MAP_IFRAME && (
+            <div className="mt-6 w-full max-w-sm mx-auto md:mx-0">
+              <div className="rounded-lg overflow-hidden shadow-inner">
+                <div className="w-full" dangerouslySetInnerHTML={{ __html: process.env.REACT_APP_GOOGLE_MAP_IFRAME }} />
+              </div>
+            </div>
+          )}
           </div>
         </motion.div>
       </div>

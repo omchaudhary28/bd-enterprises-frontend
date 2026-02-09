@@ -24,7 +24,7 @@ const SprinklerSystems = () => {
       bdValue: 'Proven highest suppression effectiveness, simplest system design, best insurance rates, and lowest maintenance requirements.'
     },
     {
-      image: '/images/services/dry-pipe-systems.svg',
+      image: '/images/services/sprinkler-installation.svg',
       name: 'Dry Pipe & Deluge Systems',
       summary: 'Pressurized air-filled systems for cold environments and open-head deluge systems for high-hazard applications.',
       useCases: [
@@ -38,7 +38,7 @@ const SprinklerSystems = () => {
       bdValue: 'Freeze-protection for cold climates, comprehensive flooding for high-risk areas, and specialized valve engineering.'
     },
     {
-      image: '/images/services/hydrant-systems.svg',
+      image: '/images/services/sprinkler-support-maintenance.svg',
       name: 'Fire Pump & Hydrant Systems',
       summary: 'Complete water supply systems with electric and diesel backup pumps, pressure maintenance, and reliable hydrant access points.',
       useCases: [
@@ -143,6 +143,7 @@ const SprinklerSystems = () => {
                     alt={service.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/fallbacks/service-fallback.svg'; }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
