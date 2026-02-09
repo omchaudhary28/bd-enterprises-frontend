@@ -157,16 +157,7 @@ const Contact = () => {
     }
   };
 
-  const handleContactMethodClick = (method) => {
-    if (method === 'email') {
-      window.location.href = `mailto:${getEmail()}?subject=Fire Safety Inquiry&body=${encodeURIComponent(getAutomatedMessage('email'))}`;
-    } else if (method === 'phone') {
-      window.location.href = `tel:${getPhoneNumber().replace(/\D/g, '')}`;
-    } else if (method === 'whatsapp') {
-      const message = encodeURIComponent(getAutomatedMessage('whatsapp'));
-      window.location.href = `https://wa.me/${getWhatsApp().replace(/\D/g, '')}?text=${message}`;
-    }
-  };
+  // Navigation is now handled by proper <a> tags only - no div click handlers
 
   const services = [
     'Fire Extinguisher Systems',
@@ -368,8 +359,7 @@ const Contact = () => {
 
                 {/* Phone */}
                 <div className="w-full sm:w-1/2 p-2">
-                  <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}
-                    onClick={() => handleContactMethodClick('phone')}>
+                  <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}>
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                         <span className="text-xl">📞</span>
@@ -380,7 +370,7 @@ const Contact = () => {
                       </div>
                     </div>
                     <div className="flex-grow">
-                      <a href={`tel:${getPhoneNumber().replace(/\D/g, '')}`} onClick={(e) => e.stopPropagation()} className="text-accent hover:text-secondary font-semibold transition-colors text-lg break-all">
+                      <a href={`tel:${getPhoneNumber().replace(/\D/g, '')}`} className="text-accent hover:text-secondary font-semibold transition-colors text-lg break-all">
                         {getPhoneNumber()}
                       </a>
                     </div>
@@ -392,8 +382,7 @@ const Contact = () => {
 
                 {/* Email */}
                 <div className="w-full sm:w-1/2 p-2">
-                <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}
-                  onClick={() => handleContactMethodClick('email')}>
+                <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}>
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                         <span className="text-xl">✉️</span>
@@ -404,7 +393,7 @@ const Contact = () => {
                       </div>
                     </div>
                     <div className="flex-grow">
-                      <a href={`mailto:${getEmail()}`} onClick={(e) => e.stopPropagation()} className="text-accent hover:text-secondary font-semibold transition-colors break-all text-lg">
+                      <a href={`mailto:${getEmail()}`} className="text-accent hover:text-secondary font-semibold transition-colors break-all text-lg">
                         {getEmail()}
                       </a>
                     </div>
@@ -416,8 +405,7 @@ const Contact = () => {
 
                 {/* WhatsApp */}
                 <div className="w-full sm:w-1/2 p-2">
-                <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}
-                  onClick={() => handleContactMethodClick('whatsapp')}>
+                <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}>
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                         <span className="text-xl">💬</span>
@@ -429,7 +417,7 @@ const Contact = () => {
                     </div>
                     <div className="flex-grow">
                       <a href={`https://wa.me/${getWhatsApp().replace(/\D/g, '')}?text=${encodeURIComponent(getAutomatedMessage('whatsapp'))}`}
-                        target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-accent hover:text-secondary font-semibold transition-colors text-lg break-all">
+                        target="_blank" rel="noopener noreferrer" className="text-accent hover:text-secondary font-semibold transition-colors text-lg break-all">
                         {getWhatsApp()}
                       </a>
                     </div>
