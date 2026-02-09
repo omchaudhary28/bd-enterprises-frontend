@@ -242,38 +242,3 @@ const ComplianceInspection = () => {
 };
 
 export default ComplianceInspection;
-              <div key={index} className="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay={index * 100}>
-                <h3 className="text-lg sm:text-xl font-bold text-primary dark:text-white mb-2">{standard.title}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{standard.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Why Choose BD Enterprises */}
-        <div className="mb-16 md:mb-20 bg-gradient-to-br from-blue-50 to-teal-50 dark:from-slate-800 dark:to-slate-700 p-6 sm:p-8 md:p-10 rounded-lg shadow-lg">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary dark:text-white text-center mb-8 md:mb-12" data-aos="fade-down">
-            Why Choose BD Enterprises
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-            {whyChooseUs.map((item, index) => (
-              <div key={index} className="flex items-start" data-aos="fade-up" data-aos-delay={index * 50}>
-                <span className="text-2xl text-accent mr-3 flex-shrink-0 mt-1">✓</span>
-                <span className="text-sm sm:text-base text-gray-700 dark:text-gray-300">{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* CTA Button */}
-        <div className="text-center mt-12 md:mt-16" data-aos="fade-up">
-          <Link to="/contact" className="inline-flex items-center justify-center bg-gradient-to-r from-accent to-orange-500 text-white px-8 md:px-12 py-3 md:py-4 rounded-full text-sm md:text-base font-bold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 uppercase tracking-wider min-h-[48px]">
-            Schedule Consultation
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default ComplianceInspection;
