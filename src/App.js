@@ -6,12 +6,20 @@ import Footer from './components/Footer';
 import About from './components/About';
 import Services from './components/Services';
 import Contact from './components/Contact';
+import PPEs from './components/PPEs';
 import FireExtinguishers from './components/services/FireExtinguishers';
 import FireAlarmDetection from './components/services/FireAlarmDetection';
 import SprinklerSystems from './components/services/SprinklerSystems';
 import EmergencyLighting from './components/services/EmergencyLighting';
 import FireSafetyTraining from './components/services/FireSafetyTraining';
 import ComplianceInspection from './components/services/ComplianceInspection';
+import HeadProtection from './components/ppe/HeadProtection';
+import EyeFaceProtection from './components/ppe/EyeFaceProtection';
+import HearingProtection from './components/ppe/HearingProtection';
+import RespiratoryProtection from './components/ppe/RespiratoryProtection';
+import HandProtection from './components/ppe/HandProtection';
+import BodyProtection from './components/ppe/BodyProtection';
+import FootProtection from './components/ppe/FootProtection';
 import { ThemeProvider } from './components/ThemeContext';
 
 const ScrollToTop = () => {
@@ -43,6 +51,14 @@ function App() {
               <Route path="/services/emergency-lighting" element={<EmergencyLighting />} />
               <Route path="/services/fire-safety-training" element={<FireSafetyTraining />} />
               <Route path="/services/compliance-inspection" element={<ComplianceInspection />} />
+              <Route path="/ppe" element={<PPEs />} />
+              <Route path="/ppe/head-protection" element={<HeadProtection />} />
+              <Route path="/ppe/eye-face-protection" element={<EyeFaceProtection />} />
+              <Route path="/ppe/hearing-protection" element={<HearingProtection />} />
+              <Route path="/ppe/respiratory-protection" element={<RespiratoryProtection />} />
+              <Route path="/ppe/hand-protection" element={<HandProtection />} />
+              <Route path="/ppe/body-protection" element={<BodyProtection />} />
+              <Route path="/ppe/foot-protection" element={<FootProtection />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>

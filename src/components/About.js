@@ -173,13 +173,13 @@ const About = () => {
         </div>
 
         {/* Key Metrics */}
-        <div className="mt-10 md:mt-16 mb-10 md:mb-12 px-2 md:px-0" data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
+        <div className="mt-10 md:mt-16 mb-10 md:mb-12 px-0" data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
           <h3 className="text-2xl md:text-3xl font-bold text-center text-primary dark:text-white mb-6 md:mb-8 glow-text">Why Choose BD Enterprises?</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6">
             {metrics.map((metric, index) => (
-              <div key={index} className="bg-gradient-to-br from-primary to-secondary dark:from-slate-700 dark:to-blue-900 text-white p-4 md:p-6 rounded-lg md:rounded-xl text-center glow-box hover:shadow-2xl transition-shadow" data-aos="zoom-in" data-aos-delay={index * 50}>
-                <div className="text-2xl md:text-3xl font-bold mb-2 text-accent">{metric.value}</div>
-                <p className="text-xs md:text-base font-semibold leading-tight">{metric.label}</p>
+              <div key={index} className="bg-gradient-to-br from-primary to-secondary dark:from-slate-700 dark:to-blue-900 text-white p-4 sm:p-5 md:p-6 rounded-lg md:rounded-xl text-center glow-box hover:shadow-2xl transition-shadow min-h-[140px] sm:min-h-[160px] flex flex-col justify-center" data-aos="zoom-in" data-aos-delay={index * 50}>
+                <div className="text-xl sm:text-2xl md:text-3xl font-black mb-2 text-accent">{metric.value}</div>
+                <p className="text-xs sm:text-sm md:text-base font-semibold leading-snug">{metric.label}</p>
               </div>
             ))}
           </div>
@@ -207,13 +207,13 @@ const About = () => {
           <h3 className="text-2xl md:text-3xl font-bold text-center text-primary dark:text-white mb-6 md:mb-8 glow-text">Industries We Serve</h3>
           
           {/* Industry Selection Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 mb-6 md:mb-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-3 mb-6 md:mb-8">
             {industries.map((industry, index) => (
               <button
                 key={index}
                 type="button"
                 onClick={() => setSelectedIndustry(industry)}
-                className={`p-3 md:p-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform active:scale-95 md:hover:scale-105 text-xs md:text-sm industry-card-scroll ${
+                className={`p-3 sm:p-4 md:p-4 rounded-lg md:rounded-xl font-semibold transition-all duration-300 transform active:scale-95 md:hover:scale-105 text-xs sm:text-sm md:text-base min-h-[90px] sm:min-h-[100px] md:min-h-[auto] flex flex-col items-center justify-center industry-card-scroll ${
                   selectedIndustry === industry
                     ? 'bg-gradient-to-r from-secondary to-accent text-white shadow-lg ring-2 ring-accent md:scale-105'
                     : 'bg-gradient-to-br from-teal-100 to-blue-100 dark:from-slate-800 dark:to-slate-900 border-2 border-secondary dark:border-blue-500 text-primary dark:text-white hover:from-teal-200 hover:to-blue-200'
@@ -222,48 +222,50 @@ const About = () => {
                 data-aos-delay={index * 30}
                 style={{ animationDelay: `${index * 100}ms`, opacity: 1 }}
               >
-                <div className="text-lg md:text-2xl mb-1">{industryServices[industry]?.icon}</div>
-                <div className="leading-tight">{industry}</div>
+                <div className="text-lg sm:text-xl md:text-2xl mb-1">{industryServices[industry]?.icon}</div>
+                <div className="leading-tight text-center line-clamp-2">{industry}</div>
               </button>
             ))}
           </div>
 
           {/* Selected Industry Details */}
-          <div className="bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-gray-950 p-5 md:p-8 rounded-lg md:rounded-xl glow-box border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-duration="250">
-            <div className="mb-5 md:mb-6 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+          <div className="bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-900 dark:to-gray-950 p-4 sm:p-6 md:p-8 rounded-lg md:rounded-xl glow-box border border-blue-200 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-duration="250">
+            <div className="mb-5 md:mb-6 flex flex-col md:flex-row items-start gap-4 md:gap-6">
               <div className="flex-shrink-0">
-                <div className="text-5xl md:text-6xl">{industryServices[selectedIndustry]?.icon}</div>
+                <div className="text-4xl sm:text-5xl md:text-6xl">{industryServices[selectedIndustry]?.icon}</div>
               </div>
-              <div className="flex-1">
-                <h4 className="text-2xl md:text-3xl font-bold text-primary dark:text-white">{selectedIndustry}</h4>
-                <p className="text-sm md:text-base text-neutral-700 dark:text-gray-300 mt-1">{industryServices[selectedIndustry]?.description}</p>
-              </div>
-              <div className="w-full overflow-hidden rounded-lg shadow-md image-reveal-scroll md:flex-shrink-0 md:w-48 h-40">
-                {selectedIndustry === 'Healthcare Facilities' && <img src="https://images.unsplash.com/photo-1519494026892-80bbd2651601?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
-                {selectedIndustry === 'Manufacturing Plants' && <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
-                {selectedIndustry === 'Commercial Buildings' && <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
-                {selectedIndustry === 'Residential Properties' && <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
-                {selectedIndustry === 'Government Facilities' && <img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
-                {selectedIndustry === 'Educational Institutions' && <img src="https://images.unsplash.com/photo-1427504494785-cdac41688b2c?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
-                {selectedIndustry === 'Hospitality' && <img src="https://images.unsplash.com/photo-1631049307038-da31c3eafb77?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
-                {selectedIndustry === 'Data Centers' && <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
+              <div className="flex-1 min-w-0">
+                <h4 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary dark:text-white break-words">{selectedIndustry}</h4>
+                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-gray-300 mt-1">{industryServices[selectedIndustry]?.description}</p>
               </div>
             </div>
 
-            <div>
-              <h5 className="text-lg md:text-xl font-bold text-secondary dark:text-blue-300 mb-4">What We Provide:</h5>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+            {/* Industry Image - Mobile optimized */}
+            <div className="w-full overflow-hidden rounded-lg shadow-md image-reveal-scroll mb-5 md:mb-6 md:float-right md:w-48 md:ml-6 h-40 md:h-40">
+              {selectedIndustry === 'Healthcare Facilities' && <img src="https://images.unsplash.com/photo-1519494026892-80bbd2651601?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
+              {selectedIndustry === 'Manufacturing Plants' && <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
+              {selectedIndustry === 'Commercial Buildings' && <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
+              {selectedIndustry === 'Residential Properties' && <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
+              {selectedIndustry === 'Government Facilities' && <img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
+              {selectedIndustry === 'Educational Institutions' && <img src="https://images.unsplash.com/photo-1427504494785-cdac41688b2c?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
+              {selectedIndustry === 'Hospitality' && <img src="https://images.unsplash.com/photo-1631049307038-da31c3eafb77?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
+              {selectedIndustry === 'Data Centers' && <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop" alt={selectedIndustry} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />}
+            </div>
+
+            <div className="clear-both">
+              <h5 className="text-lg md:text-xl font-bold text-secondary dark:text-blue-300 mb-3 md:mb-4">What We Provide:</h5>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-2 md:gap-4">
                 {industryServices[selectedIndustry]?.services.map((service, index) => (
-                  <div key={index} className="flex items-start bg-gradient-to-br from-teal-100 to-blue-100 dark:from-slate-800 dark:to-slate-900 p-3 md:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-blue-100 dark:border-slate-700 service-card-scroll" data-aos="fade-up" data-aos-delay={index * 100} style={{ animationDelay: `${index * 50}ms` }}>
-                    <span className="text-accent text-lg md:text-2xl mr-2 md:mr-3 flex-shrink-0">&#10003;</span>
-                    <p className="text-xs md:text-sm text-neutral-700 dark:text-gray-200">{service}</p>
+                  <div key={index} className="flex items-start gap-2 md:gap-3 bg-gradient-to-br from-teal-100 to-blue-100 dark:from-slate-800 dark:to-slate-900 p-3 sm:p-4 md:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-blue-100 dark:border-slate-700 service-card-scroll min-h-[60px] sm:min-h-[70px]" data-aos="fade-up" data-aos-delay={index * 100} style={{ animationDelay: `${index * 50}ms` }}>
+                    <span className="text-accent text-lg md:text-xl flex-shrink-0 mt-0.5">✓</span>
+                    <p className="text-xs sm:text-sm md:text-sm text-neutral-700 dark:text-gray-200 leading-snug">{service}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="mt-5 md:mt-6 p-3 md:p-4 bg-gradient-to-br from-teal-100 to-blue-100 dark:from-slate-800 dark:to-slate-900 rounded-lg border-l-4 border-accent dark:border-slate-700">
-              <p className="text-xs md:text-sm text-neutral-700 dark:text-gray-200 font-semibold">&#128161; Ready to protect your {selectedIndustry.toLowerCase()}? Contact us for a customized fire safety solution designed specifically for your industry.
+            <div className="mt-5 md:mt-6 p-3 sm:p-4 md:p-4 bg-gradient-to-br from-teal-100 to-blue-100 dark:from-slate-800 dark:to-slate-900 rounded-lg border-l-4 border-accent dark:border-slate-700 clear-both">
+              <p className="text-xs sm:text-sm md:text-sm text-neutral-700 dark:text-gray-200 font-semibold">💡 Ready to protect your {selectedIndustry.toLowerCase()}? Contact us for a customized fire safety solution designed specifically for your industry.
               </p>
             </div>
           </div>

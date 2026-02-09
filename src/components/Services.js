@@ -54,8 +54,8 @@ const Services = () => {
       <div className="absolute bottom-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent opacity-5 dark:opacity-15 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-white glow-text" data-aos="fade-down" data-aos-duration="300">Our Services</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+        <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-white glow-text" data-aos="fade-down" data-aos-duration="300">Our Services</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 md:gap-6 lg:gap-8">
           {servicesData.map((service, index) => (
             <div
               key={index}
@@ -65,18 +65,18 @@ const Services = () => {
               data-aos-duration="300"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="overflow-hidden h-40 md:h-48 image-reveal-scroll">
+              <div className="overflow-hidden h-36 sm:h-40 md:h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-slate-800 dark:to-slate-700 image-reveal-scroll">
                 <img src={service.imageUrl} alt={service.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
               </div>
-              <div className="p-4 md:p-6 flex flex-col flex-grow">
-                <div className="flex items-center gap-2 mb-2">
-                  <img src={service.iconUrl} alt="" aria-hidden="true" className="w-6 h-6 rounded-sm shadow-sm" />
-                  <h2 className="text-lg md:text-2xl font-bold text-primary dark:text-accent hover:text-secondary dark:hover:text-blue-400 transition-colors duration-300">
+              <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
+                <div className="flex items-center gap-2 mb-2 md:mb-3">
+                  <img src={service.iconUrl} alt="" aria-hidden="true" className="w-5 h-5 sm:w-6 sm:h-6 rounded-sm shadow-sm flex-shrink-0" />
+                  <h2 className="text-base sm:text-lg md:text-2xl font-bold text-primary dark:text-accent hover:text-secondary dark:hover:text-blue-400 transition-colors duration-300 line-clamp-2">
                     {service.title}
                   </h2>
                 </div>
-                <p className="text-sm md:text-base text-neutral-700 dark:text-gray-300 mb-4 line-clamp-2 md:line-clamp-3 flex-grow">{service.description}</p>
-                <Link to={service.path} className="inline-flex items-center justify-center bg-secondary dark:bg-blue-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg md:rounded-full text-sm md:text-base font-semibold hover:bg-opacity-90 dark:hover:bg-blue-500 transition-all duration-300 hover:shadow-md hover:translate-y-[-2px] active:scale-95 w-full md:w-auto">
+                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-gray-300 mb-4 line-clamp-3 flex-grow leading-snug">{service.description}</p>
+                <Link to={service.path} className="inline-flex items-center justify-center bg-secondary dark:bg-blue-600 text-white px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3 rounded-lg md:rounded-full text-xs sm:text-sm md:text-base font-bold hover:bg-opacity-90 dark:hover:bg-blue-500 transition-all duration-300 hover:shadow-md hover:translate-y-[-2px] active:scale-95 w-full md:w-auto min-h-[44px] md:min-h-auto">
                   Learn More
                 </Link>
               </div>
