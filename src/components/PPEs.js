@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const ppeCategories = [
+import { motion, useReducedMotion } from 'framer-motion';
+import AOS from 'aos';
   {
     title: 'Head Protection',
     subtitle: 'Helmets & Hard Hats',
@@ -77,6 +77,73 @@ const ppeCategories = [
 ];
 
 const PPEs = () => {
+  const prefersReduced = useReducedMotion();
+
+  React.useEffect(() => {
+    AOS.refresh();
+  }, []);
+
+  // Stagger animation variants for cards
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: prefersReduced ? 0 : 0.06,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: prefersReduced ? 0 : 0.5,
+        ease: 'easeOut',
+      },
+    },
+  };
+
+  const cardHoverVariants = {
+    rest: { scale: 1, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)' },
+    hover: {
+      scale: prefersReduced ? 1 : 1.02,
+      boxShadow: '0px 20px 60px rgba(0, 132, 255, 0.3)',
+      transition: { duration: 0.3, ease: 'easeOut' },
+    },
+  };
+
+  const imageVariants = {
+    rest: { scale: 1 },
+    hover: { scale: prefersReduced ? 1 : 1.08, transition: { duration: 0.5, ease: 'easeOut' } },
+  };
+
+  const categoryGridVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: prefersReduced ? 0 : 0.04,
+        delayChildren: 0,
+      },
+    },
+  };
+
+  const categoryItemVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: prefersReduced ? 0 : 0.4,
+        ease: 'easeOut',
+      },
+    },
+  };
+
   return (
     <div className="ppe-page relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen">
       {/* Animated Background */}
@@ -87,45 +154,80 @@ const PPEs = () => {
 
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-20">
         {/* Hero Section */}
-        <div className="text-center mb-12 md:mb-20" data-aos="fade-down">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 mb-6">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+        <motion.div 
+          className="text-center mb-12 md:mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
+          <motion.div 
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 mb-6"
+            whileHover={prefersReduced ? {} : { scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.span 
+              className="w-2 h-2 rounded-full bg-accent"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
             <span className="text-xs sm:text-sm font-semibold text-white/90">Complete PPE Solutions</span>
-          </div>
+          </motion.div>
           
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 text-white glow-text">
+          <motion.h1 
+            className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 text-white glow-text"
+            initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
+            animate={prefersReduced ? {} : { opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.6, ease: 'easeOut' }}
+          >
             Personal Protective Equipment
-          </h1>
+          </motion.h1>
           
-          <p className="text-lg md:text-2xl font-bold text-blue-200 dark:text-blue-300 max-w-2xl mx-auto mb-4">
+          <motion.p 
+            className="text-lg md:text-2xl font-bold text-blue-200 dark:text-blue-300 max-w-2xl mx-auto mb-4"
+            initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
+            animate={prefersReduced ? {} : { opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6, ease: 'easeOut' }}
+          >
             Comprehensive PPE for Every Workplace Hazard
-          </p>
+          </motion.p>
           
-          <p className="text-base md:text-lg text-white/80 dark:text-gray-300 max-w-3xl mx-auto">
+          <motion.p 
+            className="text-base md:text-lg text-white/80 dark:text-gray-300 max-w-3xl mx-auto"
+            initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
+            animate={prefersReduced ? {} : { opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }}
+          >
             From head to toe protection, we provide certified, durable PPE solutions with expert guidance on proper usage, maintenance, and compliance.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Quick Category Images Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 sm:gap-4 mb-16 md:mb-20">
+        <motion.div 
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 sm:gap-4 mb-16 md:mb-20"
+          variants={categoryGridVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {ppeCategories.map((category, index) => (
-            <Link
+            <motion.div
               key={index}
-              to={category.path}
-              className="group relative overflow-hidden rounded-xl transition-all duration-300 active:scale-95 md:hover:scale-110 flex h-40 sm:h-48"
-              data-aos="zoom-in"
-              data-aos-delay={index * 50}
+              variants={categoryItemVariants}
             >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-black/50 to-black/30 z-10"></div>
-              <img
-                src={category.imageUrl}
-                alt={category.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20"></div>
-              <div className="absolute inset-0 flex flex-col items-center justify-center z-30 text-white text-center px-3 py-4">
-                <div className="mb-2 group-hover:scale-125 transition-transform duration-300">
+              <Link
+                to={category.path}
+                className="group relative overflow-hidden rounded-xl transition-all duration-300 active:scale-95 md:hover:scale-110 flex h-40 sm:h-48"
+              >
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-black/50 to-black/30 z-10"></div>
+                <img
+                  src={category.imageUrl}
+                  alt={category.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20"></div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center z-30 text-white text-center px-3 py-4">
+                  <div className="mb-2 group-hover:scale-125 transition-transform duration-300">
                   {category.icon === 'helmet' && (
                     <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2C8 2 5 5 5 9v2h14V9c0-4-3-7-7-7z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   )}
@@ -153,77 +255,116 @@ const PPEs = () => {
                 </div>
                 <h3 className="text-xs sm:text-sm md:text-base font-bold leading-tight line-clamp-2">{category.title}</h3>
               </div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Main PPE Cards Section */}
-        <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text">Featured PPE Categories</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.2 }}
+          className="mb-12 md:mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text">Featured PPE Categories</h2>
+        </motion.div>
+        
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-24"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {ppeCategories.map((category, index) => (
-            <Link
-              to={category.path}
+            <motion.div
               key={index}
-              className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 cursor-pointer flex flex-col h-full"
-              data-aos="zoom-in"
-              data-aos-delay={index * 100}
+              variants={itemVariants}
             >
-              {/* Image Container */}
-              <div className="relative h-56 sm:h-64 overflow-hidden bg-gradient-to-br from-blue-500/20 to-accent/20">
-                <img 
-                  src={category.imageUrl} 
-                  alt={category.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
+              <Link to={category.path} className="no-underline">
+                <motion.div
+                  initial="rest"
+                  whileHover="hover"
+                  variants={cardHoverVariants}
+                  className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 cursor-pointer flex flex-col h-full"
+                >
+                  {/* Image Container */}
+                  <div className="relative h-56 sm:h-64 overflow-hidden bg-gradient-to-br from-blue-500/20 to-accent/20">
+                    <motion.img 
+                      src={category.imageUrl} 
+                      alt={category.title} 
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      variants={imageVariants}
+                      transition={{ duration: 0.5, ease: 'easeOut' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
 
-              {/* Content Container */}
-              <div className="p-5 md:p-6 flex flex-col flex-grow">
-                {/* Emoji & Icon */}
-                <div className="text-4xl md:text-5xl mb-3">{category.emoji}</div>
+                  {/* Content Container */}
+                  <div className="p-5 md:p-6 flex flex-col flex-grow">
+                    {/* Emoji & Icon */}
+                    <div className="text-4xl md:text-5xl mb-3">{category.emoji}</div>
 
-                {/* Title & Subtitle */}
-                <h3 className="text-xl md:text-2xl font-black text-white mb-1 group-hover:text-accent transition-colors duration-300 line-clamp-2">
-                  {category.title}
-                </h3>
-                <p className="text-xs md:text-sm font-bold text-accent/90 mb-3 uppercase tracking-wider">
-                  {category.subtitle}
-                </p>
+                    {/* Title & Subtitle */}
+                    <h3 className="text-xl md:text-2xl font-black text-white mb-1 group-hover:text-accent transition-colors duration-300 line-clamp-2">
+                      {category.title}
+                    </h3>
+                    <p className="text-xs md:text-sm font-bold text-accent/90 mb-3 uppercase tracking-wider">
+                      {category.subtitle}
+                    </p>
 
-                {/* Description */}
-                <p className="text-sm md:text-base text-white/75 dark:text-gray-300 mb-4 flex-grow leading-relaxed">
-                  {category.description}
-                </p>
+                    {/* Description */}
+                    <p className="text-sm md:text-base text-white/75 dark:text-gray-300 mb-4 flex-grow leading-relaxed">
+                      {category.description}
+                    </p>
 
-                {/* CTA Button */}
-                <button className="w-full py-3 px-4 rounded-full font-bold text-sm md:text-base bg-gradient-to-r from-accent to-orange-500 text-white hover:shadow-lg transition-all duration-300 group-hover:scale-105 active:scale-95 uppercase tracking-wider">
-                  View Details
-                </button>
-              </div>
+                    {/* CTA Button */}
+                    <motion.button 
+                      className="w-full py-3 px-4 rounded-full font-bold text-sm md:text-base bg-gradient-to-r from-accent to-orange-500 text-white hover:shadow-lg transition-all duration-300 active:scale-95 uppercase tracking-wider"
+                      whileHover={prefersReduced ? {} : { scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      View Details
+                    </motion.button>
+                  </div>
 
-              {/* Hover Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-            </Link>
+                  {/* Hover Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                </motion.div>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Why Choose PPE Section */}
-        <div className="text-center mb-16 md:mb-20" data-aos="fade-up">
+        <motion.div 
+          className="text-center mb-16 md:mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 glow-text">Why BD Enterprises PPE?</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <motion.div 
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {[
               { icon: '✓', title: 'Certified', desc: 'ANSI/OSHA approved' },
               { icon: '🛡️', title: 'Durable', desc: 'Premium quality materials' },
               { icon: '📋', title: 'Compliant', desc: 'Full safety standards' },
               { icon: '🚀', title: 'Expert Support', desc: '25+ years experience' }
             ].map((benefit, idx) => (
-              <div 
+              <motion.div 
                 key={idx}
+                variants={itemVariants}
                 className="p-6 md:p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 hover:border-accent/50 transition-all duration-300 hover:shadow-lg"
-                data-aos="fade-up"
-                data-aos-delay={idx * 100}
               >
                 <div className="text-4xl md:text-5xl mb-3">
                   {idx === 0 && (
@@ -241,26 +382,49 @@ const PPEs = () => {
                 </div>
                 <h4 className="text-lg md:text-xl font-bold text-white mb-2">{benefit.title}</h4>
                 <p className="text-sm md:text-base text-white/70">{benefit.desc}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Bottom CTA Section */}
-        <div className="text-center" data-aos="fade-up">
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <div className="bg-gradient-to-r from-accent/20 to-secondary/20 backdrop-blur-sm border border-white/20 rounded-2xl p-8 md:p-12">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Ready to Protect Your Team?</h2>
-            <p className="text-lg text-white/80 mb-6 max-w-2xl mx-auto">
-              Get expert guidance on selecting the right PPE for your workplace.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center min-h-[48px] px-8 md:px-12 py-3 md:py-4 bg-gradient-to-r from-accent to-orange-500 text-white font-bold rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 uppercase tracking-wider"
+            <motion.h2 
+              className="text-3xl md:text-4xl font-black text-white mb-4"
+              initial={prefersReduced ? {} : { opacity: 0, y: 10 }}
+              whileInView={prefersReduced ? {} : { opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5, ease: 'easeOut' }}
+              viewport={{ once: true }}
             >
-              Contact Us Today
+              Ready to Protect Your Team?
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-white/80 mb-6 max-w-2xl mx-auto"
+              initial={prefersReduced ? {} : { opacity: 0, y: 10 }}
+              whileInView={prefersReduced ? {} : { opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            >
+              Get expert guidance on selecting the right PPE for your workplace.
+            </motion.p>
+            <Link to="/contact" className="no-underline">
+              <motion.button
+                className="inline-flex items-center justify-center min-h-[48px] px-8 md:px-12 py-3 md:py-4 bg-gradient-to-r from-accent to-orange-500 text-white font-bold rounded-full shadow-lg transition-all duration-300 uppercase tracking-wider cursor-pointer"
+                whileHover={prefersReduced ? {} : { scale: 1.05, boxShadow: '0px 20px 60px rgba(0, 200, 255, 0.4)' }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contact Us Today
+              </motion.button>
             </Link>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
