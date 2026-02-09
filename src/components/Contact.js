@@ -71,8 +71,12 @@ const Contact = () => {
   }, [parseJsonResponse]);
 
   useEffect(() => {
-    AOS.init({ duration: 900, once: false });
+    // Fetch contact data and refresh AOS animations instead of re-initializing
     fetchContactData();
+    // When this component mounts/updates, refresh AOS to pick up dynamic elements
+    if (AOS && typeof AOS.refresh === 'function') {
+      AOS.refresh();
+    }
   }, [fetchContactData]);
 
   const handleInputChange = (e) => {
