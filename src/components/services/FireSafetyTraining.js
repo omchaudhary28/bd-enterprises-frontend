@@ -173,8 +173,8 @@ const FireSafetyTraining = () => {
 
         {/* CTA Button */}
         <div className="text-center mt-12 md:mt-16" data-aos="fade-up">
-          <Link to="/contact" className="inline-block bg-accent dark:bg-blue-500 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-opacity-90 dark:hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl glow-box min-h-[44px] flex items-center justify-center">
-            Schedule Training Program
+          <Link to="/contact" className="inline-flex items-center justify-center bg-gradient-to-r from-accent to-orange-500 text-white px-8 md:px-12 py-3 md:py-4 rounded-full text-sm md:text-base font-bold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 uppercase tracking-wider min-h-[48px]">
+            Schedule Consultation
           </Link>
         </div>
       </div>

@@ -198,42 +198,56 @@ const Contact = () => {
   ];
 
   return (
-    <div className={`contact-page min-h-screen pt-20 ${isDark ? 'bg-slate-900' : 'bg-gradient-to-br from-slate-50 to-blue-50'}`}>
-      {/* Hero Section */}
-      <section className="contact-hero relative py-12 md:py-20 px-4 md:px-6 bg-gradient-to-r from-primary via-primary to-secondary dark:from-slate-900 dark:to-slate-800 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 right-20 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-        </div>
+    <div className="relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen">
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-20 -left-20 w-96 h-96 bg-accent opacity-10 dark:opacity-5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500 opacity-8 dark:opacity-3 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+      </div>
 
-        <div className="max-w-6xl mx-auto relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 glow-text animate-slideDown">
-            Get In Touch With Us
-          </h1>
-          <p className="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto animate-slideDown">
-            Have questions about our fire safety solutions? We're here to help. Contact us today and let's discuss how we can protect what matters most to you.
-          </p>
-        </div>
-      </section>
+      <div className="relative z-10">
+        {/* Hero Section */}
+        <section className="py-12 md:py-20 px-4 md:px-6">
+          <div className="container mx-auto max-w-4xl text-center" data-aos="fade-down">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 mb-6">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+              <span className="text-xs sm:text-sm font-semibold text-white/90">Get In Touch With Us</span>
+            </div>
+            
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 text-white glow-text">
+              Let's Protect Your Facility
+            </h1>
+            
+            <p className="text-lg md:text-2xl font-bold text-blue-200 dark:text-blue-300 max-w-3xl mx-auto mb-4">
+              Expert Fire Safety Solutions Within Reach
+            </p>
+            
+            <p className="text-base md:text-lg text-white/80 dark:text-gray-300 max-w-3xl mx-auto">
+              Have questions about our fire safety solutions? We're here to help. Contact us today and let's discuss how we can protect what matters most to you.
+            </p>
+          </div>
+        </section>
 
-      <div className="contact-content max-w-7xl mx-auto px-4 py-8 md:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-          {/* Contact Form */}
-          <div data-aos="fadeInLeft">
-            <div className={`contact-form-card rounded-2xl p-6 md:p-8 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-xl`}>
-              <h2 className="text-xl md:text-2xl font-bold mb-6 text-primary dark:text-white">Send us a Message</h2>
+        {/* Main Content */}
+        <div className="container mx-auto px-4 md:px-6 py-8 md:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+            {/* Contact Form */}
+            <div data-aos="fade-up" data-aos-delay="100">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8 overflow-hidden">
+                <h2 className="text-2xl md:text-3xl font-black text-white mb-2 glow-text">Send us a Message</h2>
+                <p className="text-white/80 mb-6">We'll get back to you within 24 hours</p>
 
-              {submitStatus && (
+                {submitStatus && (
                 <div className={`p-4 rounded-lg mb-6 ${submitStatus.type === 'success' ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-100' : 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-100'}`}>
                   {submitStatus.message}
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Name Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
                       First Name *
                     </label>
                     <input
@@ -242,12 +256,12 @@ const Contact = () => {
                       value={formData.firstName}
                       onChange={handleInputChange}
                       required
-                      className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
                       placeholder="John"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
                       Last Name *
                     </label>
                     <input
@@ -256,7 +270,7 @@ const Contact = () => {
                       value={formData.lastName}
                       onChange={handleInputChange}
                       required
-                      className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
                       placeholder="Doe"
                     />
                   </div>
@@ -265,7 +279,7 @@ const Contact = () => {
                 {/* Email and Phone Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
                       Email *
                     </label>
                     <input
@@ -274,12 +288,12 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
                       placeholder="john@example.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
                       Phone Number
                     </label>
                     <input
@@ -287,7 +301,7 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
                       placeholder="9898046269"
                     />
                   </div>
@@ -296,7 +310,7 @@ const Contact = () => {
                 {/* Company and Service */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
                       Company Name
                     </label>
                     <input
@@ -304,23 +318,23 @@ const Contact = () => {
                       name="companyName"
                       value={formData.companyName}
                       onChange={handleInputChange}
-                      className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
                       placeholder="Your Company"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
                       Service Interest
                     </label>
                     <select
                       name="serviceType"
                       value={formData.serviceType}
                       onChange={handleInputChange}
-                      className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
                     >
-                      <option value="">Select a service</option>
+                      <option value="" className="bg-slate-800">Select a service</option>
                       {services.map((service, idx) => (
-                        <option key={idx} value={service}>{service}</option>
+                        <option key={idx} value={service} className="bg-slate-800">{service}</option>
                       ))}
                     </select>
                   </div>
@@ -328,7 +342,7 @@ const Contact = () => {
 
                 {/* Message */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
                     Message *
                   </label>
                   <textarea
@@ -337,14 +351,14 @@ const Contact = () => {
                     onChange={handleInputChange}
                     required
                     rows="5"
-                    className="form-control w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 resize-none"
                     placeholder="Tell us about your fire safety needs..."
                   ></textarea>
                 </div>
 
                 {/* Preferred Contact Method */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+                  <label className="block text-xs md:text-sm font-bold text-white/90 mb-3 uppercase tracking-wider">
                     Preferred Contact Method
                   </label>
                   <div className="flex gap-4">
@@ -356,9 +370,9 @@ const Contact = () => {
                           value={method}
                           checked={formData.preferredMethod === method}
                           onChange={handleInputChange}
-                          className="w-4 h-4 accent-accent form-control-radio"
+                          className="w-4 h-4 accent-accent"
                         />
-                        <span className="text-gray-700 dark:text-gray-300 capitalize">{method}</span>
+                        <span className="text-white/90 capitalize text-sm">{method}</span>
                       </label>
                     ))}
                   </div>
@@ -368,7 +382,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-4 py-2 bg-gradient-to-r from-secondary to-accent text-white font-bold rounded-lg hover:scale-105 transition-transform duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-6 py-3 mt-6 bg-gradient-to-r from-accent to-orange-500 text-white font-bold rounded-full hover:shadow-lg hover:shadow-accent/50 transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
@@ -376,166 +390,85 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Info & Map */}
-          <div className="space-y-8">
-            {/* Quick Contact Methods */}
-            <div data-aos="fadeInRight">
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-primary dark:text-white">
-                Contact Options
-              </h2>
+          {/* Contact Info & Methods - RIGHT COLUMN */}
+          <div className="space-y-6" data-aos="fade-up" data-aos-delay="200">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8 overflow-hidden">
+              <h2 className="text-2xl md:text-3xl font-black text-white mb-6 glow-text">Contact Methods</h2>
 
-              <div className="flex flex-wrap -m-2">
-
-                {/* Phone */}
-                <div className="w-full sm:w-1/2 p-2">
-                  <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                        <span className="text-xl">📞</span>
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-bold text-lg text-primary dark:text-accent">Call Us</h3>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm">Available Mon-Fri, 9AM-6PM EST</p>
-                      </div>
-                    </div>
-                    <div className="flex-grow">
-                      <a href={`tel:${getPhoneNumber().replace(/\D/g, '')}`} className="text-accent hover:text-secondary font-semibold transition-colors text-lg break-all">
-                        {getPhoneNumber()}
-                      </a>
-                    </div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 group-hover:text-accent transition-colors">
-                      Click to call directly
-                    </p>
+              {/* Phone */}
+              <div className="group mb-6 p-4 md:p-6 rounded-xl bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 hover:border-accent/60 transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span className="text-2xl">📞</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg text-white">Call Us</h3>
+                    <p className="text-white/80 text-sm">Mon-Fri, 9AM-6PM EST</p>
                   </div>
                 </div>
+                <a href={`tel:${getPhoneNumber().replace(/\D/g, '')}`} className="text-accent hover:text-orange-300 font-bold transition-colors text-lg break-all block">
+                  {getPhoneNumber()}
+                </a>
+              </div>
 
-                {/* Email */}
-                <div className="w-full sm:w-1/2 p-2">
-                <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                        <span className="text-xl">✉️</span>
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-bold text-lg text-primary dark:text-accent">Email Us</h3>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm">We'll respond within 24 hours</p>
-                      </div>
-                    </div>
-                    <div className="flex-grow">
-                      <a href={`mailto:${getEmail()}`} className="text-accent hover:text-secondary font-semibold transition-colors break-all text-lg">
-                        {getEmail()}
-                      </a>
-                    </div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 group-hover:text-accent transition-colors">
-                      Click to open email with automated message
-                    </p>
+              {/* Email */}
+              <div className="group mb-6 p-4 md:p-6 rounded-xl bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 hover:border-accent/60 transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span className="text-2xl">✉️</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg text-white">Email Us</h3>
+                    <p className="text-white/80 text-sm">Response within 24 hours</p>
                   </div>
                 </div>
+                <a href={`mailto:${getEmail()}`} className="text-accent hover:text-orange-300 font-bold transition-colors break-all text-lg block">
+                  {getEmail()}
+                </a>
+              </div>
 
-                {/* WhatsApp */}
-                <div className="w-full sm:w-1/2 p-2">
-                <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group h-full flex flex-col`}>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                        <span className="text-xl">💬</span>
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-bold text-lg text-primary dark:text-accent">Message on WhatsApp</h3>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm">Instant messaging available 24/7</p>
-                      </div>
-                    </div>
-                    <div className="flex-grow">
-                      <a href={`https://wa.me/${getWhatsApp().replace(/\D/g, '')}?text=${encodeURIComponent(getAutomatedMessage('whatsapp'))}`}
-                        target="_blank" rel="noopener noreferrer" className="text-accent hover:text-secondary font-semibold transition-colors text-lg break-all">
-                        {getWhatsApp()}
-                      </a>
-                    </div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 group-hover:text-accent transition-colors">
-                      Click to open WhatsApp with pre-filled message
-                    </p>
+              {/* WhatsApp */}
+              <div className="group p-4 md:p-6 rounded-xl bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 hover:border-accent/60 transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span className="text-2xl">💬</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg text-white">WhatsApp</h3>
+                    <p className="text-white/80 text-sm">Available 24/7</p>
                   </div>
                 </div>
-
-                {/* Address */}
-                <div className="w-full sm:w-1/2 p-2">
-                  <div className={`contact-method-card rounded-xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg h-full flex flex-col`}>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center flex-shrink-0">
-                        <span className="text-xl">📍</span>
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-lg text-primary dark:text-accent">Visit Us</h3>
-                      </div>
-                    </div>
-                    <div className="flex-grow">
-                      <p className="text-gray-600 dark:text-gray-300">
-                        {getAddress()}
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <a href={`https://wa.me/${getWhatsApp().replace(/\D/g, '')}?text=${encodeURIComponent(getAutomatedMessage('whatsapp'))}`}
+                  target="_blank" rel="noopener noreferrer" className="text-accent hover:text-orange-300 font-bold transition-colors text-lg break-all block">
+                  {getWhatsApp()}
+                </a>
               </div>
             </div>
 
-            {/* Social Media */}
-            {socialMedia.length > 0 && (
-              <div data-aos="fadeInRight" data-aos-delay="200">
-                <h3 className="text-xl font-bold mb-4 text-primary dark:text-white">Follow Us On Social Media</h3>
-                <div className="flex gap-4 flex-wrap">
-                  {socialMedia.map(social => (
-                    <a
-                      key={social.id}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white hover:scale-125 transition-transform duration-300 shadow-lg hover:shadow-xl"
-                      aria-label={social.platform}
-                      title={social.platform}
-                    >
-                      <span className="text-xl">
-                        {social.platform === 'facebook' && '𝕗'}
-                        {social.platform === 'twitter' && '𝕏'}
-                        {social.platform === 'linkedin' && '⚙'}
-                        {social.platform === 'instagram' && '📷'}
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            )}
+            {/* Quick Info */}
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8">
+              <h3 className="text-xl font-bold text-white mb-4">Why Contact Us?</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <span className="text-accent text-lg flex-shrink-0">✓</span>
+                  <span className="text-white/80 text-sm">Expert consultation from industry professionals</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-accent text-lg flex-shrink-0">✓</span>
+                  <span className="text-white/80 text-sm">Custom solutions tailored to your needs</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-accent text-lg flex-shrink-0">✓</span>
+                  <span className="text-white/80 text-sm">25+ years of fire safety experience</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-accent text-lg flex-shrink-0">✓</span>
+                  <span className="text-white/80 text-sm">NFPA certified and compliant solutions</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-
-        {/* Map Section */}
-        {mainLocation && (
-          <div data-aos="fadeInUp" className="mt-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-primary dark:text-white">
-              Our Location
-            </h2>
-            <div className={`h-[320px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl ${isDark ? 'border border-slate-700' : ''}`}>
-              <iframe
-                title="BD Enterprises Location Map"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                allowFullScreen=""
-                referrerPolicy="no-referrer-when-downgrade"
-                src={`https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=${encodeURIComponent(mainLocation.address || 'BD Enterprises')}&zoom=15`}
-              ></iframe>
-            </div>
-            <div className={`rounded-2xl p-6 md:p-8 mt-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg`}>
-              <h3 className="text-xl font-bold mb-3 text-primary dark:text-accent">{mainLocation.name}</h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-2">{mainLocation.address}</p>
-              {mainLocation.city && (
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  {mainLocation.city}, {mainLocation.state} {mainLocation.zip_code}
-                </p>
-              )}
-              <p className="text-gray-700 dark:text-gray-300">Phone: {getPhoneNumber()}</p>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
