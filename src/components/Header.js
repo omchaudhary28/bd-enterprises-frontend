@@ -97,16 +97,28 @@ const Header = () => {
                 const isActive = (location.pathname === link.path);
                 const isHover = hoverIndex === index;
                 return (
-                  <li key={index} className="relative" onMouseEnter={() => setHoverIndex(index)} onMouseLeave={() => setHoverIndex(-1)}>
-                    <Link to={link.path} className="relative z-20 inline-block px-4 py-2 text-lg text-white font-medium">
+                  <li 
+                    key={index} 
+                    className="relative" 
+                    onMouseEnter={() => setHoverIndex(index)} 
+                    onMouseLeave={() => setHoverIndex(-1)}
+                  >
+                    <Link 
+                      to={link.path} 
+                      className="relative z-20 inline-block px-4 py-2 text-lg text-white font-medium transition-colors duration-300"
+                    >
                       <span className="relative z-30">{link.label}</span>
+                      {/* Animated pill-style background: blue/teal, fade animation, no layout shift */}
                       <motion.span
-                        aria-hidden
+                        aria-hidden="true"
                         layoutId={`nav-pill-${index}`}
                         initial={false}
-                        animate={{ opacity: isActive ? 0.18 : (isHover ? 0.12 : 0) }}
+                        animate={{ 
+                          opacity: isActive ? 0.20 : (isHover ? 0.12 : 0),
+                          // Ensure no layout shift - use position absolute
+                        }}
                         transition={prefersReduced ? { duration: 0 } : { ease: 'easeInOut', duration: 0.24 }}
-                        className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 z-10 pointer-events-none"
+                        className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 z-10 pointer-events-none will-change-opacity"
                         style={{ mixBlendMode: 'screen' }}
                       />
                     </Link>
