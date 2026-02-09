@@ -72,7 +72,14 @@ const SprinklerSystems = () => {
     <div className="relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -left-20 w-96 h-96 bg-accent opacity-10 dark:opacity-5 rounded-full blur-3xl animate-pulse"></div>
+        <svg className="absolute -top-10 -left-10 w-96 h-96 opacity-10 dark:opacity-5" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1" fill="#ffffff" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#dots)" />
+        </svg>
         <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500 opacity-8 dark:opacity-3 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
       </div>
 
@@ -86,6 +93,17 @@ const SprinklerSystems = () => {
         {/* Hero Section */}
         <section className="mb-16 md:mb-24" data-aos="fade-up">
           <div className="text-center max-w-4xl mx-auto">
+            {/* Decorative service pattern */}
+            <svg className="mx-auto mb-6 w-40 h-12 opacity-60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1">
+                  <stop offset="0" stopColor="#60A5FA" />
+                  <stop offset="1" stopColor="#F97316" />
+                </linearGradient>
+              </defs>
+              <rect width="200" height="60" rx="8" fill="url(#g1)" opacity="0.12" />
+              <path d="M10 40 C50 10,150 10,190 40" stroke="#fff" strokeWidth="1.5" strokeOpacity="0.6" fill="none"/>
+            </svg>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 mb-6">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
               <span className="text-xs sm:text-sm font-semibold text-white/90">Automatic Suppression Systems</span>

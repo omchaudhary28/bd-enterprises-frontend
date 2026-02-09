@@ -6,72 +6,72 @@ const ppeCategories = [
     title: 'Head Protection',
     subtitle: 'Helmets & Hard Hats',
     description: 'Shields from impact, falling objects, and overhead hazards. Essential for construction, manufacturing, and industrial workplaces.',
-    imageUrl: 'https://images.unsplash.com/photo-1516169104891-35b1dd1ca893?w=600&h=400&fit=crop',
+    imageUrl: '/images/ppe/head-protection.jpg',
     path: '/services/ppe/head-protection',
-    emoji: '🛡️',
+    icon: 'helmet',
     color: 'from-orange-400 to-red-500',
   },
   {
     title: 'Eye & Face Protection',
     subtitle: 'Goggles & Shields',
     description: 'Guard against chemical splashes, welding sparks, and flying debris. Critical for labs, welding, and chemical handling.',
-    imageUrl: 'https://images.unsplash.com/photo-1576091160550-112173d7f6f0?w=600&h=400&fit=crop',
+    imageUrl: '/images/ppe/eye-face-protection.jpg',
     path: '/services/ppe/eye-face-protection',
-    emoji: '👓',
+    icon: 'goggles',
     color: 'from-yellow-400 to-orange-500',
   },
   {
     title: 'Hearing Protection',
     subtitle: 'Earplugs & Earmuffs',
     description: 'Prevents noise-induced hearing loss in loud industrial environments. ANSI/OSHA compliant protection.',
-    imageUrl: 'https://images.unsplash.com/photo-1484632341272-339079fa3142?w=600&h=400&fit=crop',
+    imageUrl: '/images/ppe/hearing-protection.jpg',
     path: '/services/ppe/hearing-protection',
-    emoji: '🎧',
+    icon: 'ear',
     color: 'from-green-400 to-teal-500',
   },
   {
     title: 'Respiratory Protection',
     subtitle: 'Masks & Respirators',
     description: 'Protects from dust, fumes, gases, and hazardous particles. NIOSH-certified for maximum safety.',
-    imageUrl: 'https://images.unsplash.com/photo-1584308666744-24d5f00206dd?w=600&h=400&fit=crop',
+    imageUrl: '/images/ppe/respiratory-protection.jpg',
     path: '/services/ppe/respiratory-protection',
-    emoji: '😷',
+    icon: 'mask',
     color: 'from-blue-400 to-cyan-500',
   },
   {
     title: 'Hand Protection',
     subtitle: 'Gloves',
     description: 'Specialized gloves for chemical handling, thermal protection, and mechanical safety. Customized for different hazards.',
-    imageUrl: 'https://images.unsplash.com/photo-1576158547314-71207b676bfc?w=600&h=400&fit=crop',
+    imageUrl: '/images/ppe/hand-protection.jpg',
     path: '/services/ppe/hand-protection',
-    emoji: '🧤',
+    icon: 'glove',
     color: 'from-purple-400 to-pink-500',
   },
   {
     title: 'Body Protection',
     subtitle: 'Coveralls & Vests',
     description: 'Full-body coverage from chemical exposure, thermal hazards, and contamination. Durable and compliant.',
-    imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop',
+    imageUrl: '/images/ppe/body-protection.jpg',
     path: '/services/ppe/body-protection',
-    emoji: '🧥',
+    icon: 'vest',
     color: 'from-indigo-400 to-purple-500',
   },
   {
     title: 'Foot Protection',
     subtitle: 'Safety Shoes & Boots',
     description: 'Steel-toed and protective footwear for impact and puncture resistance. ASTM certified for workplace safety.',
-    imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=400&fit=crop',
+    imageUrl: '/images/ppe/foot-protection.jpg',
     path: '/services/ppe/foot-protection',
-    emoji: '👢',
+    icon: 'boot',
     color: 'from-amber-400 to-orange-500',
   },
   {
     title: 'BASCA Cylinders',
     subtitle: 'Fire Suppressant Cylinders',
     description: 'Advanced fire suppression technology for specialized environments. Clean agent systems for sensitive equipment protection.',
-    imageUrl: 'https://images.unsplash.com/photo-1581578731548-c64695aeb952?w=600&h=400&fit=crop',
+    imageUrl: '/images/ppe/basca-cylinders.jpg',
     path: '/services/ppe/basca-cylinders',
-    emoji: '🔴',
+    icon: 'cylinder',
     color: 'from-red-400 to-red-600',
   },
 ];
@@ -125,7 +125,32 @@ const PPEs = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20"></div>
               <div className="absolute inset-0 flex flex-col items-center justify-center z-30 text-white text-center px-3 py-4">
-                <div className="text-3xl md:text-4xl mb-2 group-hover:scale-125 transition-transform duration-300">{category.emoji}</div>
+                <div className="mb-2 group-hover:scale-125 transition-transform duration-300">
+                  {category.icon === 'helmet' && (
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2C8 2 5 5 5 9v2h14V9c0-4-3-7-7-7z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  )}
+                  {category.icon === 'goggles' && (
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12c2-4 6-6 10-6s8 2 10 6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  )}
+                  {category.icon === 'ear' && (
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v1a4 4 0 010 8v3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  )}
+                  {category.icon === 'mask' && (
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12c2 5 10 7 10 7s8-2 10-7v5c0 1-1 2-2 2H4c-1 0-2-1-2-2v-5z" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  )}
+                  {category.icon === 'glove' && (
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9v6a4 4 0 008 0V7" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  )}
+                  {category.icon === 'vest' && (
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l4 4v14H8V6l4-4z" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  )}
+                  {category.icon === 'boot' && (
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19h13v-2a4 4 0 00-4-4H8" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  )}
+                  {category.icon === 'cylinder' && (
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="6" y="3" width="12" height="18" rx="2" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  )}
+                </div>
                 <h3 className="text-xs sm:text-sm md:text-base font-bold leading-tight line-clamp-2">{category.title}</h3>
               </div>
             </Link>
