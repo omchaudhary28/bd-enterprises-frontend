@@ -231,7 +231,7 @@ const Contact = () => {
         {/* Main Content */}
         <div className="container mx-auto px-4 md:px-6 py-8 md:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-            {/* Contact Form */}
+            {/* Contact Form - LEFT COLUMN */}
             <div data-aos="fade-up" data-aos-delay="100">
               <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8 overflow-hidden">
                 <h2 className="text-2xl md:text-3xl font-black text-white mb-2 glow-text">Send us a Message</h2>
@@ -390,8 +390,8 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Info & Methods - RIGHT COLUMN */}
-          <div className="space-y-6" data-aos="fade-up" data-aos-delay="200">
+            {/* Contact Info & Methods - RIGHT COLUMN */}
+            <div className="space-y-6" data-aos="fade-up" data-aos-delay="200">
             <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8 overflow-hidden">
               <h2 className="text-2xl md:text-3xl font-black text-white mb-6 glow-text">Contact Methods</h2>
 
@@ -467,6 +467,7 @@ const Contact = () => {
                 </li>
               </ul>
             </div>
+          </div>
           </div>
         </div>
       </div>
