@@ -65,6 +65,15 @@ const ppeCategories = [
     emoji: '👢',
     color: 'from-amber-400 to-orange-500',
   },
+  {
+    title: 'BASCA Cylinders',
+    subtitle: 'Fire Suppressant Cylinders',
+    description: 'Advanced fire suppression technology for specialized environments. Clean agent systems for sensitive equipment protection.',
+    imageUrl: 'https://images.unsplash.com/photo-1581578731548-c64695aeb952?w=600&h=400&fit=crop',
+    path: '/services/ppe/basca-cylinders',
+    emoji: '🔴',
+    color: 'from-red-400 to-red-600',
+  },
 ];
 
 const PPEs = () => {
@@ -191,7 +200,20 @@ const PPEs = () => {
                 data-aos="fade-up"
                 data-aos-delay={idx * 100}
               >
-                <div className="text-4xl md:text-5xl mb-3">{benefit.icon}</div>
+                <div className="text-4xl md:text-5xl mb-3">
+                  {idx === 0 && (
+                    <svg className="w-12 h-12 text-accent" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" fill="currentColor"/></svg>
+                  )}
+                  {idx === 1 && (
+                    <svg className="w-12 h-12 text-accent" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/></svg>
+                  )}
+                  {idx === 2 && (
+                    <svg className="w-12 h-12 text-accent" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-2.63-3.54-3.63 4.71h15.31L13.96 12.29z" fill="currentColor"/></svg>
+                  )}
+                  {idx === 3 && (
+                    <svg className="w-12 h-12 text-accent" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.6915026,12.4744748 L3.50612381,13.2599618 C3.19218622,13.2599618 3.03521743,13.4170592 3.03521743,13.5741566 L1.15159189,20.0151496 C0.8376543,20.8006365 0.99,21.89 1.77946707,22.52 C2.40251532,22.99 3.50612381,23.1 4.13399899,22.8429026 L21.714504,14.0454487 C22.6563168,13.5741566 23.1272231,12.6315722 22.9702544,11.6889879 L4.13399899,1.16751269 C3.34915502,0.9104153 2.40251532,1.02620725 1.77946707,1.4974994 C0.994623095,2.13788266 0.837654326,3.08622357 1.15159189,3.93456271 L3.03521743,10.3755556 C3.03521743,10.5326469 3.19218622,10.6899617 3.50612381,10.6899617 L16.6915026,11.4754487 C16.6915026,11.4754487 17.1624089,11.4754487 17.1624089,11.0042073 L17.1624089,12.6315722 C17.1624089,12.6315722 17.1624089,12.4744748 16.6915026,12.4744748 Z" fill="currentColor"/></svg>
+                  )}
+                </div>
                 <h4 className="text-lg md:text-xl font-bold text-white mb-2">{benefit.title}</h4>
                 <p className="text-sm md:text-base text-white/70">{benefit.desc}</p>
               </div>

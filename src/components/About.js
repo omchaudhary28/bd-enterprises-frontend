@@ -252,7 +252,7 @@ const About = () => {
                   data-aos="fade-up"
                   data-aos-delay={index * 50}
                 >
-                  <span className="text-accent text-xl flex-shrink-0 font-bold">✓</span>
+                  <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" fill="currentColor"/></svg>
                   <p className="text-sm md:text-base text-white/85 leading-relaxed">{service}</p>
                 </div>
               ))}
