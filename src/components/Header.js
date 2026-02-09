@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       setScrollProgress(scrolled);
+      setScrollY(scrollTop);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -79,7 +82,7 @@ const Header = () => {
   const [hoverIndex, setHoverIndex] = useState(-1);
 
   return (
-    <header className="bg-gradient-to-r from-primary via-primary to-secondary dark:bg-gradient-to-r dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 text-white shadow-lg sticky top-0 z-50 border-b-2 border-accent dark:border-opacity-50 backdrop-blur-sm bg-opacity-95 dark:bg-opacity-95">
+    <header className={`${scrollY > 10 ? 'bg-opacity-95 backdrop-blur-md shadow-xl border-b border-accent/10' : 'bg-opacity-95'} bg-gradient-to-r from-primary via-primary to-secondary dark:bg-gradient-to-r dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 text-white shadow-lg sticky top-0 z-50 border-b-2 border-accent dark:border-opacity-50 transition-all duration-300`}>
       <div className="progress-bar" style={{ width: `${scrollProgress}%` }}></div>
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
         {/* Logo */}
@@ -239,12 +242,30 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <nav className="absolute top-full left-0 right-0 bg-gradient-to-b from-primary to-secondary dark:from-slate-900 dark:to-slate-800 shadow-xl lg:hidden animate-slideDown border-b-2 border-accent max-h-[calc(100vh-80px)] overflow-y-auto z-40">
-            <ul className="flex flex-col space-y-0">
+        {/* Mobile Navigation - Full Screen Slide-In */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.nav 
+              className="fixed top-[60px] left-0 right-0 bottom-0 bg-gradient-to-b from-primary to-secondary dark:from-slate-900 dark:to-slate-800 shadow-xl lg:hidden overflow-y-auto z-40"
+              initial={{ x: '100%', opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: '100%', opacity: 0 }}
+              transition={{ duration: prefersReduced ? 0 : 0.3, ease: 'easeInOut' }}
+            >
+            <motion.ul 
+              className="flex flex-col space-y-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: prefersReduced ? 0 : 0.1, duration: 0.3 }}
+            >
               {navLinks.map((link, index) => (
-                <li key={index} className="border-b border-accent border-opacity-20">
+                <motion.li 
+                  key={index} 
+                  className="border-b border-accent border-opacity-20"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: prefersReduced ? 0 : 0.05 + index * 0.03, duration: 0.3 }}
+                >
                   <Link
                     to={link.path}
                     className="block px-4 md:px-6 py-4 text-base md:text-lg hover:bg-secondary dark:hover:bg-blue-900 transition-all duration-300 active:bg-accent active:text-primary font-medium"
@@ -255,56 +276,116 @@ const Header = () => {
                   >
                     {link.label}
                   </Link>
-                </li>
+                </motion.li>
               ))}
               
-              {/* Mobile Services Section */}
-              <li className="border-b border-accent border-opacity-20">
-                <button
+              {/* Mobile Services Accordion Section */}
+              <motion.li 
+                className="border-b border-accent border-opacity-20"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: prefersReduced ? 0 : 0.15, duration: 0.3 }}
+              >
+                <motion.button
                   onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
-                  className="w-full px-4 md:px-6 py-4 text-base md:text-lg hover:bg-secondary dark:hover:bg-blue-900 transition-all duration-300 font-medium flex items-center justify-between"
+                  className="w-full px-4 md:px-6 py-4 text-base md:text-lg hover:bg-secondary dark:hover:bg-blue-900 transition-all duration-300 font-bold text-accent flex items-center justify-between"
+                  whileHover={prefersReduced ? {} : { x: 5 }}
                 >
-                  Services
-                  <svg className={`w-4 h-4 transition-transform duration-300 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className="flex items-center gap-2">
+                    <span>🔥</span> Services
+                  </span>
+                  <motion.svg 
+                    className="w-4 h-4"
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                    animate={{ rotate: isServicesDropdownOpen ? 180 : 0 }}
+                    transition={{ duration: prefersReduced ? 0 : 0.2 }}
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                  </svg>
-                </button>
+                  </motion.svg>
+                </motion.button>
 
-                {/* Mobile Services Dropdown */}
-                {isServicesDropdownOpen && (
-                  <div className="bg-primary dark:bg-slate-800 border-t border-accent border-opacity-20 space-y-2 py-3 px-2">
+                {/* Mobile Services Accordion Content */}
+                <motion.div
+                  initial={false}
+                  animate={{ 
+                    height: isServicesDropdownOpen ? 'auto' : 0,
+                    opacity: isServicesDropdownOpen ? 1 : 0
+                  }}
+                  transition={{ duration: prefersReduced ? 0 : 0.3, ease: 'easeInOut' }}
+                  className="overflow-hidden bg-primary dark:bg-slate-800 border-t border-accent border-opacity-20"
+                >
+                  <div className="space-y-2 py-3 px-2">
                     {servicesDropdown.map((section, idx) => (
-                      <div key={idx} className="space-y-1">
+                      <motion.div 
+                        key={idx} 
+                        className="space-y-1"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: prefersReduced ? 0 : idx * 0.05, duration: 0.2 }}
+                      >
                         <div className="flex items-center gap-2 px-3 py-2">
-                          <span className="text-xl">{section.icon}</span>
+                          <span className="text-lg">{section.icon}</span>
                           <h4 className="font-bold text-accent text-xs md:text-sm">{section.section}</h4>
                         </div>
                         {section.items.map((item, itemIdx) => (
-                          <Link
+                          <motion.div
                             key={itemIdx}
-                            to={item.path}
-                            className="flex items-center gap-3 px-4 py-2 rounded-lg text-white hover:bg-secondary dark:hover:bg-blue-900 transition-all duration-300 active:bg-accent active:text-primary text-sm md:text-base ml-2"
-                            onClick={() => {
-                              setIsOpen(false);
-                              setIsServicesDropdownOpen(false);
-                            }}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: prefersReduced ? 0 : itemIdx * 0.03, duration: 0.2 }}
                           >
-                            <span>{item.emoji}</span>
-                            <span className="font-medium">{item.label}</span>
-                          </Link>
+                            <Link
+                              to={item.path}
+                              className="flex items-center gap-3 px-4 py-2 rounded-lg text-white hover:bg-secondary dark:hover:bg-blue-900 transition-all duration-300 active:bg-accent active:text-primary text-sm md:text-base ml-2"
+                              onClick={() => {
+                                setIsOpen(false);
+                                setIsServicesDropdownOpen(false);
+                              }}
+                            >
+                              <span className="text-base">{item.emoji}</span>
+                              <span className="font-medium">{item.label}</span>
+                            </Link>
+                          </motion.div>
                         ))}
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
-                )}
-              </li>
+                </motion.div>
+              </motion.li>
 
-              <li className="p-4 border-t border-accent border-opacity-20 bg-primary dark:bg-slate-800">
+              {/* Contact CTA Button in Mobile Menu */}
+              <motion.li 
+                className="p-4 border-t border-accent border-opacity-20 bg-gradient-to-r from-secondary to-accent"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: prefersReduced ? 0 : 0.25, duration: 0.3 }}
+              >
+                <Link to="/contact" className="no-underline">
+                  <motion.button
+                    className="w-full py-3 px-4 bg-white text-primary font-bold rounded-full transition-all duration-300 uppercase tracking-wider"
+                    whileHover={prefersReduced ? {} : { scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    📞 Book Consulting
+                  </motion.button>
+                </Link>
+              </motion.li>
+
+              <motion.li 
+                className="p-4 border-t border-accent border-opacity-20 bg-primary dark:bg-slate-800"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: prefersReduced ? 0 : 0.3, duration: 0.3 }}
+              >
                 <ThemeToggle variant="pill" />
-              </li>
-            </ul>
-          </nav>
-        )}
+              </motion.li>
+            </motion.ul>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );
