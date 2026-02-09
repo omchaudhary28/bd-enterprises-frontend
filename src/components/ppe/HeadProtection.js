@@ -202,6 +202,7 @@ const HeadProtection = () => {
                   <h4 className="font-bold text-xs sm:text-sm text-accent dark:text-blue-300 mb-1">BD Enterprises Value:</h4>
                   <p className="text-xs text-neutral-700 dark:text-gray-300">{product.bdValue}</p>
                 </div>
+                </div>
               </motion.div>
             </motion.div>
           ))}
