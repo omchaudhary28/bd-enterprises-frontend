@@ -1,84 +1,135 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import AOS from 'aos';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 const ppeCategories = [
   {
+    id: 'head-protection',
     title: 'Head Protection',
     subtitle: 'Helmets & Hard Hats',
     description: 'Shields from impact, falling objects, and overhead hazards. Essential for construction, manufacturing, and industrial workplaces.',
     imageUrl: '/images/ppes/Head-Protection.webp',
     path: '/services/ppe/head-protection',
-    icon: 'helmet',
     color: 'from-orange-400 to-red-500',
   },
   {
+    id: 'eye-protection',
     title: 'Eye & Face Protection',
     subtitle: 'Goggles & Shields',
     description: 'Guard against chemical splashes, welding sparks, and flying debris. Critical for labs, welding, and chemical handling.',
     imageUrl: '/images/ppes/Face-and-Eye-Protection_2022.avif',
     path: '/services/ppe/eye-face-protection',
-    icon: 'goggles',
     color: 'from-yellow-400 to-orange-500',
   },
   {
+    id: 'hearing-protection',
     title: 'Hearing Protection',
     subtitle: 'Earplugs & Earmuffs',
     description: 'Prevents noise-induced hearing loss in loud industrial environments. ANSI/OSHA compliant protection.',
     imageUrl: '/images/ppes/Hearing-Protection-1536x922.webp',
     path: '/services/ppe/hearing-protection',
-    icon: 'ear',
     color: 'from-green-400 to-teal-500',
   },
   {
+    id: 'respiratory-protection',
     title: 'Respiratory Protection',
     subtitle: 'Masks & Respirators',
     description: 'Protects from dust, fumes, gases, and hazardous particles. NIOSH-certified for maximum safety.',
     imageUrl: '/images/ppes/Respiratory-Protection.webp',
     path: '/services/ppe/respiratory-protection',
-    icon: 'mask',
     color: 'from-blue-400 to-cyan-500',
   },
   {
+    id: 'hand-protection',
     title: 'Hand Protection',
     subtitle: 'Gloves',
     description: 'Specialized gloves for chemical handling, thermal protection, and mechanical safety. Customized for different hazards.',
     imageUrl: '/images/ppes/Hand-Protection-1536x922.webp',
     path: '/services/ppe/hand-protection',
-    icon: 'glove',
     color: 'from-purple-400 to-pink-500',
   },
   {
+    id: 'body-protection',
     title: 'Body Protection',
     subtitle: 'Coveralls & Vests',
     description: 'Full-body coverage from chemical exposure, thermal hazards, and contamination. Durable and compliant.',
     imageUrl: '/images/ppes/Skin-and-Body-Protection_2022.avif',
     path: '/services/ppe/body-protection',
-    icon: 'vest',
     color: 'from-indigo-400 to-purple-500',
   },
   {
+    id: 'foot-protection',
     title: 'Foot Protection',
     subtitle: 'Safety Shoes & Boots',
     description: 'Steel-toed and protective footwear for impact and puncture resistance. ASTM certified for workplace safety.',
     imageUrl: '/images/ppes/Foot-Protection-1536x922.webp',
     path: '/services/ppe/foot-protection',
-    icon: 'boot',
     color: 'from-amber-400 to-orange-500',
   },
   {
+    id: 'basca-cylinders',
     title: 'BASCA Cylinders',
     subtitle: 'Fire Suppressant Cylinders',
     description: 'Advanced fire suppression technology for specialized environments. Clean agent systems for sensitive equipment protection.',
     imageUrl: '/images/ppes/istockphoto-2190518272-1024x1024.jpg',
     path: '/services/ppe/basca-cylinders',
-    icon: 'cylinder',
     color: 'from-red-400 to-red-600',
   },
 ];
 
+// Real images for each PPE category
+const ppeImages = {
+  'head-protection': [
+    '/images/ppes/Head-Protection.webp',
+    '/images/ppes/istockphoto-1388965773-1024x1024.jpg',
+    '/images/ppes/istockphoto-1411572653-1024x1024.jpg',
+  ],
+  'eye-protection': [
+    '/images/ppes/Face-and-Eye-Protection_2022.avif',
+    '/images/ppes/ppes eye protection/ANTI-FOG-VENTILATED-SAFETY-GOGGLES-S-LS-312-CL-JORESTECH-H_6_1600x1600.webp',
+    '/images/ppes/ppes eye protection/Double-Layer-Welding-Glasses-Adjustable-Welding-Safety-Eye-Protection-Welder-Goggles.avif',
+  ],
+  'hearing-protection': [
+    '/images/ppes/Hearing-Protection-1536x922.webp',
+    '/images/ppes/Hearing-Protection_2022.avif',
+    '/images/ppes/istockphoto-1658925458-1024x1024.jpg',
+  ],
+  'respiratory-protection': [
+    '/images/ppes/Respiratory-Protection.webp',
+    '/images/ppes/Respiratory-Protection_2022.avif',
+    '/images/ppes/ppes respiratory/maxresdefault.jpg',
+  ],
+  'hand-protection': [
+    '/images/ppes/Hand-Protection-1536x922.webp',
+    '/images/ppes/ppes hand gloves/1687877639-1.webp',
+    '/images/ppes/istockphoto-1488252839-1024x1024.jpg',
+  ],
+  'body-protection': [
+    '/images/ppes/Skin-and-Body-Protection_2022.avif',
+    '/images/ppes/istockphoto-1490326028-1024x1024.jpg',
+    '/images/ppes/Types-of-Personal-Protective-Equipment-PPE_2022.avif',
+  ],
+  'foot-protection': [
+    '/images/ppes/Foot-Protection-1536x922.webp',
+    '/images/ppes/PN-521-Chrome-Orange.jpg',
+    '/images/ppes/61eTR14wUVL._AC_UF894,1000_QL80_.jpg',
+  ],
+  'basca-cylinders': [
+    '/images/ppes/istockphoto-2190518272-1024x1024.jpg',
+    '/images/ppes/ppes oxygen cylender/1_28e8d59aeceeb5e9b638a2ef5b3d2f3d.webp',
+    '/images/ppes/istockphoto-947254500-1024x1024.jpg',
+  ],
+};
+
 const PPEs = () => {
   const prefersReduced = useReducedMotion();
+  const swiperRef = useRef(null);
+  const [isAutoplay, setIsAutoplay] = useState(true);
 
   React.useEffect(() => {
     AOS.refresh();
@@ -202,143 +253,91 @@ const PPEs = () => {
           </motion.p>
         </motion.div>
 
-        {/* Quick Category Images Grid */}
-        <motion.div 
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 sm:gap-4 mb-16 md:mb-20"
-          variants={categoryGridVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {ppeCategories.map((category, index) => (
+        {/* PPE Category Carousels */}
+        {ppeCategories.map((category, categoryIndex) => (
+          <div key={category.id} className="mb-16 md:mb-24">
             <motion.div
-              key={index}
-              variants={categoryItemVariants}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="mb-8"
             >
-              <Link
-                to={category.path}
-                className="group relative overflow-hidden rounded-xl transition-all duration-300 active:scale-95 md:hover:scale-110 flex h-40 sm:h-48"
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 glow-text">{category.title}</h2>
+              <p className="text-white/70 text-sm md:text-base max-w-3xl">{category.description}</p>
+            </motion.div>
+
+            {/* Carousel for this category */}
+            <div 
+              className="relative group"
+              onMouseEnter={() => setIsAutoplay(false)}
+              onMouseLeave={() => setIsAutoplay(true)}
+            >
+              <Swiper
+                ref={swiperRef}
+                modules={[Navigation, Pagination, Autoplay]}
+                spaceBetween={24}
+                slidesPerView={1}
+                autoplay={isAutoplay ? { delay: 4500, disableOnInteraction: false } : false}
+                pagination={{ clickable: true, dynamicBullets: true }}
+                navigation={{ prevEl: `.swiper-button-prev-ppe-${category.id}`, nextEl: `.swiper-button-next-ppe-${category.id}` }}
+                breakpoints={{
+                  640: { slidesPerView: 2, spaceBetween: 20 },
+                  1024: { slidesPerView: 3, spaceBetween: 24 },
+                }}
+                className="!pb-12"
               >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-black/50 to-black/30 z-10"></div>
-                <img
-                  src={category.imageUrl}
-                  alt={category.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20"></div>
-                <div className="absolute inset-0 flex flex-col items-center justify-center z-30 text-white text-center px-3 py-4">
-                  <div className="mb-2 group-hover:scale-125 transition-transform duration-300">
-                  {category.icon === 'helmet' && (
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2C8 2 5 5 5 9v2h14V9c0-4-3-7-7-7z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  )}
-                  {category.icon === 'goggles' && (
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12c2-4 6-6 10-6s8 2 10 6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  )}
-                  {category.icon === 'ear' && (
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v1a4 4 0 010 8v3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  )}
-                  {category.icon === 'mask' && (
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12c2 5 10 7 10 7s8-2 10-7v5c0 1-1 2-2 2H4c-1 0-2-1-2-2v-5z" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  )}
-                  {category.icon === 'glove' && (
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9v6a4 4 0 008 0V7" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  )}
-                  {category.icon === 'vest' && (
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l4 4v14H8V6l4-4z" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  )}
-                  {category.icon === 'boot' && (
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19h13v-2a4 4 0 00-4-4H8" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  )}
-                  {category.icon === 'cylinder' && (
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="6" y="3" width="12" height="18" rx="2" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  )}
-                </div>
-                <h3 className="text-xs sm:text-sm md:text-base font-bold leading-tight line-clamp-2">{category.title}</h3>
-              </div>
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
+                {ppeImages[category.id]?.map((image, imageIndex) => (
+                  <SwiperSlide key={imageIndex}>
+                    <Link to={category.path} className="no-underline">
+                      <motion.div
+                        className="group/card relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 cursor-pointer flex flex-col h-64"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        {/* Image Container */}
+                        <div className="relative w-full overflow-hidden bg-slate-900/50 flex-grow">
+                          <img
+                            src={image}
+                            alt={`${category.title} - Item ${imageIndex + 1}`}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
+                        </div>
 
-        {/* Main PPE Cards Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="mb-12 md:mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text">Featured PPE Categories</h2>
-        </motion.div>
-        
-        <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-24"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          {ppeCategories.map((category, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-            >
-              <Link to={category.path} className="no-underline">
-                <motion.div
-                  initial="rest"
-                  whileHover="hover"
-                  variants={cardHoverVariants}
-                  className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 cursor-pointer flex flex-col h-full"
-                >
-                  {/* Image Container */}
-                  <div className="relative h-56 sm:h-64 overflow-hidden bg-gradient-to-br from-blue-500/20 to-accent/20">
-                    <motion.img 
-                      src={category.imageUrl} 
-                      alt={category.title} 
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      variants={imageVariants}
-                      transition={{ duration: 0.5, ease: 'easeOut' }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
+                        {/* Content */}
+                        <div className="p-4 flex flex-col justify-end">
+                          <h3 className="text-lg md:text-xl font-black text-white group-hover/card:text-accent transition-colors duration-300">
+                            {category.title}
+                          </h3>
+                          <p className="text-white/70 text-xs md:text-sm font-bold uppercase tracking-wider">
+                            {category.subtitle}
+                          </p>
+                        </div>
 
-                  {/* Content Container */}
-                  <div className="p-5 md:p-6 flex flex-col flex-grow">
-                    {/* Emoji & Icon */}
-                    <div className="text-4xl md:text-5xl mb-3">{category.emoji}</div>
+                        {/* Hover Glow Effect */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                      </motion.div>
+                    </Link>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
 
-                    {/* Title & Subtitle */}
-                    <h3 className="text-xl md:text-2xl font-black text-white mb-1 group-hover:text-accent transition-colors duration-300 line-clamp-2">
-                      {category.title}
-                    </h3>
-                    <p className="text-xs md:text-sm font-bold text-accent/90 mb-3 uppercase tracking-wider">
-                      {category.subtitle}
-                    </p>
-
-                    {/* Description */}
-                    <p className="text-sm md:text-base text-white/75 dark:text-gray-300 mb-4 flex-grow leading-relaxed">
-                      {category.description}
-                    </p>
-
-                    {/* CTA Button */}
-                    <motion.button 
-                      className="w-full py-3 px-4 rounded-full font-bold text-sm md:text-base bg-gradient-to-r from-accent to-orange-500 text-white hover:shadow-lg transition-all duration-300 active:scale-95 uppercase tracking-wider"
-                      whileHover={prefersReduced ? {} : { scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      View Details
-                    </motion.button>
-                  </div>
-
-                  {/* Hover Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                </motion.div>
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
+              {/* Navigation Buttons */}
+              <button className={`swiper-button-prev-ppe-${category.id} absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-accent/90 hover:bg-accent text-white transition-all duration-300 shadow-lg hover:shadow-xl`}>
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button className={`swiper-button-next-ppe-${category.id} absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-accent/90 hover:bg-accent text-white transition-all duration-300 shadow-lg hover:shadow-xl`}>
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        ))}
 
         {/* Why Choose PPE Section */}
         <motion.div 
