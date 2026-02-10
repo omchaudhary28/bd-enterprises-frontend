@@ -85,8 +85,8 @@ const FireAlarmDetection = () => {
     'Annual compliance testing and detailed documentation'
   ];
 
-  const swiperRef = React.useRef(null);
-  const [isAutoplay, setIsAutoplay] = React.useState(true);
+  const swiperRef = useRef(null);
+  const [isAutoplay, setIsAutoplay] = useState(true);
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen">

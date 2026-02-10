@@ -226,48 +226,6 @@ const EmergencyLighting = () => {
           </div>
         </section>
 
-                {/* Content Container */}
-                <div className="p-5 md:p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl md:text-2xl font-black text-white mb-2 group-hover:text-accent transition-colors duration-300">
-                    {service.name}
-                  </h3>
-                  <p className="text-white/80 text-sm md:text-base mb-4 leading-relaxed">
-                    {service.summary}
-                  </p>
-
-                  {/* Use Cases */}
-                  <div className="mb-4 flex-grow">
-                    <h4 className="text-xs font-bold text-accent/90 mb-2 uppercase tracking-wider">Primary Applications</h4>
-                    <ul className="space-y-1">
-                      {service.useCases.slice(0, 2).map((useCase, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-white/70">
-                          <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" /></svg>
-                          <span>{useCase}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Details */}
-                  <div className="space-y-3 border-t border-white/10 pt-4">
-                    <div>
-                      <p className="text-xs font-bold text-accent/80 uppercase tracking-wider mb-1">How It Protects</p>
-                      <p className="text-xs md:text-sm text-white/70 leading-relaxed">{service.protection}</p>
-                    </div>
-                    <div className="bg-accent/10 rounded-lg p-3 border border-accent/20">
-                      <p className="text-xs font-bold text-accent mb-1 uppercase tracking-wider">BD Value</p>
-                      <p className="text-xs md:text-sm text-white/80 leading-relaxed">{service.bdValue}</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* Standards Section */}
         <section className="mb-16 md:mb-24">
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">

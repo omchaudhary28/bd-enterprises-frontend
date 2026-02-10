@@ -159,42 +159,7 @@ const PPEs = () => {
     },
   };
 
-  const cardHoverVariants = {
-    rest: { scale: 1, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)' },
-    hover: {
-      scale: prefersReduced ? 1 : 1.02,
-      boxShadow: '0px 20px 60px rgba(0, 132, 255, 0.3)',
-      transition: { duration: 0.3, ease: 'easeOut' },
-    },
-  };
 
-  const imageVariants = {
-    rest: { scale: 1 },
-    hover: { scale: prefersReduced ? 1 : 1.08, transition: { duration: 0.5, ease: 'easeOut' } },
-  };
-
-  const categoryGridVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: prefersReduced ? 0 : 0.04,
-        delayChildren: 0,
-      },
-    },
-  };
-
-  const categoryItemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: prefersReduced ? 0 : 0.4,
-        ease: 'easeOut',
-      },
-    },
-  };
 
   return (
     <div className="ppe-page relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen">
