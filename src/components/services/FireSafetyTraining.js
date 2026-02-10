@@ -1,17 +1,33 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { getPatternBackgroundImage } from '../../utils/patternSystem';
 
 const FireSafetyTraining = () => {
+  const swiperRef = useRef(null);
+  const [isAutoplay, setIsAutoplay] = useState(true);
+
   React.useEffect(() => {
     if (AOS && typeof AOS.refresh === 'function') {
       AOS.refresh();
     }
   }, []);
 
+  const fireSafetyImages = [
+    '/images/fire safety training/feuerloschubung_im_betrieb-cws_fire_safety.jpg',
+    '/images/fire safety training/Fire Extinguisher Training Demo Open Burn.jpg',
+    '/images/fire safety training/Fire_drill_in_a_smoke_trailer,_Naples,_Italy_-_081007-N-4044H-271.jpg'
+  ];
+
   const services = [
     {
-      image: '/images/services/fire-safety-training.svg',
+      id: 'fire-extinguisher-training',
+      imageIndex: 0,
       name: 'Hands-On Fire Extinguisher Training',
       summary: 'Practical, NFPA 101-certified training on proper extinguisher selection, operation, and deployment using live fire demonstrations.',
       useCases: [
@@ -25,7 +41,8 @@ const FireSafetyTraining = () => {
       bdValue: 'NFPA-certified trainers, live fire demonstrations, hands-on PASS technique practice, and individual competency assessment.'
     },
     {
-      image: '/images/services/evacuation-planning.svg',
+      id: 'evacuation-planning',
+      imageIndex: 1,
       name: 'Evacuation Planning & Emergency Drills',
       summary: 'Comprehensive facility analyses with customized evacuation plans and coordinated full-building drills with professional timing and feedback.',
       useCases: [
@@ -39,7 +56,8 @@ const FireSafetyTraining = () => {
       bdValue: 'Custom facility surveys, timing analysis with improvement recommendations, accountability procedures, and professional drill coordination.'
     },
     {
-      image: '/images/services/hazard-recognition.svg',
+      id: 'hazard-recognition',
+      imageIndex: 2,
       name: 'Fire Prevention & Hazard Recognition',
       summary: 'Educational training on fire behavior, common ignition sources, prevention strategies, and industry-specific hazard identification.',
       useCases: [
@@ -55,9 +73,9 @@ const FireSafetyTraining = () => {
   ];
 
   const standards = [
-    { icon: '📋', title: 'NFPA 101', description: 'Life Safety Code requirements for fire safety training and evacuation procedures' },
-    { icon: '🛡️', title: 'OSHA Standards', description: 'Workplace fire prevention and emergency action plan requirements' },
-    { icon: '✓', title: 'Industry-Specific', description: 'Compliance with sector-specific training mandates (healthcare, manufacturing, etc.)' }
+    { title: 'NFPA 101', description: 'Life Safety Code requirements for fire safety training and evacuation procedures' },
+    { title: 'OSHA Standards', description: 'Workplace fire prevention and emergency action plan requirements' },
+    { title: 'Industry-Specific', description: 'Compliance with sector-specific training mandates (healthcare, manufacturing, etc.)' }
   ];
 
   const benefits = [
@@ -106,70 +124,97 @@ const FireSafetyTraining = () => {
           </div>
         </section>
 
-        {/* Services Grid */}
+        {/* Services Carousel */}
         <section className="mb-16 md:mb-24">
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">
             Our Training Programs
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 cursor-pointer flex flex-col h-full"
-                data-aos="zoom-in"
-                data-aos-delay={index * 100}
-              >
-                {/* Image Container */}
-                <div className="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-blue-500/20 to-accent/20">
-                  <img
-                    src={service.image}
-                    alt={service.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/services/fire-safety-training.svg'; }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-
-                {/* Content Container */}
-                <div className="p-5 md:p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl md:text-2xl font-black text-white mb-2 group-hover:text-accent transition-colors duration-300">
-                    {service.name}
-                  </h3>
-                  <p className="text-white/80 text-sm md:text-base mb-4 leading-relaxed">
-                    {service.summary}
-                  </p>
-
-                  {/* Use Cases */}
-                  <div className="mb-4 flex-grow">
-                    <h4 className="text-xs font-bold text-accent/90 mb-2 uppercase tracking-wider">Primary Applications</h4>
-                    <ul className="space-y-1">
-                      {service.useCases.slice(0, 2).map((useCase, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-white/70">
-                          <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" /></svg>
-                          <span>{useCase}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Details */}
-                  <div className="space-y-3 border-t border-white/10 pt-4">
-                    <div>
-                      <p className="text-xs font-bold text-accent/80 uppercase tracking-wider mb-1">How It Protects</p>
-                      <p className="text-xs md:text-sm text-white/70 leading-relaxed">{service.protection}</p>
+          <div className="relative group" onMouseEnter={() => setIsAutoplay(false)} onMouseLeave={() => setIsAutoplay(true)}>
+            <Swiper
+              ref={swiperRef}
+              modules={[Navigation, Pagination, Autoplay]}
+              spaceBetween={24}
+              slidesPerView={1}
+              autoplay={isAutoplay ? { delay: 4500, disableOnInteraction: false } : false}
+              pagination={{ clickable: true, dynamicBullets: true }}
+              navigation={{ prevEl: '.swiper-button-prev-fire-training', nextEl: '.swiper-button-next-fire-training' }}
+              breakpoints={{
+                640: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 24 },
+              }}
+              className="!pb-12"
+            >
+              {services.map((service, index) => (
+                <SwiperSlide key={service.id}>
+                  <div
+                    className="group/card relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 cursor-pointer flex flex-col h-full"
+                    data-aos="zoom-in"
+                    data-aos-delay={index * 100}
+                  >
+                    {/* Image Container */}
+                    <div className="relative w-full overflow-hidden bg-slate-900/50" style={{ aspectRatio: '16/9' }}>
+                      <img
+                        src={fireSafetyImages[service.imageIndex]}
+                        alt={service.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <div className="bg-accent/10 rounded-lg p-3 border border-accent/20">
-                      <p className="text-xs font-bold text-accent mb-1 uppercase tracking-wider">BD Value</p>
-                      <p className="text-xs md:text-sm text-white/80 leading-relaxed">{service.bdValue}</p>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-              </div>
-            ))}
+                    {/* Content Container */}
+                    <div className="p-5 md:p-6 flex flex-col flex-grow">
+                      <h3 className="text-xl md:text-2xl font-black text-white mb-2 group-hover/card:text-accent transition-colors duration-300">
+                        {service.name}
+                      </h3>
+                      <p className="text-white/80 text-sm md:text-base mb-4 leading-relaxed">
+                        {service.summary}
+                      </p>
+
+                      {/* Use Cases */}
+                      <div className="mb-4 flex-grow">
+                        <h4 className="text-xs font-bold text-accent/90 mb-2 uppercase tracking-wider">Primary Applications</h4>
+                        <ul className="space-y-1">
+                          {service.useCases.slice(0, 2).map((useCase, i) => (
+                            <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-white/70">
+                              <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" /></svg>
+                              <span>{useCase}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Details */}
+                      <div className="space-y-3 border-t border-white/10 pt-4">
+                        <div>
+                          <p className="text-xs font-bold text-accent/80 uppercase tracking-wider mb-1">How It Protects</p>
+                          <p className="text-xs md:text-sm text-white/70 leading-relaxed">{service.protection}</p>
+                        </div>
+                        <div className="bg-accent/10 rounded-lg p-3 border border-accent/20">
+                          <p className="text-xs font-bold text-accent mb-1 uppercase tracking-wider">BD Value</p>
+                          <p className="text-xs md:text-sm text-white/80 leading-relaxed">{service.bdValue}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Hover Glow Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* Navigation Buttons */}
+            <button className="swiper-button-prev-fire-training absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-accent/90 hover:bg-accent text-white transition-all duration-300 shadow-lg hover:shadow-xl">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button className="swiper-button-next-fire-training absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-accent/90 hover:bg-accent text-white transition-all duration-300 shadow-lg hover:shadow-xl">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </section>
 
@@ -182,18 +227,23 @@ const FireSafetyTraining = () => {
             {standards.map((standard, index) => (
               <div
                 key={index}
-                className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 p-6 md:p-8 text-center"
+                className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 p-6 md:p-8"
+                style={{
+                  backgroundImage: getPatternBackgroundImage('fire-safety-training', index),
+                  backgroundSize: '200px 200px',
+                  backgroundAttachment: 'fixed',
+                }}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
-                <div className="text-4xl md:text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {standard.icon}</div>
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
-                  {standard.title}
-                </h3>
-                <p className="text-white/70 text-sm md:text-base leading-relaxed">
-                  {standard.description}
-                </p>
+                <div className="relative z-10">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                    {standard.title}
+                  </h3>
+                  <p className="text-white/70 text-sm md:text-base leading-relaxed">
+                    {standard.description}
+                  </p>
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"></div>
               </div>
             ))}

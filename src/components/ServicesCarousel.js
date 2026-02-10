@@ -1,304 +1,191 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-// Services metadata (title, short description, optional bullets, link)
 const SERVICES = [
   {
     title: 'Fire Extinguisher Systems',
     description: 'Inspection, servicing and strategic placement of portable and fixed extinguishers.',
-    bullets: ['ABC-rated solutions', 'Refill & certification'],
     link: '/services/fire-extinguishers',
+    slug: 'fire-extinguisher-systems',
   },
   {
     title: 'Fire Alarm & Detection',
     description: 'Design, install and maintain alarm systems with fastest detection coverage.',
-    bullets: ['Smoke & heat detectors', 'Monitoring options'],
     link: '/services/fire-alarms',
+    slug: 'fire-alarm-detection',
   },
   {
     title: 'Sprinkler Systems',
     description: 'Wet, dry and pre-action systems tailored to your facility needs.',
-    bullets: ['Design & retrofit', 'Annual testing'],
     link: '/services/sprinkler-systems',
+    slug: 'sprinkler-systems',
   },
   {
     title: 'Emergency Lighting & Exits',
     description: 'Ensure safe egress with code-compliant signage and emergency lights.',
-    bullets: ['Battery backup tests', 'Exit signage'],
     link: '/services/emergency-lighting',
+    slug: 'emergency-lighting-exits',
   },
   {
     title: 'Fire Safety Training',
     description: 'Hands-on and classroom training for staff and response teams.',
-    bullets: ['Extinguisher training', 'Evacuation drills'],
     link: '/services/fire-safety-training',
+    slug: 'fire-safety-training',
   },
   {
     title: 'Compliance & Inspection',
     description: 'Comprehensive inspections to keep you compliant with local codes.',
-    bullets: ['Reporting & remediation', 'Code expertise'],
     link: '/services/compliance-inspection',
+    slug: 'compliance-inspection',
   },
 ];
 
-// Helper: build a slug from the title (used to derive image filename dynamically)
-const slugify = (str) =>
-  str
-    .toLowerCase()
-    .replace(/&/g, 'and')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
-
-// Image candidate generator (tries a few extensions & paths)
-// Tries multiple slug variations (handles '&' / 'and' differences and common naming variants)
-const imageCandidatesFor = (title) => {
-  const baseSlug = slugify(title);
-  const variants = new Set();
-
-  // primary slug
-  variants.add(baseSlug);
-
-  // remove common conjunction 'and' (e.g., 'fire-alarm-and-detection' -> 'fire-alarm-detection')
-  variants.add(baseSlug.replace(/-and-/g, '-'));
-
-  // remove the token entirely (join words)
-  variants.add(baseSlug.replace(/-and-/g, ''));
-
-  // try slug built from original title with ampersand removed before slugify
-  variants.add(slugify(title.replace(/&/g, '')));
-
-  // try removing articles
-  variants.add(baseSlug.replace(/-(the|a|an)-/g, '-'));
-
-  // try a compact form without hyphens (fallback)
-  variants.add(baseSlug.replace(/-/g, ''));
-
-  const exts = ['svg', 'avif', 'webp', 'jpg', 'jpeg', 'png'];
-  const candidates = [];
-
-  for (const v of variants) {
-    if (!v) continue;
-    for (const ext of exts) {
-      candidates.push(`/images/services/${v}.${ext}`);
-      candidates.push(`/images/${v}.${ext}`);
-    }
-  }
-
-  // last resort: try a few commonly present service images in repo
-  candidates.push('/images/services/sprinkler-systems.svg');
-  candidates.push('/images/services/fire-extinguisher-systems.svg');
-  candidates.push('/images/services/emergency-lighting-exits.svg');
-  candidates.push('/images/istockphoto-2190518272-1024x1024.jpg');
-
-  return candidates;
+// Map service index to actual image files available in `/public/images/`
+const getImageForService = (index) => {
+  const imageMaps = [
+    '/images/fire extinguisher/automated-Fire-extinguisher.webp',
+    '/images/Fire Alarm Systems/blobid1743092385467.webp',
+    '/images/sprinkler system/Fire_sprinkler_roof_mount_side_view.jpg',
+    '/images/emergency lights/76yvHsMjxoXFU4WTt3JUP94YBWVObAz48gti09nzlKzkXU0iZueHb4nEzuD-Q8MeywZXladWrqsgsRcsVSs2v3F2K7aqdqMe1cmlK-fDSrw.jpg',
+    '/images/fire safety training/feuerloschubung_im_betrieb-cws_fire_safety.jpg',
+    '/images/complainces and audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
+  ];
+  return imageMaps[index % imageMaps.length];
 };
 
 const ServicesCarousel = () => {
-  const base = SERVICES;
+  const [current, setCurrent] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(3);
+  const [paused, setPaused] = useState(false);
 
-  // Triple the slides for seamless looping
-  const slides = [...base, ...base, ...base];
-
-  const centerIndex = base.length; // start in middle set
-
-  const [visibleCount, setVisibleCount] = useState(1);
-  const [index, setIndex] = useState(centerIndex);
-  const [isAnimating, setIsAnimating] = useState(true);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const containerRef = useRef(null);
-  const autoTimer = useRef(null);
-  const dragStartX = useRef(0);
-
-  // responsive visible items
-  const updateVisible = useCallback(() => {
+  useEffect(() => {
     const w = window.innerWidth;
-    if (w >= 1024) setVisibleCount(3); // desktop
-    else if (w >= 768) setVisibleCount(2); // tablet
-    else setVisibleCount(1); // mobile
+    if (w >= 1024) setVisibleCount(3);
+    else setVisibleCount(2);
   }, []);
 
   useEffect(() => {
-    updateVisible();
-    window.addEventListener('resize', updateVisible);
-    return () => window.removeEventListener('resize', updateVisible);
-  }, [updateVisible]);
+    const handler = () => {
+      const w = window.innerWidth;
+      if (w >= 1024) setVisibleCount(3);
+      else setVisibleCount(2);
+    };
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
 
-  // Auto-scroll
   useEffect(() => {
-    if (isPaused) return;
-    autoTimer.current = setInterval(() => {
-      setIndex((i) => i + 1);
+    if (paused) return;
+    const timer = setInterval(() => {
+      setCurrent((c) => (c + 1) % SERVICES.length);
     }, 5000);
-    return () => clearInterval(autoTimer.current);
-  }, [isPaused]);
+    return () => clearInterval(timer);
+  }, [paused]);
 
-  // Loop handling: when index moves outside central block, jump back without animation
-  useEffect(() => {
-    const max = base.length * 2;
-    const min = base.length - 1;
-    if (index > max) {
-      // reached far end, reset to equivalent in middle set
-      setTimeout(() => {
-        setIsAnimating(false);
-        setIndex((idx) => idx - base.length);
-      }, 300);
-      setTimeout(() => setIsAnimating(true), 350);
-    } else if (index < min) {
-      setTimeout(() => {
-        setIsAnimating(false);
-        setIndex((idx) => idx + base.length);
-      }, 300);
-      setTimeout(() => setIsAnimating(true), 350);
-    }
-  }, [index, base.length]);
+  const slideNext = () => setCurrent((c) => (c + 1) % SERVICES.length);
+  const slidePrev = () => setCurrent((c) => (c - 1 + SERVICES.length) % SERVICES.length);
 
-  // keyboard nav
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === 'ArrowLeft') setIndex((i) => i - 1);
-      if (e.key === 'ArrowRight') setIndex((i) => i + 1);
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
-
-  // drag end decide
-  const onDragEnd = (event, info) => {
-    const velocity = info.velocity.x;
-    const offset = info.offset.x;
-    const threshold = (containerRef.current?.offsetWidth || 300) * 0.15;
-    if (offset < -threshold || velocity < -400) setIndex((i) => i + 1);
-    else if (offset > threshold || velocity > 400) setIndex((i) => i - 1);
-  };
-
-  // item width percent
-  const itemPercent = 100 / visibleCount;
-
-  // compute transform X (we want to center the visible window over slides[index])
-  const xPercent = -index * itemPercent;
-
-  // render slide card
-  const SlideCard = ({ service, idx }) => {
-    const candidates = imageCandidatesFor(service.title);
-
-    // onError handler cycles through candidates stored in dataset
-    const handleImgError = (e) => {
-      const el = e.currentTarget;
-      const attempt = Number(el.dataset.attempt || 0) + 1;
-      el.dataset.attempt = attempt;
-      if (attempt < candidates.length) el.src = candidates[attempt];
-    };
-
-    const alt = `${service.title}`;
-
-    // image src = first candidate
-    const src = candidates[0];
-
+  const ServiceCard = ({ service, index }) => {
+    const imgSrc = getImageForService(index);
     return (
-      <div
-        role="group"
-        aria-label={service.title}
-        tabIndex={0}
-        className="w-full px-2"
+      <motion.div
+        key={`card-${index}`}
+        className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 px-3"
       >
-        <motion.article
-          whileHover={{ y: -6 }}
-          className="bg-gradient-to-br from-sky-800 to-blue-900 text-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transform-gpu"
-          style={{ height: '100%' }}
+        <motion.div
+          className="relative bg-gradient-to-br from-sky-800 to-blue-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col group"
+          whileHover={{ y: -4 }}
         >
-          <div className="relative" style={{ paddingTop: '56.25%' }}>
-            <motion.img
-              src={src}
-              alt={alt}
-              data-attempt={0}
-              onError={handleImgError}
+          {/* Image Container - 16:9 */}
+          <div className="relative w-full bg-slate-700 overflow-hidden" style={{ paddingBottom: '56.25%' }}>
+            <img
+              src={imgSrc}
+              alt={service.title}
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-              whileHover={{ scale: 1.06 }}
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           </div>
 
-          <div className="p-4 sm:p-5 md:p-6">
-            <h3 className="text-lg font-bold mb-1">{service.title}</h3>
-            <p className="text-sm text-white/90 mb-3">{service.description}</p>
-            {service.bullets && (
-              <ul className="text-xs mb-3 text-white/85 space-y-1">
-                {service.bullets.slice(0, 3).map((b, i) => (
-                  <li key={i}>• {b}</li>
-                ))}
-              </ul>
-            )}
-            <div className="mt-2">
-              <Link
-                to={service.link}
-                className="inline-flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm font-semibold ring-1 ring-white/10"
-              >
-                Learn More
-              </Link>
-            </div>
+          {/* Content */}
+          <div className="p-5 md:p-6 flex-grow flex flex-col">
+            <h3 className="text-lg md:text-xl font-bold text-white mb-2">{service.title}</h3>
+            <p className="text-sm text-white/90 mb-4 flex-grow">{service.description}</p>
+            <Link
+              to={service.link}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 hover:bg-white/25 rounded-lg text-sm font-semibold transition-colors duration-200 w-fit"
+            >
+              Learn More →
+            </Link>
           </div>
-        </motion.article>
-      </div>
+        </motion.div>
+      </motion.div>
     );
   };
 
   return (
     <section
       aria-label="Our Services carousel"
-      className="relative py-8"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      className="relative py-12 md:py-16 bg-gradient-to-br from-primary via-blue-700 to-secondary"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold">Our Services</h2>
-          <div className="hidden md:flex gap-2">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8 md:mb-10">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-2">Our Services</h2>
+            <p className="text-white/80 text-sm">Swipe or use navigation to explore</p>
+          </div>
+          <div className="flex gap-3">
             <button
-              aria-label="Previous"
-              onClick={() => setIndex((i) => i - 1)}
-              className="px-3 py-2 bg-slate-100 rounded-md text-slate-800"
+              aria-label="Previous slide"
+              onClick={slidePrev}
+              className="p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors duration-200"
             >
-              ‹
+              &#8249;
             </button>
             <button
-              aria-label="Next"
-              onClick={() => setIndex((i) => i + 1)}
-              className="px-3 py-2 bg-slate-100 rounded-md text-slate-800"
+              aria-label="Next slide"
+              onClick={slideNext}
+              className="p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors duration-200"
             >
-              ›
+              &#8250;
             </button>
           </div>
         </div>
 
+        {/* Carousel Container */}
         <div
-          ref={containerRef}
-          tabIndex={0}
-          className="overflow-hidden"
+          className="overflow-hidden rounded-xl"
+          role="region"
+          aria-live="polite"
         >
           <motion.div
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            onDragEnd={onDragEnd}
-            animate={{ x: `${xPercent}%` }}
-            transition={isAnimating ? { duration: 0.6, ease: [0.22, 1, 0.36, 1] } : { duration: 0 }}
-            className="flex items-stretch"
-            style={{ width: `${(slides.length * itemPercent).toFixed(4)}%` }}
+            animate={{ x: `-${(current * (100 / visibleCount))}%` }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="flex gap-6"
+            style={{ width: '100%' }}
           >
-            {slides.map((s, idx) => (
-              <div key={`${s.title}-${idx}`} style={{ width: `${itemPercent}%` }}>
-                <motion.div
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.6, ease: 'easeOut' }}
-                >
-                  <SlideCard service={s} idx={idx} />
-                </motion.div>
-              </div>
+            {SERVICES.map((service, idx) => (
+              <ServiceCard key={idx} service={service} index={idx} />
             ))}
           </motion.div>
+        </div>
+
+        {/* Dots Indicator */}
+        <div className="flex justify-center gap-2 mt-6">
+          {SERVICES.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrent(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                idx === current ? 'bg-white w-8' : 'bg-white/40 w-2 hover:bg-white/60'
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>

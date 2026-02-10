@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
+import { getPatternBackgroundImage } from '../../utils/patternSystem';
 
 const ComplianceInspection = () => {
   React.useEffect(() => {
@@ -55,9 +56,9 @@ const ComplianceInspection = () => {
   ];
 
   const standards = [
-    { icon: '📋', title: 'NFPA 1', description: 'Fire Code - primary standard for fire protection and prevention requirements' },
-    { icon: '🛡️', title: 'IBC Standards', description: 'International Building Code requirements for fire safety and egress' },
-    { icon: '✓', title: 'Local Codes', description: 'Jurisdiction-specific fire marshal regulations and adopted standards' }
+    { title: 'NFPA 1', description: 'Fire Code - primary standard for fire protection and prevention requirements' },
+    { title: 'IBC Standards', description: 'International Building Code requirements for fire safety and egress' },
+    { title: 'Local Codes', description: 'Jurisdiction-specific fire marshal regulations and adopted standards' }
   ];
 
   const benefits = [
@@ -126,6 +127,7 @@ const ComplianceInspection = () => {
                     alt={service.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/services/compliance-inspection.svg'; }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
@@ -181,18 +183,23 @@ const ComplianceInspection = () => {
             {standards.map((standard, index) => (
               <div
                 key={index}
-                className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 p-6 md:p-8 text-center"
+                className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 p-6 md:p-8"
+                style={{
+                  backgroundImage: getPatternBackgroundImage('compliance-inspection', index),
+                  backgroundSize: '200px 200px',
+                  backgroundAttachment: 'fixed',
+                }}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
-                <div className="text-4xl md:text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {standard.icon}</div>
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
-                  {standard.title}
-                </h3>
-                <p className="text-white/70 text-sm md:text-base leading-relaxed">
-                  {standard.description}
-                </p>
+                <div className="relative z-10">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                    {standard.title}
+                  </h3>
+                  <p className="text-white/70 text-sm md:text-base leading-relaxed">
+                    {standard.description}
+                  </p>
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"></div>
               </div>
             ))}

@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { getPatternBackgroundImage } from '../../utils/patternSystem';
 
 const FireAlarmDetection = () => {
   React.useEffect(() => {
@@ -9,9 +15,17 @@ const FireAlarmDetection = () => {
     }
   }, []);
 
+  // Real images from /public/images/Fire Alarm Systems/
+  const fireAlarmImages = [
+    '/images/Fire Alarm Systems/618cdfa3202b1d251c484e97_How Do Fire Alarms Work in Commercial Buildings.jpg',
+    '/images/Fire Alarm Systems/6193a4b4110d24a5b2acc29c_Commercial Fire Alarm System Guide-min.jpg',
+    '/images/Fire Alarm Systems/Smart-Addressable-Fire-Alarm-Monitoring-System-Panel.avif',
+  ];
+
   const services = [
     {
-      image: '/images/services/fire-alarm-system-design.svg',
+      id: 'addressable-fire-alarm',
+      imageIndex: 0,
       name: 'Addressable Fire Alarm System',
       summary: 'Pinpoints exact device location for faster response, troubleshooting, and maintenance with intelligent network monitoring.',
       useCases: [
@@ -25,7 +39,8 @@ const FireAlarmDetection = () => {
       bdValue: 'Expert system design, code-compliant installation, and centralized monitoring with real-time alerts across all zones.'
     },
     {
-      image: '/images/services/fire-alarm-detection.svg',
+      id: 'detection-devices',
+      imageIndex: 1,
       name: 'Advanced Detection Devices',
       summary: 'Comprehensive suite of smoke, heat, and multi-detectors with AI-powered false alarm reduction technology.',
       useCases: [
@@ -39,7 +54,8 @@ const FireAlarmDetection = () => {
       bdValue: 'Intelligent detector placement analysis, multi-sensor redundancy, and false alarm reduction that maintains safety without nuisance alarms.'
     },
     {
-      image: '/images/services/fire-alarm-monitoring.svg',
+      id: 'monitoring-alerts',
+      imageIndex: 2,
       name: 'Professional Monitoring & Mobile Alerts',
       summary: '24/7 certified monitoring center with instant mobile notifications and automatic emergency dispatch coordination.',
       useCases: [
@@ -55,9 +71,9 @@ const FireAlarmDetection = () => {
   ];
 
   const standards = [
-    { icon: '📋', title: 'NFPA 72', description: 'National standard for fire alarm system installation, design, and testing' },
-    { icon: '🛡️', title: 'NFPA 101', description: 'Life Safety Code requiring fire detection and alarm systems in occupied buildings' },
-    { icon: '✓', title: 'Local Codes', description: 'Compliance with jurisdiction-specific fire alarm and detection requirements' }
+    { title: 'NFPA 72', description: 'National standard for fire alarm system installation, design, and testing' },
+    { title: 'NFPA 101', description: 'Life Safety Code requiring fire detection and alarm systems in occupied buildings' },
+    { title: 'Local Codes', description: 'Compliance with jurisdiction-specific fire alarm and detection requirements' }
   ];
 
   const benefits = [
@@ -69,11 +85,13 @@ const FireAlarmDetection = () => {
     'Annual compliance testing and detailed documentation'
   ];
 
+  const swiperRef = React.useRef(null);
+  const [isAutoplay, setIsAutoplay] = React.useState(true);
+
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen">
-      {/* Animated Background */}
+      {/* Animated Background - No SVG Icons */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -left-20 w-96 h-96 bg-accent opacity-10 dark:opacity-5 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500 opacity-8 dark:opacity-3 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
       </div>
 
@@ -106,69 +124,105 @@ const FireAlarmDetection = () => {
           </div>
         </section>
 
-        {/* Services Grid */}
+        {/* Services Carousel */}
         <section className="mb-16 md:mb-24">
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">
             Our Services
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 cursor-pointer flex flex-col h-full"
-                data-aos="zoom-in"
-                data-aos-delay={index * 100}
-              >
-                {/* Image Container */}
-                <div className="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-blue-500/20 to-accent/20">
-                  <img
-                    src={service.image}
-                    alt={service.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-
-                {/* Content Container */}
-                <div className="p-5 md:p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl md:text-2xl font-black text-white mb-2 group-hover:text-accent transition-colors duration-300">
-                    {service.name}
-                  </h3>
-                  <p className="text-white/80 text-sm md:text-base mb-4 leading-relaxed">
-                    {service.summary}
-                  </p>
-
-                  {/* Use Cases */}
-                  <div className="mb-4 flex-grow">
-                    <h4 className="text-xs font-bold text-accent/90 mb-2 uppercase tracking-wider">Primary Applications</h4>
-                    <ul className="space-y-1">
-                      {service.useCases.slice(0, 2).map((useCase, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-white/70">
-                          <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" /></svg>
-                          <span>{useCase}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Details */}
-                  <div className="space-y-3 border-t border-white/10 pt-4">
-                    <div>
-                      <p className="text-xs font-bold text-accent/80 uppercase tracking-wider mb-1">How It Protects</p>
-                      <p className="text-xs md:text-sm text-white/70 leading-relaxed">{service.protection}</p>
+          
+          <div 
+            className="relative group"
+            onMouseEnter={() => setIsAutoplay(false)}
+            onMouseLeave={() => setIsAutoplay(true)}
+          >
+            <Swiper
+              ref={swiperRef}
+              modules={[Navigation, Pagination, Autoplay]}
+              spaceBetween={24}
+              slidesPerView={1}
+              autoplay={isAutoplay ? { delay: 4500, disableOnInteraction: false } : false}
+              pagination={{ clickable: true, dynamicBullets: true }}
+              navigation={{
+                prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next',
+              }}
+              breakpoints={{
+                640: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 24 },
+              }}
+              className="!pb-12"
+            >
+              {services.map((service, index) => (
+                <SwiperSlide key={service.id}>
+                  <div
+                    className="group/card relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 flex flex-col h-full"
+                    data-aos="zoom-in"
+                    data-aos-delay={index * 100}
+                  >
+                    {/* Real Image Container - 16:9 aspect ratio */}
+                    <div className="relative w-full overflow-hidden bg-slate-900/50" style={{ aspectRatio: '16/9' }}>
+                      <img
+                        src={fireAlarmImages[service.imageIndex]}
+                        alt={service.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <div className="bg-accent/10 rounded-lg p-3 border border-accent/20">
-                      <p className="text-xs font-bold text-accent mb-1 uppercase tracking-wider">BD Value</p>
-                      <p className="text-xs md:text-sm text-white/80 leading-relaxed">{service.bdValue}</p>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-              </div>
-            ))}
+                    {/* Content Container */}
+                    <div className="p-5 md:p-6 flex flex-col flex-grow">
+                      <h3 className="text-xl md:text-2xl font-black text-white mb-2 group-hover/card:text-accent transition-colors duration-300">
+                        {service.name}
+                      </h3>
+                      <p className="text-white/80 text-sm md:text-base mb-4 leading-relaxed">
+                        {service.summary}
+                      </p>
+
+                      {/* Use Cases */}
+                      <div className="mb-4 flex-grow">
+                        <h4 className="text-xs font-bold text-accent/90 mb-2 uppercase tracking-wider">Primary Applications</h4>
+                        <ul className="space-y-1">
+                          {service.useCases.slice(0, 2).map((useCase, i) => (
+                            <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-white/70">
+                              <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" /></svg>
+                              <span>{useCase}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Details */}
+                      <div className="space-y-3 border-t border-white/10 pt-4">
+                        <div>
+                          <p className="text-xs font-bold text-accent/80 uppercase tracking-wider mb-1">How It Protects</p>
+                          <p className="text-xs md:text-sm text-white/70 leading-relaxed">{service.protection}</p>
+                        </div>
+                        <div className="bg-accent/10 rounded-lg p-3 border border-accent/20">
+                          <p className="text-xs font-bold text-accent mb-1 uppercase tracking-wider">BD Value</p>
+                          <p className="text-xs md:text-sm text-white/80 leading-relaxed">{service.bdValue}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Hover Glow Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            
+            {/* Navigation Buttons */}
+            <button className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-24 z-20 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 hover:border-accent/50 transition-all duration-300 text-white">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-24 z-20 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 hover:border-accent/50 transition-all duration-300 text-white">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </section>
 
@@ -181,18 +235,23 @@ const FireAlarmDetection = () => {
             {standards.map((standard, index) => (
               <div
                 key={index}
-                className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 p-6 md:p-8 text-center"
+                className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 p-6 md:p-8"
+                style={{
+                  backgroundImage: getPatternBackgroundImage('fire-alarm-detection', index),
+                  backgroundSize: '200px 200px',
+                  backgroundAttachment: 'fixed',
+                }}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
-                <div className="text-4xl md:text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {standard.icon}</div>
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
-                  {standard.title}
-                </h3>
-                <p className="text-white/70 text-sm md:text-base leading-relaxed">
-                  {standard.description}
-                </p>
+                <div className="relative z-10">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                    {standard.title}
+                  </h3>
+                  <p className="text-white/70 text-sm md:text-base leading-relaxed">
+                    {standard.description}
+                  </p>
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"></div>
               </div>
             ))}
