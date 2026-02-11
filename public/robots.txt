@@ -1,6 +1,8 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /api/
+Disallow: /build/
 
-# Sitemap for search engines
+# Sitemap location for Google Search Console
 Sitemap: https://bdenterprises.in/sitemap.xml

@@ -1,4 +1,4 @@
-# BD Enterprises - Complete File Inventory
+# B. D. Enterprises - Complete File Inventory
 
 ## 📁 Project Structure
 

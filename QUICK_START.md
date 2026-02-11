@@ -1,4 +1,4 @@
-# 🚀 BD Enterprises - Getting Started (5 Minutes)
+# 🚀 B. D. Enterprises - Getting Started (5 Minutes)
 
 ## What Was Built
 
@@ -343,7 +343,7 @@ Everything is ready to use. Just:
 4. Visit http://localhost:3000/contact
 5. Submit a test message
 
-**That's it!** Your BD Enterprises contact system is live! 🚀
+**That's it!** Your B. D. Enterprises contact system is live! 🚀
 
 ---
 

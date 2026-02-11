@@ -201,7 +201,7 @@ const HeadProtection = () => {
                 </div>
 
                 <div className="p-3 bg-blue-50 dark:bg-slate-700 rounded-lg border-l-4 border-accent">
-                  <h4 className="font-bold text-xs sm:text-sm text-accent dark:text-blue-300 mb-1">BD Enterprises Value:</h4>
+                  <h4 className="font-bold text-xs sm:text-sm text-accent dark:text-blue-300 mb-1">B. D. Enterprises Value:</h4>
                   <p className="text-xs text-neutral-700 dark:text-gray-300">{product.bdValue}</p>
                 </div>
                 </div>
@@ -253,7 +253,7 @@ const HeadProtection = () => {
           </motion.div>
         </motion.div>
 
-        {/* Why Choose BD Enterprises */}
+        {/* Why Choose B. D. Enterprises */}
         <motion.div 
           className="mb-12 md:mb-16 p-6 sm:p-8 md:p-10 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 rounded-lg md:rounded-xl border-2 border-accent text-white glow-box"
           initial={{ opacity: 0, y: 30 }}
@@ -268,7 +268,7 @@ const HeadProtection = () => {
             transition={{ duration: 0.5, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
-            Why Choose BD Enterprises for Head Protection?
+            Why Choose B. D. Enterprises for Head Protection?
           </motion.h2>
           <motion.div 
             className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6"

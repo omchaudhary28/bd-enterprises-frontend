@@ -1,4 +1,4 @@
-# 📚 BD Enterprises - Complete Documentation Index
+# 📚 B. D. Enterprises - Complete Documentation Index
 
 ## 🚀 Start Here
 

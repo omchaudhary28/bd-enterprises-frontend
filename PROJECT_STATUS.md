@@ -151,4 +151,4 @@ Your project is fully prepared for production deployment. Follow the instruction
 ---
 
 *Generated: January 23, 2026*
-*Project: BD Enterprises - Fire Safety & IT Solutions*
+*Project: B. D. Enterprises - Fire Safety & IT Solutions*

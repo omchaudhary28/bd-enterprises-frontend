@@ -22,9 +22,11 @@ import HandProtection from './components/ppe/HandProtection';
 import BodyProtection from './components/ppe/BodyProtection';
 import FootProtection from './components/ppe/FootProtection';
 import { ThemeProvider } from './components/ThemeContext';
+import { useCanonicalUrl } from './hooks/useCanonicalUrl';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
+  useCanonicalUrl(); // Set canonical URL on route change
 
   useEffect(() => {
     window.scrollTo(0, 0);

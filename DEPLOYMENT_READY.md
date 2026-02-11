@@ -2,7 +2,7 @@
 
 ## Quick Deployment Summary
 
-Your BD Enterprises project is now ready for deployment to GoDaddy WebHosting.
+Your B. D. Enterprises project is now ready for deployment to GoDaddy WebHosting.
 
 ### What's Been Done:
 ✅ All dependencies installed

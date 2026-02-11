@@ -1,4 +1,4 @@
-# BD Enterprises - Complete Setup Guide
+# B. D. Enterprises - Complete Setup Guide
 
 ## Project Structure
 

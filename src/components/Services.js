@@ -39,6 +39,42 @@ const servicesData = [
     path: '/services/emergency-lighting',
   },
   {
+    title: 'Fire Hydrant Systems',
+    description: 'Design, installation and testing of hydrant systems for building and industrial sites.',
+    long_description: 'Full-service hydrant solutions including pumps, valves, and periodic testing.',
+    imageUrl: '/images/services/fire-hydrant-systems.svg',
+    category: 'Protection',
+    benefits: ['Engineered Design', 'Site Testing', 'Code Compliant'],
+    path: '/services/fire-hydrant-systems',
+  },
+  {
+    title: 'Smoke Detection Systems',
+    description: 'Advanced smoke detection and early-warning systems for risk mitigation.',
+    long_description: 'Addressable and conventional smoke detection solutions integrated with alarms and monitoring.',
+    imageUrl: '/images/services/smoke-detection.svg',
+    category: 'Detection',
+    benefits: ['Early Warning', 'Integrated Monitoring', 'Scalable'],
+    path: '/services/smoke-detection',
+  },
+  {
+    title: 'Industrial Safety Products (PPE)',
+    description: 'Full range of certified PPE for industrial workplaces.',
+    long_description: 'Helmets, gloves, footwear, respiratory and hearing protection from leading brands.',
+    imageUrl: '/images/services/ppe.svg',
+    category: 'PPE',
+    benefits: ['Certified', 'Durable', 'Comfort Fit'],
+    path: '/services/ppe',
+  },
+  {
+    title: 'Fabrication Work',
+    description: 'Custom fabrication for fire protection components and site installations.',
+    long_description: 'In-house fabrication capabilities for piping, mounts and engineered assemblies.',
+    imageUrl: '/images/services/fabrication.svg',
+    category: 'Fabrication',
+    benefits: ['Customised', 'Precision', 'On-site Support'],
+    path: '/services/fabrication',
+  },
+  {
     title: 'Fire Safety Training',
     description: 'NFPA-certified fire safety training and employee evacuation drills.',
     long_description: 'Customized programs for your facility to ensure workplace readiness.',
@@ -58,7 +94,7 @@ const servicesData = [
   },
 ];
 
-const categories = ['All Services', 'Safety', 'Detection', 'Training', 'Inspection'];
+const categories = ['All Services', 'Safety', 'Detection', 'Protection', 'PPE', 'Fabrication', 'Training', 'Inspection'];
 
 const Services = () => {
   const [selectedCategory, setSelectedCategory] = useState('All Services');

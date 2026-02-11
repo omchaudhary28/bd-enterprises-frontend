@@ -126,6 +126,23 @@ const ppeImages = {
   ],
 };
 
+// Shuffle images per category once per page load using Fisher-Yates
+const shuffleArray = (arr) => {
+  const a = Array.isArray(arr) ? arr.slice() : [];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = a[i];
+    a[i] = a[j];
+    a[j] = tmp;
+  }
+  return a;
+};
+
+const shuffledPpeImages = Object.keys(ppeImages).reduce((acc, key) => {
+  acc[key] = shuffleArray(ppeImages[key] || []);
+  return acc;
+}, {});
+
 const PPEs = () => {
   const prefersReduced = useReducedMotion();
   const swiperRef = useRef(null);
@@ -252,7 +269,7 @@ const PPEs = () => {
                 }}
                 className="!pb-12"
               >
-                {ppeImages[category.id]?.map((image, imageIndex) => (
+                {shuffledPpeImages[category.id]?.map((image, imageIndex) => (
                   <SwiperSlide key={imageIndex}>
                     <Link to={category.path} className="no-underline">
                       <motion.div
@@ -312,7 +329,7 @@ const PPEs = () => {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 glow-text">Why BD Enterprises PPE?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 glow-text">Why B. D. Enterprises PPE?</h2>
           <motion.div 
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
             variants={containerVariants}

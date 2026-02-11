@@ -261,7 +261,7 @@ const EmergencyLighting = () => {
         {/* Why Choose Us */}
         <section className="mb-16 md:mb-24">
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">
-            Why Choose BD Enterprises
+            Why Choose B. D. Enterprises
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
             {benefits.map((benefit, index) => (

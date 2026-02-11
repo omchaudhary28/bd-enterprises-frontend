@@ -55,7 +55,7 @@ scp -r ./bd-enterprises-backend/ user@godaddy-host:/home/your-user/
 2. Go to: Software > Node.js
 3. Click "Create New Application"
 4. Configure:
-   - Application Name: BD Enterprises
+   - Application Name: B. D. Enterprises
    - Node.js Version: 18+ (recommended)
    - Application Root: bd-enterprises-backend/
    - App URL: your-domain.com
@@ -258,4 +258,4 @@ ps aux | grep node
 ---
 
 *Deployment Checklist Version 1.0*
-*BD Enterprises - Fire Safety & IT Solutions*
+*B. D. Enterprises - Fire Safety & IT Solutions*

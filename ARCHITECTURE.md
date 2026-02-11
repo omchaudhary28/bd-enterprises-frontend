@@ -1,4 +1,4 @@
-# BD Enterprises System Architecture
+# B. D. Enterprises System Architecture
 
 ## System Overview
 
@@ -341,7 +341,7 @@ Content-Type: application/json
   "success": true,
   "data": {
     "id": 1,
-    "name": "BD Enterprises - Main Office",
+    "name": "B. D. Enterprises - Main Office",
     "latitude": 40.7128,
     "longitude": -74.0060,
     "address": "123 Safety Avenue, Fire District",

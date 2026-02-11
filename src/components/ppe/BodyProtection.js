@@ -91,7 +91,7 @@ const BodyProtection = () => {
                   <p className="text-xs sm:text-sm text-neutral-700 dark:text-gray-300 leading-snug">{product.guidelines}</p>
                 </div>
                 <div className="p-3 bg-blue-50 dark:bg-slate-700 rounded-lg border-l-4 border-accent">
-                  <h4 className="font-bold text-xs sm:text-sm text-accent dark:text-blue-300 mb-1">BD Enterprises Value:</h4>
+                  <h4 className="font-bold text-xs sm:text-sm text-accent dark:text-blue-300 mb-1">B. D. Enterprises Value:</h4>
                   <p className="text-xs text-neutral-700 dark:text-gray-300">{product.bdValue}</p>
                 </div>
               </div>
@@ -124,7 +124,7 @@ const BodyProtection = () => {
         </div>
 
         <div className="mb-12 md:mb-16 p-6 sm:p-8 md:p-10 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 rounded-lg md:rounded-xl border-2 border-accent text-white glow-box" data-aos="fade-up">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">Why Choose BD Enterprises for Body Protection?</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">Why Choose B. D. Enterprises for Body Protection?</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
             {[
               'Hazard-specific coverall and vest selection',

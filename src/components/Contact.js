@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { API_URL } from '../config/api';
 import AOS from 'aos';
+import Map from './Map';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -149,11 +150,11 @@ const Contact = () => {
   const getAutomatedMessage = (method) => {
     switch(method) {
       case 'email':
-        return `Hello BD Enterprises,\n\nI am interested in learning more about your fire safety solutions. My company is [Your Company Name] and we are looking for [Service You Are Looking For e.g., fire extinguisher systems].\n\nPlease get back to me at your earliest convenience.\n\nThank you!`;
+        return `Hello B. D. Enterprises,\n\nI am interested in learning more about your fire safety solutions. My company is [Your Company Name] and we are looking for [Service You Are Looking For e.g., fire extinguisher systems].\n\nPlease get back to me at your earliest convenience.\n\nThank you!`;
       case 'phone':
         return `Call: ${getPhoneNumber()} (Mon-Fri, 9AM-6PM EST)`;
       case 'whatsapp':
-        return `Hello BD Enterprises, I am interested in your fire safety services. I would like to know more about [Service You Are Looking For e.g., fire extinguisher systems].`;
+        return `Hello B. D. Enterprises, I am interested in your fire safety services. I would like to know more about [Service You Are Looking For e.g., fire extinguisher systems].`;
       default:
         return '';
     }
@@ -201,36 +202,9 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* Google Maps Embed (uses REACT_APP_GOOGLE_MAP_IFRAME env var) */}
-        <section className="mb-12 md:mb-16" data-aos="fade-up">
+        <section className="mb-12 md:mb-16">
           <div className="max-w-4xl mx-auto px-4">
-                {process.env.REACT_APP_GOOGLE_MAP_IFRAME ? (
-                  <div className="w-full rounded-xl overflow-hidden shadow-lg">
-                    <div
-                      className="w-full"
-                      dangerouslySetInnerHTML={{ __html: (function () {
-                        try {
-                          // Ensure iframe has lazy loading and consistent sizing/rounded corners
-                          const raw = process.env.REACT_APP_GOOGLE_MAP_IFRAME;
-                          return raw.replace(/<iframe(.*?)>/i, (match, attrs) => {
-                            // add loading, style height, and responsive width if not present
-                            let s = attrs;
-                            if (!/loading=/i.test(s)) s += ' loading="lazy"';
-                            if (!/style=/i.test(s)) s += ' style="width:100%;height:350px;border:0;border-radius:12px;"';
-                            else s = s.replace(/style=(['"])(.*?)\1/i, (m, q, inner) => `style=${q}${inner};width:100%;height:350px;border:0;border-radius:12px;${q}`);
-                            return `<iframe${s}>`;
-                          });
-                        } catch (err) {
-                          return process.env.REACT_APP_GOOGLE_MAP_IFRAME;
-                        }
-                      })() }}
-                    />
-                  </div>
-                ) : (
-                  <div className="w-full rounded-xl overflow-hidden shadow-lg bg-white/5 p-6 text-center">
-                    <p className="text-sm text-white/70">Map embed not configured. To enable, set <code className="bg-slate-800 px-1 rounded">REACT_APP_GOOGLE_MAP_IFRAME</code> in your .env with the iframe HTML provided by Google Maps.</p>
-                  </div>
-                )}
+            <Map height={400} />
           </div>
         </section>
 
@@ -401,16 +375,30 @@ const Contact = () => {
             <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8 overflow-hidden">
               <h2 className="text-2xl md:text-3xl font-black text-white mb-6 glow-text">Contact Methods</h2>
 
+              {/* Key Contacts */}
+              <div className="mb-6 p-4 md:p-6 rounded-xl bg-gradient-to-br from-accent/10 to-transparent border border-accent/20">
+                <h3 className="font-bold text-lg text-white mb-3">Key Contacts</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <p className="text-xs text-white/70 uppercase font-semibold">Owner</p>
+                    <p className="text-sm font-bold text-accent"><a href={`tel:${getPhoneNumber().replace(/\D/g, '')}`}>{'Pankaj Sharma'} • {getPhoneNumber()}</a></p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/70 uppercase font-semibold">Business Contact</p>
+                    <p className="text-sm font-bold text-accent"><a href="tel:9173287960">9173287960</a></p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/70 uppercase font-semibold">Project Engineer</p>
+                    <p className="text-sm font-bold text-accent"><a href="tel:9687387960">Satyajeet Chaudhary • 9687387960</a></p>
+                  </div>
+                </div>
+              </div>
+
               {/* Phone */}
               <div className="group mb-6 p-4 md:p-6 rounded-xl bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 hover:border-accent/60 transition-all duration-300">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.95 21C17.7 21 15.3 20.35 13.2 19.15 11.1 18 9.3 16.5 7.8 14.7 6.3 13.2 4.8 11.1 3.65 9 2.35 6.9 1.8 4.5 1.8 2.05 1.8 1.3 2.3.8 3.05.8h3.5c.75 0 1.35.5 1.5 1.25l.62 3.1c.08.5.02.99-.3 1.4l-2.1 2.1c1.2 2.2 2.95 4.15 5.15 5.35l2.1-2.1c.4-.3.9-.4 1.4-.3l3.1.62c.8.15 1.25.75 1.25 1.5v3.5c0 .75-.5 1.25-1.25 1.25z" fill="currentColor"/></svg>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-lg text-white">Call Us</h3>
-                    <p className="text-white/80 text-sm">Mon-Fri, 9AM-6PM EST</p>
-                  </div>
+                <div className="mb-4">
+                  <h3 className="font-bold text-lg text-white">Call Us</h3>
+                  <p className="text-white/80 text-sm">Mon-Fri, 9AM-6PM EST</p>
                 </div>
                 <a href={`tel:${getPhoneNumber().replace(/\D/g, '')}`} className="text-accent hover:text-orange-300 font-bold transition-colors text-lg break-all block">
                   {getPhoneNumber()}
@@ -419,14 +407,9 @@ const Contact = () => {
 
               {/* Email */}
               <div className="group mb-6 p-4 md:p-6 rounded-xl bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 hover:border-accent/60 transition-all duration-300">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M22 6l-10 7L2 6" fill="none" stroke="currentColor" strokeWidth="2"/></svg>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-lg text-white">Email Us</h3>
-                    <p className="text-white/80 text-sm">Response within 24 hours</p>
-                  </div>
+                <div className="mb-4">
+                  <h3 className="font-bold text-lg text-white">Email Us</h3>
+                  <p className="text-white/80 text-sm">Response within 24 hours</p>
                 </div>
                 <a href={`mailto:${getEmail()}`} className="text-accent hover:text-orange-300 font-bold transition-colors break-all text-lg block">
                   {getEmail()}
@@ -435,14 +418,9 @@ const Contact = () => {
 
               {/* WhatsApp */}
               <div className="group p-4 md:p-6 rounded-xl bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 hover:border-accent/60 transition-all duration-300">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.6 6.4c-1.5-1.5-3.5-2.3-5.6-2.3-4.4 0-8 3.6-8 8 0 1.4.4 2.8 1.1 4L2 22l4.3-1.1c1.2.6 2.5 1 3.9 1 4.4 0 8-3.6 8-8 0-2.1-.8-4.1-2.3-5.6zM12 20c-1.2 0-2.4-.3-3.5-.9l-.2-.1-2.6.7.7-2.6-.1-.2c-.6-1.1-.9-2.3-.9-3.5 0-3.7 3-6.7 6.7-6.7 1.8 0 3.5.7 4.7 2s2 3 2 4.7c0 3.7-3 6.7-6.7 6.7zm4-4.5l-2.3-.5c-.3-.1-.5-.2-.8.1l-.5.6c-.2.3-.4.3-.7.2-1.3-.6-2.8-1.8-3.5-3-.1-.2-.1-.5.1-.7l.4-.5c.2-.2.2-.5.1-.8l-.5-2.3c-.1-.3-.4-.5-.7-.5h-.9c-.3 0-.6.1-.8.3-.6.6-1 1.5-.9 2.5.1 1.5.6 2.9 1.6 4.1 1 1.1 2.5 1.7 4 1.8 1 .1 1.9-.2 2.5-.9.2-.3.3-.6.3-.8 0-.3-.2-.5-.4-.6z" fill="currentColor"/></svg>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-lg text-white">WhatsApp</h3>
-                    <p className="text-white/80 text-sm">Available 24/7</p>
-                  </div>
+                <div className="mb-4">
+                  <h3 className="font-bold text-lg text-white">WhatsApp</h3>
+                  <p className="text-white/80 text-sm">Available 24/7</p>
                 </div>
                 <a href={`https://wa.me/${getWhatsApp().replace(/\D/g, '')}?text=${encodeURIComponent(getAutomatedMessage('whatsapp'))}`}
                   target="_blank" rel="noopener noreferrer" className="text-accent hover:text-orange-300 font-bold transition-colors text-lg break-all block">
@@ -476,6 +454,15 @@ const Contact = () => {
           </div>
           </div>
         </div>
+
+        <section className="py-12 md:py-16 border-t border-white/10">
+          <div className="container mx-auto px-4 md:px-6">
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-8 text-center">Find Our Location</h2>
+            <div className="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg">
+              <Map height={450} />
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

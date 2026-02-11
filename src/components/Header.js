@@ -86,11 +86,17 @@ const Header = () => {
       <div className="progress-bar" style={{ width: `${scrollProgress}%` }}></div>
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
         {/* Logo */}
-        <h1 className="text-xl md:text-2xl font-bold hover:text-accent transition-colors duration-300 glow-text truncate">
-          <Link to="/" className="flex items-center gap-2">
-            <span>🛡️ BD Enterprises</span>
+        <div className="flex items-center flex-shrink-0">
+          <Link to="/" aria-label="B. D. Enterprises - Home" className="flex items-center">
+            <img
+              src="/logo.png"
+              alt="B. D. Enterprises Logo"
+              className="h-12 sm:h-12 md:h-12 object-contain"
+              style={{ height: 48 }}
+              loading="eager"
+            />
           </Link>
-        </h1>
+        </div>
         
         <div className="flex items-center gap-2 md:gap-8 justify-center flex-1 px-4">
           {/* Desktop Navigation */}

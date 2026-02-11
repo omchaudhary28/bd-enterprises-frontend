@@ -5,15 +5,16 @@ import HeroCarousel from './HeroCarousel';
 
 const MainContent = () => {
   const services = [
-    { icon: '🧯', title: 'Fire Extinguishers', desc: 'Portable & System Solutions' },
-    { icon: '🚨', title: 'Alarm Detection', desc: 'Smart Detection Systems' },
-    { icon: '💧', title: 'Sprinkler Systems', desc: 'Automatic Suppression' },
+    { icon: '🧯', title: 'Industrial Safety Products (PPE)', desc: 'Certified protective equipment for workplace safety' },
+    { icon: '💧', title: 'Fire Hydrant & Sprinkler Systems', desc: 'Engineered suppression and hydrant installations' },
+    { icon: '🚨', title: 'Fire Alarm & Smoke Detection', desc: 'Addressable alarms and advanced smoke detection systems' },
+    { icon: '🔧', title: 'Fabrication & Installation', desc: 'Custom fabrication and precision installation services' },
   ];
 
   const trustPoints = [
-    { number: '25+', label: 'Years Experience' },
-    { number: '5K+', label: 'Clients Served' },
-    { number: '100%', label: 'Compliance Rate' },
+    { number: 'Since 2007', label: 'Established' },
+    { number: 'ISO 9001:2015', label: 'Quality Certified' },
+    { number: 'Authorized', label: 'Distributors: Midas • Jama • Techtion • Kanex • Valpro • Ninja • Spectrum • Honeywell • Aag' },
   ];
 
   return (
@@ -42,24 +43,23 @@ const MainContent = () => {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 mb-4 md:mb-6 mx-auto lg:mx-0" data-aos="fade-down">
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                <span className="text-xs sm:text-sm font-semibold text-white/90">Industry Leader Since 2000</span>
+                <span className="text-xs sm:text-sm font-semibold text-white/90">Established 2007 • ISO 9001:2015 Certified</span>
               </div>
 
               {/* Main Heading */}
               <h1 className="text-4xl min-[480px]:text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-[1.05] mb-4 md:mb-6 glow-text">
-                <span className="block mb-2">Protect.</span>
-                <span className="block mb-2">Secure.</span>
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-accent via-blue-300 to-secondary">Succeed.</span>
+                <span className="block mb-2">B. D. Enterprises</span>
+                <span className="block mb-2 text-transparent bg-clip-text bg-gradient-to-r from-accent via-blue-300 to-secondary">Industrial Safety & Fire Protection Experts</span>
               </h1>
 
               {/* Subtitle */}
               <p className="text-lg sm:text-xl md:text-2xl font-bold text-blue-200 dark:text-blue-300 mb-4 md:mb-6 leading-snug">
-                Advanced Fire Safety Solutions for Every Space
+                Integrated PPE, Fire Protection Systems, and Fabrication Services
               </p>
 
               {/* Description */}
               <p className="text-sm sm:text-base md:text-lg text-white/85 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0 mb-6 md:mb-8 leading-relaxed">
-                Comprehensive fire safety and protection systems. 25+ years of expertise. ISO certified. NFPA compliant. Serving 5,000+ clients across industries.
+                Since 2007, B. D. Enterprises has delivered professional, code-compliant industrial safety products and fire protection systems. We provide PPE, fire hydrant and sprinkler systems, alarm and smoke detection, and precision fabrication—backed by ISO 9001:2015 quality management.
               </p>
 
               {/* CTA Buttons */}
@@ -98,7 +98,7 @@ const MainContent = () => {
                 <HeroCarousel />
 
                 {/* Floating badge (kept for emphasis) */}
-                <div className="absolute -bottom-6 -right-6 bg-accent text-primary font-bold px-6 py-4 rounded-2xl shadow-2xl text-center border-4 border-white dark:border-slate-800" style={{ opacity: 0.95 }}>
+                <div className="absolute -bottom-12 -right-12 bg-accent text-primary font-bold px-6 py-4 rounded-2xl shadow-2xl text-center border-4 border-white dark:border-slate-800" style={{ opacity: 0.95 }}>
                   <div className="text-2xl md:text-3xl">✓</div>
                   <div className="text-xs md:text-sm font-bold">100% Safe</div>
                 </div>
