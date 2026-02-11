@@ -34,7 +34,6 @@ export const useCanonicalUrl = () => {
         title = 'Services | B. D. Enterprises — PPE & Fire Protection Systems';
         description = 'Comprehensive services: PPE supply, fire hydrant and sprinkler systems, fire alarm & smoke detection, fabrication, inspections and training.';
         break;
-        break;
 
       case '/services/fire-extinguishers':
         title = 'Fire Extinguishers & Suppression Systems | B. D. Enterprises';
@@ -107,7 +106,6 @@ export const useCanonicalUrl = () => {
         break;
 
       default:
-        // For any other route, use the default description
         canonicalUrl = DOMAIN + path.replace(/\/$/, '');
     }
 
@@ -117,6 +115,6 @@ export const useCanonicalUrl = () => {
       title,
       description,
     });
+
   }, [location.pathname]);
 };
-/* eslint-disable no-unreachable */
