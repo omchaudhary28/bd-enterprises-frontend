@@ -119,3 +119,4 @@ export const useCanonicalUrl = () => {
     });
   }, [location.pathname]);
 };
+/* eslint-disable no-unreachable */
