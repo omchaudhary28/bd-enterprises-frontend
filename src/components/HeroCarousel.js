@@ -27,13 +27,24 @@ const slides = [
 // Auto-slide interval: 4-5 seconds
 const slideDurationMs = 4500; // 4.5 seconds
 
-export default function HeroCarousel() {
+export default function HeroCarousel({ fullScreen = false }) {
   const shouldReduceMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const touchStartX = useRef(0);
   const containerRef = useRef(null);
   const timerRef = useRef(null);
+
+  // Mark as loaded once first image is ready (for entrance animation)
+  useEffect(() => {
+    const base = process.env.PUBLIC_URL || '';
+    const img = new Image();
+    img.src = base + slides[0].src;
+    img.onload = () => setIsLoaded(true);
+    const t = setTimeout(() => setIsLoaded(true), 900);
+    return () => clearTimeout(t);
+  }, []);
 
   // Auto-slide effect: advance slide every 4.5s, pause on hover (desktop)
   useEffect(() => {
@@ -83,7 +94,7 @@ export default function HeroCarousel() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[280px] sm:h-[360px] md:h-[420px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl"
+      className={`relative w-full overflow-hidden shadow-2xl ${fullScreen ? 'min-h-screen h-screen rounded-none' : 'h-[280px] sm:h-[360px] md:h-[420px] lg:h-[500px] rounded-3xl'}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
@@ -92,9 +103,27 @@ export default function HeroCarousel() {
       aria-label="Hero carousel"
       aria-roledescription="carousel"
     >
-      {/* Dark gradient overlay (30–40%) for text readability */}
+      {/* Loading overlay - shimmer + fade on first load */}
+      {fullScreen && (
+        <>
+          <motion.div
+            className="absolute inset-0 z-50 pointer-events-none bg-gradient-to-r from-transparent via-white/15 to-transparent"
+            style={{ width: '40%' }}
+            initial={{ x: '-100%' }}
+            animate={{ x: isLoaded ? '350%' : '-100%' }}
+            transition={{ duration: 1.8, ease: [0.4, 0, 0.2, 1] }}
+          />
+          <motion.div
+            className="absolute inset-0 z-[45] pointer-events-none bg-black/50"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: isLoaded ? 0 : 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          />
+        </>
+      )}
+      {/* Subtle bottom gradient only - carousel shows images clearly */}
       <div 
-        className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/25 to-transparent pointer-events-none z-20" 
+        className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none z-20" 
         aria-hidden="true"
       />
 
@@ -111,7 +140,7 @@ export default function HeroCarousel() {
             ease: 'easeInOut' 
           }}
         >
-          {/* Hero image with lazy-loading for slides 2 & 3 */}
+          {/* Hero image - fade-in on first load + Ken Burns zoom */}
           <motion.img
             src={slides[index].src}
             alt={slides[index].alt}
@@ -119,20 +148,22 @@ export default function HeroCarousel() {
             style={{ transformOrigin: 'center' }}
             loading={slides[index].priority ? 'eager' : 'lazy'}
             draggable={false}
-            // Subtle slow zoom: scale 1 → 1.05 over slide duration
-            animate={shouldReduceMotion ? { scale: 1 } : { scale: [1, 1.05] }}
-            transition={{ 
-              duration: slideDurationMs / 1000, 
-              ease: 'easeInOut' 
+            initial={index === 0 ? { opacity: 0 } : {}}
+            animate={{
+              opacity: 1,
+              scale: shouldReduceMotion ? 1 : [1, 1.06],
+            }}
+            transition={{
+              opacity: { duration: index === 0 ? 0.9 : 0.3, ease: 'easeOut' },
+              scale: { duration: slideDurationMs / 1000, ease: 'easeInOut' },
             }}
           />
 
-          {/* Light parallax effect on background - subtle motion */}
+          {/* Subtle vignette - no blur */}
           <motion.div
             className="absolute inset-0 pointer-events-none"
             style={{ 
-              background: 'linear-gradient(180deg, rgba(2,6,23,0.15), rgba(2,6,23,0.35))',
-              backdropFilter: 'blur(0px)'
+              background: 'linear-gradient(180deg, rgba(2,6,23,0.1), rgba(2,6,23,0.25))'
             }}
             animate={shouldReduceMotion ? { y: 0 } : { y: [-8, 0] }}
             transition={{ 
@@ -141,31 +172,38 @@ export default function HeroCarousel() {
             }}
           />
 
-          {/* Hero Content: headline + CTA with negative space */}
-          <div className="absolute left-6 right-6 top-8 md:top-16 max-w-2xl z-30 flex flex-col gap-3">
-            <motion.h2 
-              className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-2 leading-tight drop-shadow-lg"
-              initial={shouldReduceMotion ? {} : { opacity: 0, y: 10 }}
-              animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6, ease: 'easeInOut' }}
-            >
-              Protect. Secure. Succeed.
-            </motion.h2>
-            <motion.p 
-              className="text-white/85 text-sm sm:text-base md:text-lg max-w-xl drop-shadow-md"
-              initial={shouldReduceMotion ? {} : { opacity: 0, y: 10 }}
-              animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6, ease: 'easeInOut' }}
-            >
-              Advanced fire safety systems, expert engineering, and compliance-first installations trusted by enterprises.
-            </motion.p>
-          </div>
+          {/* Hero content only when NOT fullScreen - fullScreen shows text below carousel */}
+          {!fullScreen && (
+            <div className="absolute z-30 left-6 right-6 top-8 md:top-16 max-w-2xl flex flex-col gap-4">
+              <motion.h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.8)' }}>
+                Protect. Secure. Succeed.
+              </motion.h2>
+              <motion.p className="text-sm sm:text-base md:text-lg text-white/90 max-w-xl" style={{ textShadow: '0 1px 6px rgba(0,0,0,0.7)' }}>
+                Advanced fire safety systems, expert engineering, and compliance-first installations.
+              </motion.p>
+            </div>
+          )}
         </motion.div>
       </AnimatePresence>
 
-      {/* Dots Indicators (mobile-only, no arrows on desktop) */}
+      {/* Scroll indicator - fullScreen only */}
+      {fullScreen && (
+        <motion.a 
+          href="#home-content" 
+          className="absolute z-40 left-1/2 -translate-x-1/2 bottom-4 md:bottom-6 flex flex-col items-center gap-1 text-white/80 hover:text-white transition-colors cursor-pointer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, y: [0, 6, 0] }}
+          transition={{ opacity: { delay: 1.5 }, y: { repeat: Infinity, duration: 2, ease: 'easeInOut' } }}
+          aria-label="Scroll to content"
+        >
+          <span className="text-xs font-semibold uppercase tracking-wider">Scroll</span>
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+        </motion.a>
+      )}
+
+      {/* Dots Indicators */}
       <div 
-        className="absolute z-40 bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 md:gap-3 md:hidden"
+        className={`absolute z-40 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 ${fullScreen ? 'bottom-14 md:bottom-16' : 'bottom-4 md:hidden'}`}
         role="tablist"
         aria-label="Carousel slides"
       >

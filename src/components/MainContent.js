@@ -8,134 +8,123 @@ const MainContent = () => {
     { icon: '🧯', title: 'Industrial Safety Products (PPE)', desc: 'Certified protective equipment for workplace safety' },
     { icon: '💧', title: 'Fire Hydrant & Sprinkler Systems', desc: 'Engineered suppression and hydrant installations' },
     { icon: '🚨', title: 'Fire Alarm & Smoke Detection', desc: 'Addressable alarms and advanced smoke detection systems' },
-    { icon: '🔧', title: 'Fabrication & Installation', desc: 'Custom fabrication and precision installation services' },
+    { icon: '🔧', title: 'Fabrication & Installation', desc: 'Fire safety fabrication and precision installation services' },
   ];
 
   const trustPoints = [
-    { number: 'Since 2007', label: 'Established' },
+    { number: 'Since 2006', label: 'Established' },
     { number: 'ISO 9001:2015', label: 'Quality Certified' },
     { number: 'Authorized', label: 'Distributors: Midas • Jama • Techtion • Kanex • Valpro • Ninja • Spectrum • Honeywell • Aag' },
   ];
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 text-white">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Main glowing orbs with animation */}
-        <div className="absolute -top-20 -left-20 w-96 h-96 bg-accent opacity-15 dark:opacity-10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500 opacity-10 dark:opacity-5 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-secondary opacity-5 dark:opacity-5 rounded-full blur-3xl animate-pulse animation-delay-4000"></div>
-        
-        {/* Animated grid pattern */}
-        <div className="absolute inset-0 opacity-5 dark:opacity-10 bg-gradient-to-b from-white to-transparent" style={{
-          backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(255,255,255,.05) 25%, rgba(255,255,255,.05) 26%, transparent 27%, transparent 74%, rgba(255,255,255,.05) 75%, rgba(255,255,255,.05) 76%, transparent 77%, transparent),linear-gradient(90deg, transparent 24%, rgba(255,255,255,.05) 25%, rgba(255,255,255,.05) 26%, transparent 27%, transparent 74%, rgba(255,255,255,.05) 75%, rgba(255,255,255,.05) 76%, transparent 77%, transparent)',
-          backgroundSize: '50px 50px'
-        }}></div>
-      </div>
+    <div className="relative overflow-hidden">
+      {/* Full-screen hero carousel - first thing on load (pointsafety.in style) */}
+      <section className="relative w-full">
+        <HeroCarousel fullScreen />
+      </section>
 
-      {/* Hero Section */}
-      <div className="relative z-10 pt-8 sm:pt-12 md:pt-20 pb-12 sm:pb-16 md:pb-20">
-        <div className="container mx-auto px-4 md:px-6">
-          {/* Main Hero Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-center mb-12 md:mb-20">
-            {/* Left Column - Text */}
-            <AnimatedSection animation="fade-right" className="text-center lg:text-left order-2 lg:order-1">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 mb-4 md:mb-6 mx-auto lg:mx-0" data-aos="fade-down">
-                <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                <span className="text-xs sm:text-sm font-semibold text-white/90">Established 2007 • ISO 9001:2015 Certified</span>
+      {/* Hero text block - below carousel, full opacity, bright background */}
+      <section id="home-content" className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-500 to-sky-600">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 opacity-15" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)',
+            backgroundSize: '24px 24px'
+          }} />
+          <div className="absolute -top-24 -right-24 w-80 h-80 bg-white/20 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-sky-300/20 rounded-full blur-3xl" />
+        </div>
+        <div className="relative z-10 py-14 sm:py-16 md:py-24">
+          <div className="container mx-auto px-4 md:px-6">
+            <AnimatedSection animation="fade-up" className="max-w-4xl mx-auto text-center space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/25 backdrop-blur-sm border border-white/40">
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                <span className="text-xs sm:text-sm font-semibold text-white">B. D. Enterprises — Fire Safety Since 2006</span>
               </div>
-
-              {/* Main Heading */}
-              <h1 className="text-4xl min-[480px]:text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-[1.05] mb-4 md:mb-6 glow-text">
-                <span className="block mb-2">B. D. Enterprises</span>
-                <span className="block mb-2 text-transparent bg-clip-text bg-gradient-to-r from-accent via-blue-300 to-secondary">Industrial Safety & Fire Protection Experts</span>
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-lg sm:text-xl md:text-2xl font-bold text-blue-200 dark:text-blue-300 mb-4 md:mb-6 leading-snug">
-                Integrated PPE, Fire Protection Systems, and Fabrication Services
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.05] text-white">
+                <span className="block">Protect.</span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-100 to-white">Secure.</span>
+                <span className="block">Succeed.</span>
+              </h2>
+              <p className="text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed font-medium">
+                Advanced fire safety systems, expert engineering, and compliance-first installations trusted by enterprises.
               </p>
-
-              {/* Description */}
-              <p className="text-sm sm:text-base md:text-lg text-white/85 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0 mb-6 md:mb-8 leading-relaxed">
-                Since 2007, B. D. Enterprises has delivered professional, code-compliant industrial safety products and fire protection systems. We provide PPE, fire hydrant and sprinkler systems, alarm and smoke detection, and precision fabrication—backed by ISO 9001:2015 quality management.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start mb-8 md:mb-12">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center min-h-[48px] md:min-h-[56px] bg-gradient-to-r from-accent to-orange-500 hover:from-orange-500 hover:to-accent text-white px-8 md:px-12 py-3 md:py-4 font-bold rounded-full shadow-2xl ring-2 ring-white/30 dark:ring-white/10 hover:shadow-3xl hover:scale-105 active:scale-95 transition-all duration-200 uppercase tracking-wider text-sm md:text-base"
-                  data-aos="fade-up"
-                >
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+                <Link to="/contact" className="inline-flex items-center justify-center min-h-[52px] bg-white text-blue-600 hover:bg-amber-400 hover:text-blue-900 px-10 py-3.5 font-bold rounded-xl shadow-xl hover:scale-105 transition-all duration-300 uppercase tracking-wider text-sm">
                   Get Free Consultation
                 </Link>
-                <Link
-                  to="/services"
-                  className="inline-flex items-center justify-center min-h-[48px] md:min-h-[56px] bg-white/15 hover:bg-white/25 text-white px-8 md:px-12 py-3 md:py-4 font-bold rounded-full backdrop-blur-sm border-2 border-white/30 hover:border-white/50 transition-all duration-200 uppercase tracking-wider text-sm md:text-base"
-                  data-aos="fade-up"
-                  data-aos-delay="100"
-                >
+                <Link to="/services" className="inline-flex items-center justify-center min-h-[52px] bg-white/20 hover:bg-white/35 text-white px-10 py-3.5 font-bold rounded-xl border-2 border-white/80 hover:border-white transition-all duration-300 uppercase tracking-wider text-sm">
                   Explore Services
                 </Link>
               </div>
-
-              {/* Trust Points */}
-              <div className="grid grid-cols-3 gap-4 md:gap-6" data-aos="fade-up" data-aos-delay="200">
-                {trustPoints.map((point, idx) => (
-                  <div key={idx} className="text-center">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-black text-accent mb-1">{point.number}</div>
-                    <div className="text-xs sm:text-sm text-white/75 font-semibold">{point.label}</div>
-                  </div>
-                ))}
-              </div>
             </AnimatedSection>
-
-            {/* Right Column - Hero Carousel */}
-            <AnimatedSection animation="zoom-in" delay={200} className="order-1 lg:order-2">
-              <div className="relative">
-                <HeroCarousel />
-
-                {/* Floating badge (kept for emphasis) */}
-                <div className="absolute -bottom-12 -right-12 bg-accent text-primary font-bold px-6 py-4 rounded-2xl shadow-2xl text-center border-4 border-white dark:border-slate-800" style={{ opacity: 0.95 }}>
-                  <div className="text-2xl md:text-3xl">✓</div>
-                  <div className="text-xs md:text-sm font-bold">100% Safe</div>
-                </div>
-              </div>
-            </AnimatedSection>
-          </div>
-
-          {/* Service Preview Cards */}
-          <div className="mt-16 md:mt-24 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6" data-aos="fade-up">
-            {services.map((service, idx) => (
-              <Link
-                to="/services"
-                key={idx}
-                className="group relative p-6 md:p-8 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer overflow-hidden"
-                data-aos="zoom-in"
-                data-aos-delay={idx * 100}
-              >
-                {/* Glowing background on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                <div className="relative z-10">
-                  <div className="text-4xl md:text-5xl mb-3 transition-transform duration-300 group-hover:scale-125">{service.icon}</div>
-                  <h3 className="text-lg md:text-xl font-bold text-white mb-2">{service.title}</h3>
-                  <p className="text-sm text-white/75 group-hover:text-white/90 transition-colors">{service.desc}</p>
-                </div>
-
-                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent text-xl">→</div>
-                </div>
-              </Link>
-            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Divider */}
-      <div className="relative z-10 h-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent"></div>
+      {/* Content section - bright gradient */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-slate-100 via-white to-blue-50">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 opacity-30" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(59,130,246,0.15) 1px, transparent 0)',
+            backgroundSize: '28px 28px'
+          }} />
+        </div>
+
+        <div className="relative z-10 pt-12 sm:pt-16 md:pt-24 pb-16 md:pb-24">
+          <div className="container mx-auto px-4 md:px-6">
+            {/* Company intro block */}
+            <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
+              <AnimatedSection animation="fade-up" className="space-y-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 border border-blue-200" data-aos="fade-down">
+                  <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                  <span className="text-xs sm:text-sm font-semibold text-blue-800">Established 2006 • ISO 9001:2015 Certified</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-slate-800">
+                  B. D. Enterprises
+                </h3>
+                <p className="text-base md:text-lg text-slate-700 max-w-2xl mx-auto leading-relaxed">
+                  Since 2006, B. D. Enterprises has delivered professional, code-compliant industrial safety products and fire protection systems. We provide PPE, fire hydrant and sprinkler systems, alarm and smoke detection, and precision fire safety fabrication—backed by ISO 9001:2015 quality management.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8" data-aos="fade-up" data-aos-delay="200">
+                  {trustPoints.map((point, idx) => (
+                    <div key={idx} className="text-center p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                      <div className="text-xl sm:text-2xl font-black text-blue-600 mb-1">{point.number}</div>
+                      <div className="text-xs sm:text-sm text-slate-600 font-semibold">{point.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </AnimatedSection>
+            </div>
+
+            {/* Service Preview Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6" data-aos="fade-up">
+              {services.map((service, idx) => (
+                <Link
+                  to="/services"
+                  key={idx}
+                  className="group relative p-6 md:p-8 rounded-2xl bg-white border border-slate-200 shadow-md hover:shadow-xl hover:border-blue-200 transition-all duration-300 hover:scale-[1.02] cursor-pointer overflow-hidden"
+                  data-aos="zoom-in"
+                  data-aos-delay={idx * 100}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative z-10">
+                    <div className="text-4xl md:text-5xl mb-3 transition-transform duration-300 group-hover:scale-125">{service.icon}</div>
+                    <h3 className="text-lg md:text-xl font-bold text-slate-800 mb-2">{service.title}</h3>
+                    <p className="text-sm text-slate-600 group-hover:text-slate-800 transition-colors">{service.desc}</p>
+                  </div>
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl">→</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="relative z-10 h-1 bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+      </div>
     </div>
   );
 };
