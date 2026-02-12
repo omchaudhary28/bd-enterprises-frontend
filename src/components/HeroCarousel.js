@@ -45,17 +45,17 @@ export default function HeroCarousel({ fullScreen = false }) {
     return () => clearTimeout(t);
   }, []);
 
-  // Auto-slide effect: advance slide every 4.5s, pause on hover (desktop)
+  // Auto-slide effect: advance every 4.5s (homepage/fullScreen never pauses on hover)
   useEffect(() => {
     if (shouldReduceMotion) return undefined;
-    if (isPaused) return undefined;
+    if (isPaused && !fullScreen) return undefined;
 
     timerRef.current = setInterval(() => {
       setIndex((i) => (i + 1) % slides.length);
     }, slideDurationMs);
 
     return () => clearInterval(timerRef.current);
-  }, [isPaused, shouldReduceMotion]);
+  }, [isPaused, fullScreen, shouldReduceMotion]);
 
   // Cleanup timer on unmount
   useEffect(() => {
@@ -70,9 +70,9 @@ export default function HeroCarousel({ fullScreen = false }) {
     exit: { opacity: 0, scale: 1.05 },    // Subtle zoom on exit
   };
 
-  // Pause on hover (desktop only)
-  const handleMouseEnter = () => setIsPaused(true);
-  const handleMouseLeave = () => setIsPaused(false);
+  // Pause on hover only when NOT fullScreen (homepage carousel never pauses)
+  const handleMouseEnter = () => { if (!fullScreen) setIsPaused(true); };
+  const handleMouseLeave = () => { if (!fullScreen) setIsPaused(false); };
 
   // Swipe support for mobile
   const handleTouchStart = (e) => {
@@ -94,8 +94,8 @@ export default function HeroCarousel({ fullScreen = false }) {
     <div
       ref={containerRef}
       className={`relative w-full overflow-hidden shadow-2xl ${fullScreen ? 'min-h-screen h-screen rounded-none' : 'h-[280px] sm:h-[360px] md:h-[420px] lg:h-[500px] rounded-3xl'}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={fullScreen ? undefined : handleMouseEnter}
+      onMouseLeave={fullScreen ? undefined : handleMouseLeave}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       role="region"
