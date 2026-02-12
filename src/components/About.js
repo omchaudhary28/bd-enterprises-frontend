@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import AOS from 'aos';
@@ -53,7 +53,6 @@ const AnimatedBar = ({ value, maxValue, label, index }) => {
 };
 
 const About = () => {
-  const [isAutoplay, setIsAutoplay] = useState(true);
   const maxClients = Math.max(...growthData.map((d) => d.clients));
 
   useEffect(() => {
@@ -120,12 +119,13 @@ const About = () => {
         <section className="mb-16 md:mb-24" data-aos="fade-up">
           <h2 className="text-2xl md:text-4xl font-bold text-white text-center mb-4 glow-text">Gallery</h2>
           <p className="text-white/80 text-center mb-8 max-w-2xl mx-auto">A glimpse of our work and products</p>
-          <div className="relative" onMouseEnter={() => setIsAutoplay(false)} onMouseLeave={() => setIsAutoplay(true)}>
+          <div className="relative">
             <Swiper
               modules={[Navigation, Pagination, Autoplay]}
               spaceBetween={16}
               slidesPerView={1}
-              autoplay={isAutoplay ? { delay: 3500, disableOnInteraction: false } : false}
+              loop={true}
+              autoplay={{ delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true }}
               pagination={{ clickable: true, dynamicBullets: true }}
               navigation={{ prevEl: '.gallery-prev', nextEl: '.gallery-next' }}
               breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
@@ -140,10 +140,10 @@ const About = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
-            <button className="gallery-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-8 z-20 w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 text-white">
+            <button type="button" className="gallery-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-8 z-20 w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 text-white transition-colors" aria-label="Previous slide">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
             </button>
-            <button className="gallery-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-8 z-20 w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 text-white">
+            <button type="button" className="gallery-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-8 z-20 w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 text-white transition-colors" aria-label="Next slide">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
             </button>
           </div>

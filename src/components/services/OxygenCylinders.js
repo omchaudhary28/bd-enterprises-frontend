@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import PageHero from '../PageHero';
@@ -46,8 +46,6 @@ const OxygenCylinders = () => {
     'Delivery and pickup services for commercial clients',
   ];
 
-  const [isAutoplay, setIsAutoplay] = useState(true);
-
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -63,8 +61,8 @@ const OxygenCylinders = () => {
         />
         <section className="mb-16 md:mb-24">
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">Our Cylinder Range</h2>
-          <div className="relative group" onMouseEnter={() => setIsAutoplay(false)} onMouseLeave={() => setIsAutoplay(true)}>
-            <Swiper modules={[Navigation, Pagination, Autoplay]} spaceBetween={24} slidesPerView={1} autoplay={isAutoplay ? { delay: 4000, disableOnInteraction: false } : false} pagination={{ clickable: true, dynamicBullets: true }} navigation={{ prevEl: '.swiper-btn-prev-oxy', nextEl: '.swiper-btn-next-oxy' }} breakpoints={{ 640: { slidesPerView: 2, spaceBetween: 20 }, 1024: { slidesPerView: 3, spaceBetween: 24 } }} className="!pb-12">
+          <div className="relative">
+            <Swiper modules={[Navigation, Pagination, Autoplay]} spaceBetween={24} slidesPerView={1} loop={true} autoplay={{ delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true }} pagination={{ clickable: true, dynamicBullets: true }} navigation={{ prevEl: '.swiper-btn-prev-oxy', nextEl: '.swiper-btn-next-oxy' }} breakpoints={{ 640: { slidesPerView: 2, spaceBetween: 20 }, 1024: { slidesPerView: 3, spaceBetween: 24 } }} className="!pb-12">
               {oxygenCylinderImages.map((src, index) => (
                 <SwiperSlide key={index}>
                   <div className="relative rounded-2xl overflow-hidden bg-white/5 border border-white/20 h-64">
@@ -74,10 +72,10 @@ const OxygenCylinders = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
-            <button className="swiper-btn-prev-oxy absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-20 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 text-white">
+            <button type="button" className="swiper-btn-prev-oxy absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-20 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 text-white transition-colors" aria-label="Previous slide">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
             </button>
-            <button className="swiper-btn-next-oxy absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-20 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 text-white">
+            <button type="button" className="swiper-btn-next-oxy absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-20 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 text-white transition-colors" aria-label="Next slide">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
             </button>
           </div>
