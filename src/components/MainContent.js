@@ -25,7 +25,7 @@ const MainContent = () => {
       </section>
 
       {/* Hero text block - below carousel, full opacity, bright background */}
-      <section id="home-content" className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-500 to-sky-600">
+      <section id="home-content" className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-500 to-sky-600 shadow-xl">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute inset-0 opacity-15" style={{
             backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)',
@@ -62,8 +62,8 @@ const MainContent = () => {
         </div>
       </section>
 
-      {/* Content section - bright gradient */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-slate-100 via-white to-blue-50">
+      {/* Content section - bright gradient, enhanced spacing */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute inset-0 opacity-30" style={{
             backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(59,130,246,0.15) 1px, transparent 0)',

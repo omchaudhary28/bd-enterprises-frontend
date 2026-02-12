@@ -1,25 +1,24 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 
-// Hero images (stored in public/images/Hero Images)
-// 3 hero slides with clear filenames for enterprise fire safety
+// Hero images - high resolution for homepage (stored in public/images/Hero Images)
 const slides = [
   {
     id: 1,
-    src: '/images/Hero%20Images/DEC-ENG-media_215.jpg',
-    alt: 'Control room fire safety monitoring',
+    src: '/images/Hero%20Images/GettyImages-161332995-firefighter-ready-with-hose-HEADER-2400x1600.avif',
+    alt: 'Firefighter ready with fire hose - professional fire safety',
     priority: true,
   },
   {
     id: 2,
-    src: '/images/Hero%20Images/Carrying-appearance-of-the-standard-and-prototype-SCBA.png',
-    alt: 'Firefighter wearing SCBA protection equipment',
+    src: '/images/Hero%20Images/Smart-Addressable-Fire-Alarm-Monitoring-System-Panel.avif',
+    alt: 'Smart addressable fire alarm monitoring system control panel',
     priority: false,
   },
   {
     id: 3,
-    src: '/images/Hero%20Images/fire-sprinkler-systems-help-to-extinguish-fire-in-rental-storage-units-920x533.jpg',
-    alt: 'Industrial fire sprinkler system installation',
+    src: '/images/Hero%20Images/Blog_What%20is%20Clean%20Agent%20Fire%20Suppression.webp',
+    alt: 'Clean agent fire suppression system',
     priority: false,
   },
 ];
@@ -144,8 +143,9 @@ export default function HeroCarousel({ fullScreen = false }) {
           <motion.img
             src={slides[index].src}
             alt={slides[index].alt}
-            className="w-full h-full object-cover will-change-transform"
-            style={{ transformOrigin: 'center' }}
+            className="w-full h-full object-cover object-center will-change-transform"
+            style={{ transformOrigin: 'center', imageRendering: 'auto' }}
+            decoding="async"
             loading={slides[index].priority ? 'eager' : 'lazy'}
             draggable={false}
             initial={index === 0 ? { opacity: 0 } : {}}
