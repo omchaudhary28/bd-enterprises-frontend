@@ -22,7 +22,7 @@ export const useCanonicalUrl = () => {
       case '/':
         canonicalUrl = DOMAIN + '/';
         title = 'B. D. Enterprises | Industrial Safety & Fire Protection Systems';
-        description = 'B. D. Enterprises (est. 2007) provides industrial safety products (PPE), fire hydrant and sprinkler systems, alarm & smoke detection, and fabrication services. ISO 9001:2015 certified.';
+        description = 'B. D. Enterprises (est. 2006) provides industrial safety products (PPE), fire hydrant and sprinkler systems, alarm & smoke detection, and fabrication services. ISO 9001:2015 certified.';
         break;
 
       case '/about':

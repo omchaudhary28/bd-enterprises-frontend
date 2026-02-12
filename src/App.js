@@ -14,6 +14,8 @@ import SprinklerSystems from './components/services/SprinklerSystems';
 import EmergencyLighting from './components/services/EmergencyLighting';
 import FireSafetyTraining from './components/services/FireSafetyTraining';
 import ComplianceInspection from './components/services/ComplianceInspection';
+import OxygenCylinders from './components/services/OxygenCylinders';
+import Fabrication from './components/services/Fabrication';
 import HeadProtection from './components/ppe/HeadProtection';
 import EyeFaceProtection from './components/ppe/EyeFaceProtection';
 import HearingProtection from './components/ppe/HearingProtection';
@@ -22,6 +24,7 @@ import HandProtection from './components/ppe/HandProtection';
 import BodyProtection from './components/ppe/BodyProtection';
 import FootProtection from './components/ppe/FootProtection';
 import { ThemeProvider } from './components/ThemeContext';
+import ScrollUpButton from './components/ScrollUpButton';
 import { useCanonicalUrl } from './hooks/useCanonicalUrl';
 
 const ScrollToTop = () => {
@@ -59,6 +62,8 @@ function App() {
               <Route path="/services/emergency-lighting" element={<EmergencyLighting />} />
               <Route path="/services/fire-safety-training" element={<FireSafetyTraining />} />
               <Route path="/services/compliance-inspection" element={<ComplianceInspection />} />
+              <Route path="/services/oxygen-cylinders" element={<OxygenCylinders />} />
+              <Route path="/services/fabrication" element={<Fabrication />} />
               {/* PPE Routes - Now under Services */}
               <Route path="/services/ppe/head-protection" element={<HeadProtection />} />
               <Route path="/services/ppe/eye-face-protection" element={<EyeFaceProtection />} />
@@ -80,6 +85,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <ScrollUpButton />
         </div>
       </ThemeProvider>
     </Router>

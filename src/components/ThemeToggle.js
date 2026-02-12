@@ -52,48 +52,33 @@ const ThemeToggle = ({ variant = 'icon', className = '' }) => {
     );
   }
 
-  // Main toggle - sliding pill switch (mobile-friendly: 44px min touch target)
+  // Round button - icon transforms (sun ↔ moon) with animation
   return (
     <motion.button
       onClick={toggleTheme}
-      className={`relative flex items-center justify-center min-w-[44px] min-h-[44px] w-14 h-8 sm:w-12 sm:h-7 rounded-full p-0.5 cursor-pointer select-none overflow-hidden border border-white/20 backdrop-blur-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary shadow-lg sm:shadow-md ${className}`}
+      className={`relative flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 rounded-full cursor-pointer select-none overflow-hidden border border-white/20 backdrop-blur-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary shadow-lg ${className}`}
       style={{
         background: isDark
           ? 'linear-gradient(135deg, #334155 0%, #1e293b 100%)'
-          : 'linear-gradient(135deg, #94a3b8 0%, #64748b 100%)',
+          : 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
         boxShadow: isDark
-          ? 'inset 0 1px 2px rgba(0,0,0,0.3), 0 2px 8px rgba(15, 23, 42, 0.3)'
-          : 'inset 0 1px 2px rgba(255,255,255,0.4), 0 2px 8px rgba(100, 116, 139, 0.25)',
+          ? '0 2px 12px rgba(15, 23, 42, 0.4)'
+          : '0 2px 12px rgba(251, 191, 36, 0.35)',
       }}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 1.08 }}
+      whileTap={{ scale: 0.92 }}
       transition={{ type: 'spring', stiffness: 400, damping: 17 }}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      {/* Sliding knob - larger on mobile for better visibility */}
-      <motion.div
-        className="absolute top-0.5 left-0.5 w-6 h-6 sm:w-5 sm:h-5 rounded-full flex items-center justify-center z-10"
-        style={{
-          background: isDark
-            ? 'linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%)'
-            : 'linear-gradient(145deg, #fef3c7 0%, #fde68a 100%)',
-          boxShadow: isDark
-            ? '0 2px 6px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.08)'
-            : '0 2px 6px rgba(251, 191, 36, 0.35), 0 0 0 1px rgba(255,255,255,0.4)',
-        }}
-        animate={{ x: isDark ? 26 : 0 }}
-        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+      <motion.span
+        key={isDark ? 'moon' : 'sun'}
+        initial={{ opacity: 0, scale: 0.6, rotate: -90 }}
+        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+        className={isDark ? 'text-amber-200' : 'text-amber-700'}
       >
-        <motion.span
-          key={isDark ? 'moon' : 'sun'}
-          initial={{ opacity: 0, scale: 0.6 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.2 }}
-          className={isDark ? 'text-slate-700' : 'text-amber-600'}
-        >
-          {isDark ? <MoonIcon /> : <SunIcon />}
-        </motion.span>
-      </motion.div>
+        {isDark ? <MoonIcon /> : <SunIcon />}
+      </motion.span>
     </motion.button>
   );
 };

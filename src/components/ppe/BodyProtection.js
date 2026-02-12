@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PageHero from '../PageHero';
 
 const BodyProtection = () => {
   const products = [
@@ -33,29 +34,19 @@ const BodyProtection = () => {
   ];
 
   return (
-    <div className="ppe-detail-page relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-slate-900 dark:to-slate-800 min-h-screen py-12 md:py-16">
-      <div className="absolute top-0 left-0 w-40 md:w-72 h-40 md:h-72 bg-accent opacity-10 dark:opacity-20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent opacity-5 dark:opacity-15 rounded-full blur-3xl"></div>
-
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="mb-6 md:mb-8">
-          <Link to="/ppe" className="inline-flex items-center gap-2 text-accent hover:text-white transition-colors duration-300 font-semibold text-sm md:text-base">
-            ← Back to PPEs
-          </Link>
-        </div>
-
-        <div className="mb-10 md:mb-16 text-center">
-          <div className="text-5xl md:text-6xl mb-4">🧥</div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white glow-text mb-4">
-            Body Protection
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-4">
-            Coveralls, Vests & Full-Body Protection
-          </p>
-          <p className="text-sm sm:text-base text-white/80 max-w-2xl mx-auto">
-            Comprehensive body coverage for chemical, thermal, and visibility hazards.
-          </p>
-        </div>
+    <div className="ppe-detail-page relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500 opacity-8 dark:opacity-3 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+      </div>
+      <div className="container mx-auto px-4 md:px-6 py-12 md:py-20 relative z-10">
+        <PageHero
+          badge="PPE & Personal Safety"
+          title="Body Protection"
+          subtitle="Coveralls, Vests & Full-Body Protection"
+          description="Comprehensive body coverage for chemical, thermal, and visibility hazards."
+          backTo="/services"
+          backLabel="Back to Services"
+        />
 
         <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-8 glow-text">Our Body Protection Products</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 md:mb-16">

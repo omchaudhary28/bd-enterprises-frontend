@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PageHero from '../PageHero';
 
 const HandProtection = () => {
   const products = [
     {
       name: 'Chemical-Resistant Gloves',
-      image: '/images/ppes/Hand-Protection-1536x922.webp',
+      image: '/images/ppes/ppes%20hand%20gloves/41Qm8Tk8VVL._AC_UF1000,1000_QL80_.jpg',
       summary: 'Nitrile and rubber gloves for protection against harsh chemicals and solvents.',
       useCases: ['Laboratory work', 'Chemical handling', 'Cleaning operations', 'Industrial maintenance'],
       protection: 'Prevents skin contact with toxic and corrosive chemicals; prevents absorption.',
@@ -14,7 +15,7 @@ const HandProtection = () => {
     },
     {
       name: 'Thermal Protection Gloves',
-      image: '/images/ppes/Hand-Protection-1536x922.webp',
+      image: '/images/ppes/ppes%20hand%20gloves/71uC-suYAKL._AC_UY1100_.jpg',
       summary: 'Insulated gloves for handling hot materials and equipment.',
       useCases: ['Welding', 'Furnace operations', 'Kitchen work', 'Hot machinery handling'],
       protection: 'Insulates hands from extreme heat; prevents burn injuries.',
@@ -23,7 +24,7 @@ const HandProtection = () => {
     },
     {
       name: 'Cut-Resistant Gloves',
-      image: '/images/ppes/Hand-Protection-1536x922.webp',
+      image: '/images/ppes/ppes%20hand%20gloves/57642_W3.webp',
       summary: 'Engineered fabrics with specialized materials to resist sharp edges and blades.',
       useCases: ['Glass handling', 'Metal fabrication', 'Food processing', 'Package handling'],
       protection: 'Resists slicing from sharp objects; allows tactile sensitivity.',
@@ -33,29 +34,19 @@ const HandProtection = () => {
   ];
 
   return (
-    <div className="ppe-detail-page relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-slate-900 dark:to-slate-800 min-h-screen py-12 md:py-16">
-      <div className="absolute top-0 left-0 w-40 md:w-72 h-40 md:h-72 bg-accent opacity-10 dark:opacity-20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent opacity-5 dark:opacity-15 rounded-full blur-3xl"></div>
-
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="mb-6 md:mb-8">
-          <Link to="/ppe" className="inline-flex items-center gap-2 text-accent hover:text-white transition-colors duration-300 font-semibold text-sm md:text-base">
-            ← Back to PPEs
-          </Link>
-        </div>
-
-        <div className="mb-10 md:mb-16 text-center">
-          <div className="text-5xl md:text-6xl mb-4">🧤</div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white glow-text mb-4">
-            Hand Protection
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-4">
-            Specialized Gloves for Every Hazard
-          </p>
-          <p className="text-sm sm:text-base text-white/80 max-w-2xl mx-auto">
-            Chemical, thermal, and cut-resistant gloves tailored to your specific workplace needs.
-          </p>
-        </div>
+    <div className="ppe-detail-page relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500 opacity-8 dark:opacity-3 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+      </div>
+      <div className="container mx-auto px-4 md:px-6 py-12 md:py-20 relative z-10">
+        <PageHero
+          badge="PPE & Personal Safety"
+          title="Hand Protection"
+          subtitle="Specialized Gloves for Every Hazard"
+          description="Chemical, thermal, and cut-resistant gloves tailored to your specific workplace needs."
+          backTo="/services"
+          backLabel="Back to Services"
+        />
 
         <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-8 glow-text">Our Hand Protection Products</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 md:mb-16">

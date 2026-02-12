@@ -72,12 +72,12 @@ const ppeCategories = [
     color: 'from-amber-400 to-orange-500',
   },
   {
-    id: 'basca-cylinders',
-    title: 'BASCA Cylinders',
-    subtitle: 'Fire Suppressant Cylinders',
-    description: 'Advanced fire suppression technology for specialized environments. Clean agent systems for sensitive equipment protection.',
-    imageUrl: '/images/ppes/istockphoto-2190518272-1024x1024.jpg',
-    path: '/services/ppe/basca-cylinders',
+    id: 'oxygen-cylinders',
+    title: 'Oxygen & SCBA Cylinders',
+    subtitle: 'Medical, Firefighting & Industrial',
+    description: 'Medical oxygen, SCBA, and breathing air cylinders. Certified cylinders with hydrostatic testing and refill services.',
+    imageUrl: '/images/ppes/ppes%20oxygen%20cylender/cylinder_final_red.webp',
+    path: '/services/oxygen-cylinders',
     color: 'from-red-400 to-red-600',
   },
 ];
@@ -91,8 +91,8 @@ const ppeImages = {
   ],
   'eye-protection': [
     '/images/ppes/Face-and-Eye-Protection_2022.avif',
-    '/images/ppes/ppes eye protection/ANTI-FOG-VENTILATED-SAFETY-GOGGLES-S-LS-312-CL-JORESTECH-H_6_1600x1600.webp',
-    '/images/ppes/ppes eye protection/Double-Layer-Welding-Glasses-Adjustable-Welding-Safety-Eye-Protection-Welder-Goggles.avif',
+    '/images/ppes/ppes%20eye%20protection/ANTI-FOG-VENTILATED-SAFETY-GOGGLES-S-LS-312-CL-JORESTECH-H_6_1600x1600.webp',
+    '/images/ppes/ppes%20eye%20protection/Double-Layer-Welding-Glasses-Adjustable-Welding-Safety-Eye-Protection-Welder-Goggles.avif',
   ],
   'hearing-protection': [
     '/images/ppes/Hearing-Protection-1536x922.webp',
@@ -102,11 +102,11 @@ const ppeImages = {
   'respiratory-protection': [
     '/images/ppes/Respiratory-Protection.webp',
     '/images/ppes/Respiratory-Protection_2022.avif',
-    '/images/ppes/ppes respiratory/maxresdefault.jpg',
+    '/images/ppes/ppes%20respiratory/65f0427935fc214ace1e9f7d-3m-6800-full-face-ppe-respirator-mask.webp',
   ],
   'hand-protection': [
     '/images/ppes/Hand-Protection-1536x922.webp',
-    '/images/ppes/ppes hand gloves/1687877639-1.webp',
+    '/images/ppes/ppes%20hand%20gloves/57642_W3.webp',
     '/images/ppes/istockphoto-1488252839-1024x1024.jpg',
   ],
   'body-protection': [
@@ -119,10 +119,11 @@ const ppeImages = {
     '/images/ppes/PN-521-Chrome-Orange.jpg',
     '/images/ppes/61eTR14wUVL._AC_UF894,1000_QL80_.jpg',
   ],
-  'basca-cylinders': [
-    '/images/ppes/istockphoto-2190518272-1024x1024.jpg',
-    '/images/ppes/ppes oxygen cylender/1_28e8d59aeceeb5e9b638a2ef5b3d2f3d.webp',
-    '/images/ppes/istockphoto-947254500-1024x1024.jpg',
+  'oxygen-cylinders': [
+    '/images/ppes/ppes%20oxygen%20cylender/cylinder_final_red.webp',
+    '/images/ppes/ppes%20oxygen%20cylender/Self-contained_breathing_apparatus.jpg',
+    '/images/ppes/ppes%20oxygen%20cylender/12L-1.jpg',
+    '/images/ppes/ppes%20oxygen%20cylender/breathing-apparatus-set-500x500.webp',
   ],
 };
 
@@ -187,6 +188,10 @@ const PPEs = () => {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-20">
+        <Link to="/services" className="inline-flex items-center gap-2 text-white/80 hover:text-accent transition-colors mb-8 font-semibold text-sm md:text-base group" data-aos="fade-right">
+          <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+          Back to Services
+        </Link>
         {/* Hero Section */}
         <motion.div 
           className="text-center mb-12 md:mb-20"

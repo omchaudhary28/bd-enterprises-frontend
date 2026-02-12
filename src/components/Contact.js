@@ -152,7 +152,7 @@ const Contact = () => {
       case 'email':
         return `Hello B. D. Enterprises,\n\nI am interested in learning more about your fire safety solutions. My company is [Your Company Name] and we are looking for [Service You Are Looking For e.g., fire extinguisher systems].\n\nPlease get back to me at your earliest convenience.\n\nThank you!`;
       case 'phone':
-        return `Call: ${getPhoneNumber()} (Mon-Fri, 9AM-6PM EST)`;
+        return `Call: ${getPhoneNumber()} (Mon-Fri, 9AM-6PM IST)`;
       case 'whatsapp':
         return `Hello B. D. Enterprises, I am interested in your fire safety services. I would like to know more about [Service You Are Looking For e.g., fire extinguisher systems].`;
       default:
@@ -168,7 +168,10 @@ const Contact = () => {
     'Sprinkler Systems',
     'Emergency Lighting',
     'Fire Safety Training',
-    'Compliance Inspection'
+    'Compliance Inspection',
+    'Oxygen & SCBA Cylinders',
+    'Fabrication Services',
+    'PPE & Safety Equipment'
   ];
 
   return (
@@ -398,7 +401,7 @@ const Contact = () => {
               <div className="group mb-6 p-4 md:p-6 rounded-xl bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 hover:border-accent/60 transition-all duration-300">
                 <div className="mb-4">
                   <h3 className="font-bold text-lg text-white">Call Us</h3>
-                  <p className="text-white/80 text-sm">Mon-Fri, 9AM-6PM EST</p>
+                  <p className="text-white/80 text-sm">Mon-Fri, 9AM-6PM IST</p>
                 </div>
                 <a href={`tel:${getPhoneNumber().replace(/\D/g, '')}`} className="text-accent hover:text-orange-300 font-bold transition-colors text-lg break-all block">
                   {getPhoneNumber()}

@@ -13,6 +13,8 @@ const Footer = () => {
     { name: 'Emergency Lighting', path: '/services/emergency-lighting' },
     { name: 'Fire Safety Training', path: '/services/fire-safety-training' },
     { name: 'Compliance Inspection', path: '/services/compliance-inspection' },
+    { name: 'Oxygen Cylinders', path: '/services/oxygen-cylinders' },
+    { name: 'Fabrication', path: '/services/fabrication' },
   ];
 
   const ppeServices = [
@@ -23,6 +25,7 @@ const Footer = () => {
     { name: 'Foot Protection', path: '/services/ppe/foot-protection' },
     { name: 'Body Protection', path: '/services/ppe/body-protection' },
     { name: 'Hearing Protection', path: '/services/ppe/hearing-protection' },
+    { name: 'Oxygen & SCBA Cylinders', path: '/services/oxygen-cylinders' },
   ];
 
   const company = [
@@ -36,7 +39,7 @@ const Footer = () => {
     <footer className="bg-gradient-to-r from-primary via-primary to-secondary dark:bg-gradient-to-r dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 text-white mt-auto shadow-lg border-t-4 border-accent dark:border-opacity-50 relative z-10">
       <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-6 md:gap-8 mb-8 md:mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 md:gap-8 mb-8 md:mb-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -44,8 +47,8 @@ const Footer = () => {
         >
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-3xl">🛡️</span>
+            <div className="flex items-center gap-3 mb-4">
+              <img src={`${process.env.PUBLIC_URL || ''}/logo.png`} alt="B. D. Enterprises" className="h-12 w-auto object-contain" loading="lazy" />
               <h3 className="text-lg md:text-xl font-bold glow-text">B. D. Enterprises</h3>
             </div>
             <p className="text-sm md:text-base text-gray-200 dark:text-gray-300 leading-relaxed mb-4">
@@ -97,17 +100,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* PPE Products - new explicit section */}
-          <div>
-            <h4 className="text-sm font-bold text-accent mb-3">PPE Products</h4>
-            <ul className="space-y-2">
-              <li><Link to="/services/ppe/eye-face-protection" className="text-sm text-gray-200 hover:text-white">Eye Protection</Link></li>
-              <li><Link to="/services/ppe/hand-protection" className="text-sm text-gray-200 hover:text-white">Hand Gloves</Link></li>
-              <li><Link to="/services/ppe/basca-cylinders" className="text-sm text-gray-200 hover:text-white">Oxygen Cylinder</Link></li>
-              <li><Link to="/services/ppe/respiratory-protection" className="text-sm text-gray-200 hover:text-white">Respiratory PPE</Link></li>
-            </ul>
-          </div>
-
           {/* Company */}
           <div>
             <h4 className="text-sm font-bold text-accent mb-3">Company</h4>
@@ -133,7 +125,7 @@ const Footer = () => {
         <div className="border-t border-accent border-opacity-20 pt-8 md:pt-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-xs md:text-sm text-gray-300 dark:text-gray-400 text-center md:text-left">
-              &copy; {currentYear} B. D. Enterprises. All rights reserved. | Fire Safety Excellence Since 2001
+              &copy; {currentYear} B. D. Enterprises. All rights reserved. | Fire Safety Excellence Since 2006
             </p>
             <div className="flex gap-4 flex-wrap justify-center">
               <button className="text-xs md:text-sm text-gray-300 dark:text-gray-400 hover:text-accent transition-colors duration-300 cursor-pointer">Privacy Policy</button>

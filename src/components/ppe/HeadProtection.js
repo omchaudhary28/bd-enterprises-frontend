@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
+import PageHero from '../PageHero';
 
 const HeadProtection = () => {
   const prefersReduced = useReducedMotion();
@@ -74,61 +75,19 @@ const HeadProtection = () => {
   ];
 
   return (
-    <div className="ppe-detail-page relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-slate-900 dark:to-slate-800 min-h-screen py-12 md:py-16">
-      {/* Glowing orbs */}
-      <div className="absolute top-0 left-0 w-40 md:w-72 h-40 md:h-72 bg-accent opacity-10 dark:opacity-20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent opacity-5 dark:opacity-15 rounded-full blur-3xl"></div>
-
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        {/* Back Link */}
-        <div className="mb-6 md:mb-8">
-          <Link
-            to="/ppe"
-            className="inline-flex items-center gap-2 text-accent hover:text-white transition-colors duration-300 font-semibold text-sm md:text-base"
-          >
-            ← Back to PPEs
-          </Link>
-        </div>
-
-        {/* Hero Section */}
-        <motion.div 
-          className="mb-10 md:mb-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-        >
-          <motion.div 
-            className="text-5xl md:text-6xl mb-4"
-            animate={prefersReduced ? {} : { y: [0, -10, 0] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          >
-            🛡️
-          </motion.div>
-          <motion.h1 
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-white glow-text mb-4"
-            initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
-            animate={prefersReduced ? {} : { opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5, ease: 'easeOut' }}
-          >
-            Head Protection
-          </motion.h1>
-          <motion.p 
-            className="text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-4"
-            initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
-            animate={prefersReduced ? {} : { opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5, ease: 'easeOut' }}
-          >
-            Helmets and Hard Hats for Maximum Safety
-          </motion.p>
-          <motion.p 
-            className="text-sm sm:text-base text-white/80 max-w-2xl mx-auto"
-            initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
-            animate={prefersReduced ? {} : { opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5, ease: 'easeOut' }}
-          >
-            Comprehensive head protection solutions designed to shield your workforce from impact, falling objects, and overhead hazards.
-          </motion.p>
-        </motion.div>
+    <div className="ppe-detail-page relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500 opacity-8 dark:opacity-3 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+      </div>
+      <div className="container mx-auto px-4 md:px-6 py-12 md:py-20 relative z-10">
+        <PageHero
+          badge="PPE & Personal Safety"
+          title="Head Protection"
+          subtitle="Helmets and Hard Hats for Maximum Safety"
+          description="Comprehensive head protection solutions designed to shield your workforce from impact, falling objects, and overhead hazards."
+          backTo="/services"
+          backLabel="Back to Services"
+        />
 
         {/* Products Grid */}
         <motion.h2 

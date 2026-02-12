@@ -8,10 +8,11 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 AOS.init({
-  duration: 900,
-  once: false,
-  mirror: true,
-  offset: 100,
+  duration: 500,
+  once: true,
+  mirror: false,
+  offset: 80,
+  easing: 'ease-out',
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
