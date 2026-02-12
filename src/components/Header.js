@@ -8,6 +8,7 @@ const Header = () => {
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [scrollY, setScrollY] = useState(0);
+  const [logoError, setLogoError] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,6 +68,15 @@ const Header = () => {
         { label: 'Foot Protection', path: '/services/ppe/foot-protection', emoji: '👢' },
         { label: 'Body Protection', path: '/services/ppe/body-protection', emoji: '🧥' },
         { label: 'Hearing Protection', path: '/services/ppe/hearing-protection', emoji: '🎧' },
+        { label: 'Oxygen & SCBA Cylinders', path: '/services/oxygen-cylinders', emoji: '🫙' },
+      ]
+    },
+    {
+      section: 'Fabrication & Manufacturing',
+      icon: '⚙️',
+      color: 'from-gray-500 to-slate-600',
+      items: [
+        { label: 'Fabrication Services', path: '/services/fabrication', emoji: '🔧' },
       ]
     }
   ];
@@ -85,16 +95,23 @@ const Header = () => {
     <header className={`${scrollY > 10 ? 'bg-opacity-95 backdrop-blur-md shadow-xl border-b border-accent/10' : 'bg-opacity-95'} bg-gradient-to-r from-primary via-primary to-secondary dark:bg-gradient-to-r dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 text-white shadow-lg sticky top-0 z-50 border-b-2 border-accent dark:border-opacity-50 transition-all duration-300`}>
       <div className="progress-bar" style={{ width: `${scrollProgress}%` }}></div>
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
-        {/* Logo */}
+        {/* Logo - B. D. Enterprises */}
         <div className="flex items-center flex-shrink-0">
-          <Link to="/" aria-label="B. D. Enterprises - Home" className="flex items-center">
-            <img
-              src="/logo.png"
-              alt="B. D. Enterprises Logo"
-              className="h-12 sm:h-12 md:h-12 object-contain"
-              style={{ height: 48 }}
-              loading="eager"
-            />
+          <Link to="/" aria-label="B. D. Enterprises - Home" className="flex items-center group">
+            {logoError ? (
+              <span className="text-lg sm:text-xl font-bold text-white tracking-tight group-hover:opacity-90 transition-opacity">
+                B. D. Enterprises
+              </span>
+            ) : (
+              <img
+                src={`${process.env.PUBLIC_URL || ''}/logo.png`}
+                alt="B. D. Enterprises"
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                style={{ maxHeight: 56 }}
+                loading="eager"
+                onError={() => setLogoError(true)}
+              />
+            )}
           </Link>
         </div>
         
