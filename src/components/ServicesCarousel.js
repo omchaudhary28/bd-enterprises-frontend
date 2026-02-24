@@ -94,7 +94,7 @@ const ServicesCarousel = () => {
         className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 px-3"
       >
         <motion.div
-          className="relative bg-gradient-to-br from-sky-800 to-blue-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col group"
+          className="relative bg-gradient-to-br from-[#1C1C1C] to-[#111111] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col group"
           whileHover={{ y: -4 }}
         >
           {/* Image Container - 16:9 */}
@@ -127,7 +127,7 @@ const ServicesCarousel = () => {
   return (
     <section
       aria-label="Our Services carousel"
-      className="relative py-12 md:py-16 bg-gradient-to-br from-primary via-blue-700 to-secondary"
+      className="relative py-12 md:py-16 bg-gradient-to-br from-[#111111] via-[#1C1C1C] to-[#111111]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -193,3 +193,4 @@ const ServicesCarousel = () => {
 };
 
 export default ServicesCarousel;
+

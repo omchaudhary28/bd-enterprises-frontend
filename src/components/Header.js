@@ -7,40 +7,8 @@ const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
   { label: 'Services', path: '/services' },
+  { label: 'Brands', path: '/brands' },
   { label: 'Contact', path: '/contact' },
-];
-
-const serviceGroups = [
-  {
-    title: 'Fire Systems',
-    links: [
-      { label: 'Fire Extinguisher Systems', path: '/services/fire-extinguishers' },
-      { label: 'Fire Alarm and Detection', path: '/services/fire-alarm-detection' },
-      { label: 'Sprinkler Systems', path: '/services/sprinkler-systems' },
-      { label: 'Emergency Lighting', path: '/services/emergency-lighting' },
-      { label: 'Fire Safety Training', path: '/services/fire-safety-training' },
-      { label: 'Compliance Inspection', path: '/services/compliance-inspection' },
-    ],
-  },
-  {
-    title: 'PPE Solutions',
-    links: [
-      { label: 'Head Protection', path: '/services/ppe/head-protection' },
-      { label: 'Eye and Face Protection', path: '/services/ppe/eye-face-protection' },
-      { label: 'Respiratory Protection', path: '/services/ppe/respiratory-protection' },
-      { label: 'Hand Protection', path: '/services/ppe/hand-protection' },
-      { label: 'Foot Protection', path: '/services/ppe/foot-protection' },
-      { label: 'Body Protection', path: '/services/ppe/body-protection' },
-      { label: 'Hearing Protection', path: '/services/ppe/hearing-protection' },
-    ],
-  },
-  {
-    title: 'Industrial Support',
-    links: [
-      { label: 'Oxygen and SCBA Cylinders', path: '/services/oxygen-cylinders' },
-      { label: 'Fabrication Services', path: '/services/fabrication' },
-    ],
-  },
 ];
 
 const Header = () => {
@@ -48,13 +16,11 @@ const Header = () => {
   const prefersReduced = useReducedMotion();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [logoError, setLogoError] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 12);
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -62,8 +28,6 @@ const Header = () => {
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
-    setIsServicesOpen(false);
-    setIsMobileServicesOpen(false);
   }, [location.pathname]);
 
   const isActive = useMemo(
@@ -73,14 +37,14 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b border-cyan-300/20 bg-gradient-to-r from-primary via-primary to-secondary text-white transition-all duration-300 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 ${
-        isScrolled ? 'shadow-2xl backdrop-blur-md' : 'shadow-lg'
+      className={`sticky top-0 z-50 border-b border-[#E9ECEF]/10 bg-[#1C1C1C]/95 text-[#F8F9FA] transition-all duration-300 ${
+        isScrolled ? 'shadow-[0_12px_30px_rgba(0,0,0,0.45)] backdrop-blur-md' : 'shadow-[0_4px_14px_rgba(0,0,0,0.35)]'
       }`}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center gap-3 px-4 py-3 md:px-6 md:py-4">
         <Link to="/" aria-label="B. D. Enterprises Home" className="flex flex-shrink-0 items-center gap-3">
           {logoError ? (
-            <span className="text-lg font-bold tracking-tight">B. D. Enterprises</span>
+            <span className="text-lg font-black tracking-tight text-[#F8F9FA]">B. D. Enterprises</span>
           ) : (
             <img
               src="/logo.png"
@@ -93,68 +57,24 @@ const Header = () => {
         </Link>
 
         <nav className="hidden flex-1 items-center justify-center lg:flex">
-          <ul className="flex items-center gap-1">
-            {navLinks.map((link) => {
-              const active = isActive(link.path);
-              const isServicesLink = link.path === '/services';
-              return (
-                <li
-                  key={link.path}
-                  className="relative"
-                  onMouseEnter={isServicesLink ? () => setIsServicesOpen(true) : undefined}
-                  onMouseLeave={isServicesLink ? () => setIsServicesOpen(false) : undefined}
+          <ul className="flex items-center gap-2">
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <Link
+                  to={link.path}
+                  className={`group relative px-3 py-2 text-sm font-semibold uppercase tracking-wider transition-colors duration-300 xl:text-[13px] ${
+                    isActive(link.path) ? 'text-[#FCBF49]' : 'text-[#F8F9FA]/90 hover:text-[#FCBF49]'
+                  }`}
                 >
-                  <Link
-                    to={link.path}
-                    className={`rounded-full px-4 py-2 text-sm font-semibold tracking-wide transition-all duration-300 xl:text-base ${
-                      active
-                        ? 'bg-white/20 text-white shadow-md shadow-cyan-900/30'
-                        : 'text-white/85 hover:bg-white/10 hover:text-white'
+                  {link.label}
+                  <span
+                    className={`absolute bottom-0 left-1/2 h-[2px] -translate-x-1/2 rounded-full bg-[#F77F00] transition-all duration-300 ${
+                      isActive(link.path) ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}
-                  >
-                    {link.label}
-                  </Link>
-
-                  {isServicesLink && (
-                    <AnimatePresence>
-                      {isServicesOpen && (
-                        <motion.div
-                          initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 10 }}
-                          animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
-                          exit={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 8 }}
-                          transition={{ duration: prefersReduced ? 0 : 0.2, ease: 'easeOut' }}
-                          className="absolute left-1/2 top-full z-50 mt-3 w-[920px] max-w-[92vw] -translate-x-1/2 overflow-hidden rounded-2xl border border-cyan-300/25 bg-slate-900/95 p-5 shadow-2xl backdrop-blur-xl"
-                          onMouseEnter={() => setIsServicesOpen(true)}
-                          onMouseLeave={() => setIsServicesOpen(false)}
-                        >
-                          <div className="grid gap-5 md:grid-cols-3">
-                            {serviceGroups.map((group) => (
-                              <div key={group.title} className="rounded-xl border border-white/10 bg-white/5 p-4">
-                                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-cyan-200">
-                                  {group.title}
-                                </h3>
-                                <ul className="space-y-1.5">
-                                  {group.links.map((item) => (
-                                    <li key={item.path}>
-                                      <Link
-                                        to={item.path}
-                                        className="block rounded-lg px-2.5 py-2 text-sm text-white/85 transition-all duration-200 hover:bg-cyan-400/15 hover:text-white"
-                                      >
-                                        {item.label}
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  )}
-                </li>
-              );
-            })}
+                  />
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
@@ -163,14 +83,14 @@ const Header = () => {
 
           <Link
             to="/contact"
-            className="btn-corporate hidden min-h-[42px] items-center justify-center rounded-full px-5 text-xs font-bold uppercase tracking-wider md:inline-flex"
+            className="btn-corporate hidden min-h-[44px] items-center justify-center rounded-full px-5 text-xs font-black uppercase tracking-wider md:inline-flex"
           >
             Book Consulting
           </Link>
 
           <button
             type="button"
-            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-white/20 bg-white/5 text-white transition-all duration-300 hover:bg-white/10 lg:hidden"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-[#E9ECEF]/20 bg-[#111111] text-[#F8F9FA] transition-all duration-300 hover:border-[#F77F00]/60 hover:text-[#FCBF49] lg:hidden"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
@@ -193,17 +113,17 @@ const Header = () => {
             animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
             exit={prefersReduced ? { opacity: 0 } : { opacity: 0, y: -10 }}
             transition={{ duration: prefersReduced ? 0 : 0.2, ease: 'easeOut' }}
-            className="border-t border-cyan-300/20 bg-slate-950/95 px-4 py-4 shadow-2xl backdrop-blur-xl lg:hidden"
+            className="border-t border-[#E9ECEF]/10 bg-[#111111]/95 px-4 py-4 shadow-2xl backdrop-blur-xl lg:hidden"
           >
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className={`block rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 ${
+                    className={`block rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wider transition-all duration-300 ${
                       isActive(link.path)
-                        ? 'bg-cyan-400/20 text-white'
-                        : 'bg-white/5 text-white/90 hover:bg-white/10 hover:text-white'
+                        ? 'border border-[#F77F00]/50 bg-[#F77F00]/15 text-[#FCBF49]'
+                        : 'border border-[#E9ECEF]/10 bg-[#1C1C1C] text-[#F8F9FA]/90 hover:border-[#F77F00]/40 hover:text-[#FCBF49]'
                     }`}
                   >
                     {link.label}
@@ -211,62 +131,10 @@ const Header = () => {
                 </li>
               ))}
 
-              <li>
-                <button
-                  type="button"
-                  className="flex w-full items-center justify-between rounded-xl bg-white/5 px-4 py-3 text-left text-sm font-semibold text-white/90 transition-all duration-300 hover:bg-white/10"
-                  onClick={() => setIsMobileServicesOpen((prev) => !prev)}
-                  aria-expanded={isMobileServicesOpen}
-                >
-                  Service Categories
-                  <svg
-                    className={`h-4 w-4 transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isMobileServicesOpen && (
-                    <motion.div
-                      initial={prefersReduced ? { opacity: 1 } : { opacity: 0, height: 0 }}
-                      animate={prefersReduced ? { opacity: 1 } : { opacity: 1, height: 'auto' }}
-                      exit={prefersReduced ? { opacity: 0 } : { opacity: 0, height: 0 }}
-                      transition={{ duration: prefersReduced ? 0 : 0.2, ease: 'easeOut' }}
-                      className="overflow-hidden"
-                    >
-                      <div className="mt-2 space-y-2 rounded-xl border border-white/10 bg-white/5 p-3">
-                        {serviceGroups.map((group) => (
-                          <div key={group.title}>
-                            <h4 className="px-1 pb-1 text-xs font-bold uppercase tracking-wider text-cyan-200">
-                              {group.title}
-                            </h4>
-                            <div className="space-y-1">
-                              {group.links.map((item) => (
-                                <Link
-                                  key={item.path}
-                                  to={item.path}
-                                  className="block rounded-md px-3 py-2 text-sm text-white/85 transition-all duration-200 hover:bg-cyan-400/15 hover:text-white"
-                                >
-                                  {item.label}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </li>
-
               <li className="pt-1">
                 <Link
                   to="/contact"
-                  className="btn-corporate inline-flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-bold uppercase tracking-wider"
+                  className="btn-corporate inline-flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-black uppercase tracking-wider"
                 >
                   Contact Team
                 </Link>

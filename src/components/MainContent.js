@@ -4,64 +4,64 @@ import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import HeroCarousel from './HeroCarousel';
 
-const highlights = [
+const highlightCards = [
   {
     title: 'Fire Suppression Engineering',
-    description: 'System design, installation, and commissioning for commercial and industrial facilities.',
+    description: 'Design and deployment of suppression systems for industrial and commercial facilities.',
   },
   {
-    title: 'Detection and Alert Infrastructure',
-    description: 'Addressable fire alarm and smoke detection systems with high-reliability monitoring.',
+    title: 'Detection and Alarm Systems',
+    description: 'Addressable alarm panels, detection networks, and emergency notification integration.',
   },
   {
-    title: 'Certified PPE and Safety Gear',
-    description: 'Workplace protection portfolio covering head-to-toe industrial safety requirements.',
+    title: 'Industrial PPE Supply',
+    description: 'Category-based procurement of certified protective equipment for high-risk work zones.',
   },
   {
-    title: 'Compliance and Readiness Audits',
-    description: 'Documentation-led inspections and remediation support for standards compliance.',
+    title: 'Compliance and Audits',
+    description: 'Inspection-ready documentation, verification, and remediation planning support.',
   },
 ];
 
 const trustStats = [
-  { value: 'Since 2006', label: 'Operational Expertise' },
-  { value: 'ISO 9001:2015', label: 'Quality Framework' },
-  { value: 'Pan-Industry', label: 'Multi-Sector Deployments' },
-  { value: 'End-to-End', label: 'Design to Maintenance' },
+  { value: 'Since 2006', label: 'Operational Legacy' },
+  { value: 'ISO 9001:2015', label: 'Quality System' },
+  { value: 'Multi-Sector', label: 'Deployment Expertise' },
+  { value: 'End-to-End', label: 'Project Delivery' },
 ];
 
 const MainContent = () => {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden bg-[#111111]">
       <HeroCarousel />
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-cyan-50 py-14 md:py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_10%,rgba(34,211,238,0.15),transparent_35%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_90%,rgba(14,165,233,0.10),transparent_32%)]" />
+      <section className="relative overflow-hidden py-14 md:py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(247,127,0,0.16),transparent_34%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_84%,rgba(214,40,40,0.12),transparent_30%)]" />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 md:px-6">
           <AnimatedSection animation="fade-up" className="mx-auto mb-12 max-w-4xl text-center md:mb-16">
-            <span className="mb-4 inline-flex rounded-full border border-cyan-200 bg-cyan-100 px-4 py-2 text-xs font-bold uppercase tracking-wider text-cyan-900 md:text-sm">
-              B. D. Enterprises | Industrial Safety Partner
+            <span className="mb-4 inline-flex rounded-full border border-[#F77F00]/50 bg-[#F77F00]/15 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#FCBF49] md:text-sm">
+              B. D. Enterprises
             </span>
-            <h2 className="mb-5 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              Enterprise-Grade Fire Safety, Delivered with Precision
+            <h2 className="mb-4 text-3xl font-black tracking-tight text-[#F8F9FA] sm:text-4xl md:text-5xl">
+              Industrial Fire and Safety Solutions with Precision Execution
             </h2>
-            <p className="mx-auto max-w-3xl text-base leading-relaxed text-slate-700 md:text-lg">
-              We deliver integrated fire protection, safety equipment, and compliance solutions for industrial and commercial operations where reliability is non-negotiable.
+            <p className="mx-auto max-w-3xl text-base leading-relaxed text-[#E9ECEF]/85 md:text-lg">
+              We provide structured fire protection systems, PPE supply, and compliance support for industrial operations where reliability is critical.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/services"
-                className="btn-corporate inline-flex min-h-[50px] items-center justify-center rounded-full px-7 py-3 text-sm font-bold uppercase tracking-wider"
+                className="btn-corporate inline-flex min-h-[50px] items-center justify-center rounded-full px-7 py-3 text-sm font-black uppercase tracking-wider"
               >
-                View Services
+                Explore Services
               </Link>
               <Link
-                to="/contact"
-                className="inline-flex min-h-[50px] items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-3 text-sm font-bold uppercase tracking-wider text-slate-800 transition-all duration-300 hover:border-cyan-300 hover:bg-cyan-50"
+                to="/brands"
+                className="inline-flex min-h-[50px] items-center justify-center rounded-full border border-[#E9ECEF]/30 bg-[#1C1C1C] px-7 py-3 text-sm font-black uppercase tracking-wider text-[#F8F9FA] transition-all duration-300 hover:border-[#F77F00]/60 hover:text-[#FCBF49]"
               >
-                Talk to Expert
+                Browse Brands
               </Link>
             </div>
           </AnimatedSection>
@@ -70,31 +70,31 @@ const MainContent = () => {
             {trustStats.map((item) => (
               <motion.div
                 key={item.label}
-                initial={{ opacity: 0, y: 14 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
-                viewport={{ once: true, amount: 0.25 }}
-                className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm md:p-6"
+                transition={{ duration: 0.35, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.2 }}
+                className="rounded-2xl border border-[#E9ECEF]/15 bg-[#1C1C1C] p-4 text-center md:p-6"
               >
-                <p className="text-sm font-black uppercase tracking-wider text-cyan-700 md:text-base">{item.value}</p>
-                <p className="mt-1 text-xs font-semibold text-slate-600 md:text-sm">{item.label}</p>
+                <p className="text-sm font-black uppercase tracking-wider text-[#FCBF49] md:text-base">{item.value}</p>
+                <p className="mt-1 text-xs font-semibold text-[#E9ECEF]/80 md:text-sm">{item.label}</p>
               </motion.div>
             ))}
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:gap-6">
-            {highlights.map((item, idx) => (
+            {highlightCards.map((item, idx) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: idx * 0.05, ease: 'easeOut' }}
-                viewport={{ once: true, amount: 0.25 }}
-                className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-lg md:p-6"
+                transition={{ duration: 0.35, delay: idx * 0.04, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.2 }}
+                className="group rounded-2xl border border-[#E9ECEF]/15 bg-[#1C1C1C] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#F77F00]/55 hover:shadow-[0_12px_24px_rgba(0,0,0,0.35)] md:p-6"
               >
-                <h3 className="mb-2 text-base font-bold text-slate-900 md:text-lg">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-slate-600">{item.description}</p>
-                <div className="mt-4 h-1.5 w-14 rounded-full bg-gradient-to-r from-cyan-500 to-sky-500 transition-all duration-300 group-hover:w-20" />
+                <h3 className="mb-2 text-base font-bold text-[#F8F9FA] md:text-lg">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-[#E9ECEF]/80">{item.description}</p>
+                <div className="mt-4 h-1.5 w-14 rounded-full bg-gradient-to-r from-[#D62828] to-[#F77F00] transition-all duration-300 group-hover:w-20" />
               </motion.div>
             ))}
           </div>

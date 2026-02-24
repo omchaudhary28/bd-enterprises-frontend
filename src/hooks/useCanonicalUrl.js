@@ -116,6 +116,18 @@ export const useCanonicalUrl = () => {
         break;
 
       default:
+        if (path === '/brands') {
+          title = 'Supplier Partner Brands | B. D. Enterprises';
+          description = 'Browse supplier partner brands and navigate products by safety category.';
+          break;
+        }
+
+        if (path.startsWith('/brands/')) {
+          title = 'Brand Products | B. D. Enterprises';
+          description = 'Explore brand-specific product categories and safety product listings.';
+          break;
+        }
+
         canonicalUrl = `${DOMAIN}${path.replace(/\/$/, '')}`;
     }
 

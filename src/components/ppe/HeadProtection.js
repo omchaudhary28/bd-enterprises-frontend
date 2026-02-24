@@ -74,7 +74,7 @@ const HeadProtection = () => {
   ];
 
   return (
-    <div className="ppe-detail-page relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-slate-900 dark:to-slate-800 min-h-screen py-12 md:py-16">
+    <div className="ppe-detail-page relative overflow-hidden bg-gradient-to-r from-[#111111] to-[#1C1C1C] dark:from-slate-900 dark:to-slate-800 min-h-screen py-12 md:py-16">
       {/* Glowing orbs */}
       <div className="absolute top-0 left-0 w-40 md:w-72 h-40 md:h-72 bg-accent opacity-10 dark:opacity-20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent opacity-5 dark:opacity-15 rounded-full blur-3xl"></div>
@@ -187,14 +187,14 @@ const HeadProtection = () => {
                 </div>
 
                 <div className="mb-4">
-                  <h4 className="font-bold text-sm text-secondary dark:text-blue-300 mb-2">How It Protects:</h4>
+                  <h4 className="font-bold text-sm text-[#FCBF49] mb-2">How It Protects:</h4>
                   <p className="text-xs sm:text-sm text-neutral-700 dark:text-gray-300 leading-snug">
                     {product.protection}
                   </p>
                 </div>
 
                 <div className="mb-4">
-                  <h4 className="font-bold text-sm text-secondary dark:text-blue-300 mb-2">Usage Guidelines:</h4>
+                  <h4 className="font-bold text-sm text-[#FCBF49] mb-2">Usage Guidelines:</h4>
                   <p className="text-xs sm:text-sm text-neutral-700 dark:text-gray-300 leading-snug">
                     {product.guidelines}
                   </p>
@@ -212,7 +212,7 @@ const HeadProtection = () => {
 
         {/* Protection Standards */}
         <motion.div 
-          className="mb-12 md:mb-16 p-6 sm:p-8 md:p-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-slate-900 dark:to-slate-800 rounded-lg md:rounded-xl border-2 border-accent glow-box"
+          className="mb-12 md:mb-16 p-6 sm:p-8 md:p-10 bg-gradient-to-r from-[#1C1C1C] to-[#111111] rounded-lg md:rounded-xl border-2 border-accent glow-box"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -325,7 +325,7 @@ const HeadProtection = () => {
           </motion.p>
           <Link to="/contact" className="no-underline">
             <motion.button
-              className="inline-flex items-center justify-center min-h-[48px] bg-accent dark:bg-blue-500 text-primary dark:text-white px-8 py-3 sm:px-10 sm:py-4 text-sm sm:text-base font-black rounded-xl sm:rounded-full shadow-2xl ring-2 ring-white/30 active:scale-95 transition-all duration-200 uppercase tracking-wider cursor-pointer"
+              className="inline-flex items-center justify-center min-h-[48px] bg-accent dark:bg-[#D62828] text-primary dark:text-white px-8 py-3 sm:px-10 sm:py-4 text-sm sm:text-base font-black rounded-xl sm:rounded-full shadow-2xl ring-2 ring-white/30 active:scale-95 transition-all duration-200 uppercase tracking-wider cursor-pointer"
               whileHover={prefersReduced ? {} : { scale: 1.05, boxShadow: '0px 20px 60px rgba(0, 150, 255, 0.4)' }}
               whileTap={{ scale: 0.95 }}
             >
@@ -339,3 +339,5 @@ const HeadProtection = () => {
 };
 
 export default HeadProtection;
+
+

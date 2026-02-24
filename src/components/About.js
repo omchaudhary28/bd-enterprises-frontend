@@ -40,7 +40,7 @@ const AnimatedBar = ({ value, maxValue, label, index }) => {
     <motion.div ref={ref} className="flex flex-col items-center gap-2 flex-1 min-w-0">
       <div className="w-full h-32 md:h-40 bg-white/5 rounded-lg overflow-hidden flex items-end">
         <motion.div
-          className="w-full bg-gradient-to-t from-accent to-cyan-400 rounded-t"
+          className="w-full bg-gradient-to-t from-accent to-[#F77F00] rounded-t"
           initial={{ height: 0 }}
           animate={isInView ? { height: `${percentage}%` } : { height: 0 }}
           transition={{ duration: 1.2, delay: index * 0.1, ease: 'easeOut' }}
@@ -60,14 +60,14 @@ const About = () => {
   }, []);
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen about-page-pattern">
+    <div className="relative overflow-hidden bg-gradient-to-br from-[#111111] via-[#1C1C1C] to-[#111111] min-h-screen about-page-pattern">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 opacity-30" style={{
           backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(108,160,184,0.15) 1px, transparent 0)',
           backgroundSize: '24px 24px'
         }} />
         <div className="absolute -top-20 -left-20 w-96 h-96 bg-accent opacity-12 dark:opacity-8 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500 opacity-10 dark:opacity-5 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-[#D62828] opacity-10 dark:opacity-5 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-20">
@@ -214,3 +214,5 @@ const About = () => {
 };
 
 export default About;
+
+

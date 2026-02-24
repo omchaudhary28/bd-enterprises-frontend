@@ -30,6 +30,9 @@ import RespiratoryProtection from './components/ppe/RespiratoryProtection';
 import HandProtection from './components/ppe/HandProtection';
 import BodyProtection from './components/ppe/BodyProtection';
 import FootProtection from './components/ppe/FootProtection';
+import Brands from './components/brands/Brands';
+import BrandDetail from './components/brands/BrandDetail';
+import BrandCategory from './components/brands/BrandCategory';
 import { ThemeProvider } from './components/ThemeContext';
 import { useCanonicalUrl } from './hooks/useCanonicalUrl';
 
@@ -111,6 +114,9 @@ const AnimatedRoutes = () => {
         <Route path="/ppe/foot-protection" element={<RouteTransition><FootProtection /></RouteTransition>} />
 
         <Route path="/contact" element={<RouteTransition><Contact /></RouteTransition>} />
+        <Route path="/brands" element={<RouteTransition><Brands /></RouteTransition>} />
+        <Route path="/brands/:brandName" element={<RouteTransition><BrandDetail /></RouteTransition>} />
+        <Route path="/brands/:brandName/:categoryName" element={<RouteTransition><BrandCategory /></RouteTransition>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </AnimatePresence>
@@ -122,7 +128,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <ThemeProvider>
-        <div className="App flex min-h-screen flex-col bg-gray-50 transition-colors duration-300 dark:bg-slate-900">
+        <div className="App flex min-h-screen flex-col bg-[#111111] transition-colors duration-300">
           <div className="pattern-bg" aria-hidden="true" />
           <Header />
           <main className="relative z-10 flex-grow">

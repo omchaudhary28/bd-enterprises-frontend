@@ -1,17 +1,17 @@
 :root {
-  --ui-bg-primary: #ffffff;
-  --ui-bg-secondary: #f8fafc;
-  --ui-text-primary: #1e293b;
-  --ui-text-secondary: #64748b;
-  --ui-border: #e2e8f0;
+  --ui-bg-primary: #111111;
+  --ui-bg-secondary: #1c1c1c;
+  --ui-text-primary: #f8f9fa;
+  --ui-text-secondary: #e9ecef;
+  --ui-border: rgba(233, 236, 239, 0.2);
 }
 
 html.dark {
-  --ui-bg-primary: #0f172a;
-  --ui-bg-secondary: #1e293b;
-  --ui-text-primary: #f8fafc;
-  --ui-text-secondary: #94a3b8;
-  --ui-border: #334155;
+  --ui-bg-primary: #111111;
+  --ui-bg-secondary: #1c1c1c;
+  --ui-text-primary: #f8f9fa;
+  --ui-text-secondary: #e9ecef;
+  --ui-border: rgba(233, 236, 239, 0.2);
 }
 
 body {

@@ -64,7 +64,6 @@ const Contact = () => {
     };
 
     fetchCompanyInfo();
-
     return () => controller.abort();
   }, [safeJson]);
 
@@ -162,9 +161,9 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-page relative min-h-screen overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_20%,rgba(34,211,238,0.16),transparent_35%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_88%,rgba(59,130,246,0.14),transparent_34%)]" />
+    <div className="contact-page relative min-h-screen overflow-hidden bg-[#111111] text-[#F8F9FA]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_18%,rgba(247,127,0,0.18),transparent_35%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_86%,rgba(214,40,40,0.13),transparent_32%)]" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-12 md:px-6 md:py-20">
         <motion.section
@@ -173,35 +172,35 @@ const Contact = () => {
           transition={{ duration: prefersReduced ? 0 : 0.45, ease: 'easeOut' }}
           className="contact-hero mx-auto mb-12 max-w-4xl text-center md:mb-16"
         >
-          <span className="mb-4 inline-flex rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white/95 md:text-sm">
+          <span className="mb-4 inline-flex rounded-full border border-[#F77F00]/50 bg-[#F77F00]/15 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#FCBF49] md:text-sm">
             Contact B. D. Enterprises
           </span>
-          <h1 className="mb-4 text-4xl font-black tracking-tight text-white sm:text-5xl md:text-6xl">
-            Discuss Your Safety Requirements
+          <h1 className="mb-4 text-4xl font-black tracking-tight text-[#F8F9FA] sm:text-5xl md:text-6xl">
+            Discuss Your Fire and Safety Requirements
           </h1>
-          <p className="mx-auto max-w-3xl text-base leading-relaxed text-white/80 md:text-lg">
-            Connect with our team for project consultations, compliance planning, and product sourcing support.
+          <p className="mx-auto max-w-3xl text-base leading-relaxed text-[#E9ECEF]/85 md:text-lg">
+            Connect with our team for project consultations, product sourcing, compliance planning, and site execution support.
           </p>
         </motion.section>
 
         <section className="contact-content grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
           <motion.div
-            initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
+            initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 14 }}
             whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
-            transition={{ duration: prefersReduced ? 0 : 0.4, ease: 'easeOut' }}
+            transition={{ duration: prefersReduced ? 0 : 0.35, ease: 'easeOut' }}
             viewport={{ once: true, amount: 0.2 }}
             className="lg:col-span-7"
           >
-            <div className="contact-form-card rounded-2xl border border-white/25 bg-white/10 p-5 backdrop-blur-sm md:p-8">
-              <h2 className="mb-2 text-2xl font-black text-white md:text-3xl">Send an Inquiry</h2>
-              <p className="mb-6 text-sm text-white/75 md:text-base">Typical response time: within one business day.</p>
+            <div className="contact-form-card rounded-2xl border border-[#E9ECEF]/15 bg-[#1C1C1C] p-5 md:p-8">
+              <h2 className="mb-2 text-2xl font-black text-[#F8F9FA] md:text-3xl">Send an Inquiry</h2>
+              <p className="mb-6 text-sm text-[#E9ECEF]/80 md:text-base">Typical response time is within one business day.</p>
 
               {submitStatus && (
                 <div
                   className={`mb-5 rounded-xl border px-4 py-3 text-sm font-semibold ${
                     submitStatus.type === 'success'
-                      ? 'border-emerald-300/50 bg-emerald-300/15 text-emerald-100'
-                      : 'border-red-300/50 bg-red-300/15 text-red-100'
+                      ? 'border-emerald-300/45 bg-emerald-300/15 text-emerald-100'
+                      : 'border-red-300/45 bg-red-300/15 text-red-100'
                   }`}
                 >
                   {submitStatus.message}
@@ -211,7 +210,7 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div>
-                    <label htmlFor="firstName" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
+                    <label htmlFor="firstName" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#E9ECEF]">
                       First Name
                     </label>
                     <input
@@ -221,12 +220,12 @@ const Contact = () => {
                       required
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      className="form-control w-full rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white placeholder-white/55 outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
+                      className="form-control w-full rounded-xl border border-[#E9ECEF]/20 bg-[#111111] px-3.5 py-3 text-sm text-[#F8F9FA] placeholder-[#E9ECEF]/45 outline-none transition-all duration-200 focus:border-[#F77F00]/70"
                       placeholder="First name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="lastName" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
+                    <label htmlFor="lastName" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#E9ECEF]">
                       Last Name
                     </label>
                     <input
@@ -236,7 +235,7 @@ const Contact = () => {
                       required
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      className="form-control w-full rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white placeholder-white/55 outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
+                      className="form-control w-full rounded-xl border border-[#E9ECEF]/20 bg-[#111111] px-3.5 py-3 text-sm text-[#F8F9FA] placeholder-[#E9ECEF]/45 outline-none transition-all duration-200 focus:border-[#F77F00]/70"
                       placeholder="Last name"
                     />
                   </div>
@@ -244,7 +243,7 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div>
-                    <label htmlFor="email" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
+                    <label htmlFor="email" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#E9ECEF]">
                       Email
                     </label>
                     <input
@@ -254,12 +253,12 @@ const Contact = () => {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="form-control w-full rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white placeholder-white/55 outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
+                      className="form-control w-full rounded-xl border border-[#E9ECEF]/20 bg-[#111111] px-3.5 py-3 text-sm text-[#F8F9FA] placeholder-[#E9ECEF]/45 outline-none transition-all duration-200 focus:border-[#F77F00]/70"
                       placeholder="name@company.com"
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
+                    <label htmlFor="phone" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#E9ECEF]">
                       Phone
                     </label>
                     <input
@@ -268,7 +267,7 @@ const Contact = () => {
                       type="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="form-control w-full rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white placeholder-white/55 outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
+                      className="form-control w-full rounded-xl border border-[#E9ECEF]/20 bg-[#111111] px-3.5 py-3 text-sm text-[#F8F9FA] placeholder-[#E9ECEF]/45 outline-none transition-all duration-200 focus:border-[#F77F00]/70"
                       placeholder="Phone number"
                     />
                   </div>
@@ -276,7 +275,7 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div>
-                    <label htmlFor="companyName" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
+                    <label htmlFor="companyName" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#E9ECEF]">
                       Company Name
                     </label>
                     <input
@@ -285,12 +284,12 @@ const Contact = () => {
                       type="text"
                       value={formData.companyName}
                       onChange={handleInputChange}
-                      className="form-control w-full rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white placeholder-white/55 outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
+                      className="form-control w-full rounded-xl border border-[#E9ECEF]/20 bg-[#111111] px-3.5 py-3 text-sm text-[#F8F9FA] placeholder-[#E9ECEF]/45 outline-none transition-all duration-200 focus:border-[#F77F00]/70"
                       placeholder="Company name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="serviceType" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
+                    <label htmlFor="serviceType" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#E9ECEF]">
                       Service Interest
                     </label>
                     <select
@@ -298,11 +297,11 @@ const Contact = () => {
                       name="serviceType"
                       value={formData.serviceType}
                       onChange={handleInputChange}
-                      className="form-control w-full rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
+                      className="form-control w-full rounded-xl border border-[#E9ECEF]/20 bg-[#111111] px-3.5 py-3 text-sm text-[#F8F9FA] outline-none transition-all duration-200 focus:border-[#F77F00]/70"
                     >
-                      <option value="" className="bg-slate-800">Select service</option>
+                      <option value="" className="bg-[#1C1C1C]">Select service</option>
                       {serviceOptions.map((service) => (
-                        <option key={service} value={service} className="bg-slate-800">
+                        <option key={service} value={service} className="bg-[#1C1C1C]">
                           {service}
                         </option>
                       ))}
@@ -311,7 +310,7 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
+                  <label htmlFor="message" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#E9ECEF]">
                     Message
                   </label>
                   <textarea
@@ -321,18 +320,21 @@ const Contact = () => {
                     rows={5}
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="form-control w-full resize-none rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white placeholder-white/55 outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
+                    className="form-control w-full resize-none rounded-xl border border-[#E9ECEF]/20 bg-[#111111] px-3.5 py-3 text-sm text-[#F8F9FA] placeholder-[#E9ECEF]/45 outline-none transition-all duration-200 focus:border-[#F77F00]/70"
                     placeholder="Share your project scope, priorities, and timeline."
                   />
                 </div>
 
                 <fieldset>
-                  <legend className="mb-2 block text-xs font-bold uppercase tracking-wider text-white/90">
+                  <legend className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#E9ECEF]">
                     Preferred Contact Method
                   </legend>
                   <div className="flex flex-wrap gap-3">
                     {['email', 'phone', 'whatsapp'].map((method) => (
-                      <label key={method} className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white/90">
+                      <label
+                        key={method}
+                        className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-[#E9ECEF]/20 bg-[#111111] px-3 py-2 text-xs font-semibold uppercase tracking-wider text-[#E9ECEF]"
+                      >
                         <input
                           className="form-control-radio"
                           type="radio"
@@ -350,7 +352,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-corporate inline-flex w-full min-h-[50px] items-center justify-center rounded-xl px-6 py-3 text-sm font-bold uppercase tracking-wider disabled:cursor-not-allowed disabled:opacity-70"
+                  className="btn-corporate inline-flex w-full min-h-[50px] items-center justify-center rounded-xl px-6 py-3 text-sm font-black uppercase tracking-wider disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {isSubmitting ? 'Submitting...' : 'Submit Inquiry'}
                 </button>
@@ -360,52 +362,52 @@ const Contact = () => {
 
           <div className="lg:col-span-5">
             <motion.div
-              initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
+              initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 14 }}
               whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
-              transition={{ duration: prefersReduced ? 0 : 0.4, delay: prefersReduced ? 0 : 0.05, ease: 'easeOut' }}
+              transition={{ duration: prefersReduced ? 0 : 0.35, delay: prefersReduced ? 0 : 0.05, ease: 'easeOut' }}
               viewport={{ once: true, amount: 0.2 }}
-              className="contact-method-card mb-6 rounded-2xl border border-white/25 bg-white/10 p-5 backdrop-blur-sm md:p-6"
+              className="contact-method-card mb-6 rounded-2xl border border-[#E9ECEF]/15 bg-[#1C1C1C] p-5 md:p-6"
             >
-              <h3 className="mb-4 text-2xl font-black text-white">Contact Methods</h3>
+              <h3 className="mb-4 text-2xl font-black text-[#F8F9FA]">Contact Methods</h3>
 
               <div className="space-y-4">
                 <a
                   href={`tel:${phoneNumber.replace(/\D/g, '')}`}
-                  className="block rounded-xl border border-white/20 bg-white/5 p-4 transition-all duration-300 hover:border-cyan-300/50 hover:bg-white/10"
+                  className="block rounded-xl border border-[#E9ECEF]/15 bg-[#111111] p-4 transition-all duration-300 hover:border-[#F77F00]/55 hover:text-[#FCBF49]"
                 >
-                  <p className="text-xs font-bold uppercase tracking-wider text-cyan-200">Phone</p>
-                  <p className="text-lg font-bold text-white">{phoneNumber}</p>
-                  <p className="text-xs text-white/70">Business Hours Support</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#FCBF49]">Phone</p>
+                  <p className="text-lg font-bold text-[#F8F9FA]">{phoneNumber}</p>
+                  <p className="text-xs text-[#E9ECEF]/70">Business Hours Support</p>
                 </a>
 
                 <a
                   href={`mailto:${emailAddress}`}
-                  className="block rounded-xl border border-white/20 bg-white/5 p-4 transition-all duration-300 hover:border-cyan-300/50 hover:bg-white/10"
+                  className="block rounded-xl border border-[#E9ECEF]/15 bg-[#111111] p-4 transition-all duration-300 hover:border-[#F77F00]/55 hover:text-[#FCBF49]"
                 >
-                  <p className="text-xs font-bold uppercase tracking-wider text-cyan-200">Email</p>
-                  <p className="break-all text-base font-bold text-white">{emailAddress}</p>
-                  <p className="text-xs text-white/70">Project and quotation requests</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#FCBF49]">Email</p>
+                  <p className="break-all text-base font-bold text-[#F8F9FA]">{emailAddress}</p>
+                  <p className="text-xs text-[#E9ECEF]/70">Project and quotation requests</p>
                 </a>
 
                 <a
                   href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="block rounded-xl border border-white/20 bg-white/5 p-4 transition-all duration-300 hover:border-cyan-300/50 hover:bg-white/10"
+                  className="block rounded-xl border border-[#E9ECEF]/15 bg-[#111111] p-4 transition-all duration-300 hover:border-[#F77F00]/55 hover:text-[#FCBF49]"
                 >
-                  <p className="text-xs font-bold uppercase tracking-wider text-cyan-200">WhatsApp</p>
-                  <p className="text-lg font-bold text-white">{whatsappNumber}</p>
-                  <p className="text-xs text-white/70">Quick technical coordination</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#FCBF49]">WhatsApp</p>
+                  <p className="text-lg font-bold text-[#F8F9FA]">{whatsappNumber}</p>
+                  <p className="text-xs text-[#E9ECEF]/70">Quick technical coordination</p>
                 </a>
               </div>
             </motion.div>
 
             <motion.div
-              initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
+              initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 14 }}
               whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
-              transition={{ duration: prefersReduced ? 0 : 0.4, delay: prefersReduced ? 0 : 0.1, ease: 'easeOut' }}
+              transition={{ duration: prefersReduced ? 0 : 0.35, delay: prefersReduced ? 0 : 0.1, ease: 'easeOut' }}
               viewport={{ once: true, amount: 0.2 }}
-              className="rounded-2xl border border-white/25 bg-white/10 p-3 backdrop-blur-sm"
+              className="rounded-2xl border border-[#E9ECEF]/15 bg-[#1C1C1C] p-3"
             >
               <Map height={420} className="rounded-xl" />
             </motion.div>

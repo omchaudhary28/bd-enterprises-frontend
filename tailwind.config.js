@@ -9,12 +9,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#071A31', // Darker shade of blue
-        secondary: '#207C6A', // Darker shade of teal
-        accent: '#6CA0B8', // Darker shade of light blue
+        primary: '#111111',
+        secondary: '#1C1C1C',
+        accent: '#D62828',
         neutral: {
-          '100': '#f5f5f5',
-          '200': '#e5e5e5',
+          '100': '#F8F9FA',
+          '200': '#E9ECEF',
           '300': '#d4d4d4',
           '400': '#a3a3a3',
           '500': '#737373',
@@ -24,15 +24,15 @@ module.exports = {
           '900': '#171717',
         },
         vibrant: {
-          blue: '#1e3a8a',
-          green: '#16a34a',
-          orange: '#ea580c',
-          purple: '#7e22ce',
-          red: '#dc2626',
+          red: '#D62828',
+          orange: '#F77F00',
+          yellow: '#FCBF49',
+          charcoal: '#111111',
+          steel: '#1C1C1C',
         }
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Barlow', ...defaultTheme.fontFamily.sans],
       },
       animation: {
         slideDown: 'slideDown 0.6s ease-out',
@@ -64,5 +64,4 @@ module.exports = {
   },
   plugins: [],
 }
-
 

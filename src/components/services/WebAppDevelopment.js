@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const WebAppDevelopment = () => {
   return (
     <div className="container mx-auto p-4 py-16">
-      <div className="bg-gradient-to-br from-teal-100 to-blue-100 p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-duration="700">
+      <div className="bg-gradient-to-br from-[#1C1C1C] to-[#111111] p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-duration="700">
         <h1 className="text-4xl font-bold text-primary mb-6 text-center" data-aos="fade-down" data-aos-duration="700">Web Application Development</h1>
 
         <div className="flex flex-col md:flex-row items-center justify-between mb-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
@@ -61,3 +61,4 @@ const WebAppDevelopment = () => {
 };
 
 export default WebAppDevelopment;
+

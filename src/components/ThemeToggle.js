@@ -26,12 +26,12 @@ const ThemeToggle = ({ variant = 'icon', className = '' }) => {
         className={`w-full flex items-center justify-center gap-3 px-6 py-3.5 min-h-[48px] rounded-xl font-semibold overflow-hidden relative border border-white/20 ${className}`}
         style={{
           background: isDark
-            ? 'linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)'
-            : 'linear-gradient(135deg, #6CA0B8 0%, #207C6A 100%)',
+            ? 'linear-gradient(135deg, #1C1C1C 0%, #111111 100%)'
+            : 'linear-gradient(135deg, #D62828 0%, #F77F00 100%)',
           color: 'white',
           boxShadow: isDark
-            ? '0 4px 20px rgba(30, 58, 95, 0.4)'
-            : '0 4px 20px rgba(108, 160, 184, 0.4)',
+            ? '0 4px 20px rgba(0, 0, 0, 0.45)'
+            : '0 4px 20px rgba(214, 40, 40, 0.35)',
         }}
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.99 }}
@@ -59,11 +59,11 @@ const ThemeToggle = ({ variant = 'icon', className = '' }) => {
       className={`relative flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 rounded-full cursor-pointer select-none overflow-hidden border border-white/20 backdrop-blur-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary shadow-lg ${className}`}
       style={{
         background: isDark
-          ? 'linear-gradient(135deg, #334155 0%, #1e293b 100%)'
-          : 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
+          ? 'linear-gradient(135deg, #1C1C1C 0%, #111111 100%)'
+          : 'linear-gradient(135deg, #F77F00 0%, #FCBF49 100%)',
         boxShadow: isDark
-          ? '0 2px 12px rgba(15, 23, 42, 0.4)'
-          : '0 2px 12px rgba(251, 191, 36, 0.35)',
+          ? '0 2px 12px rgba(0, 0, 0, 0.45)'
+          : '0 2px 12px rgba(247, 127, 0, 0.35)',
       }}
       whileHover={{ scale: 1.08 }}
       whileTap={{ scale: 0.92 }}
@@ -75,7 +75,7 @@ const ThemeToggle = ({ variant = 'icon', className = '' }) => {
         initial={{ opacity: 0, scale: 0.6, rotate: -90 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-        className={isDark ? 'text-amber-200' : 'text-amber-700'}
+        className={isDark ? 'text-[#F8F9FA]' : 'text-[#111111]'}
       >
         {isDark ? <MoonIcon /> : <SunIcon />}
       </motion.span>

@@ -91,10 +91,10 @@ const FireExtinguishers = () => {
   const [isAutoplay, setIsAutoplay] = useState(true);
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen">
+    <div className="relative overflow-hidden bg-gradient-to-br from-[#111111] via-[#1C1C1C] to-[#111111] min-h-screen">
       {/* Animated Background - No SVG Icons */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500 opacity-8 dark:opacity-3 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-[#D62828] opacity-8 dark:opacity-3 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-20">
@@ -116,7 +116,7 @@ const FireExtinguishers = () => {
               Fire Extinguisher & Suppression Systems
             </h1>
 
-            <p className="text-lg md:text-2xl font-bold text-blue-200 dark:text-blue-300 max-w-3xl mx-auto mb-4">
+            <p className="text-lg md:text-2xl font-bold text-[#FCBF49] max-w-3xl mx-auto mb-4">
               Multi-Class Protection for Every Fire Type
             </p>
 
@@ -284,7 +284,7 @@ const FireExtinguishers = () => {
 
         {/* CTA Section */}
         <section className="mb-8 text-center" data-aos="fade-up">
-          <div className="bg-gradient-to-r from-accent/20 to-secondary/20 backdrop-blur-sm border border-white/20 rounded-2xl p-8 md:p-12">
+          <div className="bg-gradient-to-r from-[#D62828]/25 to-[#F77F00]/20 backdrop-blur-sm border border-white/20 rounded-2xl p-8 md:p-12">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Need Expert Fire Suppression?</h2>
             <p className="text-lg text-white/80 mb-6 max-w-2xl mx-auto">
               Get professional guidance on selecting and installing the right fire suppression system for your facility.
@@ -303,3 +303,4 @@ const FireExtinguishers = () => {
 };
 
 export default FireExtinguishers;
+

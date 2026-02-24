@@ -33,7 +33,7 @@ const HandProtection = () => {
   ];
 
   return (
-    <div className="ppe-detail-page relative overflow-hidden bg-gradient-to-r from-primary to-secondary dark:from-slate-900 dark:to-slate-800 min-h-screen py-12 md:py-16">
+    <div className="ppe-detail-page relative overflow-hidden bg-gradient-to-r from-[#111111] to-[#1C1C1C] dark:from-slate-900 dark:to-slate-800 min-h-screen py-12 md:py-16">
       <div className="absolute top-0 left-0 w-40 md:w-72 h-40 md:h-72 bg-accent opacity-10 dark:opacity-20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent opacity-5 dark:opacity-15 rounded-full blur-3xl"></div>
 
@@ -78,11 +78,11 @@ const HandProtection = () => {
                   </ul>
                 </div>
                 <div className="mb-4">
-                  <h4 className="font-bold text-sm text-secondary dark:text-blue-300 mb-2">How It Protects:</h4>
+                  <h4 className="font-bold text-sm text-[#FCBF49] mb-2">How It Protects:</h4>
                   <p className="text-xs sm:text-sm text-neutral-700 dark:text-gray-300 leading-snug">{product.protection}</p>
                 </div>
                 <div className="mb-4">
-                  <h4 className="font-bold text-sm text-secondary dark:text-blue-300 mb-2">Usage Guidelines:</h4>
+                  <h4 className="font-bold text-sm text-[#FCBF49] mb-2">Usage Guidelines:</h4>
                   <p className="text-xs sm:text-sm text-neutral-700 dark:text-gray-300 leading-snug">{product.guidelines}</p>
                 </div>
                 <div className="p-3 bg-blue-50 dark:bg-slate-700 rounded-lg border-l-4 border-accent">
@@ -94,7 +94,7 @@ const HandProtection = () => {
           ))}
         </div>
 
-        <div className="mb-12 md:mb-16 p-6 sm:p-8 md:p-10 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-slate-900 dark:to-slate-800 rounded-lg md:rounded-xl border-2 border-accent glow-box" data-aos="fade-up">
+        <div className="mb-12 md:mb-16 p-6 sm:p-8 md:p-10 bg-gradient-to-r from-[#1C1C1C] to-[#111111] rounded-lg md:rounded-xl border-2 border-accent glow-box" data-aos="fade-up">
           <h2 className="text-2xl md:text-3xl font-bold text-primary dark:text-white mb-6">Compliance & Standards</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             <div className="bg-white dark:bg-slate-800 p-4 md:p-6 rounded-lg shadow-md">
@@ -142,7 +142,7 @@ const HandProtection = () => {
           <p className="text-base md:text-lg text-white/90 mb-6 max-w-2xl mx-auto">
             Get expert recommendations on hand protection tailored to your workplace hazards.
           </p>
-          <Link to="/contact" className="inline-flex items-center justify-center min-h-[48px] bg-accent dark:bg-blue-500 text-primary dark:text-white px-8 py-3 sm:px-10 sm:py-4 text-sm sm:text-base font-black rounded-xl sm:rounded-full shadow-2xl ring-2 ring-white/30 hover:shadow-3xl hover:scale-105 active:scale-95 transition-all duration-200 uppercase tracking-wider">
+          <Link to="/contact" className="inline-flex items-center justify-center min-h-[48px] bg-accent dark:bg-[#D62828] text-primary dark:text-white px-8 py-3 sm:px-10 sm:py-4 text-sm sm:text-base font-black rounded-xl sm:rounded-full shadow-2xl ring-2 ring-white/30 hover:shadow-3xl hover:scale-105 active:scale-95 transition-all duration-200 uppercase tracking-wider">
             Discuss Hand Protection
           </Link>
         </div>
@@ -152,3 +152,5 @@ const HandProtection = () => {
 };
 
 export default HandProtection;
+
+
