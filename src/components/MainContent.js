@@ -1,130 +1,105 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import HeroCarousel from './HeroCarousel';
 
+const highlights = [
+  {
+    title: 'Fire Suppression Engineering',
+    description: 'System design, installation, and commissioning for commercial and industrial facilities.',
+  },
+  {
+    title: 'Detection and Alert Infrastructure',
+    description: 'Addressable fire alarm and smoke detection systems with high-reliability monitoring.',
+  },
+  {
+    title: 'Certified PPE and Safety Gear',
+    description: 'Workplace protection portfolio covering head-to-toe industrial safety requirements.',
+  },
+  {
+    title: 'Compliance and Readiness Audits',
+    description: 'Documentation-led inspections and remediation support for standards compliance.',
+  },
+];
+
+const trustStats = [
+  { value: 'Since 2006', label: 'Operational Expertise' },
+  { value: 'ISO 9001:2015', label: 'Quality Framework' },
+  { value: 'Pan-Industry', label: 'Multi-Sector Deployments' },
+  { value: 'End-to-End', label: 'Design to Maintenance' },
+];
+
 const MainContent = () => {
-  const services = [
-    { icon: '🧯', title: 'Industrial Safety Products (PPE)', desc: 'Certified protective equipment for workplace safety' },
-    { icon: '💧', title: 'Fire Hydrant & Sprinkler Systems', desc: 'Engineered suppression and hydrant installations' },
-    { icon: '🚨', title: 'Fire Alarm & Smoke Detection', desc: 'Addressable alarms and advanced smoke detection systems' },
-    { icon: '🔧', title: 'Fabrication & Installation', desc: 'Fire safety fabrication and precision installation services' },
-  ];
-
-  const trustPoints = [
-    { number: 'Since 2006', label: 'Established' },
-    { number: 'ISO 9001:2015', label: 'Quality Certified' },
-    { number: 'Authorized', label: 'Distributors: Midas • Jama • Techtion • Kanex • Valpro • Ninja • Spectrum • Honeywell • Aag' },
-  ];
-
   return (
     <div className="relative overflow-hidden">
-      {/* Full-screen hero carousel - first thing on load (pointsafety.in style) */}
-      <section className="relative w-full">
-        <HeroCarousel fullScreen />
-      </section>
+      <HeroCarousel />
 
-      {/* Hero text block - below carousel, full opacity, bright background */}
-      <section id="home-content" className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-500 to-sky-600 shadow-xl">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute inset-0 opacity-15" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)',
-            backgroundSize: '24px 24px'
-          }} />
-          <div className="absolute -top-24 -right-24 w-80 h-80 bg-white/20 rounded-full blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-sky-300/20 rounded-full blur-3xl" />
-        </div>
-        <div className="relative z-10 py-14 sm:py-16 md:py-24">
-          <div className="container mx-auto px-4 md:px-6">
-            <AnimatedSection animation="fade-up" className="max-w-4xl mx-auto text-center space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/25 backdrop-blur-sm border border-white/40">
-                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                <span className="text-xs sm:text-sm font-semibold text-white">B. D. Enterprises — Fire Safety Since 2006</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.05] text-white">
-                <span className="block">Protect.</span>
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-100 to-white">Secure.</span>
-                <span className="block">Succeed.</span>
-              </h2>
-              <p className="text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed font-medium">
-                Advanced fire safety systems, expert engineering, and compliance-first installations trusted by enterprises.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-                <Link to="/contact" className="inline-flex items-center justify-center min-h-[52px] bg-white text-blue-600 hover:bg-amber-400 hover:text-blue-900 px-10 py-3.5 font-bold rounded-xl shadow-xl hover:scale-105 transition-all duration-300 uppercase tracking-wider text-sm">
-                  Get Free Consultation
-                </Link>
-                <Link to="/services" className="inline-flex items-center justify-center min-h-[52px] bg-white/20 hover:bg-white/35 text-white px-10 py-3.5 font-bold rounded-xl border-2 border-white/80 hover:border-white transition-all duration-300 uppercase tracking-wider text-sm">
-                  Explore Services
-                </Link>
-              </div>
-            </AnimatedSection>
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-cyan-50 py-14 md:py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_10%,rgba(34,211,238,0.15),transparent_35%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_90%,rgba(14,165,233,0.10),transparent_32%)]" />
+
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 md:px-6">
+          <AnimatedSection animation="fade-up" className="mx-auto mb-12 max-w-4xl text-center md:mb-16">
+            <span className="mb-4 inline-flex rounded-full border border-cyan-200 bg-cyan-100 px-4 py-2 text-xs font-bold uppercase tracking-wider text-cyan-900 md:text-sm">
+              B. D. Enterprises | Industrial Safety Partner
+            </span>
+            <h2 className="mb-5 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+              Enterprise-Grade Fire Safety, Delivered with Precision
+            </h2>
+            <p className="mx-auto max-w-3xl text-base leading-relaxed text-slate-700 md:text-lg">
+              We deliver integrated fire protection, safety equipment, and compliance solutions for industrial and commercial operations where reliability is non-negotiable.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                to="/services"
+                className="btn-corporate inline-flex min-h-[50px] items-center justify-center rounded-full px-7 py-3 text-sm font-bold uppercase tracking-wider"
+              >
+                View Services
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex min-h-[50px] items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-3 text-sm font-bold uppercase tracking-wider text-slate-800 transition-all duration-300 hover:border-cyan-300 hover:bg-cyan-50"
+              >
+                Talk to Expert
+              </Link>
+            </div>
+          </AnimatedSection>
+
+          <div className="mb-12 grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4 md:mb-16 md:gap-5">
+            {trustStats.map((item) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.25 }}
+                className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm md:p-6"
+              >
+                <p className="text-sm font-black uppercase tracking-wider text-cyan-700 md:text-base">{item.value}</p>
+                <p className="mt-1 text-xs font-semibold text-slate-600 md:text-sm">{item.label}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:gap-6">
+            {highlights.map((item, idx) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: idx * 0.05, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.25 }}
+                className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-lg md:p-6"
+              >
+                <h3 className="mb-2 text-base font-bold text-slate-900 md:text-lg">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-600">{item.description}</p>
+                <div className="mt-4 h-1.5 w-14 rounded-full bg-gradient-to-r from-cyan-500 to-sky-500 transition-all duration-300 group-hover:w-20" />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
-
-      {/* Content section - bright gradient, enhanced spacing */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute inset-0 opacity-30" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(59,130,246,0.15) 1px, transparent 0)',
-            backgroundSize: '28px 28px'
-          }} />
-        </div>
-
-        <div className="relative z-10 pt-12 sm:pt-16 md:pt-24 pb-16 md:pb-24">
-          <div className="container mx-auto px-4 md:px-6">
-            {/* Company intro block */}
-            <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
-              <AnimatedSection animation="fade-up" className="space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 border border-blue-200" data-aos="fade-down">
-                  <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                  <span className="text-xs sm:text-sm font-semibold text-blue-800">Established 2006 • ISO 9001:2015 Certified</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-slate-800">
-                  B. D. Enterprises
-                </h3>
-                <p className="text-base md:text-lg text-slate-700 max-w-2xl mx-auto leading-relaxed">
-                  Since 2006, B. D. Enterprises has delivered professional, code-compliant industrial safety products and fire protection systems. We provide PPE, fire hydrant and sprinkler systems, alarm and smoke detection, and precision fire safety fabrication—backed by ISO 9001:2015 quality management.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8" data-aos="fade-up" data-aos-delay="200">
-                  {trustPoints.map((point, idx) => (
-                    <div key={idx} className="text-center p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-                      <div className="text-xl sm:text-2xl font-black text-blue-600 mb-1">{point.number}</div>
-                      <div className="text-xs sm:text-sm text-slate-600 font-semibold">{point.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </AnimatedSection>
-            </div>
-
-            {/* Service Preview Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6" data-aos="fade-up">
-              {services.map((service, idx) => (
-                <Link
-                  to="/services"
-                  key={idx}
-                  className="group relative p-6 md:p-8 rounded-2xl bg-white border border-slate-200 shadow-md hover:shadow-xl hover:border-blue-200 transition-all duration-300 hover:scale-[1.02] cursor-pointer overflow-hidden"
-                  data-aos="zoom-in"
-                  data-aos-delay={idx * 100}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative z-10">
-                    <div className="text-4xl md:text-5xl mb-3 transition-transform duration-300 group-hover:scale-125">{service.icon}</div>
-                    <h3 className="text-lg md:text-xl font-bold text-slate-800 mb-2">{service.title}</h3>
-                    <p className="text-sm text-slate-600 group-hover:text-slate-800 transition-colors">{service.desc}</p>
-                  </div>
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl">→</div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="relative z-10 h-1 bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
-      </div>
     </div>
   );
 };

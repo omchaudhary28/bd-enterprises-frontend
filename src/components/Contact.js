@@ -1,74 +1,129 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { API_URL } from '../config/api';
-import AOS from 'aos';
 import Map from './Map';
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    companyName: '',
-    serviceType: '',
-    message: '',
-    preferredMethod: 'email'
-  });
+const initialFormData = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  companyName: '',
+  serviceType: '',
+  message: '',
+  preferredMethod: 'email',
+};
 
+const serviceOptions = [
+  'Fire Extinguisher Systems',
+  'Fire Alarm and Detection',
+  'Sprinkler Systems',
+  'Emergency Lighting',
+  'Fire Safety Training',
+  'Compliance Inspection',
+  'Oxygen and SCBA Cylinders',
+  'Fabrication Services',
+  'PPE and Safety Equipment',
+];
+
+const Contact = () => {
+  const prefersReduced = useReducedMotion();
+  const [formData, setFormData] = useState(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [companyInfo, setCompanyInfo] = useState(null);
 
-  const parseJsonResponse = useCallback(async (response) => {
-    const contentType = response.headers.get('content-type') || '';
-    const responseText = await response.text();
-
-    if (!contentType.includes('application/json')) {
-      throw new Error(`Expected JSON but received ${contentType || 'unknown content type'}`);
-    }
-
+  const safeJson = useCallback(async (response) => {
     try {
-      return JSON.parse(responseText);
-    } catch (error) {
-      throw new Error('Invalid JSON response from API');
+      return await response.json();
+    } catch {
+      return null;
     }
   }, []);
 
-  const fetchContactData = useCallback(async () => {
-    try {
-      const infoRes = await fetch(`${API_URL}/company-info`, {
-        headers: { Accept: 'application/json' }
-      });
-
-      if (infoRes.ok) {
-        const infoData = await parseJsonResponse(infoRes);
-        // API may return { data: [...] } or an object directly — normalize both
-        setCompanyInfo(infoData.data ?? infoData ?? null);
-      }
-    } catch (error) {
-      console.error('Error fetching contact data:', error);
-    }
-  }, [parseJsonResponse]);
-
   useEffect(() => {
-    // Fetch contact data and refresh AOS animations instead of re-initializing
-    fetchContactData();
-    // When this component mounts/updates, refresh AOS to pick up dynamic elements
-    if (AOS && typeof AOS.refresh === 'function') {
-      AOS.refresh();
-    }
-  }, [fetchContactData]);
+    const controller = new AbortController();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    const fetchCompanyInfo = async () => {
+      try {
+        const response = await fetch(`${API_URL}/company-info`, {
+          method: 'GET',
+          headers: { Accept: 'application/json' },
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          return;
+        }
+
+        const payload = await safeJson(response);
+        setCompanyInfo(payload?.data ?? payload ?? null);
+      } catch {
+        setCompanyInfo(null);
+      }
+    };
+
+    fetchCompanyInfo();
+
+    return () => controller.abort();
+  }, [safeJson]);
+
+  const resolveValue = useCallback(
+    (keys, fallback) => {
+      if (!companyInfo) {
+        return fallback;
+      }
+
+      if (Array.isArray(companyInfo)) {
+        for (const key of keys) {
+          const found = companyInfo.find((item) => {
+            const type = String(item?.contact_type ?? item?.type ?? '').toLowerCase();
+            return type.includes(key.toLowerCase());
+          });
+          if (found?.value) {
+            return String(found.value).trim();
+          }
+        }
+      }
+
+      if (typeof companyInfo === 'object') {
+        for (const key of keys) {
+          if (companyInfo[key]) {
+            return String(companyInfo[key]).trim();
+          }
+          const matchedKey = Object.keys(companyInfo).find((objKey) =>
+            objKey.toLowerCase().includes(key.toLowerCase())
+          );
+          if (matchedKey && companyInfo[matchedKey]) {
+            return String(companyInfo[matchedKey]).trim();
+          }
+        }
+
+        if (companyInfo.contact_type && companyInfo.value) {
+          const type = String(companyInfo.contact_type).toLowerCase();
+          const matchingType = keys.some((key) => type.includes(key.toLowerCase()));
+          if (matchingType) {
+            return String(companyInfo.value).trim();
+          }
+        }
+      }
+
+      return fallback;
+    },
+    [companyInfo]
+  );
+
+  const phoneNumber = useMemo(() => resolveValue(['phone', 'tel'], '9898046269'), [resolveValue]);
+  const emailAddress = useMemo(() => resolveValue(['email'], 'bdenterprises99@yahoo.co.in'), [resolveValue]);
+  const whatsappNumber = useMemo(() => resolveValue(['whatsapp'], phoneNumber), [resolveValue, phoneNumber]);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
 
@@ -77,393 +132,283 @@ const Contact = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Accept: 'application/json'
+          Accept: 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
-      const data = await parseJsonResponse(response);
+      const payload = await safeJson(response);
 
-      if (response.ok && data.success) {
-        setSubmitStatus({ type: 'success', message: 'Thank you! Your message has been sent successfully. We\'ll get back to you soon!' });
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          companyName: '',
-          serviceType: '',
-          message: '',
-          preferredMethod: 'email'
+      if (response.ok && payload?.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Your message has been received. Our team will contact you shortly.',
         });
+        setFormData(initialFormData);
       } else {
-        setSubmitStatus({ type: 'error', message: data.message || 'Failed to submit form. Please try again.' });
+        setSubmitStatus({
+          type: 'error',
+          message: payload?.message || 'Unable to submit the form right now. Please try again shortly.',
+        });
       }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus({ type: 'error', message: 'Contact service is currently unavailable. Please try again later or use phone/email below.' });
+    } catch {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Unable to connect to contact services right now. Please call or email us directly.',
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const findInCompanyInfo = (type) => {
-    if (!companyInfo) return null;
-    // If API returns an array of { contact_type, value }
-    if (Array.isArray(companyInfo)) {
-      const item = companyInfo.find(i => i && (i.contact_type === type || (i.type && i.type === type)));
-      return item?.value ?? item?.val ?? null;
-    }
-
-    // If API returns an object with named keys or a single record
-    if (typeof companyInfo === 'object') {
-      // direct fields like { phone: '...', email: '...' }
-      if (companyInfo[type]) return companyInfo[type];
-
-      // or nested fields
-      const phoneKey = Object.keys(companyInfo || []).find(k => k.toLowerCase().includes(type));
-      if (phoneKey) return companyInfo[phoneKey];
-
-      // or single record format { contact_type: 'phone', value: '...' }
-      if (companyInfo.contact_type && companyInfo.contact_type === type) return companyInfo.value || null;
-    }
-
-    return null;
-  };
-
-  const getPhoneNumber = () => {
-    const phone = findInCompanyInfo('phone') || findInCompanyInfo('tel');
-    return (typeof phone === 'string' && phone.trim()) ? phone : '9898046269';
-  };
-
-  const getEmail = () => {
-    const email = findInCompanyInfo('email');
-    return (typeof email === 'string' && email.trim()) ? email : 'bdenterprises99@yahoo.co.in';
-  };
-
-  const getWhatsApp = () => {
-    const whatsapp = findInCompanyInfo('whatsapp');
-    return (typeof whatsapp === 'string' && whatsapp.trim()) ? whatsapp : getPhoneNumber();
-  };
-
-  // Automated message templates based on contact method
-  const getAutomatedMessage = (method) => {
-    switch(method) {
-      case 'email':
-        return `Hello B. D. Enterprises,\n\nI am interested in learning more about your fire safety solutions. My company is [Your Company Name] and we are looking for [Service You Are Looking For e.g., fire extinguisher systems].\n\nPlease get back to me at your earliest convenience.\n\nThank you!`;
-      case 'phone':
-        return `Call: ${getPhoneNumber()} (Mon-Fri, 9AM-6PM IST)`;
-      case 'whatsapp':
-        return `Hello B. D. Enterprises, I am interested in your fire safety services. I would like to know more about [Service You Are Looking For e.g., fire extinguisher systems].`;
-      default:
-        return '';
-    }
-  };
-
-  // Navigation is now handled by proper <a> tags only - no div click handlers
-
-  const services = [
-    'Fire Extinguisher Systems',
-    'Fire Alarm & Detection',
-    'Sprinkler Systems',
-    'Emergency Lighting',
-    'Fire Safety Training',
-    'Compliance Inspection',
-    'Oxygen & SCBA Cylinders',
-    'Fabrication Services',
-    'PPE & Safety Equipment'
-  ];
-
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 min-h-screen">
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -left-20 w-96 h-96 bg-accent opacity-10 dark:opacity-5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500 opacity-8 dark:opacity-3 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
-      </div>
+    <div className="contact-page relative min-h-screen overflow-hidden bg-gradient-to-br from-primary via-blue-700 to-secondary dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_20%,rgba(34,211,238,0.16),transparent_35%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_88%,rgba(59,130,246,0.14),transparent_34%)]" />
 
-      <div className="relative z-10">
-        {/* Hero Section */}
-        <section className="py-12 md:py-20 px-4 md:px-6">
-          <div className="container mx-auto max-w-4xl text-center" data-aos="fade-down">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 mb-6">
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-              <span className="text-xs sm:text-sm font-semibold text-white/90">Get In Touch With Us</span>
-            </div>
-            
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 text-white glow-text">
-              Let's Protect Your Facility
-            </h1>
-            
-            <p className="text-lg md:text-2xl font-bold text-blue-200 dark:text-blue-300 max-w-3xl mx-auto mb-4">
-              Expert Fire Safety Solutions Within Reach
-            </p>
-            
-            <p className="text-base md:text-lg text-white/80 dark:text-gray-300 max-w-3xl mx-auto">
-              Have questions about our fire safety solutions? We're here to help. Contact us today and let's discuss how we can protect what matters most to you.
-            </p>
-          </div>
-        </section>
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-12 md:px-6 md:py-20">
+        <motion.section
+          initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 20 }}
+          animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
+          transition={{ duration: prefersReduced ? 0 : 0.45, ease: 'easeOut' }}
+          className="contact-hero mx-auto mb-12 max-w-4xl text-center md:mb-16"
+        >
+          <span className="mb-4 inline-flex rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white/95 md:text-sm">
+            Contact B. D. Enterprises
+          </span>
+          <h1 className="mb-4 text-4xl font-black tracking-tight text-white sm:text-5xl md:text-6xl">
+            Discuss Your Safety Requirements
+          </h1>
+          <p className="mx-auto max-w-3xl text-base leading-relaxed text-white/80 md:text-lg">
+            Connect with our team for project consultations, compliance planning, and product sourcing support.
+          </p>
+        </motion.section>
 
-        <section className="mb-12 md:mb-16">
-          <div className="max-w-4xl mx-auto px-4">
-            <Map height={400} />
-          </div>
-        </section>
+        <section className="contact-content grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
+          <motion.div
+            initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
+            whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
+            transition={{ duration: prefersReduced ? 0 : 0.4, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="lg:col-span-7"
+          >
+            <div className="contact-form-card rounded-2xl border border-white/25 bg-white/10 p-5 backdrop-blur-sm md:p-8">
+              <h2 className="mb-2 text-2xl font-black text-white md:text-3xl">Send an Inquiry</h2>
+              <p className="mb-6 text-sm text-white/75 md:text-base">Typical response time: within one business day.</p>
 
-        {/* Main Content */}
-        <div className="container mx-auto px-4 md:px-6 py-8 md:py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-            {/* Contact Form - LEFT COLUMN */}
-            <div data-aos="fade-up" data-aos-delay="100">
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8 overflow-hidden">
-                <h2 className="text-2xl md:text-3xl font-black text-white mb-2 glow-text">Send us a Message</h2>
-                <p className="text-white/80 mb-6">We'll get back to you within 24 hours</p>
-
-                {submitStatus && (
-                <div className={`p-4 rounded-lg mb-6 ${submitStatus.type === 'success' ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-100' : 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-100'}`}>
+              {submitStatus && (
+                <div
+                  className={`mb-5 rounded-xl border px-4 py-3 text-sm font-semibold ${
+                    submitStatus.type === 'success'
+                      ? 'border-emerald-300/50 bg-emerald-300/15 text-emerald-100'
+                      : 'border-red-300/50 bg-red-300/15 text-red-100'
+                  }`}
+                >
                   {submitStatus.message}
                 </div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Name Row */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div>
-                    <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
-                      First Name *
+                    <label htmlFor="firstName" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
+                      First Name
                     </label>
                     <input
-                      type="text"
+                      id="firstName"
                       name="firstName"
+                      type="text"
+                      required
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
-                      placeholder="John"
+                      className="form-control w-full rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white placeholder-white/55 outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
+                      placeholder="First name"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
-                      Last Name *
+                    <label htmlFor="lastName" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
+                      Last Name
                     </label>
                     <input
-                      type="text"
+                      id="lastName"
                       name="lastName"
+                      type="text"
+                      required
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
-                      placeholder="Doe"
+                      className="form-control w-full rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white placeholder-white/55 outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
+                      placeholder="Last name"
                     />
                   </div>
                 </div>
 
-                {/* Email and Phone Row */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div>
-                    <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
-                      Email *
+                    <label htmlFor="email" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
+                      Email
                     </label>
                     <input
-                      type="email"
+                      id="email"
                       name="email"
+                      type="email"
+                      required
                       value={formData.email}
                       onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
-                      placeholder="john@example.com"
+                      className="form-control w-full rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white placeholder-white/55 outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
+                      placeholder="name@company.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
-                      Phone Number
+                    <label htmlFor="phone" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
+                      Phone
                     </label>
                     <input
-                      type="tel"
+                      id="phone"
                       name="phone"
+                      type="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
-                      placeholder="9898046269"
+                      className="form-control w-full rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white placeholder-white/55 outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
+                      placeholder="Phone number"
                     />
                   </div>
                 </div>
 
-                {/* Company and Service */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div>
-                    <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
+                    <label htmlFor="companyName" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
                       Company Name
                     </label>
                     <input
-                      type="text"
+                      id="companyName"
                       name="companyName"
+                      type="text"
                       value={formData.companyName}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
-                      placeholder="Your Company"
+                      className="form-control w-full rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white placeholder-white/55 outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
+                      placeholder="Company name"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
+                    <label htmlFor="serviceType" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
                       Service Interest
                     </label>
                     <select
+                      id="serviceType"
                       name="serviceType"
                       value={formData.serviceType}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
+                      className="form-control w-full rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
                     >
-                      <option value="" className="bg-slate-800">Select a service</option>
-                      {services.map((service, idx) => (
-                        <option key={idx} value={service} className="bg-slate-800">{service}</option>
+                      <option value="" className="bg-slate-800">Select service</option>
+                      {serviceOptions.map((service) => (
+                        <option key={service} value={service} className="bg-slate-800">
+                          {service}
+                        </option>
                       ))}
                     </select>
                   </div>
                 </div>
 
-                {/* Message */}
                 <div>
-                  <label className="block text-xs md:text-sm font-bold text-white/90 mb-2 uppercase tracking-wider">
-                    Message *
+                  <label htmlFor="message" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-white/90">
+                    Message
                   </label>
                   <textarea
+                    id="message"
                     name="message"
+                    required
+                    rows={5}
                     value={formData.message}
                     onChange={handleInputChange}
-                    required
-                    rows="5"
-                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 resize-none"
-                    placeholder="Tell us about your fire safety needs..."
-                  ></textarea>
+                    className="form-control w-full resize-none rounded-xl border border-white/20 bg-white/10 px-3.5 py-3 text-sm text-white placeholder-white/55 outline-none transition-all duration-200 focus:border-cyan-300 focus:bg-white/15"
+                    placeholder="Share your project scope, priorities, and timeline."
+                  />
                 </div>
 
-                {/* Preferred Contact Method */}
-                <div>
-                  <label className="block text-xs md:text-sm font-bold text-white/90 mb-3 uppercase tracking-wider">
+                <fieldset>
+                  <legend className="mb-2 block text-xs font-bold uppercase tracking-wider text-white/90">
                     Preferred Contact Method
-                  </label>
-                  <div className="flex gap-4">
-                    {['email', 'phone', 'whatsapp'].map(method => (
-                      <label key={method} className="flex items-center gap-2 cursor-pointer">
+                  </legend>
+                  <div className="flex flex-wrap gap-3">
+                    {['email', 'phone', 'whatsapp'].map((method) => (
+                      <label key={method} className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white/90">
                         <input
+                          className="form-control-radio"
                           type="radio"
                           name="preferredMethod"
                           value={method}
                           checked={formData.preferredMethod === method}
                           onChange={handleInputChange}
-                          className="w-4 h-4 accent-accent"
                         />
-                        <span className="text-white/90 capitalize text-sm">{method}</span>
+                        {method}
                       </label>
                     ))}
                   </div>
-                </div>
+                </fieldset>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-3 mt-6 bg-gradient-to-r from-accent to-orange-500 text-white font-bold rounded-full hover:shadow-lg hover:shadow-accent/50 transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider"
+                  className="btn-corporate inline-flex w-full min-h-[50px] items-center justify-center rounded-xl px-6 py-3 text-sm font-bold uppercase tracking-wider disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? 'Submitting...' : 'Submit Inquiry'}
                 </button>
               </form>
             </div>
-          </div>
+          </motion.div>
 
-            {/* Contact Info & Methods - RIGHT COLUMN */}
-            <div className="space-y-6" data-aos="fade-up" data-aos-delay="200">
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8 overflow-hidden">
-              <h2 className="text-2xl md:text-3xl font-black text-white mb-6 glow-text">Contact Methods</h2>
+          <div className="lg:col-span-5">
+            <motion.div
+              initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
+              whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              transition={{ duration: prefersReduced ? 0 : 0.4, delay: prefersReduced ? 0 : 0.05, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="contact-method-card mb-6 rounded-2xl border border-white/25 bg-white/10 p-5 backdrop-blur-sm md:p-6"
+            >
+              <h3 className="mb-4 text-2xl font-black text-white">Contact Methods</h3>
 
-              {/* Key Contacts */}
-              <div className="mb-6 p-4 md:p-6 rounded-xl bg-gradient-to-br from-accent/10 to-transparent border border-accent/20">
-                <h3 className="font-bold text-lg text-white mb-3">Key Contacts</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <p className="text-xs text-white/70 uppercase font-semibold">Owner</p>
-                    <p className="text-sm font-bold text-accent"><a href={`tel:${getPhoneNumber().replace(/\D/g, '')}`}>{'Pankaj Sharma'} • {getPhoneNumber()}</a></p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-white/70 uppercase font-semibold">Business Contact</p>
-                    <p className="text-sm font-bold text-accent"><a href="tel:9173287960">9173287960</a></p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-white/70 uppercase font-semibold">Project Engineer</p>
-                    <p className="text-sm font-bold text-accent"><a href="tel:9687387960">Satyajeet Chaudhary • 9687387960</a></p>
-                  </div>
-                </div>
-              </div>
+              <div className="space-y-4">
+                <a
+                  href={`tel:${phoneNumber.replace(/\D/g, '')}`}
+                  className="block rounded-xl border border-white/20 bg-white/5 p-4 transition-all duration-300 hover:border-cyan-300/50 hover:bg-white/10"
+                >
+                  <p className="text-xs font-bold uppercase tracking-wider text-cyan-200">Phone</p>
+                  <p className="text-lg font-bold text-white">{phoneNumber}</p>
+                  <p className="text-xs text-white/70">Business Hours Support</p>
+                </a>
 
-              {/* Phone */}
-              <div className="group mb-6 p-4 md:p-6 rounded-xl bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 hover:border-accent/60 transition-all duration-300">
-                <div className="mb-4">
-                  <h3 className="font-bold text-lg text-white">Call Us</h3>
-                  <p className="text-white/80 text-sm">Mon-Fri, 9AM-6PM IST</p>
-                </div>
-                <a href={`tel:${getPhoneNumber().replace(/\D/g, '')}`} className="text-accent hover:text-orange-300 font-bold transition-colors text-lg break-all block">
-                  {getPhoneNumber()}
+                <a
+                  href={`mailto:${emailAddress}`}
+                  className="block rounded-xl border border-white/20 bg-white/5 p-4 transition-all duration-300 hover:border-cyan-300/50 hover:bg-white/10"
+                >
+                  <p className="text-xs font-bold uppercase tracking-wider text-cyan-200">Email</p>
+                  <p className="break-all text-base font-bold text-white">{emailAddress}</p>
+                  <p className="text-xs text-white/70">Project and quotation requests</p>
+                </a>
+
+                <a
+                  href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block rounded-xl border border-white/20 bg-white/5 p-4 transition-all duration-300 hover:border-cyan-300/50 hover:bg-white/10"
+                >
+                  <p className="text-xs font-bold uppercase tracking-wider text-cyan-200">WhatsApp</p>
+                  <p className="text-lg font-bold text-white">{whatsappNumber}</p>
+                  <p className="text-xs text-white/70">Quick technical coordination</p>
                 </a>
               </div>
+            </motion.div>
 
-              {/* Email */}
-              <div className="group mb-6 p-4 md:p-6 rounded-xl bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 hover:border-accent/60 transition-all duration-300">
-                <div className="mb-4">
-                  <h3 className="font-bold text-lg text-white">Email Us</h3>
-                  <p className="text-white/80 text-sm">Response within 24 hours</p>
-                </div>
-                <a href={`mailto:${getEmail()}`} className="text-accent hover:text-orange-300 font-bold transition-colors break-all text-lg block">
-                  {getEmail()}
-                </a>
-              </div>
-
-              {/* WhatsApp */}
-              <div className="group p-4 md:p-6 rounded-xl bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 hover:border-accent/60 transition-all duration-300">
-                <div className="mb-4">
-                  <h3 className="font-bold text-lg text-white">WhatsApp</h3>
-                  <p className="text-white/80 text-sm">Available 24/7</p>
-                </div>
-                <a href={`https://wa.me/${getWhatsApp().replace(/\D/g, '')}?text=${encodeURIComponent(getAutomatedMessage('whatsapp'))}`}
-                  target="_blank" rel="noopener noreferrer" className="text-accent hover:text-orange-300 font-bold transition-colors text-lg break-all block">
-                  {getWhatsApp()}
-                </a>
-              </div>
-            </div>
-
-            {/* Quick Info */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8">
-              <h3 className="text-xl font-bold text-white mb-4">Why Contact Us?</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" fill="currentColor"/></svg>
-                  <span className="text-white/80 text-sm">Expert consultation from industry professionals</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" fill="currentColor"/></svg>
-                  <span className="text-white/80 text-sm">Custom solutions tailored to your needs</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" fill="currentColor"/></svg>
-                  <span className="text-white/80 text-sm">25+ years of fire safety experience</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" fill="currentColor"/></svg>
-                  <span className="text-white/80 text-sm">NFPA certified and compliant solutions</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          </div>
-        </div>
-
-        <section className="py-12 md:py-16 border-t border-white/10">
-          <div className="container mx-auto px-4 md:px-6">
-            <h2 className="text-2xl md:text-3xl font-black text-white mb-8 text-center">Find Our Location</h2>
-            <div className="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg">
-              <Map height={450} />
-            </div>
+            <motion.div
+              initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
+              whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              transition={{ duration: prefersReduced ? 0 : 0.4, delay: prefersReduced ? 0 : 0.1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="rounded-2xl border border-white/25 bg-white/10 p-3 backdrop-blur-sm"
+            >
+              <Map height={420} className="rounded-xl" />
+            </motion.div>
           </div>
         </section>
       </div>

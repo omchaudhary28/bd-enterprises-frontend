@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
-import PageHero from '../PageHero';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -18,9 +17,9 @@ const FireAlarmDetection = () => {
 
   // Real images from /public/images/Fire Alarm Systems/
   const fireAlarmImages = [
-    '/images/Fire%20Alarm%20Systems/618cdfa3202b1d251c484e97_How%20Do%20Fire%20Alarms%20Work%20in%20Commercial%20Buildings.jpg',
-    '/images/Fire%20Alarm%20Systems/6193a4b4110d24a5b2acc29c_Commercial%20Fire%20Alarm%20System%20Guide-min.jpg',
-    '/images/Fire%20Alarm%20Systems/IMG_9806.webp',
+    '/images/Fire Alarm Systems/618cdfa3202b1d251c484e97_How Do Fire Alarms Work in Commercial Buildings.jpg',
+    '/images/Fire Alarm Systems/6193a4b4110d24a5b2acc29c_Commercial Fire Alarm System Guide-min.jpg',
+    '/images/Fire Alarm Systems/Smart-Addressable-Fire-Alarm-Monitoring-System-Panel.avif',
   ];
 
   const services = [
@@ -97,13 +96,33 @@ const FireAlarmDetection = () => {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-20">
-        <PageHero
-          badge="Fire Alarm & Detection"
-          title="Fire Alarm & Detection Systems"
-          subtitle="Early Detection for Rapid Response"
-          description="State-of-the-art fire alarm and detection systems using the latest technology to identify fire hazards within seconds. From small offices to large industrial facilities, we design, install, and monitor systems that meet or exceed all regulatory requirements."
-          backTo="/services"
-        />
+        {/* Back Link */}
+        <Link to="/services" className="inline-flex items-center gap-2 text-white/80 hover:text-accent transition-colors mb-8 font-semibold text-sm md:text-base group" data-aos="fade-right">
+          <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+          Back to Services
+        </Link>
+
+        {/* Hero Section */}
+        <section className="mb-16 md:mb-24" data-aos="fade-up">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 mb-6">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+              <span className="text-xs sm:text-sm font-semibold text-white/90">Fire Alarm & Detection</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 text-white glow-text">
+              Fire Alarm & Detection Systems
+            </h1>
+
+            <p className="text-lg md:text-2xl font-bold text-blue-200 dark:text-blue-300 max-w-3xl mx-auto mb-4">
+              Early Detection for Rapid Response
+            </p>
+
+            <p className="text-base md:text-lg text-white/80 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              State-of-the-art fire alarm and detection systems using the latest technology to identify fire hazards within seconds. From small offices to large industrial facilities, we design, install, and monitor systems that meet or exceed all regulatory requirements.
+            </p>
+          </div>
+        </section>
 
         {/* Services Carousel */}
         <section className="mb-16 md:mb-24">

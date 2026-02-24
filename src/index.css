@@ -33,18 +33,16 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Progress Bar - animated gradient */
+/* Progress Bar */
 .progress-bar {
   position: fixed;
   top: 0;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, #6CA0B8, #207C6A, #6CA0B8, #207C6A);
-  background-size: 200% 100%;
+  background: linear-gradient(to right, #6CA0B8, #207C6A, #6CA0B8);
   width: 0%;
   z-index: 9999;
-  transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 10px rgba(108, 160, 184, 0.4);
+  transition: width 0.1s ease;
 }
 
 body {
@@ -54,8 +52,6 @@ body {
   color: #333;
   line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
 }
 
 html.dark body {
@@ -70,23 +66,23 @@ code {
 
 /* Smooth transitions for all interactive elements */
 button, a, input, textarea, select {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 
-/* Improved focus states for accessibility */
-button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+.btn-corporate {
+  background-image: linear-gradient(135deg, #22d3ee 0%, #0ea5e9 45%, #0284c7 100%);
+  color: #082f49;
+  box-shadow: 0 10px 24px rgba(14, 165, 233, 0.28);
+  transform: translateZ(0);
 }
 
-/* Smooth page and section transitions */
-.App {
-  transition: background-color 0.35s ease, color 0.35s ease;
+.btn-corporate:hover {
+  transform: scale(1.03);
+  box-shadow: 0 14px 32px rgba(34, 211, 238, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
 }
 
-/* Card and section polish */
-section, .rounded-2xl, .rounded-xl {
-  transition: box-shadow 0.3s ease, transform 0.25s ease;
+.btn-corporate:active {
+  transform: scale(0.98);
 }
 
 /* Animation delay utilities */
@@ -102,7 +98,7 @@ p {
   max-width: 74ch;
 }
 
-/* Animated Background Pattern - visible grid + orbs */
+/* Animated Background Pattern */
 .pattern-bg {
   position: fixed;
   top: 0;
@@ -110,36 +106,19 @@ p {
   width: 100%;
   height: 100%;
   background: 
-    linear-gradient(90deg, rgba(107, 160, 184, 0.04) 1px, transparent 1px),
-    linear-gradient(rgba(107, 160, 184, 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
-  background-position: 0 0, 0 0;
-  z-index: -1;
-  pointer-events: none;
-}
-.pattern-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(107, 160, 184, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 80% 80%, rgba(32, 124, 106, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 40% 20%, rgba(108, 160, 184, 0.06) 0%, transparent 40%);
+    radial-gradient(circle at 20% 50%, rgba(107, 160, 184, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(32, 124, 106, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(7, 26, 49, 0.03) 0%, transparent 50%);
   animation: floatPattern 25s ease-in-out infinite;
+  z-index: -1;
   pointer-events: none;
 }
 
 html.dark .pattern-bg {
   background: 
-    linear-gradient(90deg, rgba(75, 158, 190, 0.06) 1px, transparent 1px),
-    linear-gradient(rgba(75, 158, 190, 0.06) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-html.dark .pattern-bg::before {
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(75, 158, 190, 0.15) 0%, transparent 45%),
-    radial-gradient(circle at 80% 80%, rgba(22, 78, 99, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 40% 20%, rgba(75, 158, 190, 0.08) 0%, transparent 40%);
+    radial-gradient(circle at 20% 50%, rgba(75, 158, 190, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(22, 78, 99, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(10, 20, 40, 0.05) 0%, transparent 50%);
 }
 
 @keyframes floatPattern {
@@ -164,15 +143,6 @@ html.dark .pattern-bg::before {
 
 html.dark .glow-text {
   text-shadow: 0 0 12px rgba(75, 158, 190, 0.4);
-}
-
-/* Card hover lift - subtle UI polish */
-.hover-lift {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.hover-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
 }
 
 /* Simplified Glow Box Effect */
@@ -236,30 +206,9 @@ html.dark .glow-box {
   animation: fadeIn 0.6s ease-in-out;
 }
 
-/* Safe area for notched devices */
-@supports (padding: max(0px)) {
-  .App {
-    padding-left: max(0px, env(safe-area-inset-left));
-    padding-right: max(0px, env(safe-area-inset-right));
-  }
-}
-
 main {
   min-height: calc(100vh - 140px);
   animation: fadeIn 0.8s ease-in-out;
-}
-
-/* Mobile touch targets - min 44px for tap areas */
-@media (max-width: 768px) {
-  button, a[role="button"], .swiper-button-prev, .swiper-button-next,
-  [class*="swiper-btn"] {
-    min-height: 44px;
-    min-width: 44px;
-    padding: 0.75rem;
-  }
-  input, textarea, select {
-    font-size: 16px; /* prevents zoom on focus iOS */
-  }
 }
 
 /* Mobile readability + layout density */

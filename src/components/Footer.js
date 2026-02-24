@@ -48,7 +48,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <img src={`${process.env.PUBLIC_URL || ''}/logo.png`} alt="B. D. Enterprises" className="h-12 w-auto object-contain" loading="lazy" />
+              <img src="/logo.png" alt="B. D. Enterprises" className="h-12 w-auto object-contain" loading="lazy" />
               <h3 className="text-lg md:text-xl font-bold glow-text">B. D. Enterprises</h3>
             </div>
             <p className="text-sm md:text-base text-gray-200 dark:text-gray-300 leading-relaxed mb-4">

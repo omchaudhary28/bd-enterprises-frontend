@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
-import PageHero from '../PageHero';
 import { getPatternBackgroundImage } from '../../utils/patternSystem';
 
 const ComplianceInspection = () => {
@@ -11,15 +10,9 @@ const ComplianceInspection = () => {
     }
   }, []);
 
-  const complianceImages = [
-    '/images/complainces%20and%20audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
-    '/images/complainces%20and%20audits/Industrial-buildings-2.jpg',
-    '/images/complainces%20and%20audits/Guide%20to%20WHS%20Inspections-1.webp',
-  ];
-
   const services = [
     {
-      image: complianceImages[0],
+      image: '/images/services/compliance-inspection.svg',
       name: 'Comprehensive Fire Code Compliance Audit',
       summary: 'Full facility assessment against NFPA standards, IBC requirements, and local fire codes with detailed findings and remediation prioritization.',
       useCases: [
@@ -33,7 +26,7 @@ const ComplianceInspection = () => {
       bdValue: 'Expert engineer assessment, clear photographic documentation, prioritized remediation list, and insurance-ready reporting.'
     },
     {
-      image: complianceImages[1],
+      image: '/images/services/system-inspection.svg',
       name: 'System-Specific Inspection & Certification',
       summary: 'Individual testing and certification of fire extinguishers, alarms, sprinklers, hydrants, and emergency lighting with detailed system reports.',
       useCases: [
@@ -47,7 +40,7 @@ const ComplianceInspection = () => {
       bdValue: 'NFPA-certified technicians, detailed component testing, certification documentation for regulatory compliance.'
     },
     {
-      image: complianceImages[2],
+      image: '/images/services/remediation-planning.svg',
       name: 'Code Remediation & Documentation',
       summary: 'Strategic planning and implementation of code corrections with project management, regulatory coordination, and compliance documentation.',
       useCases: [
@@ -86,13 +79,33 @@ const ComplianceInspection = () => {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-20">
-        <PageHero
-          badge="Compliance & Inspections"
-          title="Fire Code Compliance & Inspections"
-          subtitle="Regulatory Expertise You Can Trust"
-          description="Navigating fire code requirements can be complex. Our PE-licensed engineers conduct thorough compliance audits, ensuring your facility meets or exceeds all NFPA standards, IBC requirements, and local fire marshal regulations. We provide detailed reports, actionable remediation plans, and full documentation to keep your facility compliant and reduce liability."
-          backTo="/services"
-        />
+        {/* Back Link */}
+        <Link to="/services" className="inline-flex items-center gap-2 text-white/80 hover:text-accent transition-colors mb-8 font-semibold text-sm md:text-base group" data-aos="fade-right">
+          <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+          Back to Services
+        </Link>
+
+        {/* Hero Section */}
+        <section className="mb-16 md:mb-24" data-aos="fade-up">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 mb-6">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+              <span className="text-xs sm:text-sm font-semibold text-white/90">Compliance & Inspections</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 text-white glow-text">
+              Fire Code Compliance & Inspections
+            </h1>
+
+            <p className="text-lg md:text-2xl font-bold text-blue-200 dark:text-blue-300 max-w-3xl mx-auto mb-4">
+              Regulatory Expertise You Can Trust
+            </p>
+
+            <p className="text-base md:text-lg text-white/80 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Navigating fire code requirements can be complex. Our PE-licensed engineers conduct thorough compliance audits, ensuring your facility meets or exceeds all NFPA standards, IBC requirements, and local fire marshal regulations. We provide detailed reports, actionable remediation plans, and full documentation to keep your facility compliant and reduce liability.
+            </p>
+          </div>
+        </section>
 
         {/* Services Grid */}
         <section className="mb-16 md:mb-24">

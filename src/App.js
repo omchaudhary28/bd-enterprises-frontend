@@ -1,5 +1,12 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from 'react-router-dom';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import VisionValues from './components/VisionValues';
@@ -24,12 +31,11 @@ import HandProtection from './components/ppe/HandProtection';
 import BodyProtection from './components/ppe/BodyProtection';
 import FootProtection from './components/ppe/FootProtection';
 import { ThemeProvider } from './components/ThemeContext';
-import ScrollUpButton from './components/ScrollUpButton';
 import { useCanonicalUrl } from './hooks/useCanonicalUrl';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  useCanonicalUrl(); // Set canonical URL on route change
+  useCanonicalUrl();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,54 +44,91 @@ const ScrollToTop = () => {
   return null;
 };
 
+const RouteTransition = ({ children }) => {
+  const prefersReduced = useReducedMotion();
+
+  return (
+    <motion.div
+      initial={prefersReduced ? false : { opacity: 0, y: 10 }}
+      animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
+      exit={prefersReduced ? { opacity: 1 } : { opacity: 0, y: -8 }}
+      transition={{ duration: prefersReduced ? 0 : 0.3, ease: 'easeOut' }}
+      className="h-full"
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <RouteTransition>
+              <>
+                <MainContent />
+                <VisionValues />
+              </>
+            </RouteTransition>
+          }
+        />
+
+        <Route path="/about" element={<RouteTransition><About /></RouteTransition>} />
+
+        <Route path="/services" element={<RouteTransition><Services /></RouteTransition>} />
+        <Route path="/services/fire-extinguishers" element={<RouteTransition><FireExtinguishers /></RouteTransition>} />
+        <Route path="/services/fire-alarm-detection" element={<RouteTransition><FireAlarmDetection /></RouteTransition>} />
+        <Route path="/services/smoke-detection" element={<RouteTransition><FireAlarmDetection /></RouteTransition>} />
+        <Route path="/services/sprinkler-systems" element={<RouteTransition><SprinklerSystems /></RouteTransition>} />
+        <Route path="/services/fire-hydrant-systems" element={<RouteTransition><SprinklerSystems /></RouteTransition>} />
+        <Route path="/services/emergency-lighting" element={<RouteTransition><EmergencyLighting /></RouteTransition>} />
+        <Route path="/services/fire-safety-training" element={<RouteTransition><FireSafetyTraining /></RouteTransition>} />
+        <Route path="/services/compliance-inspection" element={<RouteTransition><ComplianceInspection /></RouteTransition>} />
+        <Route path="/services/oxygen-cylinders" element={<RouteTransition><OxygenCylinders /></RouteTransition>} />
+        <Route path="/services/fabrication" element={<RouteTransition><Fabrication /></RouteTransition>} />
+
+        <Route path="/services/ppe" element={<RouteTransition><PPEs /></RouteTransition>} />
+        <Route path="/services/ppe/head-protection" element={<RouteTransition><HeadProtection /></RouteTransition>} />
+        <Route path="/services/ppe/eye-face-protection" element={<RouteTransition><EyeFaceProtection /></RouteTransition>} />
+        <Route path="/services/ppe/hearing-protection" element={<RouteTransition><HearingProtection /></RouteTransition>} />
+        <Route path="/services/ppe/respiratory-protection" element={<RouteTransition><RespiratoryProtection /></RouteTransition>} />
+        <Route path="/services/ppe/hand-protection" element={<RouteTransition><HandProtection /></RouteTransition>} />
+        <Route path="/services/ppe/body-protection" element={<RouteTransition><BodyProtection /></RouteTransition>} />
+        <Route path="/services/ppe/foot-protection" element={<RouteTransition><FootProtection /></RouteTransition>} />
+
+        <Route path="/ppe" element={<RouteTransition><PPEs /></RouteTransition>} />
+        <Route path="/ppe/head-protection" element={<RouteTransition><HeadProtection /></RouteTransition>} />
+        <Route path="/ppe/eye-face-protection" element={<RouteTransition><EyeFaceProtection /></RouteTransition>} />
+        <Route path="/ppe/hearing-protection" element={<RouteTransition><HearingProtection /></RouteTransition>} />
+        <Route path="/ppe/respiratory-protection" element={<RouteTransition><RespiratoryProtection /></RouteTransition>} />
+        <Route path="/ppe/hand-protection" element={<RouteTransition><HandProtection /></RouteTransition>} />
+        <Route path="/ppe/body-protection" element={<RouteTransition><BodyProtection /></RouteTransition>} />
+        <Route path="/ppe/foot-protection" element={<RouteTransition><FootProtection /></RouteTransition>} />
+
+        <Route path="/contact" element={<RouteTransition><Contact /></RouteTransition>} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <ThemeProvider>
-        <div className="App flex flex-col min-h-screen bg-gray-50 dark:bg-slate-900 transition-colors duration-300">
-          <div className="pattern-bg"></div>
+        <div className="App flex min-h-screen flex-col bg-gray-50 transition-colors duration-300 dark:bg-slate-900">
+          <div className="pattern-bg" aria-hidden="true" />
           <Header />
-          <main className="flex-grow relative z-10">
-            <Routes>
-              <Route path="/" element={
-                <>
-                  <MainContent />
-                  <VisionValues />
-                </>
-              } />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/services/fire-extinguishers" element={<FireExtinguishers />} />
-              <Route path="/services/fire-alarm-detection" element={<FireAlarmDetection />} />
-              <Route path="/services/sprinkler-systems" element={<SprinklerSystems />} />
-              <Route path="/services/emergency-lighting" element={<EmergencyLighting />} />
-              <Route path="/services/fire-safety-training" element={<FireSafetyTraining />} />
-              <Route path="/services/compliance-inspection" element={<ComplianceInspection />} />
-              <Route path="/services/oxygen-cylinders" element={<OxygenCylinders />} />
-              <Route path="/services/fabrication" element={<Fabrication />} />
-              {/* PPE Routes - Now under Services */}
-              <Route path="/services/ppe/head-protection" element={<HeadProtection />} />
-              <Route path="/services/ppe/eye-face-protection" element={<EyeFaceProtection />} />
-              <Route path="/services/ppe/hearing-protection" element={<HearingProtection />} />
-              <Route path="/services/ppe/respiratory-protection" element={<RespiratoryProtection />} />
-              <Route path="/services/ppe/hand-protection" element={<HandProtection />} />
-              <Route path="/services/ppe/body-protection" element={<BodyProtection />} />
-              <Route path="/services/ppe/foot-protection" element={<FootProtection />} />
-              {/* Legacy PPE routes for backward compatibility */}
-              <Route path="/ppe" element={<PPEs />} />
-              <Route path="/ppe/head-protection" element={<HeadProtection />} />
-              <Route path="/ppe/eye-face-protection" element={<EyeFaceProtection />} />
-              <Route path="/ppe/hearing-protection" element={<HearingProtection />} />
-              <Route path="/ppe/respiratory-protection" element={<RespiratoryProtection />} />
-              <Route path="/ppe/hand-protection" element={<HandProtection />} />
-              <Route path="/ppe/body-protection" element={<BodyProtection />} />
-              <Route path="/ppe/foot-protection" element={<FootProtection />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
+          <main className="relative z-10 flex-grow">
+            <AnimatedRoutes />
           </main>
           <Footer />
-          <ScrollUpButton />
         </div>
       </ThemeProvider>
     </Router>

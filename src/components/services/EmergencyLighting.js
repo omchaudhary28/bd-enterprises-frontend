@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
-import PageHero from '../PageHero';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -18,9 +17,9 @@ const EmergencyLighting = () => {
 
   // Real images from /public/images/emergency lights/
   const emergencyLightingImages = [
-    '/images/emergency%20lights/3mDZADxjMAulmzrzYOOn9xHZSn4QVEwl41FESCKhECk7GlvfznL8xpQrBjj6YZvX-eHOBJA_QWPNVw_wkv0lI_IHJipVPdklUgWHd6NXeQw.jpg',
-    '/images/emergency%20lights/76yvHsMjxoXFU4WTt3JUP94YBWVObAz48gti09nzlKzkXU0iZueHb4nEzuD-Q8MeywZXladWrqsgsRcsVSs2v3F2K7aqdqMe1cmlK-fDSrw.jpg',
-    '/images/emergency%20lights/rKGpcdySuc5au8QGVXi18u_EsaETgbClI2bhlNPqBcHJijLk4Urzk6edYOB8N9St45-d46aD8HV3VJfqpH2Wk7O-mA4i73tE4kwMnO2rNPk.jpg',
+    '/images/emergency lights/3mDZADxjMAulmzrzYOOn9xHZSn4QVEwl41FESCKhECk7GlvfznL8xpQrBjj6YZvX-eHOBJA_QWPNVw_wkv0lI_IHJipVPdklUgWHd6NXeQw.jpg',
+    '/images/emergency lights/76yvHsMjxoXFU4WTt3JUP94YBWVObAz48gti09nzlKzkXU0iZueHb4nEzuD-Q8MeywZXladWrqsgsRcsVSs2v3F2K7aqdqMe1cmlK-fDSrw.jpg',
+    '/images/emergency lights/rKGpcdySuc5au8QGVXi18u_EsaETgbClI2bhlNPqBcHJijLk4Urzk6edYOB8N9St45-d46aD8HV3VJfqpH2Wk7O-mA4i73tE4kwMnO2rNPk.jpg',
   ];
 
   const services = [
@@ -97,13 +96,33 @@ const EmergencyLighting = () => {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-20">
-        <PageHero
-          badge="Emergency Illumination"
-          title="Emergency Lighting & Exit Signage"
-          subtitle="Visibility When It Matters Most"
-          description="In an emergency, visibility is critical for safe evacuation. Our LED exit signs and emergency lighting systems ensure occupants can navigate safely even during complete power loss. We combine advanced LED technology with intelligent battery backup systems to provide reliable illumination, code compliance, and minimal maintenance."
-          backTo="/services"
-        />
+        {/* Back Link */}
+        <Link to="/services" className="inline-flex items-center gap-2 text-white/80 hover:text-accent transition-colors mb-8 font-semibold text-sm md:text-base group" data-aos="fade-right">
+          <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+          Back to Services
+        </Link>
+
+        {/* Hero Section */}
+        <section className="mb-16 md:mb-24" data-aos="fade-up">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 mb-6">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+              <span className="text-xs sm:text-sm font-semibold text-white/90">Emergency Illumination</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 text-white glow-text">
+              Emergency Lighting & Exit Signage
+            </h1>
+
+            <p className="text-lg md:text-2xl font-bold text-blue-200 dark:text-blue-300 max-w-3xl mx-auto mb-4">
+              Visibility When It Matters Most
+            </p>
+
+            <p className="text-base md:text-lg text-white/80 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              In an emergency, visibility is critical for safe evacuation. Our LED exit signs and emergency lighting systems ensure occupants can navigate safely even during complete power loss. We combine advanced LED technology with intelligent battery backup systems to provide reliable illumination, code compliance, and minimal maintenance.
+            </p>
+          </div>
+        </section>
 
         {/* Services Carousel */}
         <section className="mb-16 md:mb-24">
