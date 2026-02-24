@@ -101,8 +101,18 @@ const assetMap = assetContext.keys().reduce((accumulator, key) => {
 
 const buildProductsForCategory = (brand, category) => {
   const imageEntries = assetMap?.[brand.slug]?.[category.slug] || [];
+  const sortedEntries = [...imageEntries].sort((left, right) => {
+    const leftMatch = String(left.fileName).match(/product-(\d+)/i);
+    const rightMatch = String(right.fileName).match(/product-(\d+)/i);
 
-  return imageEntries.map((entry, index) => ({
+    if (leftMatch && rightMatch) {
+      return Number(leftMatch[1]) - Number(rightMatch[1]);
+    }
+
+    return String(left.fileName).localeCompare(String(right.fileName));
+  });
+
+  return sortedEntries.map((entry, index) => ({
     id: `${brand.slug}-${category.slug}-${index + 1}`,
     title: `${brand.name} ${category.name}`,
     description: `${category.shortDescription} Supplied by ${brand.name} for industrial and commercial safety operations.`,
