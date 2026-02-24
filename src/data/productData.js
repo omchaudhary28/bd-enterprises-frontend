@@ -2,60 +2,70 @@ const brandCatalog = [
   {
     slug: 'fuel',
     name: 'Fuel',
+    logo: require('../assets/brand-logos/fuel.svg'),
     description:
       'Fuel delivers industrial-grade safety footwear, PPE, and critical safety essentials for high-demand work zones.',
   },
   {
     slug: 'polo',
     name: 'Polo',
+    logo: require('../assets/brand-logos/polo.svg'),
     description:
       'Polo supports site teams with dependable workwear and protective products engineered for daily industrial use.',
   },
   {
     slug: 'utex',
     name: 'Utex',
+    logo: require('../assets/brand-logos/utex.svg'),
     description:
       'Utex provides robust hand and respiratory safety solutions for fabrication, maintenance, and hazardous handling environments.',
   },
   {
     slug: 'bata',
     name: 'Bata',
+    logo: require('../assets/brand-logos/bata.svg'),
     description:
       'Bata supplies certified safety shoes and occupational footwear for operations requiring consistent impact and slip protection.',
   },
   {
     slug: 'delta-plus',
     name: 'Delta Plus',
+    logo: require('../assets/brand-logos/delta-plus.svg'),
     description:
       'Delta Plus offers a broad industrial safety portfolio spanning PPE, workwear, and compliance-focused protective equipment.',
   },
   {
     slug: 'balaji-industries',
     name: 'Balaji Industries',
+    logo: require('../assets/brand-logos/balaji-industries.svg'),
     description:
       'Balaji Industries supports multi-site procurement with practical and scalable safety product supply across major categories.',
   },
   {
     slug: 'apex-clothing',
     name: 'Apex Clothing',
+    logo: require('../assets/brand-logos/apex-clothing.svg'),
     description:
       'Apex Clothing specializes in industrial safety wear, visibility apparel, and durable protective garments for field teams.',
   },
   {
     slug: 'xo-footwear',
     name: 'XO Footwear',
+    logo: require('../assets/brand-logos/xo-footwear.svg'),
     description:
       'XO Footwear supplies heavy-duty safety shoes built for demanding factory floors and infrastructure projects.',
   },
   {
     slug: 'tornado',
     name: 'Tornado',
+    logo: require('../assets/brand-logos/tornado.svg'),
     description:
       'Tornado delivers protection products and fire safety support equipment aligned with enterprise operational standards.',
   },
   {
     slug: 'ultra-kk-industries',
     name: 'Ultra KK Industries',
+    logo: require('../assets/brand-logos/ultra-kk-industries.svg'),
     description:
       'Ultra KK Industries provides end-to-end industrial safety product availability for structured, high-volume deployments.',
   },
@@ -119,6 +129,7 @@ const buildProductsForCategory = (brand, category) => {
     image: entry.src,
     category: category.name,
     brand: brand.name,
+    brandLogo: brand.logo,
   }));
 };
 

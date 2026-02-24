@@ -39,6 +39,9 @@ const BrandDetail = () => {
             <span className="mb-4 inline-flex rounded-full border border-[#F77F00]/50 bg-[#F77F00]/15 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#FCBF49] md:text-sm">
               Brand Detail
             </span>
+            <div className="mb-4 inline-flex rounded-xl bg-white/95 p-2 shadow-lg">
+              <img src={brand.logo} alt={`${brand.name} logo`} className="h-10 w-auto object-contain md:h-12" loading="lazy" />
+            </div>
             <h1 className="mb-3 text-4xl font-black tracking-tight text-[#F8F9FA] md:text-5xl">{brand.name}</h1>
             <p className="max-w-4xl text-sm leading-relaxed text-[#E9ECEF]/85 md:text-lg">{brand.description}</p>
           </div>
@@ -67,9 +70,9 @@ const BrandDetail = () => {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/80 to-transparent" />
-                      <span className="absolute left-3 top-3 rounded-full bg-[#F77F00] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-[#111111] md:text-[11px]">
-                        Category
-                      </span>
+                      <div className="absolute left-3 top-3 rounded-md bg-white/95 p-1.5 shadow-md">
+                        <img src={brand.logo} alt={`${brand.name} logo`} className="h-6 w-auto object-contain md:h-7" loading="lazy" />
+                      </div>
                     </div>
 
                     <div className="p-3 md:p-4">

@@ -71,13 +71,17 @@ const BrandCategory = () => {
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/85 to-transparent" />
-                  <span className="absolute left-3 top-3 rounded-full bg-[#D62828] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white md:text-[11px]">
+                  <div className="absolute left-3 top-3 rounded-md bg-white/95 p-1.5 shadow-md">
+                    <img src={product.brandLogo} alt={`${product.brand} logo`} className="h-6 w-auto object-contain md:h-7" loading="lazy" />
+                  </div>
+                  <span className="absolute right-3 top-3 rounded-full bg-[#D62828] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white md:text-[11px]">
                     {product.category}
                   </span>
                 </div>
 
                 <div className="p-3 md:p-4">
-                  <h2 className="mb-1 text-sm font-bold text-[#F8F9FA] md:text-base">{product.title}</h2>
+                  <h2 className="mb-1 text-sm font-bold text-[#F8F9FA] md:text-base">{product.brand}</h2>
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-[#FCBF49] md:text-sm">{product.category}</p>
                   <p className="text-xs leading-relaxed text-[#E9ECEF]/80 md:text-sm">{product.description}</p>
                 </div>
               </motion.article>

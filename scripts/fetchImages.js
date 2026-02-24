@@ -38,8 +38,46 @@ const CATEGORIES = [
 
 const IMAGES_PER_CATEGORY = 8;
 const SEARCH_PAGE_SIZE = 80;
-const MAX_PAGES_PER_QUERY = 3;
+const MAX_PAGES_PER_QUERY = 4;
 const OUTPUT_BASE_DIR = path.resolve(process.cwd(), 'src', 'assets', 'products');
+const TEMP_OUTPUT_BASE_DIR = path.resolve(process.cwd(), 'src', 'assets', 'products-temp');
+
+const BLOCKLIST_TERMS = [
+  'portrait',
+  'selfie',
+  'fashion',
+  'smile',
+  'wedding',
+  'party',
+  'lifestyle',
+  'office worker',
+  'family',
+  'kid',
+  'child',
+  'casual',
+  'vacation',
+  'beach',
+  'food',
+  'restaurant',
+  'travel',
+  'model',
+];
+
+const PREFERRED_TERMS = [
+  'safety',
+  'industrial',
+  'helmet',
+  'shoes',
+  'gloves',
+  'goggles',
+  'mask',
+  'equipment',
+  'protective',
+  'fire',
+  'worker',
+  'construction',
+  'ppe',
+];
 
 const client = axios.create({
   baseURL: 'https://api.pexels.com/v1',
@@ -69,8 +107,7 @@ const withRetry = async (fn, attempts = 4) => {
       if (!retryable || index === attempts - 1) {
         break;
       }
-      const waitTime = 600 * (index + 1);
-      await delay(waitTime);
+      await delay(700 * (index + 1));
     }
   }
   throw lastError;
@@ -93,17 +130,36 @@ const searchPhotos = async (query, orientation, page) => {
   return photos.filter((photo) => {
     const width = Number(photo?.width || 0);
     const height = Number(photo?.height || 0);
-    return width > 0 && height > 0 && width >= height;
+    return width >= 900 && height >= 700 && width >= height;
   });
 };
 
-const collectCandidates = async (brandSlug, categorySlug) => {
+const normalizeText = (value) => String(value || '').toLowerCase();
+
+const relevanceScore = (photo, categorySlug) => {
+  const haystack = `${normalizeText(photo?.alt)} ${normalizeText(categorySlug)}`;
+
+  const blocked = BLOCKLIST_TERMS.some((term) => haystack.includes(term));
+  if (blocked) {
+    return -1;
+  }
+
+  const preferredCount = PREFERRED_TERMS.reduce(
+    (count, term) => (haystack.includes(term) ? count + 1 : count),
+    0
+  );
+
+  return preferredCount;
+};
+
+const collectCandidates = async (brandSlug, categorySlug, globalUsedPhotoIds) => {
   const brandLabel = toLabel(brandSlug);
   const categoryLabel = toLabel(categorySlug);
 
   const queries = [
     `${brandLabel} ${categoryLabel} industrial safety product professional`,
     `${brandLabel} ${categoryLabel} industrial safety equipment professional`,
+    `${brandLabel} ${categoryLabel} PPE industrial product professional`,
     `${categoryLabel} industrial safety product professional`,
   ];
 
@@ -117,21 +173,35 @@ const collectCandidates = async (brandSlug, categorySlug) => {
 
         for (const photo of photos) {
           const photoId = String(photo.id);
+          if (globalUsedPhotoIds.has(photoId)) {
+            continue;
+          }
+
+          const score = relevanceScore(photo, categorySlug);
+          if (score < 0) {
+            continue;
+          }
+
           if (!uniquePhotos.has(photoId)) {
-            uniquePhotos.set(photoId, photo);
+            uniquePhotos.set(photoId, {
+              photo,
+              score,
+            });
           }
         }
 
-        if (uniquePhotos.size >= IMAGES_PER_CATEGORY * 3) {
-          return Array.from(uniquePhotos.values());
+        if (uniquePhotos.size >= IMAGES_PER_CATEGORY * 4) {
+          break;
         }
 
-        await delay(120);
+        await delay(110);
       }
     }
   }
 
-  return Array.from(uniquePhotos.values());
+  return Array.from(uniquePhotos.values())
+    .sort((left, right) => right.score - left.score)
+    .map((entry) => entry.photo);
 };
 
 const optimizeAndSave = async (url, targetPath) => {
@@ -160,18 +230,35 @@ const optimizeAndSave = async (url, targetPath) => {
     .toFile(targetPath);
 };
 
-const prepareCategoryDir = async (brandSlug, categorySlug) => {
-  const categoryDir = path.join(OUTPUT_BASE_DIR, brandSlug, categorySlug);
-
+const prepareCategoryDir = async (brandSlug, categorySlug, baseDir) => {
+  const categoryDir = path.join(baseDir, brandSlug, categorySlug);
   await fs.rm(categoryDir, { recursive: true, force: true });
   await fs.mkdir(categoryDir, { recursive: true });
-
   return categoryDir;
 };
 
-const downloadCategory = async (brandSlug, categorySlug) => {
-  const categoryDir = await prepareCategoryDir(brandSlug, categorySlug);
-  const candidates = await collectCandidates(brandSlug, categorySlug);
+const replaceCategoryDir = async (brandSlug, categorySlug) => {
+  const liveDir = path.join(OUTPUT_BASE_DIR, brandSlug, categorySlug);
+  const tempDir = path.join(TEMP_OUTPUT_BASE_DIR, brandSlug, categorySlug);
+  const backupDir = `${liveDir}.bak`;
+
+  await fs.rm(backupDir, { recursive: true, force: true });
+  await fs.rename(liveDir, backupDir).catch(() => undefined);
+
+  try {
+    await fs.mkdir(path.dirname(liveDir), { recursive: true });
+    await fs.rename(tempDir, liveDir);
+    await fs.rm(backupDir, { recursive: true, force: true });
+  } catch (error) {
+    await fs.rm(liveDir, { recursive: true, force: true }).catch(() => undefined);
+    await fs.rename(backupDir, liveDir).catch(() => undefined);
+    throw error;
+  }
+};
+
+const downloadCategory = async (brandSlug, categorySlug, globalUsedPhotoIds) => {
+  const categoryDir = await prepareCategoryDir(brandSlug, categorySlug, TEMP_OUTPUT_BASE_DIR);
+  const candidates = await collectCandidates(brandSlug, categorySlug, globalUsedPhotoIds);
 
   if (candidates.length < IMAGES_PER_CATEGORY) {
     throw new Error(`Insufficient images for ${brandSlug}/${categorySlug}`);
@@ -196,7 +283,8 @@ const downloadCategory = async (brandSlug, categorySlug) => {
     try {
       await optimizeAndSave(sourceUrl, outputPath);
       savedCount += 1;
-      await delay(80);
+      globalUsedPhotoIds.add(String(candidate.id));
+      await delay(90);
     } catch {
       await fs.rm(outputPath, { force: true });
     }
@@ -205,14 +293,21 @@ const downloadCategory = async (brandSlug, categorySlug) => {
   if (savedCount < IMAGES_PER_CATEGORY) {
     throw new Error(`Could not save required images for ${brandSlug}/${categorySlug}`);
   }
+
+  await replaceCategoryDir(brandSlug, categorySlug);
 };
 
 const run = async () => {
+  const globalUsedPhotoIds = new Set();
+  await fs.rm(TEMP_OUTPUT_BASE_DIR, { recursive: true, force: true });
+
   for (const brandSlug of BRANDS) {
     for (const categorySlug of CATEGORIES) {
-      await downloadCategory(brandSlug, categorySlug);
+      await downloadCategory(brandSlug, categorySlug, globalUsedPhotoIds);
     }
   }
+
+  await fs.rm(TEMP_OUTPUT_BASE_DIR, { recursive: true, force: true });
 };
 
 run();
