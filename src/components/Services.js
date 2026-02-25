@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
-import { brandCatalog, categoryCatalog, productData } from '../data/productData';
+import { brandCatalog, getFirstBrandProductImage } from '../data/productData';
 
 const serviceCatalog = [
   {
@@ -192,15 +192,13 @@ const Services = () => {
           >
             <h2 className="mb-3 text-3xl font-black text-[#F8F9FA] md:text-4xl">Supplier Partner Brands</h2>
             <p className="mx-auto max-w-4xl text-sm leading-relaxed text-[#E9ECEF]/85 md:text-base">
-              Each supplier brand provides all categories: {categoryCatalog.map((item) => item.name).join(', ')}.
+              Brand category availability is mapped per supplier and shown only when product data exists.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 xl:grid-cols-4">
             {brandCatalog.map((brand, idx) => {
-              const previewImage =
-                productData[brand.slug]?.['safety-shoes']?.[0]?.image ||
-                productData[brand.slug]?.['fire-safety']?.[0]?.image;
+              const previewImage = getFirstBrandProductImage(brand.slug) || brand.logo;
 
               return (
                 <motion.article

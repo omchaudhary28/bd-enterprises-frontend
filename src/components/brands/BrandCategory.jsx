@@ -1,17 +1,22 @@
 import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
-import { brandCatalog, categoryCatalog, productData } from '../../data/productData';
+import { brandCatalog, getBrandCategories, productData } from '../../data/productData';
 
 const BrandCategory = () => {
   const { brandName, categoryName } = useParams();
   const prefersReduced = useReducedMotion();
 
   const brand = brandCatalog.find((entry) => entry.slug === brandName);
-  const category = categoryCatalog.find((entry) => entry.slug === categoryName);
+  const brandCategories = brand ? getBrandCategories(brand.slug) : [];
+  const category = brandCategories.find((entry) => entry.slug === categoryName);
 
-  if (!brand || !category) {
+  if (!brand) {
     return <Navigate to="/brands" replace />;
+  }
+
+  if (!category) {
+    return <Navigate to={`/brands/${brand.slug}`} replace />;
   }
 
   const products = productData?.[brand.slug]?.[category.slug] || [];

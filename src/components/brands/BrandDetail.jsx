@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
-import { brandCatalog, categoryCatalog, productData } from '../../data/productData';
+import { brandCatalog, getBrandCategories, productData } from '../../data/productData';
 
 const BrandDetail = () => {
   const { brandName } = useParams();
@@ -10,6 +10,12 @@ const BrandDetail = () => {
   const brand = brandCatalog.find((entry) => entry.slug === brandName);
 
   if (!brand) {
+    return <Navigate to="/brands" replace />;
+  }
+
+  const brandCategories = getBrandCategories(brand.slug);
+
+  if (!brandCategories.length) {
     return <Navigate to="/brands" replace />;
   }
 
@@ -50,7 +56,7 @@ const BrandDetail = () => {
         <section>
           <h2 className="mb-6 text-2xl font-black text-[#F8F9FA] md:mb-8 md:text-3xl">Product Categories</h2>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 xl:grid-cols-4">
-            {categoryCatalog.map((category, index) => {
+            {brandCategories.map((category, index) => {
               const previewImage = productData[brand.slug]?.[category.slug]?.[0]?.image;
               return (
                 <motion.article

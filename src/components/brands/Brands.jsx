@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
-import { brandCatalog, productData } from '../../data/productData';
+import { brandCatalog, getFirstBrandProductImage } from '../../data/productData';
 
 const Brands = () => {
   const prefersReduced = useReducedMotion();
@@ -32,10 +32,7 @@ const Brands = () => {
         <section>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 xl:grid-cols-4">
             {brandCatalog.map((brand, index) => {
-              const previewImage =
-                productData[brand.slug]?.['safety-shoes']?.[0]?.image ||
-                productData[brand.slug]?.['safety-helmet']?.[0]?.image ||
-                productData[brand.slug]?.['fire-safety']?.[0]?.image;
+              const previewImage = getFirstBrandProductImage(brand.slug) || brand.logo;
 
               return (
                 <motion.article

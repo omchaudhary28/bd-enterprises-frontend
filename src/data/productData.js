@@ -71,16 +71,53 @@ const brandCatalog = [
   },
 ];
 
-const categoryCatalog = [
-  { slug: 'safety-shoes', name: 'Safety Shoes', shortDescription: 'Impact-resistant and anti-slip industrial safety footwear.' },
-  { slug: 'safety-gloves', name: 'Safety Gloves', shortDescription: 'Protective gloves for mechanical, thermal, and chemical handling.' },
-  { slug: 'safety-goggles', name: 'Safety Goggles', shortDescription: 'Eye and face protection products for active site operations.' },
-  { slug: 'fire-safety', name: 'Fire Safety', shortDescription: 'Essential fire protection and emergency response equipment.' },
-  { slug: 'safety-wear', name: 'Safety Wear', shortDescription: 'Industrial protective clothing and high-visibility workwear.' },
-  { slug: 'safety-helmet', name: 'Safety Helmet', shortDescription: 'Head protection for construction, production, and logistics zones.' },
-  { slug: 'road-safety', name: 'Road Safety', shortDescription: 'Road and traffic safety products for controlled movement areas.' },
-  { slug: 'safety-mask', name: 'Safety Mask', shortDescription: 'Respiratory and airborne hazard protection solutions.' },
-];
+const categoryMetadata = {
+  'safety-shoes': {
+    name: 'Safety Shoes',
+    shortDescription: 'Impact-resistant and anti-slip industrial safety footwear.',
+  },
+  'safety-gloves': {
+    name: 'Safety Gloves',
+    shortDescription: 'Protective gloves for mechanical, thermal, and chemical handling.',
+  },
+  'safety-goggles': {
+    name: 'Safety Goggles',
+    shortDescription: 'Eye and face protection products for active site operations.',
+  },
+  'fire-safety': {
+    name: 'Fire Safety',
+    shortDescription: 'Essential fire protection and emergency response equipment.',
+  },
+  'safety-wear': {
+    name: 'Safety Wear',
+    shortDescription: 'Industrial protective clothing and high-visibility workwear.',
+  },
+  'safety-helmet': {
+    name: 'Safety Helmet',
+    shortDescription: 'Head protection for construction, production, and logistics zones.',
+  },
+  'road-safety': {
+    name: 'Road Safety',
+    shortDescription: 'Road and traffic safety products for controlled movement areas.',
+  },
+  'safety-mask': {
+    name: 'Safety Mask',
+    shortDescription: 'Respiratory and airborne hazard protection solutions.',
+  },
+};
+
+const allCategorySlugs = Object.keys(categoryMetadata);
+
+const strictBrandCategoryMap = {
+  fuel: ['safety-shoes'],
+  'delta-plus': ['safety-shoes'],
+  bata: ['safety-shoes'],
+  'ultra-kk-industries': ['fire-safety', 'safety-helmet', 'safety-gloves', 'safety-goggles', 'safety-mask'],
+  'balaji-industries': allCategorySlugs,
+  'apex-clothing': allCategorySlugs,
+  'xo-footwear': allCategorySlugs,
+  tornado: allCategorySlugs,
+};
 
 const assetContext = require.context('../assets/products', true, /\.(png|jpe?g|webp|avif|svg)$/i);
 
@@ -109,8 +146,24 @@ const assetMap = assetContext.keys().reduce((accumulator, key) => {
   return accumulator;
 }, {});
 
-const buildProductsForCategory = (brand, category) => {
-  const imageEntries = assetMap?.[brand.slug]?.[category.slug] || [];
+const getAllowedCategorySlugsForBrand = (brandSlug) => strictBrandCategoryMap[brandSlug] || allCategorySlugs;
+
+const getCategoryMeta = (categorySlug) => {
+  const fallbackName = String(categorySlug)
+    .split('-')
+    .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
+    .join(' ');
+  const metadata = categoryMetadata[categorySlug];
+  return {
+    slug: categorySlug,
+    name: metadata?.name || fallbackName,
+    shortDescription: metadata?.shortDescription || `${fallbackName} products for industrial safety operations.`,
+  };
+};
+
+const buildProductsForCategory = (brand, categorySlug) => {
+  const category = getCategoryMeta(categorySlug);
+  const imageEntries = assetMap?.[brand.slug]?.[categorySlug] || [];
   const sortedEntries = [...imageEntries].sort((left, right) => {
     const leftMatch = String(left.fileName).match(/product-(\d+)/i);
     const rightMatch = String(right.fileName).match(/product-(\d+)/i);
@@ -134,8 +187,11 @@ const buildProductsForCategory = (brand, category) => {
 };
 
 const productData = brandCatalog.reduce((brandAccumulator, brand) => {
-  const categoryMap = categoryCatalog.reduce((categoryAccumulator, category) => {
-    categoryAccumulator[category.slug] = buildProductsForCategory(brand, category);
+  const categoryMap = getAllowedCategorySlugsForBrand(brand.slug).reduce((categoryAccumulator, categorySlug) => {
+    const products = buildProductsForCategory(brand, categorySlug);
+    if (products.length) {
+      categoryAccumulator[categorySlug] = products;
+    }
     return categoryAccumulator;
   }, {});
 
@@ -143,4 +199,20 @@ const productData = brandCatalog.reduce((brandAccumulator, brand) => {
   return brandAccumulator;
 }, {});
 
-export { brandCatalog, categoryCatalog, productData };
+const getBrandCategories = (brandSlug) =>
+  getAllowedCategorySlugsForBrand(brandSlug)
+    .filter((categorySlug) => (productData?.[brandSlug]?.[categorySlug] || []).length > 0)
+    .map((categorySlug) => getCategoryMeta(categorySlug));
+
+const getFirstBrandProductImage = (brandSlug) => {
+  const categories = getBrandCategories(brandSlug);
+  for (const category of categories) {
+    const image = productData?.[brandSlug]?.[category.slug]?.[0]?.image;
+    if (image) {
+      return image;
+    }
+  }
+  return null;
+};
+
+export { brandCatalog, productData, getBrandCategories, getFirstBrandProductImage, getCategoryMeta };
