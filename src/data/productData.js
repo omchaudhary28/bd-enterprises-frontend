@@ -2,72 +2,72 @@ const brandCatalog = [
   {
     slug: 'fuel',
     name: 'Fuel',
-    logo: require('../assets/brand-logos/fuel.svg'),
+    featuredImage: '/images/ppes/61eTR14wUVL._AC_UF894,1000_QL80_.jpg',
     description:
-      'Fuel delivers industrial-grade safety footwear, PPE, and critical safety essentials for high-demand work zones.',
+      'Fuel product lines are deployed by B. D. Enterprises for heavy-duty industrial footwear and field safety needs.',
   },
   {
     slug: 'polo',
     name: 'Polo',
-    logo: require('../assets/brand-logos/polo.svg'),
+    featuredImage: '/images/ppes/PN-521-Chrome-Orange.jpg',
     description:
-      'Polo supports site teams with dependable workwear and protective products engineered for daily industrial use.',
+      'Polo products support daily protective wear and reliable footwear programs across maintenance and plant operations.',
   },
   {
     slug: 'utex',
     name: 'Utex',
-    logo: require('../assets/brand-logos/utex.svg'),
+    featuredImage: '/images/ppes/Head-Protection.webp',
     description:
-      'Utex provides robust hand and respiratory safety solutions for fabrication, maintenance, and hazardous handling environments.',
+      'Utex equipment is supplied by B. D. Enterprises for helmet and industrial protection requirements in active risk zones.',
   },
   {
     slug: 'bata',
     name: 'Bata',
-    logo: require('../assets/brand-logos/bata.svg'),
+    featuredImage: '/images/ppes/61+kLABgpCL._AC_UF894,1000_QL80_.jpg',
     description:
-      'Bata supplies certified safety shoes and occupational footwear for operations requiring consistent impact and slip protection.',
+      'Bata industrial footwear is delivered for certified impact, puncture, and slip-resistant protection on production floors.',
   },
   {
     slug: 'delta-plus',
     name: 'Delta Plus',
-    logo: require('../assets/brand-logos/delta-plus.svg'),
+    featuredImage: '/images/ppes/Foot-Protection-1536x922.webp',
     description:
-      'Delta Plus offers a broad industrial safety portfolio spanning PPE, workwear, and compliance-focused protective equipment.',
+      'Delta Plus product supply is integrated into B. D. Enterprises service contracts for footwear and PPE standardization.',
   },
   {
     slug: 'balaji-industries',
     name: 'Balaji Industries',
-    logo: require('../assets/brand-logos/balaji-industries.svg'),
+    featuredImage: '/images/fire%20extinguisher/co2-flooding-system-1000x1000.jpg',
     description:
-      'Balaji Industries supports multi-site procurement with practical and scalable safety product supply across major categories.',
+      'Balaji Industries products are used for scalable industrial safety deployments across multi-area facilities.',
   },
   {
     slug: 'apex-clothing',
     name: 'Apex Clothing',
-    logo: require('../assets/brand-logos/apex-clothing.svg'),
+    featuredImage: '/images/ppes/Skin-and-Body-Protection_2022.avif',
     description:
-      'Apex Clothing specializes in industrial safety wear, visibility apparel, and durable protective garments for field teams.',
+      'Apex Clothing supply supports uniform safety wear programs and high-visibility apparel across industrial teams.',
   },
   {
     slug: 'xo-footwear',
     name: 'XO Footwear',
-    logo: require('../assets/brand-logos/xo-footwear.svg'),
+    featuredImage: '/images/ppes/istockphoto-947254500-1024x1024.jpg',
     description:
-      'XO Footwear supplies heavy-duty safety shoes built for demanding factory floors and infrastructure projects.',
+      'XO Footwear products are sourced for long-wear industrial footwear requirements and high-mobility site operations.',
   },
   {
     slug: 'tornado',
     name: 'Tornado',
-    logo: require('../assets/brand-logos/tornado.svg'),
+    featuredImage: '/images/fire%20extinguisher/automated-Fire-extinguisher.webp',
     description:
-      'Tornado delivers protection products and fire safety support equipment aligned with enterprise operational standards.',
+      'Tornado product lines are used in B. D. Enterprises fire safety equipment supply and on-site system support.',
   },
   {
     slug: 'ultra-kk-industries',
     name: 'Ultra KK Industries',
-    logo: require('../assets/brand-logos/ultra-kk-industries.svg'),
+    featuredImage: '/images/fire%20extinguisher/CO2-Fire-suppression-system.jpg',
     description:
-      'Ultra KK Industries provides end-to-end industrial safety product availability for structured, high-volume deployments.',
+      'Ultra KK Industries products are deployed for industrial fire and safety equipment supply in large-scale requirements.',
   },
 ];
 
@@ -182,7 +182,6 @@ const buildProductsForCategory = (brand, categorySlug) => {
     image: entry.src,
     category: category.name,
     brand: brand.name,
-    brandLogo: brand.logo,
   }));
 };
 

@@ -16,9 +16,11 @@ const initialFormData = {
 
 const serviceOptions = [
   'Fire Extinguisher Systems',
-  'Fire Alarm and Detection',
-  'Sprinkler Systems',
+  'Fire Alarm & Detection',
+  'Fire Protection Sprinkler Systems',
+  'Fire Hydrant Systems',
   'Emergency Lighting',
+  'Water Modular Tank',
   'Fire Safety Training',
   'Compliance Inspection',
   'Oxygen and SCBA Cylinders',

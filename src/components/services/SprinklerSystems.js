@@ -1,305 +1,137 @@
-import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import AOS from 'aos';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { getPatternBackgroundImage } from '../../utils/patternSystem';
+import React from 'react';
+import ServiceDetailLayout from './ServiceDetailLayout';
 
-const SprinklerSystems = () => {
-  React.useEffect(() => {
-    if (AOS && typeof AOS.refresh === 'function') {
-      AOS.refresh();
-    }
-  }, []);
+const sections = [
+  {
+    id: 'wet-pipe',
+    title: 'Wet Pipe Systems',
+    images: [
+      '/images/sprinkler%20system/Fire_sprinkler_roof_mount_side_view.jpg',
+      '/images/sprinkler%20system/sprinkler-58e2afea5f9b58ef7eb86178.jpg',
+    ],
+    paragraphs: [
+      'Wet pipe sprinkler systems operate with constant water-filled pipes, which allows immediate discharge when a sprinkler head activates. Activation occurs through heat-sensitive glass bulb or fusible link operation, opening only at affected points and controlling fire growth in its earliest stage.',
+      'B. D. Enterprises recommends wet pipe systems for frost-free environments where fast response, design simplicity, and operational reliability are priorities. These systems are cost-effective, comparatively simple to maintain, and highly dependable for industrial and commercial occupancy fire protection.',
+    ],
+    highlights: [
+      'Constant water-filled network for instant discharge',
+      'Heat-triggered activation through bulb or fusible mechanism',
+      'Reliable and cost-effective for routine operations',
+      'Lower mechanical complexity versus specialized systems',
+    ],
+    applications: [
+      'Commercial offices and business occupancies',
+      'Industrial process and manufacturing floors',
+      'Retail, logistics, and distribution buildings',
+      'Institutional and utility support blocks',
+    ],
+    compliance: [
+      'Hydraulic design and density planning for code alignment',
+      'Flow and pressure verification during commissioning',
+      'Inspection schedules with valve and alarm checks',
+      'Documentation support for regulatory audits',
+    ],
+  },
+  {
+    id: 'dry-pipe',
+    title: 'Dry Pipe Systems',
+    images: [
+      '/images/sprinkler%20system/facilities-management-pipes-29818525.webp',
+      '/images/sprinkler%20system/pWEODWN6M3U8LIYnSavtsmhevCHQDT-LNek5wwXMN1d0qHghjg-R-WV8eu7xbKN2H4uWBQ809VC9HiVsKRGeSmgyuKKfR1x7ZSl87Tz7z4k%20(1).jpg',
+    ],
+    paragraphs: [
+      'Dry pipe systems keep branch lines filled with pressurized air or nitrogen until sprinkler operation occurs. Once a head opens, pressure drops and the dry valve releases water into the piping network, resulting in a controlled delayed discharge suitable for freezing-prone environments.',
+      'B. D. Enterprises deploys dry pipe systems where ambient conditions can freeze standing water in wet networks. Warehouses, loading docks, and cold storage facilities benefit from this configuration because it protects infrastructure from freeze damage while maintaining fire suppression readiness.',
+    ],
+    highlights: [
+      'Air-filled piping for freeze protection',
+      'Controlled delayed discharge through dry valve operation',
+      'Suitable for low-temperature and exposed zones',
+      'Specialized valve and compressor supervision requirements',
+    ],
+    applications: [
+      'Cold storage and freezer facilities',
+      'Unheated industrial and utility spaces',
+      'Loading dock canopies and exposed service areas',
+      'Climate-sensitive warehousing operations',
+    ],
+    compliance: [
+      'Dry valve performance testing and pressure monitoring',
+      'Periodic trip tests and response time validation',
+      'Compressor and air supply inspection logs',
+      'Maintenance evidence for compliance review',
+    ],
+  },
+  {
+    id: 'deluge',
+    title: 'Deluge Systems',
+    images: [
+      '/images/sprinkler%20system/high%20hazard%20sprinkler%20systems.jpg',
+      '/images/sprinkler%20system/Fire_sprinkler_roof_mount_side_view.jpg',
+    ],
+    paragraphs: [
+      'Deluge systems use open sprinkler heads and release water only after a detection system commands the deluge valve. When activated, water discharges simultaneously through all heads in the protected zone, rapidly flooding high-hazard areas where fire spread potential is severe.',
+      'B. D. Enterprises engineers deluge solutions for critical risk facilities such as chemical plants, power plants, and specialized process units. The design integrates detection logic, valve release controls, and dedicated water supply capacity to deliver high-intensity suppression where conventional systems may be insufficient.',
+    ],
+    highlights: [
+      'Open-head configuration for full-area discharge',
+      'Detection-triggered release for controlled operation',
+      'Simultaneous water delivery in high-hazard zones',
+      'Suitable for facilities with rapid fire escalation risk',
+    ],
+    applications: [
+      'Chemical and petrochemical process installations',
+      'Power generation and high-energy utility zones',
+      'Fuel handling and hazardous material sections',
+      'Critical risk process clusters and equipment bays',
+    ],
+    compliance: [
+      'Integrated detection and valve logic verification',
+      'Discharge test protocols for acceptance and audits',
+      'High-hazard protection records and maintenance logs',
+      'System readiness evidence for regulatory inspections',
+    ],
+  },
+];
 
-  // Real images from /public/images/sprinkler system/
-  const sprinklerImages = [
-    '/images/sprinkler system/facilities-management-pipes-29818525.webp',
-    '/images/sprinkler system/Fire_sprinkler_roof_mount_side_view.jpg',
-    '/images/sprinkler system/high hazard sprinkler systems.jpg',
-    '/images/sprinkler system/sprinkler-58e2afea5f9b58ef7eb86178.jpg',
-  ];
+const standards = [
+  {
+    title: 'NFPA 13',
+    description: 'Sprinkler system design and installation guidance for occupancy hazard classification and suppression density.',
+  },
+  {
+    title: 'NFPA 25',
+    description: 'Inspection, testing, and maintenance framework to sustain operational sprinkler reliability.',
+  },
+  {
+    title: 'Project Fire Authority Norms',
+    description: 'Local authority approvals and test documentation requirements for commissioning and operation.',
+  },
+];
 
-  const services = [
-    {
-      id: 'wet-sprinkler',
-      imageIndex: 0,
-      name: 'Wet Sprinkler Systems',
-      summary: 'Continuous water-filled pipes with pendant and upright heads for immediate response and maximum suppression effectiveness.',
-      useCases: [
-        'Heated buildings and indoor facilities',
-        'Office buildings and commercial spaces',
-        'Retail centers and warehouses',
-        'Manufacturing and industrial facilities'
-      ],
-      protection: 'Water immediately discharges when any head detects heat, providing the fastest possible response to active fires.',
-      guidelines: 'Annual flow testing required; Quarterly visual inspections; Antifreeze inspection in cold storage areas',
-      bdValue: 'Proven highest suppression effectiveness, simplest system design, best insurance rates, and lowest maintenance requirements.'
-    },
-    {
-      id: 'dry-pipe',
-      imageIndex: 1,
-      name: 'Dry Pipe & Deluge Systems',
-      summary: 'Pressurized air-filled systems for cold environments and open-head deluge systems for high-hazard applications.',
-      useCases: [
-        'Unheated buildings and freezer areas',
-        'Cold storage facilities and outdoor covered areas',
-        'High-hazard industrial processes',
-        'Flammable material storage rooms'
-      ],
-      protection: 'Dry systems prevent water from freezing; Deluge systems flood entire areas with water simultaneously for extreme fire scenarios.',
-      guidelines: 'Monthly pressure monitoring; Quarterly dry pipe valve testing; Semi-annual commissioning inspections',
-      bdValue: 'Freeze-protection for cold climates, comprehensive flooding for high-risk areas, and specialized valve engineering.'
-    },
-    {
-      id: 'fire-pump-hydrant',
-      imageIndex: 2,
-      name: 'Fire Pump & Hydrant Systems',
-      summary: 'Complete water supply systems with electric and diesel backup pumps, pressure maintenance, and reliable hydrant access points.',
-      useCases: [
-        'Large facilities with high water demand',
-        'Areas with inadequate municipal water supply',
-        'Multi-building campuses requiring distributed access',
-        'High-rise buildings with pressure boosting needs'
-      ],
-      protection: 'Maintains consistent system pressure 24/7 and provides immediate water access for firefighting operations via hydrants.',
-      guidelines: 'Pump testing quarterly; Jockey pump maintenance biannually; Hydrant flow testing every 3 years',
-      bdValue: 'Redundant electric and diesel pumps with automatic switchover, pressure-sensitive activation, and comprehensive system monitoring.'
-    }
-  ];
+const capabilities = [
+  'Wet pipe, dry pipe, and deluge system engineering',
+  'Hydraulic calculations and material specification planning',
+  'Installation and commissioning by trained field teams',
+  'Inspection and maintenance service schedules',
+  'Compliance documentation and audit readiness support',
+  'Integration planning with hydrant and fire pump infrastructure',
+];
 
-  const standards = [
-    { title: 'NFPA 13', description: 'Installation of sprinkler systems with proper spacing, support, and commissioning requirements' },
-    { title: 'NFPA 20', description: 'Fire pump installation, testing, and maintenance standards for reliability' },
-    { title: 'FM Approval', description: 'Factory Mutual approval for enhanced insurance rating and loss prevention' }
-  ];
-
-  const benefits = [
-    'NFPA 13/20-certified engineers with hydraulic design expertise',
-    'Wet, dry, and deluge systems for all facility types',
-    'Expert fire pump selection and installation with redundancy',
-    'Complete hydrant system design and placement',
-    'Annual flow testing and certification documentation',
-    '24/7 emergency service and rapid response support'
-  ];
-
-  const swiperRef = useRef(null);
-  const [isAutoplay, setIsAutoplay] = useState(true);
-
-  return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-[#111111] via-[#1C1C1C] to-[#111111] min-h-screen">
-      {/* Animated Background - No SVG Icons */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-[#D62828] opacity-8 dark:opacity-3 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-20">
-        {/* Back Link */}
-        <Link to="/services" className="inline-flex items-center gap-2 text-white/80 hover:text-accent transition-colors mb-8 font-semibold text-sm md:text-base group" data-aos="fade-right">
-          <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-          Back to Services
-        </Link>
-
-        {/* Hero Section */}
-        <section className="mb-16 md:mb-24" data-aos="fade-up">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 mb-6">
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-              <span className="text-xs sm:text-sm font-semibold text-white/90">Automatic Suppression Systems</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 text-white glow-text">
-              Sprinkler & Suppression Systems
-            </h1>
-
-            <p className="text-lg md:text-2xl font-bold text-[#FCBF49] max-w-3xl mx-auto mb-4">
-              The Gold Standard in Fire Protection
-            </p>
-
-            <p className="text-base md:text-lg text-white/80 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Automatic sprinkler systems are the most effective method for controlling fires before they spread. We design, install, and maintain high-performance systems for every building type, from warehouses to office parks, minimizing water damage while maximizing life safety and property protection.
-            </p>
-          </div>
-        </section>
-
-        {/* Services Carousel */}
-        <section className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">
-            Our Services
-          </h2>
-          
-          <div 
-            className="relative group"
-            onMouseEnter={() => setIsAutoplay(false)}
-            onMouseLeave={() => setIsAutoplay(true)}
-          >
-            <Swiper
-              ref={swiperRef}
-              modules={[Navigation, Pagination, Autoplay]}
-              spaceBetween={24}
-              slidesPerView={1}
-              autoplay={isAutoplay ? { delay: 4500, disableOnInteraction: false } : false}
-              pagination={{ clickable: true, dynamicBullets: true }}
-              navigation={{
-                prevEl: '.swiper-button-prev',
-                nextEl: '.swiper-button-next',
-              }}
-              breakpoints={{
-                640: { slidesPerView: 2, spaceBetween: 20 },
-                1024: { slidesPerView: 3, spaceBetween: 24 },
-              }}
-              className="!pb-12"
-            >
-              {services.map((service, index) => (
-                <SwiperSlide key={service.id}>
-                  <div
-                    className="group/card relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 flex flex-col h-full"
-                    data-aos="zoom-in"
-                    data-aos-delay={index * 100}
-                  >
-                    {/* Real Image Container - 16:9 aspect ratio */}
-                    <div className="relative w-full overflow-hidden bg-slate-900/50" style={{ aspectRatio: '16/9' }}>
-                      <img
-                        src={sprinklerImages[service.imageIndex]}
-                        alt={service.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-
-                    {/* Content Container */}
-                    <div className="p-5 md:p-6 flex flex-col flex-grow">
-                      <h3 className="text-xl md:text-2xl font-black text-white mb-2 group-hover/card:text-accent transition-colors duration-300">
-                        {service.name}
-                      </h3>
-                      <p className="text-white/80 text-sm md:text-base mb-4 leading-relaxed">
-                        {service.summary}
-                      </p>
-
-                      {/* Use Cases */}
-                      <div className="mb-4 flex-grow">
-                        <h4 className="text-xs font-bold text-accent/90 mb-2 uppercase tracking-wider">Primary Applications</h4>
-                        <ul className="space-y-1">
-                          {service.useCases.slice(0, 2).map((useCase, i) => (
-                            <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-white/70">
-                              <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" /></svg>
-                              <span>{useCase}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Details */}
-                      <div className="space-y-3 border-t border-white/10 pt-4">
-                        <div>
-                          <p className="text-xs font-bold text-accent/80 uppercase tracking-wider mb-1">How It Protects</p>
-                          <p className="text-xs md:text-sm text-white/70 leading-relaxed">{service.protection}</p>
-                        </div>
-                        <div className="bg-accent/10 rounded-lg p-3 border border-accent/20">
-                          <p className="text-xs font-bold text-accent mb-1 uppercase tracking-wider">BD Value</p>
-                          <p className="text-xs md:text-sm text-white/80 leading-relaxed">{service.bdValue}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Hover Glow Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            
-            {/* Navigation Buttons */}
-            <button className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:-translate-x-24 z-20 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 hover:border-accent/50 transition-all duration-300 text-white">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-24 z-20 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 hover:border-accent/50 transition-all duration-300 text-white">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-        </section>
-
-        {/* Standards Section */}
-        <section className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">
-            Compliance & Standards
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {standards.map((standard, index) => (
-              <div
-                key={index}
-                className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 p-6 md:p-8"
-                style={{
-                  backgroundImage: getPatternBackgroundImage('sprinkler-systems', index),
-                  backgroundSize: '200px 200px',
-                  backgroundAttachment: 'fixed',
-                }}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-              >
-                <div className="relative z-10">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
-                    {standard.title}
-                  </h3>
-                  <p className="text-white/70 text-sm md:text-base leading-relaxed">
-                    {standard.description}
-                  </p>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"></div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Why Choose Us */}
-        <section className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">
-            Why Choose B. D. Enterprises
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
-            {benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="flex items-start gap-4 p-4 md:p-6 rounded-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 hover:border-accent/50 transition-all duration-300"
-                data-aos="fade-up"
-                data-aos-delay={index * 50}
-              >
-                <svg className="w-5 h-5 text-accent flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
-                </svg>
-                <span className="text-white/80 text-sm md:text-base leading-relaxed">{benefit}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="mb-8 text-center" data-aos="fade-up">
-          <div className="bg-gradient-to-r from-[#D62828]/25 to-[#F77F00]/20 backdrop-blur-sm border border-white/20 rounded-2xl p-8 md:p-12">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Need Sprinkler System Design?</h2>
-            <p className="text-lg text-white/80 mb-6 max-w-2xl mx-auto">
-              Get expert hydraulic design and installation guidance for optimal fire protection.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center min-h-[48px] px-8 md:px-12 py-3 md:py-4 bg-gradient-to-r from-accent to-orange-500 text-white font-bold rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 uppercase tracking-wider"
-            >
-              Schedule Consultation
-            </Link>
-          </div>
-        </section>
-      </div>
-    </div>
-  );
-};
+const SprinklerSystems = () => (
+  <ServiceDetailLayout
+    pageKey="sprinkler-systems"
+    badge="Automatic Suppression Service"
+    title="Fire Protection Sprinkler Systems"
+    subtitle="Wet Pipe, Dry Pipe, and Deluge Engineering and Lifecycle Support"
+    intro="B. D. Enterprises provides complete sprinkler system services from design and installation to maintenance, inspection, and compliance support. We evaluate hazard profile, environmental conditions, and process risks to deploy the right sprinkler technology and maintain long-term suppression readiness through structured service programs."
+    sections={sections}
+    standards={standards}
+    capabilities={capabilities}
+    ctaTitle="Planning a Sprinkler System Upgrade?"
+    ctaBody="Arrange a detailed site survey for sprinkler type selection, hydraulic planning, installation scope, and long-term maintenance strategy."
+    ctaLabel="Schedule Engineering Visit"
+  />
+);
 
 export default SprinklerSystems;
-

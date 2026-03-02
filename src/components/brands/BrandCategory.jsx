@@ -76,9 +76,6 @@ const BrandCategory = () => {
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/85 to-transparent" />
-                  <div className="absolute left-3 top-3 rounded-md bg-white/95 p-1.5 shadow-md">
-                    <img src={product.brandLogo} alt={`${product.brand} logo`} className="h-6 w-auto object-contain md:h-7" loading="lazy" />
-                  </div>
                   <span className="absolute right-3 top-3 rounded-full bg-[#D62828] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white md:text-[11px]">
                     {product.category}
                   </span>

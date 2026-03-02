@@ -45,9 +45,6 @@ const BrandDetail = () => {
             <span className="mb-4 inline-flex rounded-full border border-[#F77F00]/50 bg-[#F77F00]/15 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#FCBF49] md:text-sm">
               Brand Detail
             </span>
-            <div className="mb-4 inline-flex rounded-xl bg-white/95 p-2 shadow-lg">
-              <img src={brand.logo} alt={`${brand.name} logo`} className="h-10 w-auto object-contain md:h-12" loading="lazy" />
-            </div>
             <h1 className="mb-3 text-4xl font-black tracking-tight text-[#F8F9FA] md:text-5xl">{brand.name}</h1>
             <p className="max-w-4xl text-sm leading-relaxed text-[#E9ECEF]/85 md:text-lg">{brand.description}</p>
           </div>
@@ -57,7 +54,7 @@ const BrandDetail = () => {
           <h2 className="mb-6 text-2xl font-black text-[#F8F9FA] md:mb-8 md:text-3xl">Product Categories</h2>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 xl:grid-cols-4">
             {brandCategories.map((category, index) => {
-              const previewImage = productData[brand.slug]?.[category.slug]?.[0]?.image;
+              const previewImage = productData[brand.slug]?.[category.slug]?.[0]?.image || brand.featuredImage;
               return (
                 <motion.article
                   key={category.slug}
@@ -76,9 +73,6 @@ const BrandDetail = () => {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/80 to-transparent" />
-                      <div className="absolute left-3 top-3 rounded-md bg-white/95 p-1.5 shadow-md">
-                        <img src={brand.logo} alt={`${brand.name} logo`} className="h-6 w-auto object-contain md:h-7" loading="lazy" />
-                      </div>
                     </div>
 
                     <div className="p-3 md:p-4">

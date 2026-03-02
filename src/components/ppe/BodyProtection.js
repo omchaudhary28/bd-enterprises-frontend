@@ -132,7 +132,7 @@ const BodyProtection = () => {
               'Training on correct usage and care',
               'Bulk supply and inventory management',
               'Flame-resistance testing and certification',
-              'Custom branding and company logos available',
+              'Custom garment sizing and deployment-ready labeling support',
             ].map((point, index) => (
               <div key={index} className="flex items-start gap-3">
                 <span className="text-accent text-lg font-bold flex-shrink-0">✓</span>

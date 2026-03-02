@@ -7,7 +7,8 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import Header from './components/Header';
+import { useState } from 'react';
+import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import VisionValues from './components/VisionValues';
 import Footer from './components/Footer';
@@ -23,6 +24,8 @@ import FireSafetyTraining from './components/services/FireSafetyTraining';
 import ComplianceInspection from './components/services/ComplianceInspection';
 import OxygenCylinders from './components/services/OxygenCylinders';
 import Fabrication from './components/services/Fabrication';
+import FireHydrantSystems from './components/services/FireHydrantSystems';
+import WaterModularTank from './components/services/WaterModularTank';
 import HeadProtection from './components/ppe/HeadProtection';
 import EyeFaceProtection from './components/ppe/EyeFaceProtection';
 import HearingProtection from './components/ppe/HearingProtection';
@@ -88,7 +91,8 @@ const AnimatedRoutes = () => {
         <Route path="/services/fire-alarm-detection" element={<RouteTransition><FireAlarmDetection /></RouteTransition>} />
         <Route path="/services/smoke-detection" element={<RouteTransition><FireAlarmDetection /></RouteTransition>} />
         <Route path="/services/sprinkler-systems" element={<RouteTransition><SprinklerSystems /></RouteTransition>} />
-        <Route path="/services/fire-hydrant-systems" element={<RouteTransition><SprinklerSystems /></RouteTransition>} />
+        <Route path="/services/fire-hydrant-systems" element={<RouteTransition><FireHydrantSystems /></RouteTransition>} />
+        <Route path="/services/water-modular-tank" element={<RouteTransition><WaterModularTank /></RouteTransition>} />
         <Route path="/services/emergency-lighting" element={<RouteTransition><EmergencyLighting /></RouteTransition>} />
         <Route path="/services/fire-safety-training" element={<RouteTransition><FireSafetyTraining /></RouteTransition>} />
         <Route path="/services/compliance-inspection" element={<RouteTransition><ComplianceInspection /></RouteTransition>} />
@@ -124,17 +128,21 @@ const AnimatedRoutes = () => {
 };
 
 function App() {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
   return (
     <Router>
       <ScrollToTop />
       <ThemeProvider>
-        <div className="App flex min-h-screen flex-col bg-[#111111] transition-colors duration-300">
+        <div className="App relative min-h-screen bg-[#111111] text-[#F8F9FA] transition-colors duration-300">
           <div className="pattern-bg" aria-hidden="true" />
-          <Header />
-          <main className="relative z-10 flex-grow">
-            <AnimatedRoutes />
-          </main>
-          <Footer />
+          <Sidebar isCollapsed={isSidebarCollapsed} setIsCollapsed={setIsSidebarCollapsed} />
+          <div className={`relative z-10 min-h-screen transition-all duration-300 ${isSidebarCollapsed ? 'md:pl-24' : 'md:pl-72'}`}>
+            <main className="min-h-[calc(100vh-220px)] pt-16 md:pt-0">
+              <AnimatedRoutes />
+            </main>
+            <Footer />
+          </div>
         </div>
       </ThemeProvider>
     </Router>

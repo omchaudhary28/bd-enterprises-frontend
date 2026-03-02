@@ -1,124 +1,137 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import AOS from 'aos';
-import PageHero from '../PageHero';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import ServiceDetailLayout from './ServiceDetailLayout';
 
-const Fabrication = () => {
-  React.useEffect(() => {
-    if (AOS && typeof AOS.refresh === 'function') {
-      AOS.refresh();
-    }
-  }, []);
+const sections = [
+  {
+    id: 'custom-design',
+    title: 'Custom Fabrication Design for Fire and Safety Infrastructure',
+    images: [
+      '/images/complainces%20and%20audits/Industrial-buildings-2.jpg',
+      '/images/complainces%20and%20audits/06c082721669e71c86cda1f8000022c610ef15a2-940x492.webp',
+    ],
+    paragraphs: [
+      'B. D. Enterprises provides custom fabrication services for fire and safety system support structures, protective housings, equipment stands, and utility assemblies. Each fabrication requirement is developed from practical site conditions, operational loads, and access constraints to ensure long-term field usability.',
+      'Our design process includes dimension verification, material suitability checks, and integration planning with installed fire safety systems. This enables clients to deploy fabricated components that improve maintainability, protection, and organized system layout across operational areas.',
+    ],
+    highlights: [
+      'Site-driven design for practical field installation',
+      'Material and dimensional suitability planning',
+      'Integration with fire and safety equipment layouts',
+      'Fabrication aligned to serviceability requirements',
+    ],
+    applications: [
+      'Safety equipment mounting and housing solutions',
+      'Pump room and hydrant accessory supports',
+      'Control panel and utility protection structures',
+      'Industrial areas requiring durable custom assemblies',
+    ],
+    compliance: [
+      'Fabrication drawings and specification records',
+      'Installation traceability for inspection support',
+      'Material documentation for quality verification',
+      'Project closure evidence for audit readiness',
+    ],
+  },
+  {
+    id: 'manufacturing-installation',
+    title: 'Manufacturing Execution and On-Site Installation',
+    images: [
+      '/images/complainces%20and%20audits/0_l7xz_e_0Y31BCplJ.png',
+      '/images/complainces%20and%20audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
+    ],
+    paragraphs: [
+      'Fabrication execution is managed through controlled production workflows followed by supervised site installation. B. D. Enterprises coordinates measurements, fitment checks, and installation sequencing so fabricated components align accurately with existing structures and operational pathways.',
+      'Our team ensures that fabricated assemblies are installed without obstructing emergency access, maintenance movement, or system operation. This reduces rework and supports safer, cleaner infrastructure integration in live industrial environments.',
+    ],
+    highlights: [
+      'Controlled fabrication process with quality checkpoints',
+      'Fitment verification before final installation',
+      'Site installation planning with safety controls',
+      'Integration without disrupting critical operations',
+    ],
+    applications: [
+      'Retrofit upgrades in active operational facilities',
+      'New fire system support structure deployment',
+      'Equipment relocation and layout optimization projects',
+      'Multi-point fabrication and installation contracts',
+    ],
+    compliance: [
+      'Installation quality check records',
+      'Alignment verification for safety access requirements',
+      'Rectification reports for site observations',
+      'Completion documentation for project audits',
+    ],
+  },
+  {
+    id: 'maintenance-service',
+    title: 'Maintenance, Retrofit, and Lifecycle Support',
+    images: [
+      '/images/complainces%20and%20audits/Guide%20to%20WHS%20Inspections-1.webp',
+      '/images/complainces%20and%20audits/Industrial-buildings-2.jpg',
+    ],
+    paragraphs: [
+      'Fabricated infrastructure requires periodic inspection for corrosion, structural wear, and mounting integrity. B. D. Enterprises provides maintenance and retrofit support to restore performance, improve safety, and extend usable service life of installed fabricated components.',
+      'We also support compliance and inspection programs by documenting condition assessments, repair actions, and replacement recommendations. This enables facilities to maintain dependable fabrication performance while meeting internal and statutory safety expectations.',
+    ],
+    highlights: [
+      'Condition assessment and repair planning',
+      'Retrofit upgrades for aging fabricated structures',
+      'Corrosion and integrity management support',
+      'Lifecycle documentation for compliance continuity',
+    ],
+    applications: [
+      'Annual maintenance programs for support structures',
+      'Safety infrastructure modernization initiatives',
+      'Corrective work after compliance audits',
+      'Long-term facility improvement contracts',
+    ],
+    compliance: [
+      'Maintenance logs for fabricated components',
+      'Repair and retrofit records with closure evidence',
+      'Inspection reports for safety audits',
+      'Lifecycle tracking for asset governance',
+    ],
+  },
+];
 
-  const fabricationImages = [
-    '/images/complainces%20and%20audits/Industrial-buildings-2.jpg',
-    '/images/sprinkler%20system/facilities-management-pipes-29818525.webp',
-    '/images/complainces%20and%20audits/0_l7xz_e_0Y31BCplJ.png',
-    '/images/sprinkler%20system/Fire_sprinkler_roof_mount_side_view.jpg',
-    '/images/Hero%20Images/overhead_curve_cleaning.jpg',
-    '/images/complainces%20and%20audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
-  ];
+const standards = [
+  {
+    title: 'Industrial Fabrication Practice',
+    description: 'Field-oriented fabrication standards for structural reliability and safe operational use.',
+  },
+  {
+    title: 'Occupational Safety Requirements',
+    description: 'Safe access, movement, and hazard control integration during fabrication and installation.',
+  },
+  {
+    title: 'Project Quality Assurance Controls',
+    description: 'Documentation, inspection, and closure evidence for fabrication quality governance.',
+  },
+];
 
-  const services = [
-    { id: 'fire-equipment-fabrication', imageIndex: 0, name: 'Fire Extinguisher & Equipment Cabinets', summary: 'Custom fabrication of fire extinguisher cabinets, hose reel cabinets, and mounting brackets for fire safety equipment.', useCases: ['Fire extinguisher cabinets and wall mounts', 'Hose reel cabinets and stands', 'Fire blanket storage cabinets', 'Fire safety equipment brackets and frames'], protection: 'Precision fabrication using quality materials. Welded and finished to meet NFPA and fire safety standards.', bdValue: "One-stop solutions for fire safety equipment fabrication. Custom designs to fit your facility's exact requirements." },
-    { id: 'sprinkler-fabrication', imageIndex: 1, name: 'Sprinkler System Pipe & Supports', summary: 'Fabrication of sprinkler system pipe components, pipe hangers, support structures, and riser assemblies.', useCases: ['Sprinkler pipe fabrication and assembly', 'Pipe hangers and seismic bracing', 'Sprinkler riser and manifold fabrication', 'Fire suppression piping support structures'], protection: 'Engineered and fabricated to NFPA 13 standards. Proper sizing, materials, and installation support included.', bdValue: 'Expert fire sprinkler fabrication integrated with our suppression solutions. Seamless installation and compliance.' },
-    { id: 'fire-safety-enclosures', imageIndex: 4, name: 'Fire Alarm & Safety Enclosures', summary: 'Custom enclosures and mounting systems for fire alarm panels, detection equipment, and emergency systems.', useCases: ['Fire alarm panel enclosures', 'Smoke detector mounting brackets', 'Emergency lighting housings', 'Fire pump and valve cabinets'], protection: 'Quality materials and workmanship. Fabrication meets applicable fire safety codes and NFPA standards.', bdValue: '25+ years of experience in fire safety fabrication. Trusted by enterprises for code-compliant installations.' },
-  ];
+const capabilities = [
+  'Custom fabrication for fire and safety infrastructure',
+  'Design-to-installation execution with fitment validation',
+  'Retrofit and repair support for existing structures',
+  'Maintenance services for lifecycle reliability',
+  'Compliance documentation for inspections and audits',
+  'Technical consulting for durable fabrication planning',
+];
 
-  const benefits = ['Fire safety-specific fabrication only', 'NFPA and code-compliant designs', 'Quality materials and expert workmanship', 'Integrated with fire extinguisher, sprinkler & alarm systems', 'Timely delivery and installation support', 'Competitive pricing for fire safety projects'];
-
-  return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-[#111111] via-[#1C1C1C] to-[#111111] min-h-screen">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-[#D62828] opacity-8 dark:opacity-3 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
-      </div>
-      <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-20">
-        <PageHero
-          badge="Fire Safety Fabrication"
-          title="Fabrication Services"
-          subtitle="Fire Safety Fabrication & Custom Installations"
-          description="B. D. Enterprises offers custom fire safety fabrication services including extinguisher cabinets, sprinkler pipe supports, fire alarm enclosures, and equipment mounting systems. All fabrication is code-compliant and integrates seamlessly with your fire protection systems."
-          backTo="/services"
-        />
-        <section className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">Our Fabrication Capabilities</h2>
-          <div className="relative">
-            <Swiper modules={[Navigation, Pagination, Autoplay]} spaceBetween={24} slidesPerView={1} loop={true} autoplay={{ delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true }} pagination={{ clickable: true, dynamicBullets: true }} navigation={{ prevEl: '.swiper-btn-prev-fab', nextEl: '.swiper-btn-next-fab' }} breakpoints={{ 640: { slidesPerView: 2, spaceBetween: 20 }, 1024: { slidesPerView: 3, spaceBetween: 24 } }} className="!pb-12">
-              {fabricationImages.map((src, index) => (
-                <SwiperSlide key={index}>
-                  <div className="relative rounded-2xl overflow-hidden bg-white/5 border border-white/20 h-64">
-                    <img src={src} alt={`Fabrication ${index + 1}`} className="w-full h-full object-cover" loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <button type="button" className="swiper-btn-prev-fab absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-20 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 text-white transition-colors" aria-label="Previous slide">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-            </button>
-            <button type="button" className="swiper-btn-next-fab absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-20 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-accent/20 text-white transition-colors" aria-label="Next slide">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-            </button>
-          </div>
-        </section>
-        <section className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">Fabrication Services</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-            {services.map((service, index) => (
-              <div key={service.id} className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 flex flex-col" data-aos="fade-up" data-aos-delay={index * 100}>
-                <div className="relative w-full overflow-hidden bg-slate-900/50" style={{ aspectRatio: '16/9' }}>
-                  <img src={fabricationImages[service.imageIndex] || fabricationImages[0]} alt={service.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div className="p-5 md:p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl md:text-2xl font-black text-white mb-2 group-hover:text-accent transition-colors">{service.name}</h3>
-                  <p className="text-white/80 text-sm md:text-base mb-4 leading-relaxed">{service.summary}</p>
-                  <div className="mb-4 flex-grow">
-                    <h4 className="text-xs font-bold text-accent/90 mb-2 uppercase tracking-wider">Applications</h4>
-                    <ul className="space-y-1">{service.useCases.map((uc, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-white/70">
-                        <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" /></svg>
-                        <span>{uc}</span>
-                      </li>
-                    ))}</ul>
-                  </div>
-                  <div className="space-y-3 border-t border-white/10 pt-4">
-                    <p className="text-xs md:text-sm text-white/70 leading-relaxed">{service.protection}</p>
-                    <div className="bg-accent/10 rounded-lg p-3 border border-accent/20"><p className="text-xs font-bold text-accent mb-1 uppercase tracking-wider">BD Value</p><p className="text-xs md:text-sm text-white/80 leading-relaxed">{service.bdValue}</p></div>
-                  </div>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"></div>
-              </div>
-            ))}
-          </div>
-        </section>
-        <section className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">Why Choose Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-start gap-4 p-4 md:p-6 rounded-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 hover:border-accent/50 transition-all" data-aos="fade-up" data-aos-delay={index * 50}>
-                <svg className="w-5 h-5 text-accent flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" /></svg>
-                <span className="text-white/80 text-sm md:text-base leading-relaxed">{benefit}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-        <section className="mb-8 text-center" data-aos="fade-up">
-          <div className="bg-gradient-to-r from-[#D62828]/25 to-[#F77F00]/20 backdrop-blur-sm border border-white/20 rounded-2xl p-8 md:p-12">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Need Fire Safety Fabrication?</h2>
-            <p className="text-lg text-white/80 mb-6 max-w-2xl mx-auto">Discuss your fire safety fabrication requirements with our experts. We provide custom cabinets, sprinkler supports, enclosures, and mounting systems.</p>
-            <Link to="/contact" className="inline-flex items-center justify-center min-h-[48px] px-8 md:px-12 py-3 md:py-4 bg-gradient-to-r from-accent to-orange-500 text-white font-bold rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 uppercase tracking-wider">Get a Quote</Link>
-          </div>
-        </section>
-      </div>
-    </div>
-  );
-};
+const Fabrication = () => (
+  <ServiceDetailLayout
+    pageKey="fabrication"
+    badge="Custom Industrial Support Service"
+    title="Fabrication Services"
+    subtitle="Design, Installation, Retrofit, and Maintenance for Safety Infrastructure"
+    intro="B. D. Enterprises delivers end-to-end fabrication services for fire and safety infrastructure, including custom design, manufacturing, installation, and lifecycle maintenance. Our fabrication solutions are engineered for durability, practical operation, and compliance support in demanding industrial and commercial environments."
+    sections={sections}
+    standards={standards}
+    capabilities={capabilities}
+    ctaTitle="Need Custom Fabrication for Your Safety Infrastructure?"
+    ctaBody="Schedule a site consultation to define fabrication requirements, installation strategy, and lifecycle maintenance scope."
+    ctaLabel="Request Fabrication Consultation"
+  />
+);
 
 export default Fabrication;
-

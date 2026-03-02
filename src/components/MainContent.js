@@ -3,31 +3,32 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import AnimatedSection from './AnimatedSection';
 import HeroCarousel from './HeroCarousel';
+import { brandCatalog, getFirstBrandProductImage } from '../data/productData';
 
 const highlightCards = [
   {
-    title: 'Fire Suppression Engineering',
-    description: 'Design and deployment of suppression systems for industrial and commercial facilities.',
+    title: 'System Installation',
+    description: 'Turnkey fire safety system setup from survey and engineering to commissioning and handover.',
   },
   {
-    title: 'Detection and Alarm Systems',
-    description: 'Addressable alarm panels, detection networks, and emergency notification integration.',
+    title: 'Maintenance Contracts',
+    description: 'Periodic inspection, preventive maintenance, and emergency rectification for critical safety uptime.',
   },
   {
-    title: 'Industrial PPE Supply',
-    description: 'Category-based procurement of certified protective equipment for high-risk work zones.',
+    title: 'Compliance Execution',
+    description: 'Code-aligned documentation, audit preparation, and corrective closeout for statutory readiness.',
   },
   {
-    title: 'Compliance and Audits',
-    description: 'Inspection-ready documentation, verification, and remediation planning support.',
+    title: 'Training and Consulting',
+    description: 'On-site safety training, mock drills, SOP support, and technical consulting for risk reduction.',
   },
 ];
 
 const trustStats = [
   { value: 'Since 2006', label: 'Operational Legacy' },
-  { value: 'ISO 9001:2015', label: 'Quality System' },
-  { value: 'Multi-Sector', label: 'Deployment Expertise' },
+  { value: 'Multi-Sector', label: 'Execution Experience' },
   { value: 'End-to-End', label: 'Project Delivery' },
+  { value: '24x7 Support', label: 'Service Response' },
 ];
 
 const MainContent = () => {
@@ -35,20 +36,64 @@ const MainContent = () => {
     <div className="relative overflow-hidden bg-[#111111]">
       <HeroCarousel />
 
-      <section className="relative overflow-hidden py-14 md:py-20">
+      <section className="relative py-14 md:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(247,127,0,0.16),transparent_34%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_84%,rgba(214,40,40,0.12),transparent_30%)]" />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 md:px-6">
+          <AnimatedSection animation="fade-up" className="mx-auto mb-10 max-w-4xl text-center md:mb-14">
+            <span className="mb-4 inline-flex rounded-full border border-[#F77F00]/50 bg-[#F77F00]/15 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#FCBF49] md:text-sm">
+              Direct Brand Access
+            </span>
+            <h2 className="mb-4 text-3xl font-black tracking-tight text-[#F8F9FA] sm:text-4xl md:text-5xl">
+              Supplier Product Access for Enterprise Procurement
+            </h2>
+            <p className="mx-auto max-w-3xl text-base leading-relaxed text-[#E9ECEF]/85 md:text-lg">
+              Explore product-ready brand collections and move directly to brand category pages for safety footwear, wearables, and fire safety equipment.
+            </p>
+          </AnimatedSection>
+
+          <div className="mb-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 md:mb-20 md:gap-5">
+            {brandCatalog.map((brand, index) => {
+              const image = getFirstBrandProductImage(brand.slug) || brand.featuredImage;
+              return (
+                <motion.article
+                  key={brand.slug}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: index * 0.03, ease: 'easeOut' }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  className="group overflow-hidden rounded-2xl border border-[#E9ECEF]/15 bg-[#1C1C1C]"
+                >
+                  <Link to={`/brands/${brand.slug}`} className="block h-full">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-[#111111]">
+                      <img
+                        src={image}
+                        alt={brand.name}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/85 to-transparent" />
+                    </div>
+                    <div className="p-4">
+                      <h3 className="mb-2 text-base font-bold text-[#F8F9FA]">{brand.name}</h3>
+                      <p className="text-xs leading-relaxed text-[#E9ECEF]/80">{brand.description}</p>
+                    </div>
+                  </Link>
+                </motion.article>
+              );
+            })}
+          </div>
+
           <AnimatedSection animation="fade-up" className="mx-auto mb-12 max-w-4xl text-center md:mb-16">
             <span className="mb-4 inline-flex rounded-full border border-[#F77F00]/50 bg-[#F77F00]/15 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#FCBF49] md:text-sm">
               B. D. Enterprises
             </span>
             <h2 className="mb-4 text-3xl font-black tracking-tight text-[#F8F9FA] sm:text-4xl md:text-5xl">
-              Industrial Fire and Safety Solutions with Precision Execution
+              Industrial Fire and Safety Services with Execution Discipline
             </h2>
             <p className="mx-auto max-w-3xl text-base leading-relaxed text-[#E9ECEF]/85 md:text-lg">
-              We provide structured fire protection systems, PPE supply, and compliance support for industrial operations where reliability is critical.
+              We deliver installation, maintenance, compliance, inspection, training, and consulting services backed by practical field execution.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
@@ -58,10 +103,10 @@ const MainContent = () => {
                 Explore Services
               </Link>
               <Link
-                to="/brands"
+                to="/contact"
                 className="inline-flex min-h-[50px] items-center justify-center rounded-full border border-[#E9ECEF]/30 bg-[#1C1C1C] px-7 py-3 text-sm font-black uppercase tracking-wider text-[#F8F9FA] transition-all duration-300 hover:border-[#F77F00]/60 hover:text-[#FCBF49]"
               >
-                Browse Brands
+                Request Consultation
               </Link>
             </div>
           </AnimatedSection>

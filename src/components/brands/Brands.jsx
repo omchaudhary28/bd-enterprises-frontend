@@ -32,7 +32,7 @@ const Brands = () => {
         <section>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 xl:grid-cols-4">
             {brandCatalog.map((brand, index) => {
-              const previewImage = getFirstBrandProductImage(brand.slug) || brand.logo;
+              const previewImage = getFirstBrandProductImage(brand.slug) || brand.featuredImage;
 
               return (
                 <motion.article
@@ -52,9 +52,6 @@ const Brands = () => {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/80 to-transparent" />
-                      <div className="absolute left-3 top-3 rounded-lg bg-white/95 p-1.5 shadow-md">
-                        <img src={brand.logo} alt={`${brand.name} logo`} className="h-7 w-auto object-contain md:h-8" loading="lazy" />
-                      </div>
                     </div>
 
                     <div className="p-3 md:p-4">

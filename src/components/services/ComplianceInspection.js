@@ -1,253 +1,137 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import AOS from 'aos';
-import { getPatternBackgroundImage } from '../../utils/patternSystem';
+import ServiceDetailLayout from './ServiceDetailLayout';
 
-const ComplianceInspection = () => {
-  React.useEffect(() => {
-    if (AOS && typeof AOS.refresh === 'function') {
-      AOS.refresh();
-    }
-  }, []);
+const sections = [
+  {
+    id: 'inspection-framework',
+    title: 'Technical Inspection Framework and Gap Assessment',
+    images: [
+      '/images/complainces%20and%20audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
+      '/images/complainces%20and%20audits/Guide%20to%20WHS%20Inspections-1.webp',
+    ],
+    paragraphs: [
+      'B. D. Enterprises conducts structured compliance inspections covering fire protection systems, emergency infrastructure, safety records, and operational controls. Our inspection approach identifies technical non-conformities, documentation gaps, and service deficiencies that can affect statutory readiness and emergency performance.',
+      'Every inspection is executed with practical facility context in mind, including system availability, maintenance history, and process risk exposure. This produces actionable findings rather than generic checklists, allowing organizations to prioritize high-impact corrective measures.',
+    ],
+    highlights: [
+      'Comprehensive fire and safety asset inspection',
+      'Operational and documentation gap identification',
+      'Risk-priority classification of observed findings',
+      'Actionable site-specific compliance recommendations',
+    ],
+    applications: [
+      'Pre-audit readiness checks for industrial facilities',
+      'Recurring internal EHS compliance reviews',
+      'Insurance and external audit preparation',
+      'Post-expansion safety compliance verification',
+    ],
+    compliance: [
+      'Inspection reports with evidence-based findings',
+      'Gap registers mapped to corrective actions',
+      'Priority grading for closure sequencing',
+      'Traceable records for internal and external audits',
+    ],
+  },
+  {
+    id: 'corrective-planning',
+    title: 'Corrective Action Planning and Implementation Support',
+    images: [
+      '/images/complainces%20and%20audits/0_l7xz_e_0Y31BCplJ.png',
+      '/images/complainces%20and%20audits/06c082721669e71c86cda1f8000022c610ef15a2-940x492.webp',
+    ],
+    paragraphs: [
+      'After inspection, B. D. Enterprises prepares a closure roadmap that links every finding to technical rectification, ownership assignment, and completion target. This includes system repairs, replacement recommendations, service interventions, and documentation updates required to meet compliance benchmarks.',
+      'Our team supports implementation follow-through by coordinating with client operations, maintenance teams, and third-party service providers. This ensures corrective actions move from report stage to practical execution with measurable closure evidence.',
+    ],
+    highlights: [
+      'Corrective action matrix with timelines and ownership',
+      'Rectification support for system and process gaps',
+      'Prioritized closure for high-risk observations',
+      'Execution tracking with status reporting',
+    ],
+    applications: [
+      'Audit observation closure programs',
+      'Compliance recovery for overdue facilities',
+      'System upgrade planning after risk assessments',
+      'Plant readiness before certification reviews',
+    ],
+    compliance: [
+      'Closure evidence for each corrective action',
+      'Status reporting aligned to inspection findings',
+      'Rectification validation before final sign-off',
+      'Documentation package for re-inspection readiness',
+    ],
+  },
+  {
+    id: 'maintenance-governance',
+    title: 'Maintenance Governance and Ongoing Compliance Monitoring',
+    images: [
+      '/images/complainces%20and%20audits/Industrial-buildings-2.jpg',
+      '/images/complainces%20and%20audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
+    ],
+    paragraphs: [
+      'Compliance stability depends on continuous maintenance governance. B. D. Enterprises supports periodic review cycles, service schedule controls, and document quality checks so facilities do not drift back into non-compliance after initial closure.',
+      'We establish monitoring routines that integrate inspection outcomes with maintenance plans, training schedules, and service documentation. This approach builds long-term compliance discipline and gives management clear visibility into fire and safety governance performance.',
+    ],
+    highlights: [
+      'Periodic monitoring and re-verification inspections',
+      'Maintenance schedule review for compliance continuity',
+      'Documentation governance and record quality checks',
+      'Management reporting for safety decision-making',
+    ],
+    applications: [
+      'Long-term compliance maintenance programs',
+      'Enterprise-level multi-site governance',
+      'Recurring statutory inspection readiness',
+      'Operational safety performance monitoring',
+    ],
+    compliance: [
+      'Ongoing audit trail for maintenance and inspections',
+      'Record completeness for statutory reviews',
+      'Periodic closure validation and exception tracking',
+      'Integrated compliance dashboard inputs',
+    ],
+  },
+];
 
-  const services = [
-    {
-      image: '/images/services/compliance-inspection.svg',
-      name: 'Comprehensive Fire Code Compliance Audit',
-      summary: 'Full facility assessment against NFPA standards, IBC requirements, and local fire codes with detailed findings and remediation prioritization.',
-      useCases: [
-        'Annual compliance verification',
-        'Pre-insurance audit preparation',
-        'Pre-inspection facility readiness check',
-        'Major facility renovation/expansion projects'
-      ],
-      protection: 'Identifies compliance gaps before regulatory inspectors do, reducing fines, liability, and operational disruptions.',
-      guidelines: 'Annual audits recommended; After major facility changes; Before insurance policy renewals',
-      bdValue: 'Expert engineer assessment, clear photographic documentation, prioritized remediation list, and insurance-ready reporting.'
-    },
-    {
-      image: '/images/services/system-inspection.svg',
-      name: 'System-Specific Inspection & Certification',
-      summary: 'Individual testing and certification of fire extinguishers, alarms, sprinklers, hydrants, and emergency lighting with detailed system reports.',
-      useCases: [
-        'Annual fire extinguisher certification',
-        'Fire alarm and detection system testing',
-        'Sprinkler and suppression system flow tests',
-        'Hydrant system operability verification'
-      ],
-      protection: 'Ensures each protective system is fully functional and ready to perform during actual emergencies.',
-      guidelines: 'Annual testing for all systems; Quarterly checks for high-risk components; After any system activation',
-      bdValue: 'NFPA-certified technicians, detailed component testing, certification documentation for regulatory compliance.'
-    },
-    {
-      image: '/images/services/remediation-planning.svg',
-      name: 'Code Remediation & Documentation',
-      summary: 'Strategic planning and implementation of code corrections with project management, regulatory coordination, and compliance documentation.',
-      useCases: [
-        'Remediation project planning and scheduling',
-        'Contractor coordination and oversight',
-        'Regulatory communication and approvals',
-        'Compliance documentation for insurance'
-      ],
-      protection: 'Transforms audit findings into actionable improvements with professional oversight and regulatory coordination.',
-      guidelines: 'Typically 30-90 days depending on scope; Quarterly progress check-ins; Final verification upon completion',
-      bdValue: 'Expert project management, vendor coordination, regulatory expertise, and final compliance verification.'
-    }
-  ];
+const standards = [
+  {
+    title: 'National Building Code Fire Provisions',
+    description: 'Reference framework for fire and life safety infrastructure compliance in occupied buildings.',
+  },
+  {
+    title: 'Factory and Occupational Safety Requirements',
+    description: 'Workplace safety obligations for hazard control, emergency preparedness, and recordkeeping.',
+  },
+  {
+    title: 'Client EHS Governance Policies',
+    description: 'Internal safety standards translated into measurable inspection and closure outcomes.',
+  },
+];
 
-  const standards = [
-    { title: 'NFPA 1', description: 'Fire Code - primary standard for fire protection and prevention requirements' },
-    { title: 'IBC Standards', description: 'International Building Code requirements for fire safety and egress' },
-    { title: 'Local Codes', description: 'Jurisdiction-specific fire marshal regulations and adopted standards' }
-  ];
+const capabilities = [
+  'Technical compliance inspections and risk-based gap analysis',
+  'Corrective action planning with closure accountability',
+  'Support for fire safety installation and maintenance rectification',
+  'Inspection documentation and audit evidence preparation',
+  'Periodic monitoring for sustained compliance performance',
+  'Consulting support for enterprise safety governance',
+];
 
-  const benefits = [
-    'PE-licensed fire protection engineers conducting comprehensive audits',
-    'Multi-system expertise (extinguishers, alarms, sprinklers, lighting)',
-    'Detailed photographic documentation and priority remediation lists',
-    'Regulatory coordination and code interpretation guidance',
-    'Project management for code remediation implementation',
-    'Complete audit documentation ready for insurance and fire marshal approval'
-  ];
-
-  return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-[#111111] via-[#1C1C1C] to-[#111111] min-h-screen">
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -left-20 w-96 h-96 bg-accent opacity-10 dark:opacity-5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-[#D62828] opacity-8 dark:opacity-3 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-20">
-        {/* Back Link */}
-        <Link to="/services" className="inline-flex items-center gap-2 text-white/80 hover:text-accent transition-colors mb-8 font-semibold text-sm md:text-base group" data-aos="fade-right">
-          <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-          Back to Services
-        </Link>
-
-        {/* Hero Section */}
-        <section className="mb-16 md:mb-24" data-aos="fade-up">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 mb-6">
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-              <span className="text-xs sm:text-sm font-semibold text-white/90">Compliance & Inspections</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 text-white glow-text">
-              Fire Code Compliance & Inspections
-            </h1>
-
-            <p className="text-lg md:text-2xl font-bold text-[#FCBF49] max-w-3xl mx-auto mb-4">
-              Regulatory Expertise You Can Trust
-            </p>
-
-            <p className="text-base md:text-lg text-white/80 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Navigating fire code requirements can be complex. Our PE-licensed engineers conduct thorough compliance audits, ensuring your facility meets or exceeds all NFPA standards, IBC requirements, and local fire marshal regulations. We provide detailed reports, actionable remediation plans, and full documentation to keep your facility compliant and reduce liability.
-            </p>
-          </div>
-        </section>
-
-        {/* Services Grid */}
-        <section className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">
-            Our Services
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 cursor-pointer flex flex-col h-full"
-                data-aos="zoom-in"
-                data-aos-delay={index * 100}
-              >
-                {/* Image Container */}
-                <div className="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-[#D62828]/20 to-[#F77F00]/20">
-                  <img
-                    src={service.image}
-                    alt={service.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/services/compliance-inspection.svg'; }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-
-                {/* Content Container */}
-                <div className="p-5 md:p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl md:text-2xl font-black text-white mb-2 group-hover:text-accent transition-colors duration-300">
-                    {service.name}
-                  </h3>
-                  <p className="text-white/80 text-sm md:text-base mb-4 leading-relaxed">
-                    {service.summary}
-                  </p>
-
-                  {/* Use Cases */}
-                  <div className="mb-4 flex-grow">
-                    <h4 className="text-xs font-bold text-accent/90 mb-2 uppercase tracking-wider">Primary Applications</h4>
-                    <ul className="space-y-1">
-                      {service.useCases.slice(0, 2).map((useCase, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-white/70">
-                          <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" /></svg>
-                          <span>{useCase}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Details */}
-                  <div className="space-y-3 border-t border-white/10 pt-4">
-                    <div>
-                      <p className="text-xs font-bold text-accent/80 uppercase tracking-wider mb-1">How It Protects</p>
-                      <p className="text-xs md:text-sm text-white/70 leading-relaxed">{service.protection}</p>
-                    </div>
-                    <div className="bg-accent/10 rounded-lg p-3 border border-accent/20">
-                      <p className="text-xs font-bold text-accent mb-1 uppercase tracking-wider">BD Value</p>
-                      <p className="text-xs md:text-sm text-white/80 leading-relaxed">{service.bdValue}</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Standards Section */}
-        <section className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">
-            Compliance & Standards
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {standards.map((standard, index) => (
-              <div
-                key={index}
-                className="group relative bg-gradient-to-br from-white/10 to-white/5 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-300 hover:shadow-2xl hover:border-accent/50 p-6 md:p-8"
-                style={{
-                  backgroundImage: getPatternBackgroundImage('compliance-inspection', index),
-                  backgroundSize: '200px 200px',
-                  backgroundAttachment: 'fixed',
-                }}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-              >
-                <div className="relative z-10">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
-                    {standard.title}
-                  </h3>
-                  <p className="text-white/70 text-sm md:text-base leading-relaxed">
-                    {standard.description}
-                  </p>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"></div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Why Choose Us */}
-        <section className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 md:mb-16 glow-text" data-aos="fade-down">
-            Why Choose B. D. Enterprises
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
-            {benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="flex items-start gap-4 p-4 md:p-6 rounded-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 hover:border-accent/50 transition-all duration-300"
-                data-aos="fade-up"
-                data-aos-delay={index * 50}
-              >
-                <svg className="w-5 h-5 text-accent flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
-                </svg>
-                <span className="text-white/80 text-sm md:text-base leading-relaxed">{benefit}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="mb-8 text-center" data-aos="fade-up">
-          <div className="bg-gradient-to-r from-[#D62828]/25 to-[#F77F00]/20 backdrop-blur-sm border border-white/20 rounded-2xl p-8 md:p-12">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Stay Fire Code Compliant</h2>
-            <p className="text-lg text-white/80 mb-6 max-w-2xl mx-auto">
-              Get a comprehensive compliance audit from expert PE-licensed engineers.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center min-h-[48px] px-8 md:px-12 py-3 md:py-4 bg-gradient-to-r from-accent to-orange-500 text-white font-bold rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 uppercase tracking-wider"
-            >
-              Schedule Consultation
-            </Link>
-          </div>
-        </section>
-      </div>
-    </div>
-  );
-};
+const ComplianceInspection = () => (
+  <ServiceDetailLayout
+    pageKey="compliance-inspection"
+    badge="Inspection and Governance Service"
+    title="Compliance Inspection"
+    subtitle="Gap Analysis, Corrective Closure, and Ongoing Compliance Support"
+    intro="B. D. Enterprises provides comprehensive compliance inspection services that combine technical audits, corrective planning, and continuous governance support. We help organizations move from checklist-driven review to measurable closure, reliable maintenance discipline, and long-term fire and safety compliance readiness."
+    sections={sections}
+    standards={standards}
+    capabilities={capabilities}
+    ctaTitle="Need Compliance Gap Closure Support?"
+    ctaBody="Book a technical compliance inspection and receive a practical rectification roadmap with priority actions and closure tracking."
+    ctaLabel="Start Compliance Review"
+  />
+);
 
 export default ComplianceInspection;
-
-

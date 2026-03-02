@@ -6,18 +6,20 @@ const Footer = () => {
 
   const serviceLinks = [
     { name: 'Fire Extinguishers', path: '/services/fire-extinguishers' },
-    { name: 'Fire Alarm Detection', path: '/services/fire-alarm-detection' },
+    { name: 'Fire Alarm & Detection', path: '/services/fire-alarm-detection' },
     { name: 'Sprinkler Systems', path: '/services/sprinkler-systems' },
+    { name: 'Fire Hydrant Systems', path: '/services/fire-hydrant-systems' },
     { name: 'Emergency Lighting', path: '/services/emergency-lighting' },
+    { name: 'Water Modular Tank', path: '/services/water-modular-tank' },
     { name: 'Compliance Inspection', path: '/services/compliance-inspection' },
-    { name: 'Oxygen and SCBA Cylinders', path: '/services/oxygen-cylinders' },
+    { name: 'Oxygen and SCBA Cylinders', path: '/services/oxygen-cylinders' }
   ];
 
   const navigationLinks = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Brands', path: '/brands' },
+    { name: 'PPE', path: '/ppe' },
     { name: 'Contact', path: '/contact' },
   ];
 
