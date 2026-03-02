@@ -12,7 +12,7 @@ const SERVICES = [
   {
     title: 'Fire Alarm & Detection',
     description: 'Design, install and maintain alarm systems with fastest detection coverage.',
-    link: '/services/fire-alarms',
+    link: '/services/fire-alarm-detection',
     slug: 'fire-alarm-detection',
   },
   {
@@ -45,7 +45,7 @@ const SERVICES = [
 const getImageForService = (index) => {
   const imageMaps = [
     '/images/fire extinguisher/automated-Fire-extinguisher.webp',
-    '/images/Fire Alarm Systems/blobid1743092385467.webp',
+    '/images/Fire Alarm Systems/types-of-fire-alarm.png',
     '/images/sprinkler system/Fire_sprinkler_roof_mount_side_view.jpg',
     '/images/emergency lights/76yvHsMjxoXFU4WTt3JUP94YBWVObAz48gti09nzlKzkXU0iZueHb4nEzuD-Q8MeywZXladWrqsgsRcsVSs2v3F2K7aqdqMe1cmlK-fDSrw.jpg',
     '/images/fire safety training/feuerloschubung_im_betrieb-cws_fire_safety.jpg',
@@ -193,4 +193,5 @@ const ServicesCarousel = () => {
 };
 
 export default ServicesCarousel;
+
 

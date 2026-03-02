@@ -2,70 +2,70 @@ const brandCatalog = [
   {
     slug: 'fuel',
     name: 'Fuel',
-    featuredImage: '/images/ppes/61eTR14wUVL._AC_UF894,1000_QL80_.jpg',
+    featuredImage: '/images/fuel/safety-shoes/product-1.jpg',
     description:
       'Fuel product lines are deployed by B. D. Enterprises for heavy-duty industrial footwear and field safety needs.',
   },
   {
     slug: 'polo',
     name: 'Polo',
-    featuredImage: '/images/ppes/PN-521-Chrome-Orange.jpg',
+    featuredImage: '/images/polo/safety-shoes/product-1.jpg',
     description:
       'Polo products support daily protective wear and reliable footwear programs across maintenance and plant operations.',
   },
   {
     slug: 'utex',
     name: 'Utex',
-    featuredImage: '/images/ppes/Head-Protection.webp',
+    featuredImage: '/images/utex/safety-helmet/product-1.jpg',
     description:
       'Utex equipment is supplied by B. D. Enterprises for helmet and industrial protection requirements in active risk zones.',
   },
   {
     slug: 'bata',
     name: 'Bata',
-    featuredImage: '/images/ppes/61+kLABgpCL._AC_UF894,1000_QL80_.jpg',
+    featuredImage: '/images/bata/safety-shoes/product-1.jpg',
     description:
       'Bata industrial footwear is delivered for certified impact, puncture, and slip-resistant protection on production floors.',
   },
   {
     slug: 'delta-plus',
     name: 'Delta Plus',
-    featuredImage: '/images/ppes/Foot-Protection-1536x922.webp',
+    featuredImage: '/images/delta-plus/safety-shoes/product-1.jpg',
     description:
       'Delta Plus product supply is integrated into B. D. Enterprises service contracts for footwear and PPE standardization.',
   },
   {
     slug: 'balaji-industries',
     name: 'Balaji Industries',
-    featuredImage: '/images/fire%20extinguisher/co2-flooding-system-1000x1000.jpg',
+    featuredImage: '/images/balaji-industries/fire-safety/product-1.jpg',
     description:
       'Balaji Industries products are used for scalable industrial safety deployments across multi-area facilities.',
   },
   {
     slug: 'apex-clothing',
     name: 'Apex Clothing',
-    featuredImage: '/images/ppes/Skin-and-Body-Protection_2022.avif',
+    featuredImage: '/images/apex-clothing/safety-wear/product-1.jpg',
     description:
       'Apex Clothing supply supports uniform safety wear programs and high-visibility apparel across industrial teams.',
   },
   {
     slug: 'xo-footwear',
     name: 'XO Footwear',
-    featuredImage: '/images/ppes/istockphoto-947254500-1024x1024.jpg',
+    featuredImage: '/images/xo-footwear/safety-shoes/product-1.jpg',
     description:
       'XO Footwear products are sourced for long-wear industrial footwear requirements and high-mobility site operations.',
   },
   {
     slug: 'tornado',
     name: 'Tornado',
-    featuredImage: '/images/fire%20extinguisher/automated-Fire-extinguisher.webp',
+    featuredImage: '/images/tornado/fire-safety/product-1.jpg',
     description:
       'Tornado product lines are used in B. D. Enterprises fire safety equipment supply and on-site system support.',
   },
   {
     slug: 'ultra-kk-industries',
     name: 'Ultra KK Industries',
-    featuredImage: '/images/fire%20extinguisher/CO2-Fire-suppression-system.jpg',
+    featuredImage: '/images/ultra-kk-industries/fire-safety/product-1.jpg',
     description:
       'Ultra KK Industries products are deployed for industrial fire and safety equipment supply in large-scale requirements.',
   },
@@ -108,45 +108,7 @@ const categoryMetadata = {
 
 const allCategorySlugs = Object.keys(categoryMetadata);
 
-const strictBrandCategoryMap = {
-  fuel: ['safety-shoes'],
-  'delta-plus': ['safety-shoes'],
-  bata: ['safety-shoes'],
-  'ultra-kk-industries': ['fire-safety', 'safety-helmet', 'safety-gloves', 'safety-goggles', 'safety-mask'],
-  'balaji-industries': allCategorySlugs,
-  'apex-clothing': allCategorySlugs,
-  'xo-footwear': allCategorySlugs,
-  tornado: allCategorySlugs,
-};
-
-const assetContext = require.context('../assets/products', true, /\.(png|jpe?g|webp|avif|svg)$/i);
-
-const assetMap = assetContext.keys().reduce((accumulator, key) => {
-  const matches = key.match(/^\.\/([^/]+)\/([^/]+)\/([^/]+)$/);
-
-  if (!matches) {
-    return accumulator;
-  }
-
-  const [, brandSlug, categorySlug, fileName] = matches;
-
-  if (!accumulator[brandSlug]) {
-    accumulator[brandSlug] = {};
-  }
-
-  if (!accumulator[brandSlug][categorySlug]) {
-    accumulator[brandSlug][categorySlug] = [];
-  }
-
-  accumulator[brandSlug][categorySlug].push({
-    src: assetContext(key),
-    fileName,
-  });
-
-  return accumulator;
-}, {});
-
-const getAllowedCategorySlugsForBrand = (brandSlug) => strictBrandCategoryMap[brandSlug] || allCategorySlugs;
+const getAllowedCategorySlugsForBrand = () => allCategorySlugs;
 
 const getCategoryMeta = (categorySlug) => {
   const fallbackName = String(categorySlug)
@@ -163,26 +125,16 @@ const getCategoryMeta = (categorySlug) => {
 
 const buildProductsForCategory = (brand, categorySlug) => {
   const category = getCategoryMeta(categorySlug);
-  const imageEntries = assetMap?.[brand.slug]?.[categorySlug] || [];
-  const sortedEntries = [...imageEntries].sort((left, right) => {
-    const leftMatch = String(left.fileName).match(/product-(\d+)/i);
-    const rightMatch = String(right.fileName).match(/product-(\d+)/i);
-
-    if (leftMatch && rightMatch) {
-      return Number(leftMatch[1]) - Number(rightMatch[1]);
-    }
-
-    return String(left.fileName).localeCompare(String(right.fileName));
-  });
-
-  return sortedEntries.map((entry, index) => ({
-    id: `${brand.slug}-${category.slug}-${index + 1}`,
-    title: `${brand.name} ${category.name}`,
-    description: `${category.shortDescription} Supplied by ${brand.name} for industrial and commercial safety operations.`,
-    image: entry.src,
-    category: category.name,
-    brand: brand.name,
-  }));
+  return [
+    {
+      id: `${brand.slug}-${category.slug}-1`,
+      title: `${brand.name} ${category.name}`,
+      description: `${category.shortDescription} Supplied by ${brand.name} for industrial and commercial safety operations.`,
+      image: `/images/${brand.slug}/${category.slug}/product-1.jpg`,
+      category: category.name,
+      brand: brand.name,
+    },
+  ];
 };
 
 const productData = brandCatalog.reduce((brandAccumulator, brand) => {

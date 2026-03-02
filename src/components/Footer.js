@@ -17,6 +17,7 @@ const Footer = () => {
 
   const navigationLinks = [
     { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Brands', path: '/brands' },
     { name: 'PPE', path: '/ppe' },

@@ -28,6 +28,8 @@ const serviceOptions = [
   'PPE and Safety Equipment',
 ];
 
+const API_BASE_URL = (process.env.REACT_APP_API_URL || API_URL || '/api').replace(/\/+$/, '');
+
 const Contact = () => {
   const prefersReduced = useReducedMotion();
   const [formData, setFormData] = useState(initialFormData);
@@ -47,14 +49,24 @@ const Contact = () => {
     const controller = new AbortController();
 
     const fetchCompanyInfo = async () => {
+      const endpoints = ['/company-info', '/company_info.php'];
       try {
-        const response = await fetch(`${API_URL}/company-info`, {
-          method: 'GET',
-          headers: { Accept: 'application/json' },
-          signal: controller.signal,
-        });
+        let response = null;
 
-        if (!response.ok) {
+        for (const endpoint of endpoints) {
+          const candidate = await fetch(`${API_BASE_URL}${endpoint}`, {
+            method: 'GET',
+            headers: { Accept: 'application/json' },
+            signal: controller.signal,
+          });
+
+          if (candidate.ok) {
+            response = candidate;
+            break;
+          }
+        }
+
+        if (!response) {
           return;
         }
 
@@ -114,9 +126,42 @@ const Contact = () => {
     [companyInfo]
   );
 
-  const phoneNumber = useMemo(() => resolveValue(['phone', 'tel'], '9898046269'), [resolveValue]);
-  const emailAddress = useMemo(() => resolveValue(['email'], 'bdenterprises99@yahoo.co.in'), [resolveValue]);
+  const phoneNumber = useMemo(() => resolveValue(['phone', 'tel'], '+919898046269'), [resolveValue]);
+  const emailAddress = useMemo(() => resolveValue(['email'], 'info@bdenterprises.in'), [resolveValue]);
   const whatsappNumber = useMemo(() => resolveValue(['whatsapp'], phoneNumber), [resolveValue, phoneNumber]);
+  const normalizedPhone = useMemo(() => {
+    const digits = String(phoneNumber || '').replace(/\D/g, '');
+    if (!digits) {
+      return '+919898046269';
+    }
+    if (digits.startsWith('91') && digits.length >= 12) {
+      return `+${digits}`;
+    }
+    if (digits.length === 10) {
+      return `+91${digits}`;
+    }
+    return `+${digits}`;
+  }, [phoneNumber]);
+  const normalizedWhatsApp = useMemo(() => {
+    const digits = String(whatsappNumber || '').replace(/\D/g, '');
+    if (!digits) {
+      return '919898046269';
+    }
+    if (digits.startsWith('91')) {
+      return digits;
+    }
+    if (digits.length === 10) {
+      return `91${digits}`;
+    }
+    return digits;
+  }, [whatsappNumber]);
+  const normalizedEmail = useMemo(() => {
+    const email = String(emailAddress || '').trim();
+    if (!email.includes('@')) {
+      return 'info@bdenterprises.in';
+    }
+    return email;
+  }, [emailAddress]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -129,18 +174,50 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch(`${API_URL}/contacts`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const endpoints = ['/contacts', '/contacts.php'];
+      const payloadBody = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        companyName: formData.companyName,
+        serviceType: formData.serviceType,
+        message: formData.message,
+        preferredMethod: formData.preferredMethod,
+      };
 
-      const payload = await safeJson(response);
+      let response = null;
+      let payload = null;
 
-      if (response.ok && payload?.success) {
+      for (const endpoint of endpoints) {
+        const candidate = await fetch(`${API_BASE_URL}${endpoint}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(payloadBody),
+        });
+
+        const candidatePayload = await safeJson(candidate);
+        if (candidate.ok) {
+          response = candidate;
+          payload = candidatePayload;
+          break;
+        }
+
+        if (candidate.status >= 400 && candidate.status < 500) {
+          response = candidate;
+          payload = candidatePayload;
+          break;
+        }
+      }
+
+      if (!response) {
+        throw new Error('No API response');
+      }
+
+      if (response.ok && (typeof payload?.success === 'undefined' || payload.success)) {
         setSubmitStatus({
           type: 'success',
           message: 'Your message has been received. Our team will contact you shortly.',
@@ -374,31 +451,31 @@ const Contact = () => {
 
               <div className="space-y-4">
                 <a
-                  href={`tel:${phoneNumber.replace(/\D/g, '')}`}
+                  href={`tel:${normalizedPhone}`}
                   className="block rounded-xl border border-[#E9ECEF]/15 bg-[#111111] p-4 transition-all duration-300 hover:border-[#F77F00]/55 hover:text-[#FCBF49]"
                 >
                   <p className="text-xs font-bold uppercase tracking-wider text-[#FCBF49]">Phone</p>
-                  <p className="text-lg font-bold text-[#F8F9FA]">{phoneNumber}</p>
+                  <p className="text-lg font-bold text-[#F8F9FA]">{normalizedPhone}</p>
                   <p className="text-xs text-[#E9ECEF]/70">Business Hours Support</p>
                 </a>
 
                 <a
-                  href={`mailto:${emailAddress}`}
+                  href={`mailto:${normalizedEmail}`}
                   className="block rounded-xl border border-[#E9ECEF]/15 bg-[#111111] p-4 transition-all duration-300 hover:border-[#F77F00]/55 hover:text-[#FCBF49]"
                 >
                   <p className="text-xs font-bold uppercase tracking-wider text-[#FCBF49]">Email</p>
-                  <p className="break-all text-base font-bold text-[#F8F9FA]">{emailAddress}</p>
+                  <p className="break-all text-base font-bold text-[#F8F9FA]">{normalizedEmail}</p>
                   <p className="text-xs text-[#E9ECEF]/70">Project and quotation requests</p>
                 </a>
 
                 <a
-                  href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`}
+                  href={`https://wa.me/${normalizedWhatsApp}`}
                   target="_blank"
                   rel="noreferrer"
                   className="block rounded-xl border border-[#E9ECEF]/15 bg-[#111111] p-4 transition-all duration-300 hover:border-[#F77F00]/55 hover:text-[#FCBF49]"
                 >
                   <p className="text-xs font-bold uppercase tracking-wider text-[#FCBF49]">WhatsApp</p>
-                  <p className="text-lg font-bold text-[#F8F9FA]">{whatsappNumber}</p>
+                  <p className="text-lg font-bold text-[#F8F9FA]">+{normalizedWhatsApp}</p>
                   <p className="text-xs text-[#E9ECEF]/70">Quick technical coordination</p>
                 </a>
               </div>

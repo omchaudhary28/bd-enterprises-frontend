@@ -5,6 +5,7 @@ import ThemeToggle from './ThemeToggle';
 
 const navItems = [
   { label: 'Home', path: '/', icon: 'home' },
+  { label: 'About', path: '/about', icon: 'about' },
   { label: 'Services', path: '/services', icon: 'services' },
   { label: 'Brands', path: '/brands', icon: 'brands' },
   { label: 'PPE', path: '/ppe', icon: 'ppe' },
@@ -15,6 +16,12 @@ const iconMap = {
   home: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
       <path strokeLinecap="round" strokeLinejoin="round" d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1v-10.5z" />
+    </svg>
+  ),
+  about: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
+      <circle cx="12" cy="12" r="9" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6M12 7h.01" />
     </svg>
   ),
   services: (
