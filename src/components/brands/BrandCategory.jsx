@@ -58,7 +58,7 @@ const BrandCategory = () => {
         </motion.section>
 
         <section>
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
             {products.map((product, index) => (
               <motion.article
                 key={product.id}

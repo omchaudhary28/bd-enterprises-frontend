@@ -1,88 +1,4 @@
-const brandImageFolders = {
-  fuel: ['/images/Fuel Shoes/product-1.jpg'],
-  polo: ['/images/Polo_shoes/product-1.jpg'],
-  utex: ['/images/Utex_Helmets/product-1.jpg'],
-  bata: ['/images/Bata_shoes/product-1.jpg'],
-  'delta-plus': ['/images/Delta Plus Shoes/product-1.jpg'],
-  'balaji-industries': ['/images/balaji_Fire_Safety/product-1.jpg'],
-  'apex-clothing': ['/images/Apex_Clothing/product-1.jpg'],
-  'xo-footwear': ['/images/XO_Footwear/product-1.jpg'],
-  tornado: ['/images/Tornado_Equipment/product-1.jpg'],
-  'ultra-kk-industries': ['/images/Ultra_KK_Industries/product-1.jpg'],
-};
-
-const brandCatalog = [
-  {
-    slug: 'fuel',
-    name: 'Fuel',
-    featuredImage: brandImageFolders.fuel[0],
-    description:
-      'Fuel products supplied by B. D. Enterprises for certified industrial safety shoe requirements.',
-  },
-  {
-    slug: 'polo',
-    name: 'Polo',
-    featuredImage: brandImageFolders.polo[0],
-    description:
-      'Polo safety shoe supply for operational teams requiring durable daily-use industrial footwear.',
-  },
-  {
-    slug: 'utex',
-    name: 'Utex',
-    featuredImage: brandImageFolders.utex[0],
-    description:
-      'Utex helmet supply integrated into B. D. Enterprises PPE deployment and safety compliance planning.',
-  },
-  {
-    slug: 'bata',
-    name: 'Bata',
-    featuredImage: brandImageFolders.bata[0],
-    description:
-      'Bata industrial safety shoes sourced for impact, puncture, and slip-resistant site operations.',
-  },
-  {
-    slug: 'delta-plus',
-    name: 'Delta Plus',
-    featuredImage: brandImageFolders['delta-plus'][0],
-    description:
-      'Delta Plus safety shoe range supplied through B. D. Enterprises for industrial use cases.',
-  },
-  {
-    slug: 'balaji-industries',
-    name: 'Balaji Industries',
-    featuredImage: brandImageFolders['balaji-industries'][0],
-    description:
-      'Balaji fire safety equipment supply for core protection infrastructure and readiness programs.',
-  },
-  {
-    slug: 'apex-clothing',
-    name: 'Apex Clothing',
-    featuredImage: brandImageFolders['apex-clothing'][0],
-    description:
-      'Apex safety wear sourced for industrial uniforms and compliant protective apparel deployment.',
-  },
-  {
-    slug: 'xo-footwear',
-    name: 'XO Footwear',
-    featuredImage: brandImageFolders['xo-footwear'][0],
-    description:
-      'XO Footwear safety shoe supply for demanding floor conditions and industrial movement zones.',
-  },
-  {
-    slug: 'tornado',
-    name: 'Tornado',
-    featuredImage: brandImageFolders.tornado[0],
-    description:
-      'Tornado safety equipment products supplied by B. D. Enterprises for emergency preparedness.',
-  },
-  {
-    slug: 'ultra-kk-industries',
-    name: 'Ultra KK Industries',
-    featuredImage: brandImageFolders['ultra-kk-industries'][0],
-    description:
-      'Ultra KK safety equipment supply for industrial fire safety and protection readiness requirements.',
-  },
-];
+import brandImageManifest from './brandImageManifest';
 
 const categoryMetadata = {
   'safety-shoes': {
@@ -107,49 +23,66 @@ const categoryMetadata = {
   },
 };
 
-const brandCategoryRule = {
-  fuel: ['safety-shoes'],
-  'delta-plus': ['safety-shoes'],
-  bata: ['safety-shoes'],
-  polo: ['safety-shoes'],
-  'balaji-industries': ['fire-safety'],
-  'apex-clothing': ['safety-wear'],
-  'xo-footwear': ['safety-shoes'],
-  tornado: ['safety-equipment'],
-  'ultra-kk-industries': ['safety-equipment'],
-  utex: ['safety-helmet'],
-};
-
-const categoryImageMap = {
+const brandSupplyConfig = {
   fuel: {
-    'safety-shoes': '/images/Fuel Shoes/product-1.jpg',
+    name: 'Fuel',
+    description: 'Fuel products supplied by B. D. Enterprises for certified industrial safety shoe requirements.',
+    folder: 'Fuel Shoes',
+    categories: ['safety-shoes'],
   },
   'delta-plus': {
-    'safety-shoes': '/images/Delta Plus Shoes/product-1.jpg',
+    name: 'Delta Plus',
+    description: 'Delta Plus safety shoe range supplied through B. D. Enterprises for industrial use cases.',
+    folder: 'Delta Plus Shoes',
+    categories: ['safety-shoes'],
   },
   bata: {
-    'safety-shoes': '/images/Bata_shoes/product-1.jpg',
+    name: 'Bata',
+    description: 'Bata industrial safety shoes sourced for impact, puncture, and slip-resistant site operations.',
+    folder: 'Bata_shoes',
+    categories: ['safety-shoes'],
   },
   polo: {
-    'safety-shoes': '/images/Polo_shoes/product-1.jpg',
+    name: 'Polo',
+    description: 'Polo safety shoe supply for operational teams requiring durable daily-use industrial footwear.',
+    folder: 'Polo_shoes',
+    categories: ['safety-shoes'],
   },
   utex: {
-    'safety-helmet': '/images/Utex_Helmets/product-1.jpg',
-  },
-  'balaji-industries': {
-    'fire-safety': '/images/balaji_Fire_Safety/product-1.jpg',
-  },
-  'apex-clothing': {
-    'safety-wear': '/images/Apex_Clothing/product-1.jpg',
-  },
-  'xo-footwear': {
-    'safety-shoes': '/images/XO_Footwear/product-1.jpg',
-  },
-  tornado: {
-    'safety-equipment': '/images/Tornado_Equipment/product-1.jpg',
+    name: 'Utex',
+    description: 'Utex helmet supply integrated into B. D. Enterprises PPE deployment and safety compliance planning.',
+    folder: 'Utex_Helmets',
+    categories: ['safety-helmet'],
   },
   'ultra-kk-industries': {
-    'safety-equipment': '/images/Ultra_KK_Industries/product-1.jpg',
+    name: 'Ultra KK Industries',
+    description: 'Ultra KK safety equipment supply for industrial fire safety and protection readiness requirements.',
+    folder: 'Ultra_KK_Industries',
+    categories: ['safety-equipment'],
+  },
+  'balaji-industries': {
+    name: 'Balaji Industries',
+    description: 'Balaji fire safety equipment supply for core protection infrastructure and readiness programs.',
+    folder: 'balaji_Fire_Safety',
+    categories: ['fire-safety'],
+  },
+  'apex-clothing': {
+    name: 'Apex Clothing',
+    description: 'Apex safety wear sourced for industrial uniforms and compliant protective apparel deployment.',
+    folder: 'Apex_Clothing',
+    categories: ['safety-wear'],
+  },
+  'xo-footwear': {
+    name: 'XO Footwear',
+    description: 'XO Footwear safety shoe supply for demanding floor conditions and industrial movement zones.',
+    folder: 'XO_Footwear',
+    categories: ['safety-shoes'],
+  },
+  tornado: {
+    name: 'Tornado',
+    description: 'Tornado safety equipment products supplied by B. D. Enterprises for emergency preparedness.',
+    folder: 'Tornado_Equipment',
+    categories: ['safety-equipment'],
   },
 };
 
@@ -166,31 +99,45 @@ const getCategoryMeta = (categorySlug) => {
   };
 };
 
-const getAllowedCategorySlugsForBrand = (brandSlug) => brandCategoryRule[brandSlug] || [];
+const toImagePath = (folder, fileName) => encodeURI(`/images/${folder}/${fileName}`);
 
-const buildProductsForCategory = (brand, categorySlug) => {
-  const category = getCategoryMeta(categorySlug);
-  const image = categoryImageMap?.[brand.slug]?.[categorySlug];
-  if (!image) {
+const getBrandImageList = (brandSlug) => {
+  const folder = brandSupplyConfig?.[brandSlug]?.folder;
+  if (!folder) {
     return [];
   }
 
-  return [
-    {
-      id: `${brand.slug}-${category.slug}-1`,
-      title: `${brand.name} ${category.name}`,
-      description: `${category.shortDescription} Supplied by ${brand.name} for industrial and commercial safety operations.`,
-      image,
-      category: category.name,
-      brand: brand.name,
-    },
-  ];
+  const rawFiles = brandImageManifest?.[folder] || [];
+  const uniqueFiles = Array.from(new Set(rawFiles.filter(Boolean)));
+  return uniqueFiles.map((fileName) => toImagePath(folder, fileName));
+};
+
+const brandCatalog = Object.entries(brandSupplyConfig).map(([slug, config]) => ({
+  slug,
+  name: config.name,
+  description: config.description,
+  featuredImage: getBrandImageList(slug)[0] || '',
+}));
+
+const buildProductsForCategory = (brand, categorySlug) => {
+  const category = getCategoryMeta(categorySlug);
+  const images = getBrandImageList(brand.slug);
+
+  return images.map((image, index) => ({
+    id: `${brand.slug}-${category.slug}-${index + 1}`,
+    title: `${brand.name} ${category.name} ${index + 1}`,
+    description: `${category.shortDescription} Supplied by ${brand.name} for industrial and commercial safety operations.`,
+    image,
+    category: category.name,
+    brand: brand.name,
+  }));
 };
 
 const productData = brandCatalog.reduce((brandAccumulator, brand) => {
-  const categoryMap = getAllowedCategorySlugsForBrand(brand.slug).reduce((categoryAccumulator, categorySlug) => {
+  const brandConfig = brandSupplyConfig[brand.slug];
+  const categoryMap = (brandConfig?.categories || []).reduce((categoryAccumulator, categorySlug) => {
     const products = buildProductsForCategory(brand, categorySlug);
-    if (products.length) {
+    if (products.length > 0) {
       categoryAccumulator[categorySlug] = products;
     }
     return categoryAccumulator;
@@ -201,24 +148,10 @@ const productData = brandCatalog.reduce((brandAccumulator, brand) => {
 }, {});
 
 const getBrandCategories = (brandSlug) =>
-  getAllowedCategorySlugsForBrand(brandSlug)
+  (brandSupplyConfig?.[brandSlug]?.categories || [])
     .filter((categorySlug) => (productData?.[brandSlug]?.[categorySlug] || []).length > 0)
     .map((categorySlug) => getCategoryMeta(categorySlug));
 
-const getFirstBrandProductImage = (brandSlug) => {
-  const folderImages = brandImageFolders[brandSlug] || [];
-  if (folderImages.length > 0) {
-    return folderImages[0];
-  }
-
-  const categories = getBrandCategories(brandSlug);
-  for (const category of categories) {
-    const image = productData?.[brandSlug]?.[category.slug]?.[0]?.image;
-    if (image) {
-      return image;
-    }
-  }
-  return null;
-};
+const getFirstBrandProductImage = (brandSlug) => getBrandImageList(brandSlug)[0] || null;
 
 export { brandCatalog, productData, getBrandCategories, getFirstBrandProductImage, getCategoryMeta };
