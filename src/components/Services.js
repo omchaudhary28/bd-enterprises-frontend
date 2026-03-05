@@ -29,7 +29,7 @@ const serviceCatalog = [
     title: 'Fire Hydrant Systems',
     description: 'Hydrant ring main design, fire pump integration, landing valves, hose reels, and periodic readiness testing.',
     category: 'Fire Systems',
-    image: '/images/fire_hydrant_system/hydrant-1.webp',
+    image: '/images/fire_hydrant_system/Fire-Hydrant-4.jpg',
     path: '/services/fire-hydrant-systems',
   },
   {
@@ -43,7 +43,7 @@ const serviceCatalog = [
     title: 'Water Modular Tank',
     description: 'Panel-built, corrosion-resistant fire water storage systems with scalable capacity and flexible installation.',
     category: 'Infrastructure',
-    image: '/images/water_modular_tank/tank-1.webp',
+    image: '/images/water_modular_tank/Process-Water-Tanks-002-min.jpg',
     path: '/services/water-modular-tank',
   },
   {
@@ -57,14 +57,14 @@ const serviceCatalog = [
     title: 'Oxygen and SCBA Cylinders',
     description: 'SCBA and oxygen cylinder supply, periodic testing, pressure checks, and certified maintenance support.',
     category: 'PPE',
-    image: '/images/ppes/ppes%20oxygen%20cylender/Self-contained_breathing_apparatus.jpg',
+    image: '/images/ppes/ppes-oxygen-cylender/Self-contained_breathing_apparatus.jpg',
     path: '/services/oxygen-cylinders',
   },
   {
     title: 'Fabrication Services',
     description: 'Fabricated safety supports, enclosures, and custom assemblies aligned to site-specific operating demands.',
     category: 'Infrastructure',
-    image: '/images/fabrication/fabrication-1.jpg',
+    image: '/images/fabrication/WhatsApp%20Image%202026-02-25%20at%207.44.54%20PM.jpeg',
     path: '/services/fabrication',
   },
   {
@@ -78,7 +78,7 @@ const serviceCatalog = [
     title: 'Compliance Inspection',
     description: 'Technical inspections, gap audits, statutory checklists, and documented corrective action planning.',
     category: 'Compliance',
-    image: '/images/compliances-and-audits/Guide%20to%20WHS%20Inspections-1.webp',
+    image: '/images/complainces-and-audits/Guide%20to%20WHS%20Inspections-1.webp',
     path: '/services/compliance-inspection',
   },
 ];
@@ -252,4 +252,5 @@ const Services = () => {
 };
 
 export default Services;
+
 

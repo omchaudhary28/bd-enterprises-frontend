@@ -38,7 +38,7 @@ const sections = [
     title: 'Addressable and Conventional System Integration',
     images: [
       '/images/Fire-Alarm-Systems/types-of-fire-alarm.png',
-      '/images/Hero-Images/Smart-Addressable-Fire-Alarm-Monitoring-System-Panel.avif',
+      '/images/Hero-Images/Fire-Safety-Addressable-Security-Alarm-Control-Panel-for-Alarm-System-in-House-Building.avif',
       '/images/Hero-Images/Fire-Safety-Addressable-Security-Alarm-Control-Panel-for-Alarm-System-in-House-Building.avif',
     ],
     paragraphs: [

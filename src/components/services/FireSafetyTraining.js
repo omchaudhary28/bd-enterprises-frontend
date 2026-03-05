@@ -67,7 +67,7 @@ const sections = [
     title: 'Training Maintenance and Compliance Continuity',
     images: [
       '/images/fire-safety-training/feuerloschubung_im_betrieb-cws_fire_safety.jpg',
-      '/images/compliances-and-audits/Guide%20to%20WHS%20Inspections-1.webp',
+      '/images/complainces-and-audits/Guide%20to%20WHS%20Inspections-1.webp',
     ],
     paragraphs: [
       'Training is treated as an ongoing service, not a one-time event. B. D. Enterprises prepares periodic refresher schedules, role revalidation plans, and training calendar support so safety competency remains active despite workforce changes and operational expansion.',
@@ -135,4 +135,5 @@ const FireSafetyTraining = () => (
 );
 
 export default FireSafetyTraining;
+
 

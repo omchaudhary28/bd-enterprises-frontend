@@ -6,8 +6,8 @@ const sections = [
     id: 'network-layout',
     title: 'Hydrant Network Layout and Distribution Planning',
     images: [
-      '/images/fire_hydrant_system/hydrant-1.webp',
-      '/images/fire_hydrant_system/hydrant-2.jpg',
+      '/images/fire_hydrant_system/Fire-Hydrant-4.jpg',
+      '/images/fire_hydrant_system/fire-hydrant-systems-739.jpg',
     ],
     paragraphs: [
       'B. D. Enterprises designs fire hydrant systems as a structured distribution network that maintains dependable water availability across operational zones. Ring main routing, branch positioning, and hydrant point allocation are planned to ensure fast firefighting access in industrial and commercial facilities.',
@@ -36,8 +36,8 @@ const sections = [
     id: 'pump-integration',
     title: 'Fire Pump Integration and Critical System Components',
     images: [
-      '/images/fire_hydrant_system/hydrant-3.jpg',
-      '/images/fire_hydrant_system/hydrant-2.jpg',
+      '/images/fire_hydrant_system/WhatsApp%20Image%202026-02-25%20at%207.44.59%20PM.jpeg',
+      '/images/fire_hydrant_system/fire-hydrant-systems-739.jpg',
     ],
     paragraphs: [
       'Hydrant system reliability depends on correct fire pump integration. B. D. Enterprises configures main pumps, standby pumps, jockey pumps, and control logic to maintain stable pressure and deliver required flow when hydrant operation begins. Pump rooms are engineered for maintainability and monitored readiness.',
@@ -66,8 +66,8 @@ const sections = [
     id: 'maintenance-compliance',
     title: 'Maintenance, Inspection, and Compliance Standards',
     images: [
-      '/images/fire_hydrant_system/hydrant-1.webp',
-      '/images/fire_hydrant_system/hydrant-3.jpg',
+      '/images/fire_hydrant_system/Fire-Hydrant-4.jpg',
+      '/images/fire_hydrant_system/WhatsApp%20Image%202026-02-25%20at%207.44.59%20PM.jpeg',
     ],
     paragraphs: [
       'B. D. Enterprises executes preventive and corrective maintenance programs for hydrant networks including valve operation checks, pump auto-start trials, pressure testing, hose reel verification, and line health inspections. Scheduled maintenance reduces system degradation and preserves emergency readiness.',

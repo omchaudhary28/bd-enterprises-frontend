@@ -23,7 +23,7 @@ const RespiratoryProtection = () => {
     },
     {
       name: 'PAPR Systems',
-      image: '/images/ppes/ppes%20respiratory/65f0427935fc214ace1e9f7d-3m-6800-full-face-ppe-respirator-mask.webp',
+      image: '/images/ppes/ppes-respiratory/65f0427935fc214ace1e9f7d-3m-6800-full-face-ppe-respirator-mask.webp',
       summary: 'Powered Air-Purifying Respirators with battery-powered blower.',
       useCases: ['High-hazard chemical work', 'Asbestos abatement', 'Lead remediation', 'Confined spaces'],
       protection: 'Provides highest level of respiratory protection; more comfortable than standard masks.',
@@ -40,12 +40,12 @@ const RespiratoryProtection = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="mb-6 md:mb-8">
           <Link to="/ppe" className="inline-flex items-center gap-2 text-accent hover:text-white transition-colors duration-300 font-semibold text-sm md:text-base">
-            ← Back to PPEs
+            Back to PPEs
           </Link>
         </div>
 
         <div className="mb-10 md:mb-16 text-center">
-          <div className="text-5xl md:text-6xl mb-4">😷</div>
+          <div className="text-5xl md:text-6xl mb-4">RESP</div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white glow-text mb-4">
             Respiratory Protection
           </h1>
@@ -74,7 +74,7 @@ const RespiratoryProtection = () => {
                 <div className="mb-4 flex-grow">
                   <h4 className="font-bold text-sm text-accent dark:text-blue-400 mb-2">Real-Life Use Cases:</h4>
                   <ul className="text-xs sm:text-sm text-neutral-700 dark:text-gray-300 space-y-1">
-                    {product.useCases.map((useCase, idx) => <li key={idx}>• {useCase}</li>)}
+                    {product.useCases.map((useCase, idx) => <li key={idx}>* {useCase}</li>)}
                   </ul>
                 </div>
                 <div className="mb-4">
@@ -130,7 +130,7 @@ const RespiratoryProtection = () => {
               'Emergency replacement 24/7',
             ].map((point, index) => (
               <div key={index} className="flex items-start gap-3">
-                <span className="text-accent text-lg font-bold flex-shrink-0">✓</span>
+                <span className="text-accent text-lg font-bold flex-shrink-0">*</span>
                 <p className="text-sm sm:text-base text-white/90">{point}</p>
               </div>
             ))}
@@ -152,5 +152,6 @@ const RespiratoryProtection = () => {
 };
 
 export default RespiratoryProtection;
+
 
 

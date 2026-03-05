@@ -1,33 +1,24 @@
 const brandImageManifest = {
-  'Fuel Shoes': [
-    'product-1.jpg',
+  Fuel_Shoes: [
+    '8_-_2024-12-05T165622.978.jpg',
   ],
-  'Delta Plus Shoes': [
-    'product-1.jpg',
+  Delta_Plus_Shoes: [
+    'delta-plus-jet3-s1p-anti-static-safety-shoes.jpg',
   ],
-  'Bata_shoes': [
-    'product-1.jpg',
+  Bata_shoes: [
+    'Bata-PU-SD-Zappy-Derby-Safety-Shoes.jpg',
   ],
-  'Polo_shoes': [
-    'product-1.jpg',
+  Polo_shoes: [
+    'indcare-polo-pvc-industrial-safety-shoes-818.jpg',
   ],
-  'Utex_Helmets': [
-    'product-1.jpg',
+  Utex_Helmets: [
+    '16834-106_image_0.jpg',
   ],
-  'Ultra_KK_Industries': [
-    'product-1.jpg',
+  Ultra_KK_Industries: [
+    'Industrial-fire-extinguishers-Made-with-PosterMyWall.jpg',
   ],
-  'balaji_Fire_Safety': [
-    'product-1.jpg',
-  ],
-  'Apex_Clothing': [
-    'product-1.jpg',
-  ],
-  'XO_Footwear': [
-    'product-1.jpg',
-  ],
-  'Tornado_Equipment': [
-    'product-1.jpg',
+  balaji_Fire_Safety: [
+    'Screenshot 2026-02-25 210859.png',
   ],
 };
 

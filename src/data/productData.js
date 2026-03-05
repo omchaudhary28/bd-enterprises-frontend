@@ -27,13 +27,13 @@ const brandSupplyConfig = {
   fuel: {
     name: 'Fuel',
     description: 'Fuel products supplied by B. D. Enterprises for certified industrial safety shoe requirements.',
-    folder: 'Fuel Shoes',
+    folder: 'Fuel_Shoes',
     categories: ['safety-shoes'],
   },
   'delta-plus': {
     name: 'Delta Plus',
     description: 'Delta Plus safety shoe range supplied through B. D. Enterprises for industrial use cases.',
-    folder: 'Delta Plus Shoes',
+    folder: 'Delta_Plus_Shoes',
     categories: ['safety-shoes'],
   },
   bata: {
@@ -112,12 +112,19 @@ const getBrandImageList = (brandSlug) => {
   return uniqueFiles.map((fileName) => toImagePath(folder, fileName));
 };
 
-const brandCatalog = Object.entries(brandSupplyConfig).map(([slug, config]) => ({
-  slug,
-  name: config.name,
-  description: config.description,
-  featuredImage: getBrandImageList(slug)[0] || '',
-}));
+const brandCatalog = Object.entries(brandSupplyConfig)
+  .map(([slug, config]) => {
+    const images = getBrandImageList(slug);
+    return {
+      slug,
+      name: config.name,
+      description: config.description,
+      featuredImage: images[0] || '',
+      imageCount: images.length,
+    };
+  })
+  .filter((brand) => brand.imageCount > 0)
+  .map(({ imageCount, ...brand }) => brand);
 
 const buildProductsForCategory = (brand, categorySlug) => {
   const category = getCategoryMeta(categorySlug);

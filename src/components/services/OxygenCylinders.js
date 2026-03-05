@@ -6,8 +6,8 @@ const sections = [
     id: 'supply-planning',
     title: 'Oxygen and SCBA Cylinder Supply Planning',
     images: [
-      '/images/ppes/ppes%20oxygen%20cylender/Self-contained_breathing_apparatus.jpg',
-      '/images/ppes/ppes%20oxygen%20cylender/Kl99-Firefighting-Respirator-60-Mins-Scba-with-6-8-Liter-Cylinder.avif',
+      '/images/ppes/ppes-oxygen-cylender/Self-contained_breathing_apparatus.jpg',
+      '/images/ppes/ppes-oxygen-cylender/Kl99-Firefighting-Respirator-60-Mins-Scba-with-6-8-Liter-Cylinder.avif',
     ],
     paragraphs: [
       'B. D. Enterprises supplies oxygen and SCBA cylinder solutions for firefighting, emergency response, and industrial breathing support applications. We assess operational risk, usage frequency, and standby requirements to define correct cylinder type, pressure class, and deployment quantity for each facility.',
@@ -36,9 +36,9 @@ const sections = [
     id: 'testing-maintenance',
     title: 'Inspection, Testing, and Maintenance Lifecycle',
     images: [
-      '/images/ppes/ppes%20oxygen%20cylender/cylinder_final_red.webp',
-      '/images/ppes/ppes%20oxygen%20cylender/12L-1.jpg',
-      '/images/ppes/ppes%20oxygen%20cylender/54034_w.webp',
+      '/images/ppes/ppes-oxygen-cylender/cylinder_final_red.webp',
+      '/images/ppes/ppes-oxygen-cylender/12L-1.jpg',
+      '/images/ppes/ppes-oxygen-cylender/54034_w.webp',
     ],
     paragraphs: [
       'Cylinder reliability requires periodic inspection, pressure condition checks, valve integrity verification, and hydro-test scheduling. B. D. Enterprises provides lifecycle service support that helps organizations maintain safe operating condition and avoid out-of-certification deployment risks.',
@@ -67,8 +67,8 @@ const sections = [
     id: 'installation-readiness',
     title: 'Operational Readiness and Service Support',
     images: [
-      '/images/ppes/ppes%20oxygen%20cylender/breathing-apparatus-set-500x500.webp',
-      '/images/ppes/ppes%20oxygen%20cylender/Best-Price-Scba-Respiration-Cylinder-Respirator-for-Firefighter.avif',
+      '/images/ppes/ppes-oxygen-cylender/breathing-apparatus-set-500x500.webp',
+      '/images/ppes/ppes-oxygen-cylender/Best-Price-Scba-Respiration-Cylinder-Respirator-for-Firefighter.avif',
     ],
     paragraphs: [
       'B. D. Enterprises supports installation and readiness planning for cylinder storage stations, emergency access points, and SCBA deployment locations. We ensure equipment is positioned for fast retrieval and integrated into site emergency response procedures.',
@@ -136,3 +136,4 @@ const OxygenCylinders = () => (
 );
 
 export default OxygenCylinders;
+

@@ -44,12 +44,12 @@ const SERVICES = [
 // Map service index to actual image files available in `/public/images/`
 const getImageForService = (index) => {
   const imageMaps = [
-    '/images/fire extinguisher/automated-Fire-extinguisher.webp',
-    '/images/Fire Alarm Systems/types-of-fire-alarm.png',
-    '/images/sprinkler system/Fire_sprinkler_roof_mount_side_view.jpg',
-    '/images/emergency lights/76yvHsMjxoXFU4WTt3JUP94YBWVObAz48gti09nzlKzkXU0iZueHb4nEzuD-Q8MeywZXladWrqsgsRcsVSs2v3F2K7aqdqMe1cmlK-fDSrw.jpg',
-    '/images/fire safety training/feuerloschubung_im_betrieb-cws_fire_safety.jpg',
-    '/images/complainces and audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
+    '/images/fire-extinguisher/automated-Fire-extinguisher.webp',
+    '/images/Fire-Alarm-Systems/types-of-fire-alarm.png',
+    '/images/sprinkler_system/Fire_sprinkler_roof_mount_side_view.jpg',
+    '/images/emergency-lights/76yvHsMjxoXFU4WTt3JUP94YBWVObAz48gti09nzlKzkXU0iZueHb4nEzuD-Q8MeywZXladWrqsgsRcsVSs2v3F2K7aqdqMe1cmlK-fDSrw.jpg',
+    '/images/fire-safety-training/feuerloschubung_im_betrieb-cws_fire_safety.jpg',
+    '/images/complainces-and-audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
   ];
   return imageMaps[index % imageMaps.length];
 };
@@ -116,7 +116,7 @@ const ServicesCarousel = () => {
               to={service.link}
               className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 hover:bg-white/25 rounded-lg text-sm font-semibold transition-colors duration-200 w-fit"
             >
-              Learn More →
+              Learn More ->
             </Link>
           </div>
         </motion.div>
@@ -193,5 +193,6 @@ const ServicesCarousel = () => {
 };
 
 export default ServicesCarousel;
+
 
 

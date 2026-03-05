@@ -14,7 +14,7 @@ const HandProtection = () => {
     },
     {
       name: 'Thermal Protection Gloves',
-      image: '/images/ppes/ppes%20hand%20gloves/41Qm8Tk8VVL._AC_UF1000,1000_QL80_.jpg',
+      image: '/images/ppes/ppes-hand-gloves/41Qm8Tk8VVL._AC_UF1000,1000_QL80_.jpg',
       summary: 'Insulated gloves for handling hot materials and equipment.',
       useCases: ['Welding', 'Furnace operations', 'Kitchen work', 'Hot machinery handling'],
       protection: 'Insulates hands from extreme heat; prevents burn injuries.',
@@ -23,7 +23,7 @@ const HandProtection = () => {
     },
     {
       name: 'Cut-Resistant Gloves',
-      image: '/images/ppes/ppes%20hand%20gloves/71uC-suYAKL._AC_UY1100_.jpg',
+      image: '/images/ppes/ppes-hand-gloves/71uC-suYAKL._AC_UY1100_.jpg',
       summary: 'Engineered fabrics with specialized materials to resist sharp edges and blades.',
       useCases: ['Glass handling', 'Metal fabrication', 'Food processing', 'Package handling'],
       protection: 'Resists slicing from sharp objects; allows tactile sensitivity.',
@@ -40,12 +40,12 @@ const HandProtection = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="mb-6 md:mb-8">
           <Link to="/ppe" className="inline-flex items-center gap-2 text-accent hover:text-white transition-colors duration-300 font-semibold text-sm md:text-base">
-            ← Back to PPEs
+            Back to PPEs
           </Link>
         </div>
 
         <div className="mb-10 md:mb-16 text-center">
-          <div className="text-5xl md:text-6xl mb-4">🧤</div>
+          <div className="text-5xl md:text-6xl mb-4">HAND</div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white glow-text mb-4">
             Hand Protection
           </h1>
@@ -74,7 +74,7 @@ const HandProtection = () => {
                 <div className="mb-4 flex-grow">
                   <h4 className="font-bold text-sm text-accent dark:text-blue-400 mb-2">Real-Life Use Cases:</h4>
                   <ul className="text-xs sm:text-sm text-neutral-700 dark:text-gray-300 space-y-1">
-                    {product.useCases.map((useCase, idx) => <li key={idx}>• {useCase}</li>)}
+                    {product.useCases.map((useCase, idx) => <li key={idx}>* {useCase}</li>)}
                   </ul>
                 </div>
                 <div className="mb-4">
@@ -130,7 +130,7 @@ const HandProtection = () => {
               'Emergency replacement services available',
             ].map((point, index) => (
               <div key={index} className="flex items-start gap-3">
-                <span className="text-accent text-lg font-bold flex-shrink-0">✓</span>
+                <span className="text-accent text-lg font-bold flex-shrink-0">*</span>
                 <p className="text-sm sm:text-base text-white/90">{point}</p>
               </div>
             ))}
@@ -152,5 +152,6 @@ const HandProtection = () => {
 };
 
 export default HandProtection;
+
 
 

@@ -66,8 +66,8 @@ const sections = [
     id: 'maintenance-inspection',
     title: 'Maintenance, Inspection, and Service Lifecycle',
     images: [
-      '/images/compliances-and-audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
-      '/images/compliances-and-audits/Guide%20to%20WHS%20Inspections-1.webp',
+      '/images/complainces-and-audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
+      '/images/complainces-and-audits/Guide%20to%20WHS%20Inspections-1.webp',
     ],
     paragraphs: [
       'B. D. Enterprises provides ongoing emergency lighting maintenance through scheduled inspections, non-working fixture rectification, battery replacement coordination, and circuit continuity checks. Preventive service planning reduces failure risk and keeps evacuation systems available during real emergencies.',
@@ -135,4 +135,5 @@ const EmergencyLighting = () => (
 );
 
 export default EmergencyLighting;
+
 

@@ -11,14 +11,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const galleryImages = [
-  '/images/Hero-Images/DEC-ENG-media_215.jpg',
+  '/images/Hero-Images/ujqkKRE1kkdC_JFdlH1ptwcZCANA4-kESKa5a65cqD73VNFnxrileBBm3uwETehoOy53gAfQTGrwQrlvEn4NXQyiK0GuapVTL423P3Bof2c.jpg',
   '/images/fire-extinguisher/CO2-Fire-suppression-system.jpg',
   '/images/sprinkler_system/Fire_sprinkler_roof_mount_side_view.jpg',
   '/images/ppes/Head-Protection.webp',
   '/images/Fire-Alarm-Systems/618cdfa3202b1d251c484e97_How%20Do%20Fire%20Alarms%20Work%20in%20Commercial%20Buildings.jpg',
   '/images/fire-safety-training/Fire%20Extinguisher%20Training%20Demo%20Open%20Burn.jpg',
-  '/images/ppes/ppes%20oxygen%20cylender/cylinder_final_red.webp',
-  '/images/compliances-and-audits/Industrial-buildings-2.jpg',
+  '/images/ppes/ppes-oxygen-cylender/cylinder_final_red.webp',
+  '/images/complainces-and-audits/Industrial-buildings-2.jpg',
   '/images/emergency-lights/3mDZADxjMAulmzrzYOOn9xHZSn4QVEwl41FESCKhECk7GlvfznL8xpQrBjj6YZvX-eHOBJA_QWPNVw_wkv0lI_IHJipVPdklUgWHd6NXeQw.jpg',
 ];
 
@@ -153,13 +153,13 @@ const About = () => {
         <div className="mb-16 md:mb-24" data-aos="fade-up">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Our Services</h2>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-white/80">
-            <li className="flex items-start gap-2"><span className="text-accent">•</span> Industrial Safety Products (PPE) — helmets, gloves, footwear, respiratory and hearing protection</li>
-            <li className="flex items-start gap-2"><span className="text-accent">•</span> Fire Protection Systems — design and installation of hydrant, sprinkler and suppression systems</li>
-            <li className="flex items-start gap-2"><span className="text-accent">•</span> Fire Hydrant Systems — supply, installation and maintenance</li>
-            <li className="flex items-start gap-2"><span className="text-accent">•</span> Fire Alarm & Smoke Detection Systems — addressable and conventional systems with monitoring</li>
-            <li className="flex items-start gap-2"><span className="text-accent">•</span> Fabrication Work — custom shop fabrication and on-site installation services</li>
-            <li className="flex items-start gap-2"><span className="text-accent">•</span> Inspection, testing and preventive maintenance programs</li>
-            <li className="flex items-start gap-2"><span className="text-accent">•</span> Fire safety training and compliance audits</li>
+            <li className="flex items-start gap-2"><span className="text-accent">*</span> Industrial Safety Products (PPE) - helmets, gloves, footwear, respiratory and hearing protection</li>
+            <li className="flex items-start gap-2"><span className="text-accent">*</span> Fire Protection Systems - design and installation of hydrant, sprinkler and suppression systems</li>
+            <li className="flex items-start gap-2"><span className="text-accent">*</span> Fire Hydrant Systems - supply, installation and maintenance</li>
+            <li className="flex items-start gap-2"><span className="text-accent">*</span> Fire Alarm & Smoke Detection Systems - addressable and conventional systems with monitoring</li>
+            <li className="flex items-start gap-2"><span className="text-accent">*</span> Fabrication Work - custom shop fabrication and on-site installation services</li>
+            <li className="flex items-start gap-2"><span className="text-accent">*</span> Inspection, testing and preventive maintenance programs</li>
+            <li className="flex items-start gap-2"><span className="text-accent">*</span> Fire safety training and compliance audits</li>
           </ul>
         </div>
 
@@ -169,7 +169,7 @@ const About = () => {
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 glow-text">Contact Us</h2>
             <div className="space-y-4">
               <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                <span className="text-2xl">📞</span>
+                <span className="text-2xl">Tel</span>
                 <div>
                   <p className="font-bold text-white">Phone</p>
                   <a href="tel:9898046269" className="text-accent hover:underline">9898046269</a>
@@ -177,17 +177,17 @@ const About = () => {
                 </div>
               </div>
               <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                <span className="text-2xl">✉️</span>
+                <span className="text-2xl">Mail</span>
                 <div>
                   <p className="font-bold text-white">Email</p>
                   <a href="mailto:bdenterprises99@yahoo.co.in" className="text-accent hover:underline break-all">bdenterprises99@yahoo.co.in</a>
                 </div>
               </div>
               <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                <span className="text-2xl">📍</span>
+                <span className="text-2xl">Map</span>
                 <div>
                   <p className="font-bold text-white">Location</p>
-                  <p className="text-white/80">B. D. Enterprises — Fire Safety & Industrial PPE</p>
+                  <p className="text-white/80">B. D. Enterprises - Fire Safety & Industrial PPE</p>
                 </div>
               </div>
             </div>
@@ -214,6 +214,7 @@ const About = () => {
 };
 
 export default About;
+
 
 
 

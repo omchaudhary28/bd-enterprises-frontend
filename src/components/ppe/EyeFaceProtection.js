@@ -14,7 +14,7 @@ const EyeFaceProtection = () => {
     },
     {
       name: 'Welding Shields',
-      image: '/images/ppes/ppes%20eye%20protection/Double-Layer-Welding-Glasses-Adjustable-Welding-Safety-Eye-Protection-Welder-Goggles.avif',
+      image: '/images/ppes/ppes-eye-protection/Double-Layer-Welding-Glasses-Adjustable-Welding-Safety-Eye-Protection-Welder-Goggles.avif',
       summary: 'Heavy-duty protection for welding sparks and ultraviolet radiation.',
       useCases: ['Welding operations', 'Cutting/grinding', 'Metal fabrication', 'Arc work'],
       protection: 'Shields eyes and face from sparks, heat, and damaging UV/IR radiation.',
@@ -23,7 +23,7 @@ const EyeFaceProtection = () => {
     },
     {
       name: 'Chemical Safety Goggles',
-      image: '/images/ppes/ppes%20eye%20protection/ANTI-FOG-VENTILATED-SAFETY-GOGGLES-S-LS-312-CL-JORESTECH-H_6_1600x1600.webp',
+      image: '/images/ppes/ppes-eye-protection/ANTI-FOG-VENTILATED-SAFETY-GOGGLES-S-LS-312-CL-JORESTECH-H_6_1600x1600.webp',
       summary: 'Sealed design for maximum protection from liquid splashes.',
       useCases: ['Chemical labs', 'Cleaning operations', 'Industrial handling', 'Food processing'],
       protection: 'Prevents chemical liquid from reaching eyes; provides comfort in extended wear.',
@@ -42,13 +42,13 @@ const EyeFaceProtection = () => {
         {/* Back Link */}
         <div className="mb-6 md:mb-8">
           <Link to="/ppe" className="inline-flex items-center gap-2 text-accent hover:text-white transition-colors duration-300 font-semibold text-sm md:text-base">
-            ← Back to PPEs
+            Back to PPEs
           </Link>
         </div>
 
         {/* Hero Section */}
         <div className="mb-10 md:mb-16 text-center">
-          <div className="text-5xl md:text-6xl mb-4">👓</div>
+          <div className="text-5xl md:text-6xl mb-4">EYE</div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white glow-text mb-4">
             Eye & Face Protection
           </h1>
@@ -78,7 +78,7 @@ const EyeFaceProtection = () => {
                 <div className="mb-4 flex-grow">
                   <h4 className="font-bold text-sm text-accent dark:text-blue-400 mb-2">Real-Life Use Cases:</h4>
                   <ul className="text-xs sm:text-sm text-neutral-700 dark:text-gray-300 space-y-1">
-                    {product.useCases.map((useCase, idx) => <li key={idx}>• {useCase}</li>)}
+                    {product.useCases.map((useCase, idx) => <li key={idx}>* {useCase}</li>)}
                   </ul>
                 </div>
                 <div className="mb-4">
@@ -136,7 +136,7 @@ const EyeFaceProtection = () => {
               'Donation and recycling programs available',
             ].map((point, index) => (
               <div key={index} className="flex items-start gap-3">
-                <span className="text-accent text-lg font-bold flex-shrink-0">✓</span>
+                <span className="text-accent text-lg font-bold flex-shrink-0">*</span>
                 <p className="text-sm sm:text-base text-white/90">{point}</p>
               </div>
             ))}
@@ -159,5 +159,6 @@ const EyeFaceProtection = () => {
 };
 
 export default EyeFaceProtection;
+
 
 

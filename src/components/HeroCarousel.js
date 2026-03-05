@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const slides = [
   {
     id: 1,
-    src: '/images/Hero-Images/DEC-ENG-media_215.jpg',
+    src: '/images/Hero-Images/ujqkKRE1kkdC_JFdlH1ptwcZCANA4-kESKa5a65cqD73VNFnxrileBBm3uwETehoOy53gAfQTGrwQrlvEn4NXQyiK0GuapVTL423P3Bof2c.jpg',
     alt: 'Industrial fire control room monitoring',
     headline: 'Fire Safety Infrastructure Built for Industrial Performance',
     subheadline:
@@ -13,7 +13,7 @@ const slides = [
   },
   {
     id: 2,
-    src: '/images/Hero-Images/fire-sprinkler-systems-help-to-extinguish-fire-in-rental-storage-units-920x533.jpg',
+    src: '/images/sprinkler_system/Fire_sprinkler_roof_mount_side_view.jpg',
     alt: 'Industrial sprinkler protection system',
     headline: 'Automatic Suppression Systems Designed for Real Facility Risk',
     subheadline:
@@ -21,7 +21,7 @@ const slides = [
   },
   {
     id: 3,
-    src: '/images/Hero-Images/Smart-Addressable-Fire-Alarm-Monitoring-System-Panel.avif',
+    src: '/images/Hero-Images/Fire-Safety-Addressable-Security-Alarm-Control-Panel-for-Alarm-System-in-House-Building.avif',
     alt: 'Addressable fire alarm and monitoring panel',
     headline: 'Detection and Monitoring Systems with Compliance-Ready Execution',
     subheadline:

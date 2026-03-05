@@ -37,7 +37,7 @@ const sections = [
     title: 'Installation and Commissioning Execution',
     images: [
       '/images/fire-extinguisher/automated-Fire-extinguisher.webp',
-      '/images/compliances-and-audits/Industrial-buildings-2.jpg',
+      '/images/complainces-and-audits/Industrial-buildings-2.jpg',
     ],
     paragraphs: [
       'Installation is executed with controlled mounting heights, visible access paths, and obstruction-free positioning so extinguishers remain immediately reachable in an emergency. We also integrate signage, route marking, and location indexing to ensure users can identify and operate the right extinguisher under pressure.',
@@ -135,4 +135,5 @@ const FireExtinguishers = () => (
 );
 
 export default FireExtinguishers;
+
 

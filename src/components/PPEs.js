@@ -56,7 +56,7 @@ const ppeCategories = [
     id: 'oxygen-cylinders',
     title: 'Oxygen and SCBA Cylinders',
     subtitle: 'Breathing support cylinders with inspection and maintenance service.',
-    image: '/images/ppes/ppes%20oxygen%20cylender/cylinder_final_red.webp',
+    image: '/images/ppes/ppes-oxygen-cylender/cylinder_final_red.webp',
     path: '/services/oxygen-cylinders',
   },
 ];
@@ -142,3 +142,4 @@ const PPEs = () => {
 };
 
 export default PPEs;
+

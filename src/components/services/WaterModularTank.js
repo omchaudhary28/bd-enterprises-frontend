@@ -6,8 +6,8 @@ const sections = [
     id: 'modular-panel-system',
     title: 'Modular Panel System Engineering',
     images: [
-      '/images/water_modular_tank/tank-1.webp',
-      '/images/water_modular_tank/tank-2.jpg',
+      '/images/water_modular_tank/Process-Water-Tanks-002-min.jpg',
+      '/images/water_modular_tank/STP-Water-Tanks-003-min.jpg',
     ],
     paragraphs: [
       'Water modular tank systems are built using prefabricated panel assemblies that allow flexible capacity planning and controlled on-site installation. B. D. Enterprises designs panel configuration, support layout, and connection architecture to match fire water demand, site conditions, and expansion strategy.',
@@ -36,8 +36,8 @@ const sections = [
     id: 'corrosion-resistance',
     title: 'Corrosion Resistance and Durability Planning',
     images: [
-      '/images/water_modular_tank/tank-3.jpg',
-      '/images/water_modular_tank/tank-2.jpg',
+      '/images/water_modular_tank/larger-capacity-storage-tanks-1000x1000.jpg',
+      '/images/water_modular_tank/STP-Water-Tanks-003-min.jpg',
     ],
     paragraphs: [
       'B. D. Enterprises specifies modular tank systems with corrosion-resistant material options and sealing methods to maintain long service life in demanding industrial environments. Material selection is guided by water quality, ambient conditions, and expected operating cycle to reduce long-term degradation risk.',
@@ -66,8 +66,8 @@ const sections = [
     id: 'installation-maintenance',
     title: 'Scalable Installation and Maintenance Services',
     images: [
-      '/images/water_modular_tank/tank-1.webp',
-      '/images/water_modular_tank/tank-3.jpg',
+      '/images/water_modular_tank/Process-Water-Tanks-002-min.jpg',
+      '/images/water_modular_tank/larger-capacity-storage-tanks-1000x1000.jpg',
     ],
     paragraphs: [
       'Our installation scope covers civil interface coordination, panel erection, piping interconnection, valve arrangement, and integration with fire pump suction systems. B. D. Enterprises executes installation with documented quality checkpoints so water storage readiness is achieved without operational disruption.',
