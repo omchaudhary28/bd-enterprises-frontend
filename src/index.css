@@ -62,7 +62,18 @@ img {
   height: auto;
 }
 
-.service-media-swiper .swiper-slide {
+.service-page .swiper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.service-page .swiper-wrapper {
+  width: 100%;
+}
+
+.service-page .swiper-slide {
+  width: 100% !important;
+  flex-shrink: 0;
   height: auto !important;
 }
 

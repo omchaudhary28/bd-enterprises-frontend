@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
@@ -6,39 +6,62 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 const ServiceMedia = ({ images, title, mediaId }) => {
+  const handleSwiperInit = useCallback((swiperInstance) => {
+    setTimeout(() => {
+      if (swiperInstance && !swiperInstance.destroyed) {
+        swiperInstance.update();
+      }
+    }, 100);
+  }, []);
+
   if (!images.length) {
     return null;
   }
 
   if (images.length === 1) {
     return (
-      <div className="relative w-full overflow-hidden rounded-2xl border border-[#E9ECEF]/20 bg-[#1B1B1B] shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
-        <div className="aspect-[16/10] w-full max-h-[420px] md:max-h-[520px]">
-          <img src={images[0]} alt={title} className="h-full w-full object-cover max-h-[420px] md:max-h-[520px]" loading="lazy" />
+      <div className="relative w-full max-w-full overflow-hidden rounded-2xl border border-[#E9ECEF]/20 bg-[#1B1B1B] shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
+        <div className="relative w-full overflow-hidden rounded-xl">
+          <div className="aspect-[16/10] w-full">
+            <img
+              src={images[0]}
+              alt={title}
+              className="h-full w-full object-cover max-h-[420px] md:max-h-[520px]"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl border border-[#E9ECEF]/20 bg-[#1B1B1B] shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
+    <div className="relative w-full max-w-full overflow-hidden rounded-2xl border border-[#E9ECEF]/20 bg-[#1B1B1B] shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
       <Swiper
         modules={[Pagination, Autoplay]}
         slidesPerView={1}
+        spaceBetween={16}
+        autoHeight
+        observer
+        observeParents
+        resizeObserver
         loop
         autoplay={{ delay: 3800, disableOnInteraction: false, pauseOnMouseEnter: true }}
         pagination={{ clickable: true }}
+        onSwiper={handleSwiperInit}
         className={`service-media-swiper service-media-swiper-${mediaId}`}
       >
         {images.map((image, index) => (
           <SwiperSlide key={`${mediaId}-${index}`}>
-            <div className="aspect-[16/10] w-full max-h-[420px] md:max-h-[520px]">
-              <img
-                src={image}
-                alt={`${title} ${index + 1}`}
-                className="h-full w-full object-cover max-h-[420px] md:max-h-[520px]"
-                loading="lazy"
-              />
+            <div className="relative w-full overflow-hidden rounded-xl">
+              <div className="aspect-[16/10] w-full">
+                <img
+                  src={image}
+                  alt={`${title} ${index + 1}`}
+                  className="h-full w-full object-cover max-h-[420px] md:max-h-[520px]"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </SwiperSlide>
         ))}
@@ -95,8 +118,8 @@ const ServiceSection = ({ section, index, pageKey }) => {
   return (
     <section className="py-5 md:py-8">
       <div className="grid items-stretch gap-5 lg:grid-cols-2 lg:gap-8">
-        <div className={mediaLeft ? 'order-1 lg:order-1' : 'order-1 lg:order-2'}>{media}</div>
-        <div className={mediaLeft ? 'order-2 lg:order-2' : 'order-2 lg:order-1'}>{content}</div>
+        <div className={`${mediaLeft ? 'order-1 lg:order-1' : 'order-1 lg:order-2'} min-w-0`}>{media}</div>
+        <div className={`${mediaLeft ? 'order-2 lg:order-2' : 'order-2 lg:order-1'} min-w-0`}>{content}</div>
       </div>
     </section>
   );
@@ -115,7 +138,7 @@ const ServiceDetailLayout = ({
   ctaBody,
   ctaLabel,
 }) => (
-  <div className="relative min-h-screen overflow-hidden bg-[#111111] text-[#F8F9FA]">
+  <div className="service-page relative min-h-screen overflow-hidden bg-[#111111] text-[#F8F9FA]">
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_14%,rgba(247,127,0,0.16),transparent_36%)]" />
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_86%,rgba(214,40,40,0.14),transparent_34%)]" />
 
