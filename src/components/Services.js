@@ -139,7 +139,7 @@ const Services = () => {
         </section>
 
         <section className="mb-16 md:mb-24">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-5">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 md:gap-5">
             {filteredServices.map((service, index) => (
               <motion.article
                 key={service.title}
@@ -147,10 +147,10 @@ const Services = () => {
                 whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
                 transition={{ duration: prefersReduced ? 0 : 0.35, delay: prefersReduced ? 0 : index * 0.03 }}
                 viewport={{ once: true, amount: 0.2 }}
-                className="group overflow-hidden rounded-2xl border border-[#E9ECEF]/15 bg-[#1C1C1C]"
+                className="group overflow-hidden rounded-xl border border-[#E9ECEF]/15 bg-[#1C1C1C] sm:rounded-2xl"
               >
                 <Link to={service.path} className="block h-full">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-[#111111]">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[#111111] sm:aspect-[4/3]">
                     <img
                       src={service.image}
                       alt={service.title}
@@ -158,15 +158,15 @@ const Services = () => {
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/82 to-transparent" />
-                    <span className="absolute left-3 top-3 rounded-full bg-[#F77F00] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-[#111111] md:text-[11px]">
+                    <span className="absolute left-2 top-2 rounded-full bg-[#F77F00] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-[#111111] sm:left-3 sm:top-3 sm:px-2.5 sm:py-1 sm:text-[10px] md:text-[11px]">
                       {service.category}
                     </span>
                   </div>
 
-                  <div className="p-4">
-                    <h2 className="mb-2 text-base font-bold leading-tight text-[#F8F9FA]">{service.title}</h2>
-                    <p className="mb-3 text-sm leading-relaxed text-[#E9ECEF]/80">{service.description}</p>
-                    <span className="inline-flex items-center text-[11px] font-black uppercase tracking-wider text-[#FCBF49] md:text-xs">
+                  <div className="p-3 sm:p-4">
+                    <h2 className="mb-1 text-xs font-bold leading-tight text-[#F8F9FA] sm:mb-2 sm:text-base">{service.title}</h2>
+                    <p className="mb-3 hidden text-sm leading-relaxed text-[#E9ECEF]/80 sm:block">{service.description}</p>
+                    <span className="inline-flex items-center text-[10px] font-black uppercase tracking-wider text-[#FCBF49] sm:text-[11px] md:text-xs">
                       View Details
                     </span>
                   </div>
