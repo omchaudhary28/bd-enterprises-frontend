@@ -1,14 +1,14 @@
 import React from 'react';
 import ServiceDetailLayout from './ServiceDetailLayout';
+import serviceImageManifest from '../../data/serviceImageManifest';
+
+const serviceImages = serviceImageManifest.oxygenCylinders;
 
 const sections = [
   {
     id: 'supply-planning',
     title: 'Oxygen and SCBA Cylinder Supply Planning',
-    images: [
-      '/images/ppes/ppes-oxygen-cylender/Self-contained_breathing_apparatus.jpg',
-      '/images/ppes/ppes-oxygen-cylender/Kl99-Firefighting-Respirator-60-Mins-Scba-with-6-8-Liter-Cylinder.avif',
-    ],
+    images: serviceImages,
     paragraphs: [
       'B. D. Enterprises supplies oxygen and SCBA cylinder solutions for firefighting, emergency response, and industrial breathing support applications. We assess operational risk, usage frequency, and standby requirements to define correct cylinder type, pressure class, and deployment quantity for each facility.',
       'Supply planning includes compatibility checks with breathing apparatus sets, handling requirements, and designated storage practices. This ensures cylinder systems are available, safe to operate, and aligned with the emergency response strategy of the site.',
@@ -35,11 +35,7 @@ const sections = [
   {
     id: 'testing-maintenance',
     title: 'Inspection, Testing, and Maintenance Lifecycle',
-    images: [
-      '/images/ppes/ppes-oxygen-cylender/cylinder_final_red.webp',
-      '/images/ppes/ppes-oxygen-cylender/12L-1.jpg',
-      '/images/ppes/ppes-oxygen-cylender/54034_w.webp',
-    ],
+    images: serviceImages,
     paragraphs: [
       'Cylinder reliability requires periodic inspection, pressure condition checks, valve integrity verification, and hydro-test scheduling. B. D. Enterprises provides lifecycle service support that helps organizations maintain safe operating condition and avoid out-of-certification deployment risks.',
       'Our maintenance workflow includes service status tracking, testing coordination, and replacement planning for worn or non-compliant units. This supports uninterrupted safety operations and improves confidence during emergency use.',
@@ -66,10 +62,7 @@ const sections = [
   {
     id: 'installation-readiness',
     title: 'Operational Readiness and Service Support',
-    images: [
-      '/images/ppes/ppes-oxygen-cylender/breathing-apparatus-set-500x500.webp',
-      '/images/ppes/ppes-oxygen-cylender/Best-Price-Scba-Respiration-Cylinder-Respirator-for-Firefighter.avif',
-    ],
+    images: serviceImages,
     paragraphs: [
       'B. D. Enterprises supports installation and readiness planning for cylinder storage stations, emergency access points, and SCBA deployment locations. We ensure equipment is positioned for fast retrieval and integrated into site emergency response procedures.',
       'Beyond supply and maintenance, we provide consulting on handling SOPs, periodic checks, and response preparedness so teams can operate equipment safely under pressure. This integrated support model improves practical readiness and compliance outcomes across critical operations.',

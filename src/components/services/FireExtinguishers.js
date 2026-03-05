@@ -1,14 +1,14 @@
 import React from 'react';
 import ServiceDetailLayout from './ServiceDetailLayout';
+import serviceImageManifest from '../../data/serviceImageManifest';
+
+const serviceImages = serviceImageManifest.fireExtinguisher;
 
 const sections = [
   {
     id: 'risk-assessment-selection',
     title: 'Risk Assessment and Extinguisher Selection',
-    images: [
-      '/images/fire-extinguisher/co2-flooding-system-1000x1000.jpg',
-      '/images/fire-extinguisher/CO2-Fire-suppression-system.jpg',
-    ],
+    images: serviceImages,
     paragraphs: [
       'B. D. Enterprises begins every fire extinguisher project with a zone-by-zone hazard review covering Class A, B, C, and electrical risk exposure. This allows correct extinguishing media selection, discharge capacity planning, and location mapping so response time is minimized during early-stage fire incidents.',
       'Our design process aligns extinguisher type, quantity, and mounting locations with occupancy use, process hazards, and travel distance criteria. We develop practical deployment plans for offices, factories, warehouses, utilities areas, and high-load production environments where rapid first-response suppression is critical.',
@@ -35,10 +35,7 @@ const sections = [
   {
     id: 'installation-commissioning',
     title: 'Installation and Commissioning Execution',
-    images: [
-      '/images/fire-extinguisher/automated-Fire-extinguisher.webp',
-      '/images/complainces-and-audits/Industrial-buildings-2.jpg',
-    ],
+    images: serviceImages,
     paragraphs: [
       'Installation is executed with controlled mounting heights, visible access paths, and obstruction-free positioning so extinguishers remain immediately reachable in an emergency. We also integrate signage, route marking, and location indexing to ensure users can identify and operate the right extinguisher under pressure.',
       'During commissioning, our team verifies pressure status, nozzle integrity, locking arrangements, and safety pin condition. We hand over system records that include location maps, serial tagging, and service intervals, giving facility managers a clear foundation for periodic inspection and compliance audits.',
@@ -65,10 +62,7 @@ const sections = [
   {
     id: 'maintenance-refilling',
     title: 'Maintenance, Refilling, and Readiness Assurance',
-    images: [
-      '/images/fire-extinguisher/CO2-Fire-suppression-system.jpg',
-      '/images/fire-extinguisher/co2-flooding-system-1000x1000.jpg',
-    ],
+    images: serviceImages,
     paragraphs: [
       'Our maintenance scope includes periodic visual checks, pressure verification, cylinder condition review, hose and horn integrity, and tamper seal inspection. Any non-conformity is recorded and corrected through controlled servicing workflows that prioritize immediate readiness and operational reliability.',
       'Refilling and hydro-testing activities are managed with traceable documentation so each extinguisher can be validated during client audits and statutory inspections. B. D. Enterprises also supports annual maintenance contracts with planned service calendars, emergency replacement coordination, and lifecycle tracking for every unit.',

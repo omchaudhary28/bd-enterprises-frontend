@@ -1,14 +1,14 @@
 import React from 'react';
 import ServiceDetailLayout from './ServiceDetailLayout';
+import serviceImageManifest from '../../data/serviceImageManifest';
+
+const serviceImages = serviceImageManifest.complianceAudits;
 
 const sections = [
   {
     id: 'inspection-framework',
     title: 'Technical Inspection Framework and Gap Assessment',
-    images: [
-      '/images/complainces-and-audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
-      '/images/complainces-and-audits/Guide%20to%20WHS%20Inspections-1.webp',
-    ],
+    images: serviceImages,
     paragraphs: [
       'B. D. Enterprises conducts structured compliance inspections covering fire protection systems, emergency infrastructure, safety records, and operational controls. Our inspection approach identifies technical non-conformities, documentation gaps, and service deficiencies that can affect statutory readiness and emergency performance.',
       'Every inspection is executed with practical facility context in mind, including system availability, maintenance history, and process risk exposure. This produces actionable findings rather than generic checklists, allowing organizations to prioritize high-impact corrective measures.',
@@ -35,10 +35,7 @@ const sections = [
   {
     id: 'corrective-planning',
     title: 'Corrective Action Planning and Implementation Support',
-    images: [
-      '/images/complainces-and-audits/0_l7xz_e_0Y31BCplJ.png',
-      '/images/complainces-and-audits/06c082721669e71c86cda1f8000022c610ef15a2-940x492.webp',
-    ],
+    images: serviceImages,
     paragraphs: [
       'After inspection, B. D. Enterprises prepares a closure roadmap that links every finding to technical rectification, ownership assignment, and completion target. This includes system repairs, replacement recommendations, service interventions, and documentation updates required to meet compliance benchmarks.',
       'Our team supports implementation follow-through by coordinating with client operations, maintenance teams, and third-party service providers. This ensures corrective actions move from report stage to practical execution with measurable closure evidence.',
@@ -65,10 +62,7 @@ const sections = [
   {
     id: 'maintenance-governance',
     title: 'Maintenance Governance and Ongoing Compliance Monitoring',
-    images: [
-      '/images/complainces-and-audits/Industrial-buildings-2.jpg',
-      '/images/complainces-and-audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
-    ],
+    images: serviceImages,
     paragraphs: [
       'Compliance stability depends on continuous maintenance governance. B. D. Enterprises supports periodic review cycles, service schedule controls, and document quality checks so facilities do not drift back into non-compliance after initial closure.',
       'We establish monitoring routines that integrate inspection outcomes with maintenance plans, training schedules, and service documentation. This approach builds long-term compliance discipline and gives management clear visibility into fire and safety governance performance.',

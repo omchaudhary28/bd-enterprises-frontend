@@ -59,17 +59,25 @@ const ServicesCarousel = () => {
   const [visibleCount, setVisibleCount] = useState(3);
   const [paused, setPaused] = useState(false);
 
+  const getVisibleCount = (width) => {
+    if (width >= 1024) return 3;
+    if (width >= 768) return 2;
+    return 1;
+  };
+
+  const maxIndex = Math.max(SERVICES.length - visibleCount, 0);
+
   useEffect(() => {
-    const w = window.innerWidth;
-    if (w >= 1024) setVisibleCount(3);
-    else setVisibleCount(2);
+    const count = getVisibleCount(window.innerWidth);
+    setVisibleCount(count);
+    setCurrent((prev) => Math.min(prev, Math.max(SERVICES.length - count, 0)));
   }, []);
 
   useEffect(() => {
     const handler = () => {
-      const w = window.innerWidth;
-      if (w >= 1024) setVisibleCount(3);
-      else setVisibleCount(2);
+      const count = getVisibleCount(window.innerWidth);
+      setVisibleCount(count);
+      setCurrent((prev) => Math.min(prev, Math.max(SERVICES.length - count, 0)));
     };
     window.addEventListener('resize', handler);
     return () => window.removeEventListener('resize', handler);
@@ -78,20 +86,20 @@ const ServicesCarousel = () => {
   useEffect(() => {
     if (paused) return;
     const timer = setInterval(() => {
-      setCurrent((c) => (c + 1) % SERVICES.length);
+      setCurrent((c) => (c + 1) % (maxIndex + 1));
     }, 5000);
     return () => clearInterval(timer);
-  }, [paused]);
+  }, [paused, maxIndex]);
 
-  const slideNext = () => setCurrent((c) => (c + 1) % SERVICES.length);
-  const slidePrev = () => setCurrent((c) => (c - 1 + SERVICES.length) % SERVICES.length);
+  const slideNext = () => setCurrent((c) => (c + 1) % (maxIndex + 1));
+  const slidePrev = () => setCurrent((c) => (c - 1 + (maxIndex + 1)) % (maxIndex + 1));
 
   const ServiceCard = ({ service, index }) => {
     const imgSrc = getImageForService(index);
     return (
       <motion.div
         key={`card-${index}`}
-        className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 px-3"
+        className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3"
       >
         <motion.div
           className="relative bg-gradient-to-br from-[#1C1C1C] to-[#111111] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col group"
@@ -165,7 +173,7 @@ const ServicesCarousel = () => {
           <motion.div
             animate={{ x: `-${(current * (100 / visibleCount))}%` }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="flex gap-6"
+            className="flex"
             style={{ width: '100%' }}
           >
             {SERVICES.map((service, idx) => (
@@ -176,7 +184,7 @@ const ServicesCarousel = () => {
 
         {/* Dots Indicator */}
         <div className="flex justify-center gap-2 mt-6">
-          {SERVICES.map((_, idx) => (
+          {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrent(idx)}

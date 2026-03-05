@@ -12,28 +12,33 @@ const ServiceMedia = ({ images, title, mediaId }) => {
 
   if (images.length === 1) {
     return (
-      <div className="overflow-hidden rounded-2xl border border-[#E9ECEF]/20 bg-[#1B1B1B] shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
-        <div className="aspect-[16/10]">
-          <img src={images[0]} alt={title} className="h-full w-full object-cover" loading="lazy" />
+      <div className="relative w-full overflow-hidden rounded-2xl border border-[#E9ECEF]/20 bg-[#1B1B1B] shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
+        <div className="aspect-[16/10] w-full max-h-[420px] md:max-h-[520px]">
+          <img src={images[0]} alt={title} className="h-full w-full object-cover max-h-[420px] md:max-h-[520px]" loading="lazy" />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#E9ECEF]/20 bg-[#1B1B1B] shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
+    <div className="relative w-full overflow-hidden rounded-2xl border border-[#E9ECEF]/20 bg-[#1B1B1B] shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
       <Swiper
         modules={[Pagination, Autoplay]}
         slidesPerView={1}
         loop
         autoplay={{ delay: 3800, disableOnInteraction: false, pauseOnMouseEnter: true }}
         pagination={{ clickable: true }}
-        className={`service-media-swiper-${mediaId}`}
+        className={`service-media-swiper service-media-swiper-${mediaId}`}
       >
         {images.map((image, index) => (
           <SwiperSlide key={`${mediaId}-${index}`}>
-            <div className="aspect-[16/10]">
-              <img src={image} alt={`${title} ${index + 1}`} className="h-full w-full object-cover" loading="lazy" />
+            <div className="aspect-[16/10] w-full max-h-[420px] md:max-h-[520px]">
+              <img
+                src={image}
+                alt={`${title} ${index + 1}`}
+                className="h-full w-full object-cover max-h-[420px] md:max-h-[520px]"
+                loading="lazy"
+              />
             </div>
           </SwiperSlide>
         ))}
@@ -90,8 +95,8 @@ const ServiceSection = ({ section, index, pageKey }) => {
   return (
     <section className="py-5 md:py-8">
       <div className="grid items-stretch gap-5 lg:grid-cols-2 lg:gap-8">
-        <div className={mediaLeft ? 'order-1' : 'order-2'}>{media}</div>
-        <div className={mediaLeft ? 'order-2' : 'order-1'}>{content}</div>
+        <div className={mediaLeft ? 'order-1 lg:order-1' : 'order-1 lg:order-2'}>{media}</div>
+        <div className={mediaLeft ? 'order-2 lg:order-2' : 'order-2 lg:order-1'}>{content}</div>
       </div>
     </section>
   );
@@ -129,7 +134,7 @@ const ServiceDetailLayout = ({
         <span className="mb-5 inline-flex rounded-full border border-[#F77F00]/55 bg-[#F77F00]/18 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-[#FCBF49] md:text-sm">
           {badge}
         </span>
-        <h1 className="mb-3 text-4xl font-black tracking-tight text-[#F8F9FA] md:text-6xl">{title}</h1>
+        <h1 className="mb-3 text-3xl font-black tracking-tight text-[#F8F9FA] sm:text-4xl md:text-6xl">{title}</h1>
         <h2 className="mb-5 text-xl font-extrabold tracking-tight text-[#FCBF49] md:text-3xl">{subtitle}</h2>
         <p className="max-w-6xl text-sm leading-relaxed text-[#E9ECEF]/88 md:text-lg">{intro}</p>
       </section>
@@ -173,7 +178,7 @@ const ServiceDetailLayout = ({
           <p className="mb-6 max-w-4xl text-sm leading-relaxed text-[#F8F9FA]/90 md:text-lg">{ctaBody}</p>
           <Link
             to="/contact"
-            className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#FCBF49] px-8 py-3 text-sm font-black uppercase tracking-wider text-[#111111] transition-colors hover:bg-[#F77F00] hover:text-white"
+            className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-[#FCBF49] px-8 py-3 text-sm font-black uppercase tracking-wider text-[#111111] transition-colors hover:bg-[#F77F00] hover:text-white sm:w-auto"
           >
             {ctaLabel}
           </Link>

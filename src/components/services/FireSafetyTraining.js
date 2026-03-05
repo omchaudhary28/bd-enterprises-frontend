@@ -1,14 +1,14 @@
 import React from 'react';
 import ServiceDetailLayout from './ServiceDetailLayout';
+import serviceImageManifest from '../../data/serviceImageManifest';
+
+const serviceImages = serviceImageManifest.fireSafetyTraining;
 
 const sections = [
   {
     id: 'preparedness-program',
     title: 'Structured Fire Safety Preparedness Programs',
-    images: [
-      '/images/fire-safety-training/Fire_drill_in_a_smoke_trailer,_Naples,_Italy_-_081007-N-4044H-271.jpg',
-      '/images/fire-safety-training/Z_61FevxEdbNPF7t_FireSafetyPrevention.avif',
-    ],
+    images: serviceImages,
     paragraphs: [
       'B. D. Enterprises develops role-based training programs for fire wardens, shift supervisors, and operational teams to build practical emergency readiness. Training modules are aligned to facility hazards, evacuation routes, and installed fire protection systems so every participant understands response priorities and safe action sequences.',
       'Program delivery includes classroom awareness, on-site demonstrations, and scenario-based response planning. This blended format helps teams retain procedural clarity, improve coordination, and reduce delay during real emergency events.',
@@ -35,10 +35,7 @@ const sections = [
   {
     id: 'practical-drills',
     title: 'Practical Drills and Extinguisher Handling',
-    images: [
-      '/images/fire-safety-training/Fire%20Extinguisher%20Training%20Demo%20Open%20Burn.jpg',
-      '/images/fire-safety-training/PASS-steps-as-shown-through-the-video-training-Bass-2014_Q320.jpg',
-    ],
+    images: serviceImages,
     paragraphs: [
       'Practical drill execution is a core part of our training service. B. D. Enterprises conducts live simulations and extinguisher handling sessions so participants learn safe activation, target approach methods, and escalation protocol for situations that move beyond first-response control.',
       'Mock drills are structured around realistic scenarios including detection alerts, assembly movement, emergency communication, and first-line firefighting coordination. Post-drill analysis is provided to identify response gaps and improve readiness in subsequent cycles.',
@@ -65,10 +62,7 @@ const sections = [
   {
     id: 'continuous-improvement',
     title: 'Training Maintenance and Compliance Continuity',
-    images: [
-      '/images/fire-safety-training/feuerloschubung_im_betrieb-cws_fire_safety.jpg',
-      '/images/complainces-and-audits/Guide%20to%20WHS%20Inspections-1.webp',
-    ],
+    images: serviceImages,
     paragraphs: [
       'Training is treated as an ongoing service, not a one-time event. B. D. Enterprises prepares periodic refresher schedules, role revalidation plans, and training calendar support so safety competency remains active despite workforce changes and operational expansion.',
       'We also align training outcomes with inspection and compliance programs by providing attendance matrices, content records, and action closure status. This ensures organizations can demonstrate not only policy intent but practical readiness during internal and statutory reviews.',

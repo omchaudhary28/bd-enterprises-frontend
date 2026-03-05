@@ -1,14 +1,14 @@
 import React from 'react';
 import ServiceDetailLayout from './ServiceDetailLayout';
+import serviceImageManifest from '../../data/serviceImageManifest';
+
+const serviceImages = serviceImageManifest.waterModularTank;
 
 const sections = [
   {
     id: 'modular-panel-system',
     title: 'Modular Panel System Engineering',
-    images: [
-      '/images/water_modular_tank/Process-Water-Tanks-002-min.jpg',
-      '/images/water_modular_tank/STP-Water-Tanks-003-min.jpg',
-    ],
+    images: serviceImages,
     paragraphs: [
       'Water modular tank systems are built using prefabricated panel assemblies that allow flexible capacity planning and controlled on-site installation. B. D. Enterprises designs panel configuration, support layout, and connection architecture to match fire water demand, site conditions, and expansion strategy.',
       'The modular approach minimizes long construction cycles and enables structured project execution in active facilities. Panel-by-panel assembly also supports staged deployment where storage capacity can be increased over time without fully replacing the existing fire water infrastructure.',
@@ -35,10 +35,7 @@ const sections = [
   {
     id: 'corrosion-resistance',
     title: 'Corrosion Resistance and Durability Planning',
-    images: [
-      '/images/water_modular_tank/larger-capacity-storage-tanks-1000x1000.jpg',
-      '/images/water_modular_tank/STP-Water-Tanks-003-min.jpg',
-    ],
+    images: serviceImages,
     paragraphs: [
       'B. D. Enterprises specifies modular tank systems with corrosion-resistant material options and sealing methods to maintain long service life in demanding industrial environments. Material selection is guided by water quality, ambient conditions, and expected operating cycle to reduce long-term degradation risk.',
       'Durability planning also includes structural support design, leak prevention strategy, and access provisions for internal inspection. This enables sustained performance and reduces lifecycle maintenance burden while protecting fire protection reliability over the asset lifespan.',
@@ -65,10 +62,7 @@ const sections = [
   {
     id: 'installation-maintenance',
     title: 'Scalable Installation and Maintenance Services',
-    images: [
-      '/images/water_modular_tank/Process-Water-Tanks-002-min.jpg',
-      '/images/water_modular_tank/larger-capacity-storage-tanks-1000x1000.jpg',
-    ],
+    images: serviceImages,
     paragraphs: [
       'Our installation scope covers civil interface coordination, panel erection, piping interconnection, valve arrangement, and integration with fire pump suction systems. B. D. Enterprises executes installation with documented quality checkpoints so water storage readiness is achieved without operational disruption.',
       'Maintenance services include visual integrity checks, leakage review, structural assessment, and periodic cleaning planning. We provide service schedules, inspection records, and corrective action support so modular tank systems remain reliable as a core component of overall fire protection infrastructure.',

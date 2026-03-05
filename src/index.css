@@ -56,6 +56,20 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.service-media-swiper .swiper-slide {
+  height: auto !important;
+}
+
+.service-media-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
 html.dark body {
   background-color: var(--bg-light);
   color: var(--text-dark);

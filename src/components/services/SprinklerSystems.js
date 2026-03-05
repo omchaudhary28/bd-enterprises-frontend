@@ -1,14 +1,14 @@
 import React from 'react';
 import ServiceDetailLayout from './ServiceDetailLayout';
+import serviceImageManifest from '../../data/serviceImageManifest';
+
+const serviceImages = serviceImageManifest.sprinklerSystem;
 
 const sections = [
   {
     id: 'wet-pipe',
     title: 'Wet Pipe Systems',
-    images: [
-      '/images/sprinkler_system/Fire_sprinkler_roof_mount_side_view.jpg',
-      '/images/sprinkler_system/sprinkler-58e2afea5f9b58ef7eb86178.jpg',
-    ],
+    images: serviceImages,
     paragraphs: [
       'Wet pipe sprinkler systems operate with constant water-filled pipes, which allows immediate discharge when a sprinkler head activates. Activation occurs through heat-sensitive glass bulb or fusible link operation, opening only at affected points and controlling fire growth in its earliest stage.',
       'B. D. Enterprises recommends wet pipe systems for frost-free environments where fast response, design simplicity, and operational reliability are priorities. These systems are cost-effective, comparatively simple to maintain, and highly dependable for industrial and commercial occupancy fire protection.',
@@ -35,10 +35,7 @@ const sections = [
   {
     id: 'dry-pipe',
     title: 'Dry Pipe Systems',
-    images: [
-      '/images/sprinkler_system/facilities-management-pipes-29818525.webp',
-      '/images/sprinkler_system/pWEODWN6M3U8LIYnSavtsmhevCHQDT-LNek5wwXMN1d0qHghjg-R-WV8eu7xbKN2H4uWBQ809VC9HiVsKRGeSmgyuKKfR1x7ZSl87Tz7z4k%20(1).jpg',
-    ],
+    images: serviceImages,
     paragraphs: [
       'Dry pipe systems keep branch lines filled with pressurized air or nitrogen until sprinkler operation occurs. Once a head opens, pressure drops and the dry valve releases water into the piping network, resulting in a controlled delayed discharge suitable for freezing-prone environments.',
       'B. D. Enterprises deploys dry pipe systems where ambient conditions can freeze standing water in wet networks. Warehouses, loading docks, and cold storage facilities benefit from this configuration because it protects infrastructure from freeze damage while maintaining fire suppression readiness.',
@@ -65,10 +62,7 @@ const sections = [
   {
     id: 'deluge',
     title: 'Deluge Systems',
-    images: [
-      '/images/sprinkler_system/high%20hazard%20sprinkler%20systems.jpg',
-      '/images/sprinkler_system/Fire_sprinkler_roof_mount_side_view.jpg',
-    ],
+    images: serviceImages,
     paragraphs: [
       'Deluge systems use open sprinkler heads and release water only after a detection system commands the deluge valve. When activated, water discharges simultaneously through all heads in the protected zone, rapidly flooding high-hazard areas where fire spread potential is severe.',
       'B. D. Enterprises engineers deluge solutions for critical risk facilities such as chemical plants, power plants, and specialized process units. The design integrates detection logic, valve release controls, and dedicated water supply capacity to deliver high-intensity suppression where conventional systems may be insufficient.',

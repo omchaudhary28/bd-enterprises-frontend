@@ -34,6 +34,15 @@ const trustStats = [
 const MainContent = () => {
   return (
     <div className="relative overflow-hidden bg-[#111111]">
+      <section className="relative z-20 border-b border-[#E9ECEF]/10 bg-[#0F0F0F]/95">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 md:px-6">
+          <div>
+            <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#FCBF49]">B. D. Enterprises</p>
+            <p className="text-xs text-[#E9ECEF]/78">Fire Safety and Industrial PPE Solutions</p>
+          </div>
+        </div>
+      </section>
+
       <HeroCarousel />
 
       <section className="relative py-14 md:py-20">
