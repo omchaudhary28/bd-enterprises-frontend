@@ -101,11 +101,6 @@ const getCategoryMeta = (categorySlug) => {
 
 const toImagePath = (folder, fileName) => encodeURI(`/images/${folder}/${fileName}`);
 
-const toProductTitle = (fileName) =>
-  decodeURIComponent(fileName)
-    .replace(/\.[^/.]+$/, '')
-    .trim();
-
 const getBrandImageFiles = (brandSlug) => {
   const folder = brandSupplyConfig?.[brandSlug]?.folder;
   if (!folder) {
@@ -146,7 +141,7 @@ const buildProductsForCategory = (brand, categorySlug) => {
 
   return files.map((fileName, index) => ({
     id: `${brand.slug}-${category.slug}-${index + 1}`,
-    title: toProductTitle(fileName),
+    title: `${brand.name} ${category.name} Product ${index + 1}`,
     description: `${category.shortDescription} Supplied by ${brand.name} for industrial and commercial safety operations.`,
     image: toImagePath(folder, fileName),
     category: category.name,
