@@ -6,8 +6,8 @@ const sections = [
     id: 'risk-assessment-selection',
     title: 'Risk Assessment and Extinguisher Selection',
     images: [
-      '/images/fire%20extinguisher/co2-flooding-system-1000x1000.jpg',
-      '/images/fire%20extinguisher/CO2-Fire-suppression-system.jpg',
+      '/images/fire-extinguisher/co2-flooding-system-1000x1000.jpg',
+      '/images/fire-extinguisher/CO2-Fire-suppression-system.jpg',
     ],
     paragraphs: [
       'B. D. Enterprises begins every fire extinguisher project with a zone-by-zone hazard review covering Class A, B, C, and electrical risk exposure. This allows correct extinguishing media selection, discharge capacity planning, and location mapping so response time is minimized during early-stage fire incidents.',
@@ -36,8 +36,8 @@ const sections = [
     id: 'installation-commissioning',
     title: 'Installation and Commissioning Execution',
     images: [
-      '/images/fire%20extinguisher/automated-Fire-extinguisher.webp',
-      '/images/complainces%20and%20audits/Industrial-buildings-2.jpg',
+      '/images/fire-extinguisher/automated-Fire-extinguisher.webp',
+      '/images/compliances-and-audits/Industrial-buildings-2.jpg',
     ],
     paragraphs: [
       'Installation is executed with controlled mounting heights, visible access paths, and obstruction-free positioning so extinguishers remain immediately reachable in an emergency. We also integrate signage, route marking, and location indexing to ensure users can identify and operate the right extinguisher under pressure.',
@@ -66,8 +66,8 @@ const sections = [
     id: 'maintenance-refilling',
     title: 'Maintenance, Refilling, and Readiness Assurance',
     images: [
-      '/images/fire%20extinguisher/CO2-Fire-suppression-system.jpg',
-      '/images/fire%20extinguisher/co2-flooding-system-1000x1000.jpg',
+      '/images/fire-extinguisher/CO2-Fire-suppression-system.jpg',
+      '/images/fire-extinguisher/co2-flooding-system-1000x1000.jpg',
     ],
     paragraphs: [
       'Our maintenance scope includes periodic visual checks, pressure verification, cylinder condition review, hose and horn integrity, and tamper seal inspection. Any non-conformity is recorded and corrected through controlled servicing workflows that prioritize immediate readiness and operational reliability.',
@@ -135,3 +135,4 @@ const FireExtinguishers = () => (
 );
 
 export default FireExtinguishers;
+

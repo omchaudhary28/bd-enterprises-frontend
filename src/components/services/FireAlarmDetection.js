@@ -6,9 +6,9 @@ const sections = [
     id: 'detection-devices',
     title: 'Smoke and Heat Detection Architecture',
     images: [
-      '/images/Fire%20Alarm%20Systems/618cdfa3202b1d251c484e97_How%20Do%20Fire%20Alarms%20Work%20in%20Commercial%20Buildings.jpg',
-      '/images/Fire%20Alarm%20Systems/IMG_9806.webp',
-      '/images/Fire%20Alarm%20Systems/fUFzw39POCyFOBFaMLmMiPXCSt9CrSeJWo2vxEeEzIwSriyCYemK96TxmFTyYhP9OCWJ2jLGOpWI8YOBkj4PLnhOHMybkcNdr2V3zNqvloo.jpg',
+      '/images/Fire-Alarm-Systems/618cdfa3202b1d251c484e97_How%20Do%20Fire%20Alarms%20Work%20in%20Commercial%20Buildings.jpg',
+      '/images/Fire-Alarm-Systems/IMG_9806.webp',
+      '/images/Fire-Alarm-Systems/fUFzw39POCyFOBFaMLmMiPXCSt9CrSeJWo2vxEeEzIwSriyCYemK96TxmFTyYhP9OCWJ2jLGOpWI8YOBkj4PLnhOHMybkcNdr2V3zNqvloo.jpg',
     ],
     paragraphs: [
       'B. D. Enterprises designs integrated fire alarm and detection systems that combine smoke detectors, heat detectors, and suitable device logic based on real hazard conditions. We evaluate occupancy pattern, ambient environment, and process behavior to decide detector type and detector spacing for dependable early warning performance.',
@@ -37,9 +37,9 @@ const sections = [
     id: 'addressable-conventional',
     title: 'Addressable and Conventional System Integration',
     images: [
-      '/images/Fire%20Alarm%20Systems/types-of-fire-alarm.png',
-      '/images/Hero%20Images/Smart-Addressable-Fire-Alarm-Monitoring-System-Panel.avif',
-      '/images/Hero%20Images/Fire-Safety-Addressable-Security-Alarm-Control-Panel-for-Alarm-System-in-House-Building.avif',
+      '/images/Fire-Alarm-Systems/types-of-fire-alarm.png',
+      '/images/Hero-Images/Smart-Addressable-Fire-Alarm-Monitoring-System-Panel.avif',
+      '/images/Hero-Images/Fire-Safety-Addressable-Security-Alarm-Control-Panel-for-Alarm-System-in-House-Building.avif',
     ],
     paragraphs: [
       'Our engineering team deploys both addressable and conventional systems based on project scale, troubleshooting requirements, and future expansion plans. Addressable networks provide point-level status visibility, while conventional solutions remain effective for compact and well-defined zone-based installations.',
@@ -68,8 +68,8 @@ const sections = [
     id: 'monitoring-maintenance',
     title: 'Monitoring Panels, Maintenance, and Lifecycle Support',
     images: [
-      '/images/Fire%20Alarm%20Systems/6193a4b4110d24a5b2acc29c_Commercial%20Fire%20Alarm%20System%20Guide-min.jpg',
-      '/images/Fire%20Alarm%20Systems/8jt6FYUcp98D-LKAgX9uyI4c7KgmfrIL4jH2n9a01vHDua-hG-3hkxUnfSwqDzsP3Jj437Lib6-R3YdldV5t1Rn5cZopMJFfDd5Odd0bMWE.jpg',
+      '/images/Fire-Alarm-Systems/6193a4b4110d24a5b2acc29c_Commercial%20Fire%20Alarm%20System%20Guide-min.jpg',
+      '/images/Fire-Alarm-Systems/8jt6FYUcp98D-LKAgX9uyI4c7KgmfrIL4jH2n9a01vHDua-hG-3hkxUnfSwqDzsP3Jj437Lib6-R3YdldV5t1Rn5cZopMJFfDd5Odd0bMWE.jpg',
     ],
     paragraphs: [
       'Beyond installation, B. D. Enterprises provides periodic testing, panel health checks, detector cleaning, battery assessment, and fault rectification to keep systems reliable year-round. We build preventive maintenance schedules that limit system downtime and support uninterrupted fire safety readiness.',
@@ -137,3 +137,4 @@ const FireAlarmDetection = () => (
 );
 
 export default FireAlarmDetection;
+

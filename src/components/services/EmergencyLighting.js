@@ -6,8 +6,8 @@ const sections = [
     id: 'egress-design',
     title: 'Egress Lighting Design and Installation',
     images: [
-      '/images/emergency%20lights/76yvHsMjxoXFU4WTt3JUP94YBWVObAz48gti09nzlKzkXU0iZueHb4nEzuD-Q8MeywZXladWrqsgsRcsVSs2v3F2K7aqdqMe1cmlK-fDSrw.jpg',
-      '/images/emergency%20lights/VRRSsIdZ3Hrp7F-MiQX3BYUhkRJgyT6js3C-k3k9WT-p1szH9NKExmSOk1PuiKJGViwxnzYrzbX_9bZDpXRNYOuvDQlnvgGThdzaGhYL220.jpg',
+      '/images/emergency-lights/76yvHsMjxoXFU4WTt3JUP94YBWVObAz48gti09nzlKzkXU0iZueHb4nEzuD-Q8MeywZXladWrqsgsRcsVSs2v3F2K7aqdqMe1cmlK-fDSrw.jpg',
+      '/images/emergency-lights/VRRSsIdZ3Hrp7F-MiQX3BYUhkRJgyT6js3C-k3k9WT-p1szH9NKExmSOk1PuiKJGViwxnzYrzbX_9bZDpXRNYOuvDQlnvgGThdzaGhYL220.jpg',
     ],
     paragraphs: [
       'B. D. Enterprises designs emergency lighting layouts that keep evacuation paths visible during power loss, smoke conditions, and emergency shutdown scenarios. Installation planning covers corridors, staircases, assembly points, and escape route intersections so occupants can move safely under low-visibility conditions.',
@@ -36,8 +36,8 @@ const sections = [
     id: 'backup-power',
     title: 'Backup Autonomy and System Reliability',
     images: [
-      '/images/emergency%20lights/WkM7Ecs0fbsLPqwSLpG_y-cimFLti-eKQMT9W0bIoIpwSlHsmGrJgMOWpQZhT4LVnJsQErzLdarPK5WiFH1sq-lzm9oVmP20IQSDwIsOE_U.jpg',
-      '/images/emergency%20lights/rKGpcdySuc5au8QGVXi18u_EsaETgbClI2bhlNPqBcHJijLk4Urzk6edYOB8N9St45-d46aD8HV3VJfqpH2Wk7O-mA4i73tE4kwMnO2rNPk.jpg',
+      '/images/emergency-lights/WkM7Ecs0fbsLPqwSLpG_y-cimFLti-eKQMT9W0bIoIpwSlHsmGrJgMOWpQZhT4LVnJsQErzLdarPK5WiFH1sq-lzm9oVmP20IQSDwIsOE_U.jpg',
+      '/images/emergency-lights/rKGpcdySuc5au8QGVXi18u_EsaETgbClI2bhlNPqBcHJijLk4Urzk6edYOB8N9St45-d46aD8HV3VJfqpH2Wk7O-mA4i73tE4kwMnO2rNPk.jpg',
     ],
     paragraphs: [
       'Emergency lighting reliability depends on battery autonomy, charging performance, and periodic load verification. B. D. Enterprises configures systems to maintain required backup duration and functional stability so evacuation lighting remains active throughout emergency event windows.',
@@ -66,8 +66,8 @@ const sections = [
     id: 'maintenance-inspection',
     title: 'Maintenance, Inspection, and Service Lifecycle',
     images: [
-      '/images/complainces%20and%20audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
-      '/images/complainces%20and%20audits/Guide%20to%20WHS%20Inspections-1.webp',
+      '/images/compliances-and-audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
+      '/images/compliances-and-audits/Guide%20to%20WHS%20Inspections-1.webp',
     ],
     paragraphs: [
       'B. D. Enterprises provides ongoing emergency lighting maintenance through scheduled inspections, non-working fixture rectification, battery replacement coordination, and circuit continuity checks. Preventive service planning reduces failure risk and keeps evacuation systems available during real emergencies.',
@@ -135,3 +135,4 @@ const EmergencyLighting = () => (
 );
 
 export default EmergencyLighting;
+

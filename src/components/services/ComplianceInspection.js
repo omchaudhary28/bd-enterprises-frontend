@@ -6,8 +6,8 @@ const sections = [
     id: 'inspection-framework',
     title: 'Technical Inspection Framework and Gap Assessment',
     images: [
-      '/images/complainces%20and%20audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
-      '/images/complainces%20and%20audits/Guide%20to%20WHS%20Inspections-1.webp',
+      '/images/compliances-and-audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
+      '/images/compliances-and-audits/Guide%20to%20WHS%20Inspections-1.webp',
     ],
     paragraphs: [
       'B. D. Enterprises conducts structured compliance inspections covering fire protection systems, emergency infrastructure, safety records, and operational controls. Our inspection approach identifies technical non-conformities, documentation gaps, and service deficiencies that can affect statutory readiness and emergency performance.',
@@ -36,8 +36,8 @@ const sections = [
     id: 'corrective-planning',
     title: 'Corrective Action Planning and Implementation Support',
     images: [
-      '/images/complainces%20and%20audits/0_l7xz_e_0Y31BCplJ.png',
-      '/images/complainces%20and%20audits/06c082721669e71c86cda1f8000022c610ef15a2-940x492.webp',
+      '/images/compliances-and-audits/0_l7xz_e_0Y31BCplJ.png',
+      '/images/compliances-and-audits/06c082721669e71c86cda1f8000022c610ef15a2-940x492.webp',
     ],
     paragraphs: [
       'After inspection, B. D. Enterprises prepares a closure roadmap that links every finding to technical rectification, ownership assignment, and completion target. This includes system repairs, replacement recommendations, service interventions, and documentation updates required to meet compliance benchmarks.',
@@ -66,8 +66,8 @@ const sections = [
     id: 'maintenance-governance',
     title: 'Maintenance Governance and Ongoing Compliance Monitoring',
     images: [
-      '/images/complainces%20and%20audits/Industrial-buildings-2.jpg',
-      '/images/complainces%20and%20audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
+      '/images/compliances-and-audits/Industrial-buildings-2.jpg',
+      '/images/compliances-and-audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
     ],
     paragraphs: [
       'Compliance stability depends on continuous maintenance governance. B. D. Enterprises supports periodic review cycles, service schedule controls, and document quality checks so facilities do not drift back into non-compliance after initial closure.',
@@ -135,3 +135,4 @@ const ComplianceInspection = () => (
 );
 
 export default ComplianceInspection;
+

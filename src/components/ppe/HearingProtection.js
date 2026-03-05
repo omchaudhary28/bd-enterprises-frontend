@@ -14,7 +14,7 @@ const HearingProtection = () => {
     },
     {
       name: 'Earmuffs',
-      image: '/images/ppes/Hearing-Protection-1536x922.webp',
+      image: '/images/ppes/Hearing-Protection_2022.avif',
       summary: 'Reusable, durable hearing protection with comfortable headband.',
       useCases: ['Loud industrial environments', 'Shooting ranges', 'Loud events', 'Continuous noise'],
       protection: 'Provides 20-33 dB noise reduction rating; more comfortable for extended wear.',
@@ -23,7 +23,7 @@ const HearingProtection = () => {
     },
     {
       name: 'Custom Molded Plugs',
-      image: '/images/ppes/Hearing-Protection-1536x922.webp',
+      image: '/images/ppes/istockphoto-2190518272-1024x1024.jpg',
       summary: 'Personalized hearing protection molded to individual ear canals.',
       useCases: ['Professional musicians', 'Audio engineers', 'Long-term industrial work', 'Government work'],
       protection: 'Perfect fit ensures maximum sealing and protection; very comfortable for all-day wear.',

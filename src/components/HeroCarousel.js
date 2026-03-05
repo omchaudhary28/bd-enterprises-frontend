@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const slides = [
   {
     id: 1,
-    src: '/images/Hero%20Images/DEC-ENG-media_215.jpg',
+    src: '/images/Hero-Images/DEC-ENG-media_215.jpg',
     alt: 'Industrial fire control room monitoring',
     headline: 'Fire Safety Infrastructure Built for Industrial Performance',
     subheadline:
@@ -13,17 +13,41 @@ const slides = [
   },
   {
     id: 2,
-    src: '/images/Hero%20Images/Carrying-appearance-of-the-standard-and-prototype-SCBA.png',
+    src: '/images/Hero-Images/fire-sprinkler-systems-help-to-extinguish-fire-in-rental-storage-units-920x533.jpg',
+    alt: 'Industrial sprinkler protection system',
+    headline: 'Automatic Suppression Systems Designed for Real Facility Risk',
+    subheadline:
+      'Sprinkler, hydrant, and fire water infrastructure engineered for dependable emergency performance.',
+  },
+  {
+    id: 3,
+    src: '/images/Hero-Images/Smart-Addressable-Fire-Alarm-Monitoring-System-Panel.avif',
+    alt: 'Addressable fire alarm and monitoring panel',
+    headline: 'Detection and Monitoring Systems with Compliance-Ready Execution',
+    subheadline:
+      'Fire alarm setup, smoke and heat detection, and lifecycle maintenance delivered by expert teams.',
+  },
+  {
+    id: 4,
+    src: '/images/Hero-Images/GettyImages-161332995-firefighter-ready-with-hose-HEADER-2400x1600.avif',
+    alt: 'Fire response team with hydrant hose',
+    headline: 'Installation, Maintenance, Inspection, and Readiness Support',
+    subheadline:
+      'Integrated service delivery from deployment planning to annual compliance and emergency preparedness.',
+  },
+  {
+    id: 5,
+    src: '/images/Hero-Images/Carrying-appearance-of-the-standard-and-prototype-SCBA.png',
     alt: 'SCBA firefighting safety equipment',
     headline: 'Certified PPE and Breathing Support Solutions',
     subheadline:
       'Structured supply for protective equipment aligned with compliance and operational safety requirements.',
   },
   {
-    id: 3,
-    src: '/images/Hero%20Images/fire-sprinkler-systems-help-to-extinguish-fire-in-rental-storage-units-920x533.jpg',
-    alt: 'Industrial sprinkler protection system',
-    headline: 'Compliance-First Fire Protection for Modern Facilities',
+    id: 6,
+    src: '/images/Hero-Images/Blog_What is Clean Agent Fire Suppression.webp',
+    alt: 'Industrial fire safety suppression consultation',
+    headline: 'Compliance-First Fire Protection for Modern Industrial Facilities',
     subheadline:
       'From detection to suppression and audits, we deliver execution-ready safety programs.',
   },

@@ -11,15 +11,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const galleryImages = [
-  '/images/Hero%20Images/DEC-ENG-media_215.jpg',
-  '/images/fire%20extinguisher/CO2-Fire-suppression-system.jpg',
-  '/images/sprinkler%20system/Fire_sprinkler_roof_mount_side_view.jpg',
+  '/images/Hero-Images/DEC-ENG-media_215.jpg',
+  '/images/fire-extinguisher/CO2-Fire-suppression-system.jpg',
+  '/images/sprinkler_system/Fire_sprinkler_roof_mount_side_view.jpg',
   '/images/ppes/Head-Protection.webp',
-  '/images/Fire%20Alarm%20Systems/618cdfa3202b1d251c484e97_How%20Do%20Fire%20Alarms%20Work%20in%20Commercial%20Buildings.jpg',
-  '/images/fire%20safety%20training/Fire%20Extinguisher%20Training%20Demo%20Open%20Burn.jpg',
+  '/images/Fire-Alarm-Systems/618cdfa3202b1d251c484e97_How%20Do%20Fire%20Alarms%20Work%20in%20Commercial%20Buildings.jpg',
+  '/images/fire-safety-training/Fire%20Extinguisher%20Training%20Demo%20Open%20Burn.jpg',
   '/images/ppes/ppes%20oxygen%20cylender/cylinder_final_red.webp',
-  '/images/complainces%20and%20audits/Industrial-buildings-2.jpg',
-  '/images/emergency%20lights/3mDZADxjMAulmzrzYOOn9xHZSn4QVEwl41FESCKhECk7GlvfznL8xpQrBjj6YZvX-eHOBJA_QWPNVw_wkv0lI_IHJipVPdklUgWHd6NXeQw.jpg',
+  '/images/compliances-and-audits/Industrial-buildings-2.jpg',
+  '/images/emergency-lights/3mDZADxjMAulmzrzYOOn9xHZSn4QVEwl41FESCKhECk7GlvfznL8xpQrBjj6YZvX-eHOBJA_QWPNVw_wkv0lI_IHJipVPdklUgWHd6NXeQw.jpg',
 ];
 
 const growthData = [
@@ -214,5 +214,6 @@ const About = () => {
 };
 
 export default About;
+
 
 

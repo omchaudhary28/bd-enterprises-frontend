@@ -14,7 +14,7 @@ const EyeFaceProtection = () => {
     },
     {
       name: 'Welding Shields',
-      image: '/images/ppes/Face-and-Eye-Protection_2022.avif',
+      image: '/images/ppes/ppes%20eye%20protection/Double-Layer-Welding-Glasses-Adjustable-Welding-Safety-Eye-Protection-Welder-Goggles.avif',
       summary: 'Heavy-duty protection for welding sparks and ultraviolet radiation.',
       useCases: ['Welding operations', 'Cutting/grinding', 'Metal fabrication', 'Arc work'],
       protection: 'Shields eyes and face from sparks, heat, and damaging UV/IR radiation.',
@@ -23,7 +23,7 @@ const EyeFaceProtection = () => {
     },
     {
       name: 'Chemical Safety Goggles',
-      image: '/images/ppes/Face-and-Eye-Protection_2022.avif',
+      image: '/images/ppes/ppes%20eye%20protection/ANTI-FOG-VENTILATED-SAFETY-GOGGLES-S-LS-312-CL-JORESTECH-H_6_1600x1600.webp',
       summary: 'Sealed design for maximum protection from liquid splashes.',
       useCases: ['Chemical labs', 'Cleaning operations', 'Industrial handling', 'Food processing'],
       protection: 'Prevents chemical liquid from reaching eyes; provides comfort in extended wear.',

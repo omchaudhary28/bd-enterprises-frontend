@@ -6,8 +6,8 @@ const sections = [
     id: 'custom-design',
     title: 'Custom Fabrication Design for Fire and Safety Infrastructure',
     images: [
-      '/images/complainces%20and%20audits/Industrial-buildings-2.jpg',
-      '/images/complainces%20and%20audits/06c082721669e71c86cda1f8000022c610ef15a2-940x492.webp',
+      '/images/fabrication/fabrication-1.jpg',
+      '/images/fabrication/fabrication-2.webp',
     ],
     paragraphs: [
       'B. D. Enterprises provides custom fabrication services for fire and safety system support structures, protective housings, equipment stands, and utility assemblies. Each fabrication requirement is developed from practical site conditions, operational loads, and access constraints to ensure long-term field usability.',
@@ -36,8 +36,8 @@ const sections = [
     id: 'manufacturing-installation',
     title: 'Manufacturing Execution and On-Site Installation',
     images: [
-      '/images/complainces%20and%20audits/0_l7xz_e_0Y31BCplJ.png',
-      '/images/complainces%20and%20audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
+      '/images/fabrication/fabrication-3.png',
+      '/images/fabrication/fabrication-2.webp',
     ],
     paragraphs: [
       'Fabrication execution is managed through controlled production workflows followed by supervised site installation. B. D. Enterprises coordinates measurements, fitment checks, and installation sequencing so fabricated components align accurately with existing structures and operational pathways.',
@@ -66,8 +66,8 @@ const sections = [
     id: 'maintenance-service',
     title: 'Maintenance, Retrofit, and Lifecycle Support',
     images: [
-      '/images/complainces%20and%20audits/Guide%20to%20WHS%20Inspections-1.webp',
-      '/images/complainces%20and%20audits/Industrial-buildings-2.jpg',
+      '/images/fabrication/fabrication-1.jpg',
+      '/images/fabrication/fabrication-3.png',
     ],
     paragraphs: [
       'Fabricated infrastructure requires periodic inspection for corrosion, structural wear, and mounting integrity. B. D. Enterprises provides maintenance and retrofit support to restore performance, improve safety, and extend usable service life of installed fabricated components.',
@@ -135,3 +135,4 @@ const Fabrication = () => (
 );
 
 export default Fabrication;
+

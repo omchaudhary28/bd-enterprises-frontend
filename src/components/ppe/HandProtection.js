@@ -14,7 +14,7 @@ const HandProtection = () => {
     },
     {
       name: 'Thermal Protection Gloves',
-      image: '/images/ppes/Hand-Protection-1536x922.webp',
+      image: '/images/ppes/ppes%20hand%20gloves/41Qm8Tk8VVL._AC_UF1000,1000_QL80_.jpg',
       summary: 'Insulated gloves for handling hot materials and equipment.',
       useCases: ['Welding', 'Furnace operations', 'Kitchen work', 'Hot machinery handling'],
       protection: 'Insulates hands from extreme heat; prevents burn injuries.',
@@ -23,7 +23,7 @@ const HandProtection = () => {
     },
     {
       name: 'Cut-Resistant Gloves',
-      image: '/images/ppes/Hand-Protection-1536x922.webp',
+      image: '/images/ppes/ppes%20hand%20gloves/71uC-suYAKL._AC_UY1100_.jpg',
       summary: 'Engineered fabrics with specialized materials to resist sharp edges and blades.',
       useCases: ['Glass handling', 'Metal fabrication', 'Food processing', 'Package handling'],
       protection: 'Resists slicing from sharp objects; allows tactile sensitivity.',

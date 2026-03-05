@@ -6,8 +6,8 @@ const sections = [
     id: 'network-layout',
     title: 'Hydrant Network Layout and Distribution Planning',
     images: [
-      '/images/sprinkler%20system/facilities-management-pipes-29818525.webp',
-      '/images/sprinkler%20system/Fire_sprinkler_roof_mount_side_view.jpg',
+      '/images/fire_hydrant_system/hydrant-1.webp',
+      '/images/fire_hydrant_system/hydrant-2.jpg',
     ],
     paragraphs: [
       'B. D. Enterprises designs fire hydrant systems as a structured distribution network that maintains dependable water availability across operational zones. Ring main routing, branch positioning, and hydrant point allocation are planned to ensure fast firefighting access in industrial and commercial facilities.',
@@ -36,8 +36,8 @@ const sections = [
     id: 'pump-integration',
     title: 'Fire Pump Integration and Critical System Components',
     images: [
-      '/images/sprinkler%20system/high%20hazard%20sprinkler%20systems.jpg',
-      '/images/sprinkler%20system/pWEODWN6M3U8LIYnSavtsmhevCHQDT-LNek5wwXMN1d0qHghjg-R-WV8eu7xbKN2H4uWBQ809VC9HiVsKRGeSmgyuKKfR1x7ZSl87Tz7z4k%20(1).jpg',
+      '/images/fire_hydrant_system/hydrant-3.jpg',
+      '/images/fire_hydrant_system/hydrant-2.jpg',
     ],
     paragraphs: [
       'Hydrant system reliability depends on correct fire pump integration. B. D. Enterprises configures main pumps, standby pumps, jockey pumps, and control logic to maintain stable pressure and deliver required flow when hydrant operation begins. Pump rooms are engineered for maintainability and monitored readiness.',
@@ -66,8 +66,8 @@ const sections = [
     id: 'maintenance-compliance',
     title: 'Maintenance, Inspection, and Compliance Standards',
     images: [
-      '/images/complainces%20and%20audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
-      '/images/complainces%20and%20audits/Guide%20to%20WHS%20Inspections-1.webp',
+      '/images/fire_hydrant_system/hydrant-1.webp',
+      '/images/fire_hydrant_system/hydrant-3.jpg',
     ],
     paragraphs: [
       'B. D. Enterprises executes preventive and corrective maintenance programs for hydrant networks including valve operation checks, pump auto-start trials, pressure testing, hose reel verification, and line health inspections. Scheduled maintenance reduces system degradation and preserves emergency readiness.',
@@ -135,3 +135,4 @@ const FireHydrantSystems = () => (
 );
 
 export default FireHydrantSystems;
+

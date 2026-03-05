@@ -14,7 +14,7 @@ const RespiratoryProtection = () => {
     },
     {
       name: 'Reusable Respirators',
-      image: '/images/ppes/Respiratory-Protection.webp',
+      image: '/images/ppes/Respiratory-Protection_2022.avif',
       summary: 'Durableelastomer facepieces with replaceable cartridges for chemical protection.',
       useCases: ['Chemical handling', 'Spray painting', 'Welding fumes', 'Hazmat work'],
       protection: 'Protects from gases, vapors, and particles; cartridges are replaceable.',
@@ -23,7 +23,7 @@ const RespiratoryProtection = () => {
     },
     {
       name: 'PAPR Systems',
-      image: '/images/ppes/Respiratory-Protection.webp',
+      image: '/images/ppes/ppes%20respiratory/65f0427935fc214ace1e9f7d-3m-6800-full-face-ppe-respirator-mask.webp',
       summary: 'Powered Air-Purifying Respirators with battery-powered blower.',
       useCases: ['High-hazard chemical work', 'Asbestos abatement', 'Lead remediation', 'Confined spaces'],
       protection: 'Provides highest level of respiratory protection; more comfortable than standard masks.',

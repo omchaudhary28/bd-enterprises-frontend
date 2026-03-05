@@ -6,8 +6,8 @@ const sections = [
     id: 'modular-panel-system',
     title: 'Modular Panel System Engineering',
     images: [
-      '/images/sprinkler%20system/facilities-management-pipes-29818525.webp',
-      '/images/complainces%20and%20audits/Industrial-buildings-2.jpg',
+      '/images/water_modular_tank/tank-1.webp',
+      '/images/water_modular_tank/tank-2.jpg',
     ],
     paragraphs: [
       'Water modular tank systems are built using prefabricated panel assemblies that allow flexible capacity planning and controlled on-site installation. B. D. Enterprises designs panel configuration, support layout, and connection architecture to match fire water demand, site conditions, and expansion strategy.',
@@ -36,8 +36,8 @@ const sections = [
     id: 'corrosion-resistance',
     title: 'Corrosion Resistance and Durability Planning',
     images: [
-      '/images/sprinkler%20system/Fire_sprinkler_roof_mount_side_view.jpg',
-      '/images/complainces%20and%20audits/06c082721669e71c86cda1f8000022c610ef15a2-940x492.webp',
+      '/images/water_modular_tank/tank-3.jpg',
+      '/images/water_modular_tank/tank-2.jpg',
     ],
     paragraphs: [
       'B. D. Enterprises specifies modular tank systems with corrosion-resistant material options and sealing methods to maintain long service life in demanding industrial environments. Material selection is guided by water quality, ambient conditions, and expected operating cycle to reduce long-term degradation risk.',
@@ -66,8 +66,8 @@ const sections = [
     id: 'installation-maintenance',
     title: 'Scalable Installation and Maintenance Services',
     images: [
-      '/images/Hero%20Images/fire-sprinkler-systems-help-to-extinguish-fire-in-rental-storage-units-920x533.jpg',
-      '/images/complainces%20and%20audits/fire-and-life-safety-safety-inspection-checklist-sipe.jpg',
+      '/images/water_modular_tank/tank-1.webp',
+      '/images/water_modular_tank/tank-3.jpg',
     ],
     paragraphs: [
       'Our installation scope covers civil interface coordination, panel erection, piping interconnection, valve arrangement, and integration with fire pump suction systems. B. D. Enterprises executes installation with documented quality checkpoints so water storage readiness is achieved without operational disruption.',
@@ -135,3 +135,4 @@ const WaterModularTank = () => (
 );
 
 export default WaterModularTank;
+

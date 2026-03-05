@@ -6,8 +6,8 @@ const sections = [
     id: 'wet-pipe',
     title: 'Wet Pipe Systems',
     images: [
-      '/images/sprinkler%20system/Fire_sprinkler_roof_mount_side_view.jpg',
-      '/images/sprinkler%20system/sprinkler-58e2afea5f9b58ef7eb86178.jpg',
+      '/images/sprinkler_system/Fire_sprinkler_roof_mount_side_view.jpg',
+      '/images/sprinkler_system/sprinkler-58e2afea5f9b58ef7eb86178.jpg',
     ],
     paragraphs: [
       'Wet pipe sprinkler systems operate with constant water-filled pipes, which allows immediate discharge when a sprinkler head activates. Activation occurs through heat-sensitive glass bulb or fusible link operation, opening only at affected points and controlling fire growth in its earliest stage.',
@@ -36,8 +36,8 @@ const sections = [
     id: 'dry-pipe',
     title: 'Dry Pipe Systems',
     images: [
-      '/images/sprinkler%20system/facilities-management-pipes-29818525.webp',
-      '/images/sprinkler%20system/pWEODWN6M3U8LIYnSavtsmhevCHQDT-LNek5wwXMN1d0qHghjg-R-WV8eu7xbKN2H4uWBQ809VC9HiVsKRGeSmgyuKKfR1x7ZSl87Tz7z4k%20(1).jpg',
+      '/images/sprinkler_system/facilities-management-pipes-29818525.webp',
+      '/images/sprinkler_system/pWEODWN6M3U8LIYnSavtsmhevCHQDT-LNek5wwXMN1d0qHghjg-R-WV8eu7xbKN2H4uWBQ809VC9HiVsKRGeSmgyuKKfR1x7ZSl87Tz7z4k%20(1).jpg',
     ],
     paragraphs: [
       'Dry pipe systems keep branch lines filled with pressurized air or nitrogen until sprinkler operation occurs. Once a head opens, pressure drops and the dry valve releases water into the piping network, resulting in a controlled delayed discharge suitable for freezing-prone environments.',
@@ -66,8 +66,8 @@ const sections = [
     id: 'deluge',
     title: 'Deluge Systems',
     images: [
-      '/images/sprinkler%20system/high%20hazard%20sprinkler%20systems.jpg',
-      '/images/sprinkler%20system/Fire_sprinkler_roof_mount_side_view.jpg',
+      '/images/sprinkler_system/high%20hazard%20sprinkler%20systems.jpg',
+      '/images/sprinkler_system/Fire_sprinkler_roof_mount_side_view.jpg',
     ],
     paragraphs: [
       'Deluge systems use open sprinkler heads and release water only after a detection system commands the deluge valve. When activated, water discharges simultaneously through all heads in the protected zone, rapidly flooding high-hazard areas where fire spread potential is severe.',
@@ -135,3 +135,4 @@ const SprinklerSystems = () => (
 );
 
 export default SprinklerSystems;
+

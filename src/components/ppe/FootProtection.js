@@ -14,7 +14,7 @@ const FootProtection = () => {
     },
     {
       name: 'Metatarsal Guard Boots',
-      image: '/images/ppes/Foot-Protection-1536x922.webp',
+      image: '/images/ppes/istockphoto-1488252839-1024x1024.jpg',
       summary: 'Extended protection over the top of foot against impact and rolling hazards.',
       useCases: ['Logging operations', 'Mining', 'Heavy industrial', 'Molten material handling'],
       protection: 'Covers arch and top of foot; protection against rolling and falling objects.',
@@ -23,7 +23,7 @@ const FootProtection = () => {
     },
     {
       name: 'Puncture-Resistant Sole Boots',
-      image: '/images/ppes/Foot-Protection-1536x922.webp',
+      image: '/images/ppes/istockphoto-1490326028-1024x1024.jpg',
       summary: 'Boots with reinforced midsoles to prevent puncture from sharp objects.',
       useCases: ['Roofing work', 'Landscaping', 'Concrete work', 'Recycling facilities'],
       protection: 'Prevents nails, screws, and sharp debris from penetrating sole.',

@@ -6,8 +6,8 @@ const sections = [
     id: 'preparedness-program',
     title: 'Structured Fire Safety Preparedness Programs',
     images: [
-      '/images/fire%20safety%20training/Fire_drill_in_a_smoke_trailer,_Naples,_Italy_-_081007-N-4044H-271.jpg',
-      '/images/fire%20safety%20training/Z_61FevxEdbNPF7t_FireSafetyPrevention.avif',
+      '/images/fire-safety-training/Fire_drill_in_a_smoke_trailer,_Naples,_Italy_-_081007-N-4044H-271.jpg',
+      '/images/fire-safety-training/Z_61FevxEdbNPF7t_FireSafetyPrevention.avif',
     ],
     paragraphs: [
       'B. D. Enterprises develops role-based training programs for fire wardens, shift supervisors, and operational teams to build practical emergency readiness. Training modules are aligned to facility hazards, evacuation routes, and installed fire protection systems so every participant understands response priorities and safe action sequences.',
@@ -36,8 +36,8 @@ const sections = [
     id: 'practical-drills',
     title: 'Practical Drills and Extinguisher Handling',
     images: [
-      '/images/fire%20safety%20training/Fire%20Extinguisher%20Training%20Demo%20Open%20Burn.jpg',
-      '/images/fire%20safety%20training/PASS-steps-as-shown-through-the-video-training-Bass-2014_Q320.jpg',
+      '/images/fire-safety-training/Fire%20Extinguisher%20Training%20Demo%20Open%20Burn.jpg',
+      '/images/fire-safety-training/PASS-steps-as-shown-through-the-video-training-Bass-2014_Q320.jpg',
     ],
     paragraphs: [
       'Practical drill execution is a core part of our training service. B. D. Enterprises conducts live simulations and extinguisher handling sessions so participants learn safe activation, target approach methods, and escalation protocol for situations that move beyond first-response control.',
@@ -66,8 +66,8 @@ const sections = [
     id: 'continuous-improvement',
     title: 'Training Maintenance and Compliance Continuity',
     images: [
-      '/images/fire%20safety%20training/feuerloschubung_im_betrieb-cws_fire_safety.jpg',
-      '/images/complainces%20and%20audits/Guide%20to%20WHS%20Inspections-1.webp',
+      '/images/fire-safety-training/feuerloschubung_im_betrieb-cws_fire_safety.jpg',
+      '/images/compliances-and-audits/Guide%20to%20WHS%20Inspections-1.webp',
     ],
     paragraphs: [
       'Training is treated as an ongoing service, not a one-time event. B. D. Enterprises prepares periodic refresher schedules, role revalidation plans, and training calendar support so safety competency remains active despite workforce changes and operational expansion.',
@@ -135,3 +135,4 @@ const FireSafetyTraining = () => (
 );
 
 export default FireSafetyTraining;
+
