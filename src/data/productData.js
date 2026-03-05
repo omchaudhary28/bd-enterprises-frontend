@@ -101,15 +101,28 @@ const getCategoryMeta = (categorySlug) => {
 
 const toImagePath = (folder, fileName) => encodeURI(`/images/${folder}/${fileName}`);
 
-const getBrandImageList = (brandSlug) => {
+const toProductTitle = (fileName) =>
+  decodeURIComponent(fileName)
+    .replace(/\.[^/.]+$/, '')
+    .trim();
+
+const getBrandImageFiles = (brandSlug) => {
   const folder = brandSupplyConfig?.[brandSlug]?.folder;
   if (!folder) {
     return [];
   }
 
   const rawFiles = brandImageManifest?.[folder] || [];
-  const uniqueFiles = Array.from(new Set(rawFiles.filter(Boolean)));
-  return uniqueFiles.map((fileName) => toImagePath(folder, fileName));
+  return Array.from(new Set(rawFiles.filter(Boolean)));
+};
+
+const getBrandImageList = (brandSlug) => {
+  const folder = brandSupplyConfig?.[brandSlug]?.folder;
+  if (!folder) {
+    return [];
+  }
+
+  return getBrandImageFiles(brandSlug).map((fileName) => toImagePath(folder, fileName));
 };
 
 const brandCatalog = Object.entries(brandSupplyConfig)
@@ -128,13 +141,14 @@ const brandCatalog = Object.entries(brandSupplyConfig)
 
 const buildProductsForCategory = (brand, categorySlug) => {
   const category = getCategoryMeta(categorySlug);
-  const images = getBrandImageList(brand.slug);
+  const folder = brandSupplyConfig?.[brand.slug]?.folder || '';
+  const files = getBrandImageFiles(brand.slug);
 
-  return images.map((image, index) => ({
+  return files.map((fileName, index) => ({
     id: `${brand.slug}-${category.slug}-${index + 1}`,
-    title: `${brand.name} ${category.name} ${index + 1}`,
+    title: toProductTitle(fileName),
     description: `${category.shortDescription} Supplied by ${brand.name} for industrial and commercial safety operations.`,
-    image,
+    image: toImagePath(folder, fileName),
     category: category.name,
     brand: brand.name,
   }));

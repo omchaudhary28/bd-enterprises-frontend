@@ -82,7 +82,8 @@ const BrandCategory = () => {
                 </div>
 
                 <div className="p-3 md:p-4">
-                  <h2 className="mb-1 text-sm font-bold text-[#F8F9FA] md:text-base">{product.brand}</h2>
+                  <h2 className="mb-1 text-sm font-bold text-[#F8F9FA] md:text-base">{product.title}</h2>
+                  <p className="mb-1 text-xs font-semibold text-[#E9ECEF]/85 md:text-sm">{product.brand}</p>
                   <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-[#FCBF49] md:text-sm">{product.category}</p>
                   <p className="text-xs leading-relaxed text-[#E9ECEF]/80 md:text-sm">{product.description}</p>
                 </div>
